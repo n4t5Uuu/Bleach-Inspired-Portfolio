@@ -367,7 +367,14 @@ ol {
   flex-direction: row;
   gap: clamp(8px, 1.4vw, 24px);
   height: 100%;
+  transition: opacity 0.9s var(--ease-out);
 }
+
+/* hidden until the browser picks this visit's verse, then inked in */
+.gate-verse[data-ready="false"] {
+  opacity: 0;
+}
+
 
 .gate-verse span {
   display: block;

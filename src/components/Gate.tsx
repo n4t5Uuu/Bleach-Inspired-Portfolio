@@ -2,11 +2,9 @@ import { site } from "@/content/site";
 import { Butterfly } from "./Butterfly";
 import { Registry, ResumeLink } from "./Registry";
 import { GateMotion } from "./GateMotion";
+import { GateVerse } from "./GateVerse";
 
 export function Gate() {
-  // Each line falls top to bottom; the lines run left to right across the doors.
-  const [opening, ...rest] = site.verse;
-
   return (
     <header id="gate" className="gate">
       <div className="gate-stage">
@@ -27,21 +25,19 @@ export function Gate() {
             <span className="gate-dangai-n">01</span>
           </div>
 
-          <p className="sr-only">{site.verse.join(", ")}</p>
+          <GateVerse verses={site.verses} part="sr" />
+          {/* without JavaScript nothing picks a verse, so show the first one */}
+          <noscript>
+            <style>{`.gate-verse[data-ready="false"] { opacity: 1; }`}</style>
+          </noscript>
 
           <div className="gate-door gate-door-l">
-            <p className="gate-verse" aria-hidden="true">
-              <span>{opening}</span>
-            </p>
+            <GateVerse verses={site.verses} part="left" />
             {site.versePlaceholder && <p className="placeholder-note gate-note">Placeholder verse</p>}
           </div>
 
           <div className="gate-door gate-door-r">
-            <p className="gate-verse" aria-hidden="true">
-              {rest.map((line) => (
-                <span key={line}>{line}</span>
-              ))}
-            </p>
+            <GateVerse verses={site.verses} part="right" />
             <div className="gate-tag">
               <ResumeLink variant="tag" />
             </div>
