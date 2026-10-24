@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440">
+<title>Tankobon Shelf sketch</title>
+<style>
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html,body { width:1440px; height:900px; overflow:hidden; background:#FFFFFF; color:#0A0A0A; font-family: Georgia, "Times New Roman", serif; }
+  .nav { position:absolute; top:36px; left:64px; right:64px; display:flex; justify-content:space-between; font-family:"Segoe UI",sans-serif; font-size:14px; letter-spacing:.2em; }
+  .poem { position:absolute; top:120px; right:240px; writing-mode:vertical-rl; font-size:34px; line-height:2.2; height:520px; }
+  .name { position:absolute; left:96px; top:200px; }
+  .name h1 { font-family:"Segoe UI Black","Arial Black",sans-serif; font-size:150px; line-height:.86; letter-spacing:-.04em; }
+  .name p { margin-top:28px; font-family:"Segoe UI",sans-serif; font-size:28px; font-weight:600; }
+  .resume { position:absolute; left:96px; top:600px; border:3px solid #0A0A0A; padding:16px 30px; font-family:"Segoe UI",sans-serif; font-size:24px; font-weight:700; }
+  .shelf { position:absolute; left:0; right:0; bottom:0; height:150px; display:flex; }
+  .spine { flex:1; display:flex; align-items:center; justify-content:center; font-family:"Segoe UI",sans-serif; font-size:26px; font-weight:800; color:#fff; letter-spacing:.1em; }
+  .vol { position:absolute; left:96px; top:150px; font-family:"Segoe UI",sans-serif; font-size:22px; letter-spacing:.3em; }
+</style>
+</head>
+<body>
+  <div class="nav"><span>PROJECTS</span><span>EXPERIENCE</span><span>ABOUT</span><span>RESUME</span></div>
+  <div class="vol">VOL. 01</div>
+  <div class="name"><h1>YOUR<br>NAME</h1><p>Software Developer</p></div>
+  <div class="poem">Your own short poem goes here<br>three lines, placeholder<br>written in your voice</div>
+  <div class="resume">Download resume</div>
+  <div class="shelf">
+    <div class="spine" style="background:#E4572E">01 PROJECT</div>
+    <div class="spine" style="background:#3B6FB6">02 PROJECT</div>
+    <div class="spine" style="background:#0A0A0A">03 PROJECT</div>
+    <div class="spine" style="background:#7A8C3A">04 PROJECT</div>
+    <div class="spine" style="background:#8E3B76">05 PROJECT</div>
+  </div>
+</body>
+</html>

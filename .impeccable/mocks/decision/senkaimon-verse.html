@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440">
+<title>Senkaimon Verse sketch</title>
+<style>
+  :root { --paper:#F4F4F1; --lacquer:#0B0B0C; --void:#050506; --cord:#D2381E; --cord-lit:#FF6A4D; --seam:#E9E3FF; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html,body { width:1440px; height:900px; overflow:hidden; background:var(--void); color:var(--lacquer); font-family:"Segoe UI",system-ui,sans-serif; }
+  /* lintel runs past both edges */
+  .lintel { position:absolute; left:-40px; right:-40px; top:0; height:150px; background:var(--lacquer); display:flex; align-items:center; padding:0 96px; color:var(--paper); }
+  .lintel .who h1 { font-size:58px; font-weight:900; letter-spacing:.04em; line-height:1; }
+  .lintel .who p { margin-top:8px; font-size:22px; font-weight:600; letter-spacing:.3em; }
+  .lintel nav { margin-left:auto; display:flex; gap:44px; }
+  .lintel nav a { font-size:22px; font-weight:700; letter-spacing:.18em; color:#8E8E8B; text-decoration:none; }
+  .lintel nav a.on { color:var(--cord-lit); }
+  .post { position:absolute; top:150px; bottom:0; width:56px; background:var(--lacquer); }
+  .post.l { left:0; } .post.r { right:0; }
+  .door { position:absolute; top:150px; bottom:0; width:658px; background:var(--paper);
+          background-image: linear-gradient(90deg, rgba(11,11,12,.14) 2px, transparent 2px), linear-gradient(rgba(11,11,12,.14) 2px, transparent 2px);
+          background-size: 164px 150px; }
+  .door.l { left:56px; } .door.r { right:56px; }
+  .seam { position:absolute; top:150px; bottom:0; left:714px; width:12px; background:var(--seam); box-shadow:0 0 120px 46px rgba(233,227,255,.7); }
+  /* giant vertical verse across both doors */
+  .verse { position:absolute; top:190px; height:690px; writing-mode:vertical-rl; font-family:"Yu Mincho","MS Mincho",Georgia,serif; font-weight:900; font-size:118px; line-height:1.18; color:var(--lacquer); }
+  .verse { top:40px; }
+  .verse.a { right:40px; } .verse.b { left:40px; }
+  .credit { position:absolute; left:96px; bottom:40px; font-size:16px; letter-spacing:.2em; background:var(--paper); padding:6px 10px; }
+  .tag { position:absolute; right:110px; top:220px; width:200px; background:var(--paper); border:4px solid var(--lacquer); padding:24px 18px; text-align:center; }
+  .tag strong { display:block; font-size:30px; font-weight:900; }
+  .tag span { display:block; margin-top:6px; font-size:16px; }
+  .cord { position:absolute; left:717px; top:150px; width:6px; height:520px; background:var(--cord); }
+  .tassel { position:absolute; left:698px; top:670px; width:44px; height:110px; background:var(--cord); border-radius:6px 6px 24px 24px; }
+  .pull { position:absolute; left:624px; top:800px; width:192px; text-align:center; font-size:22px; font-weight:800; letter-spacing:.26em; color:var(--paper); background:var(--lacquer); padding:10px 0; }
+  .bf { position:absolute; width:56px; height:38px; }
+  .bf::before, .bf::after { content:""; position:absolute; top:0; width:27px; height:38px; background:var(--lacquer); border-radius:60% 40% 50% 50%; }
+  .bf::before { left:0; transform:skewY(18deg); } .bf::after { right:0; transform:skewY(-18deg); }
+</style>
+</head>
+<body>
+  <div class="lintel">
+    <div class="who"><h1>YOUR NAME</h1><p>SOFTWARE DEVELOPER</p></div>
+    <nav><a class="on" href="#">01 PROJECTS</a><a href="#">02 EXPERIENCE</a><a href="#">03 ABOUT</a><a href="#">04 RESUME</a></nav>
+  </div>
+  <div class="post l"></div><div class="post r"></div>
+  <div class="door l"><div class="verse a">Your verse<br>falls here</div></div>
+  <div class="door r"><div class="verse b">in three<br>short lines</div></div>
+  <div class="seam"></div>
+  <div class="credit">VERSE: PLACEHOLDER, IN YOUR OWN WORDS</div>
+  <div class="tag"><strong>RESUME</strong><span>Download PDF</span></div>
+  <div class="cord"></div><div class="tassel"></div>
+  <div class="pull">PULL / SCROLL</div>
+  <div class="bf" style="left:1010px; top:720px"></div>
+  <div class="bf" style="left:1090px; top:660px; transform:scale(.7)"></div>
+</body>
+</html>
