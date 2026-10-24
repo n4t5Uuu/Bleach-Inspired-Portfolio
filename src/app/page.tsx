@@ -1,69 +1,100 @@
-import Image from "next/image";
+import { site } from "@/content/site";
+import { VolumeFocus } from "@/components/VolumeFocus";
+
+const volumeNumber = (i: number) => String(i + 1).padStart(2, "0");
 
 export default function Home() {
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert h-5 w-[100px]"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the{" "}
-            <code className="rounded bg-black/[.06] px-1.5 py-0.5 font-mono text-[0.9em] dark:bg-white/[.08]">
-              page.tsx
-            </code>{" "}
-            file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert h-[14px] w-4"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={14}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+    <>
+      <main>
+        <section id="work" className="dangai" aria-labelledby="work-title">
+          <div className="dangai-head">
+            <h2 id="work-title" className="dangai-title">
+              Projects
+            </h2>
+            <ol className="index">
+              {site.projects.map((p, i) => (
+                <li key={p.slug}>
+                  <a href={`#${p.slug}`}>
+                    <span className="index-n">{volumeNumber(i)}</span>
+                    <span className="index-title">{p.title}</span>
+                    <span className="index-stack">{p.stack.join(" · ")}</span>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </div>
+
+          {site.projects.map((p, i) => {
+            const n = volumeNumber(i);
+            return (
+              <article
+                key={p.slug}
+                id={p.slug}
+                className="volume"
+                aria-labelledby={`${p.slug}-title`}
+              >
+                {/* the volume's poem belongs on its cover */}
+                <div className="volume-cover">
+                  <span className="volume-n" aria-hidden="true">
+                    {n}
+                  </span>
+                  <span className="volume-spine" aria-hidden="true">
+                    {p.title}
+                  </span>
+                  <p className="volume-verse">{p.verse}</p>
+                  {site.projectsPlaceholder && (
+                    <span className="placeholder-note">Placeholder cover</span>
+                  )}
+                </div>
+
+                <div className="volume-text">
+                  <h3 id={`${p.slug}-title`}>
+                    <span className="sr-only">Volume {n}: </span>
+                    {p.title}
+                  </h3>
+                  <p className="volume-stack">{p.stack.join(" · ")}</p>
+                  <p className="volume-summary">{p.summary}</p>
+                  <dl className="volume-meta">
+                    <div>
+                      <dt>Role</dt>
+                      <dd>{p.role}</dd>
+                    </div>
+                    <div>
+                      <dt>Year</dt>
+                      <dd>{p.year}</dd>
+                    </div>
+                  </dl>
+                  <p className="volume-links">
+                    {p.caseStudyUrl ? (
+                      <a className="strike" href={p.caseStudyUrl}>
+                        Read the case study<span className="sr-only"> for {p.title}</span>
+                      </a>
+                    ) : (
+                      <span className="pending">Case study, add later</span>
+                    )}
+                    {p.liveUrl ? (
+                      <a className="strike" href={p.liveUrl}>
+                        Live site<span className="sr-only"> for {p.title}</span>
+                      </a>
+                    ) : (
+                      <span className="pending">Live link, add later</span>
+                    )}
+                    {p.sourceUrl ? (
+                      <a className="strike" href={p.sourceUrl}>
+                        Source<span className="sr-only"> for {p.title}</span>
+                      </a>
+                    ) : (
+                      <span className="pending">Source link, add later</span>
+                    )}
+                  </p>
+                </div>
+              </article>
+            );
+          })}
+          <VolumeFocus />
+        </section>
       </main>
-    </div>
+    </>
   );
 }
