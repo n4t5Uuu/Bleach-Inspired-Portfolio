@@ -54,7 +54,7 @@ What still belongs together:
 
 - Files that cannot work without each other (a component and its only call site when the call site would not compile alone) stay in one commit.
 - A dependency bump and its lockfile change stay together.
-- Do not split so far that a commit breaks the build, fails lint, or leaves dead references. Every commit must pass `npm run lint` and `npm run build` on its own; when you are unsure, check the risky ones.
+- Do not split so far that a commit breaks the build, fails lint, or leaves dead references. Every commit must pass `pnpm lint` and `pnpm build` on its own; when you are unsure, check the risky ones.
 
 Order the series so each commit depends only on earlier ones: ignore and tooling fixes, dependencies and config, then core pieces (content model, shared components), then the code that wires them in, then styling passes, then tests, then docs.
 
