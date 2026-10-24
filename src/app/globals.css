@@ -521,3 +521,50 @@ ol {
   color: var(--mist);
 }
 
+/* ---------- about: Soul Society's white walls ---------- */
+
+.about {
+  padding: clamp(96px, 16vh, 180px) var(--gutter);
+  background: var(--washi);
+  color: var(--lacquer);
+}
+
+.about > * {
+  max-width: 1240px;
+  margin-inline: auto;
+}
+
+.about-lead {
+  margin-top: clamp(28px, 5vh, 48px);
+  max-width: 30ch;
+  margin-inline: auto 0;
+  font-family: var(--font-verse-stack);
+  font-weight: 500;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  line-height: 1.4;
+}
+
+.about-facts {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px clamp(24px, 4vw, 64px);
+  margin-top: clamp(48px, 8vh, 88px);
+  padding-top: 24px;
+  border-top: 2px solid var(--lacquer);
+}
+
+.about-facts dt {
+  color: var(--ink-soft);
+}
+
+.about-facts dd {
+  margin-top: 4px;
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.about > .placeholder-note {
+  margin-top: 24px;
+  color: var(--ink-soft);
+}
+
