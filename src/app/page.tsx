@@ -1,6 +1,6 @@
 import { site } from "@/content/site";
 import { Gate } from "@/components/Gate";
-import { ResumeLink } from "@/components/Registry";
+import { Registry, ResumeLink } from "@/components/Registry";
 import { VolumeFocus } from "@/components/VolumeFocus";
 
 const volumeNumber = (i: number) => String(i + 1).padStart(2, "0");
@@ -11,6 +11,13 @@ export default function Home() {
       <a className="skip" href="#work">
         Skip to the projects
       </a>
+
+      <div className="bar">
+        <a className="bar-name" href="#gate">
+          {site.name}
+        </a>
+        <Registry />
+      </div>
 
       <Gate />
 
