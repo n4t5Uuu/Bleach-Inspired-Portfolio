@@ -111,6 +111,20 @@ export default function Home() {
             ))}
           </ol>
         </section>
+
+        <section id="about" className="about" aria-labelledby="about-title">
+          <h2 id="about-title">About</h2>
+          <p className="about-lead">{site.about.lead}</p>
+          <dl className="about-facts">
+            {site.about.facts.map((f) => (
+              <div key={f.label}>
+                <dt>{f.label}</dt>
+                <dd>{f.value}</dd>
+              </div>
+            ))}
+          </dl>
+          {site.aboutPlaceholder && <p className="placeholder-note">Placeholder biography</p>}
+        </section>
       </main>
     </>
   );
