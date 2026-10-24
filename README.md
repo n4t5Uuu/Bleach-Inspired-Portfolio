@@ -1,36 +1,35 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bleach-inspired portfolio
 
-## Getting Started
+A personal portfolio for a software developer, styled after the manga *Bleach*. The homepage is a lacquer-and-paper gate: scroll to part the doors and the work waits beyond them as numbered volumes. Everything on screen is original work; this site is not affiliated with the series.
 
-First, run the development server:
+All copy is placeholder until real content replaces it.
+
+## Stack
+
+Next.js 16 (App Router), React 19, TypeScript, Tailwind CSS 4, pnpm.
+
+## Run it
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm install
+pnpm dev        # http://localhost:3000
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+| Command | What it does |
+|---|---|
+| `pnpm build` | production build |
+| `pnpm start` | serve the production build |
+| `pnpm lint` | ESLint |
+| `pnpm doctor` | React Doctor scan |
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Edit the content
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Every word on the site lives in [`src/content/site.ts`](src/content/site.ts): name, role, tagline, the twelve gate verses, projects, experience, technologies and about. Each section has a `...Placeholder` flag; set it to `false` once the content is real. For the resume, put the PDF in `public/` and set `resumeHref` to `"/resume.pdf"`.
 
-## Learn More
+## Where things are
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `src/app/` – the page, layout and all styles (`globals.css`)
+- `src/components/` – the gate, nav, butterfly group and scroll effects
+- [`PRODUCT.md`](PRODUCT.md) – who the site is for and what it must do
+- [`DESIGN.md`](DESIGN.md) – the "Senkaimon Verse" design system
+- [`CLAUDE.md`](CLAUDE.md) – instructions for coding agents working in this repo
