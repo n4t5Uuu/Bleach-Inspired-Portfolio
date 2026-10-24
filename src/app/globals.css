@@ -589,6 +589,42 @@ a.resume-tag:hover {
   }
 }
 
+/* ---------- registry bar after the gate ---------- */
+
+.bar {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 10px var(--gutter);
+  background: var(--lacquer);
+  border-bottom: 1px solid var(--lacquer-2);
+  transform: translateY(-100%);
+  visibility: hidden;
+  transition:
+    transform 0.4s var(--ease-out),
+    visibility 0s 0.4s;
+}
+
+:root[data-passed="true"] .bar {
+  transform: none;
+  visibility: visible;
+  transition: transform 0.4s var(--ease-out);
+}
+
+.bar-name {
+  font-family: var(--font-display-stack);
+  font-size: 1.125rem;
+  text-decoration: none;
+}
+
+.bar .registry .resume small {
+  display: none;
+}
+
 /* ---------- the Dangai: the work ---------- */
 
 /* With the passage armed, the work section sits over the sticky stage (its top
