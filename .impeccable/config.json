@@ -1,0 +1,26 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "oversized-h1",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/canon.html"
+        ],
+        "createdAt": "2026-10-24T12:24:16.814Z",
+        "reason": "agent: decision-round sketch that depicts the category-standard portfolio on purpose; not shipping UI"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          ".impeccable/mocks/decision/weekly-chapter.html"
+        ],
+        "createdAt": "2026-10-24T12:30:26.350Z",
+        "reason": "agent: unchosen sketch from a closed direction round; spent fixture, not shipping UI"
+      }
+    ]
+  }
+}
