@@ -40,6 +40,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+# claude code per-machine settings
+.claude/settings.local.json
+
 # impeccable engine binary (~20 MB, the launcher downloads it on first run)
 .claude/skills/impeccable/scripts/bin/
 
