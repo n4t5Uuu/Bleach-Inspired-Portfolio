@@ -48,6 +48,14 @@ export const site = {
   versePlaceholder: true,
   projectsPlaceholder: true,
   aboutPlaceholder: true,
+  technologiesPlaceholder: true,
+  // Group the tools you actually use; keep each group to a handful of names.
+  technologies: [
+    { label: "Languages", items: ["Language one", "Language two", "Language three"] },
+    { label: "Frontend", items: ["Framework one", "Framework two", "Library three", "Tool four"] },
+    { label: "Backend and data", items: ["Runtime one", "Database two", "Service three"] },
+    { label: "Tooling", items: ["Tool one", "Tool two", "Platform three", "Tool four"] },
+  ],
   // Set to "/resume.pdf" once the file is in /public.
   resumeHref: null as string | null,
   // Set once a contact method is decided, e.g. "mailto:you@example.com".
