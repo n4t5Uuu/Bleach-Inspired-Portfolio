@@ -1164,6 +1164,77 @@ a.resume-tag:hover {
   color: var(--mist);
 }
 
+/* ---------- technologies: names inscribed on the cord ---------- */
+
+.stack {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+  gap: clamp(32px, 6vw, 112px);
+  padding: 0 var(--gutter) clamp(96px, 16vh, 180px);
+  background: var(--void);
+}
+
+.stack h2 {
+  align-self: start;
+  position: sticky;
+  top: 96px;
+  font-family: var(--font-display-stack);
+  font-size: clamp(2.25rem, 3.6vw, 3.75rem);
+  line-height: 1;
+}
+
+.stack-group {
+  display: grid;
+  grid-template-columns: minmax(0, 11rem) minmax(0, 1fr);
+  gap: 12px 28px;
+  align-items: baseline;
+  padding: 24px 0;
+  border-top: 1px solid var(--lacquer-2);
+}
+
+.stack-group:last-of-type {
+  border-bottom: 1px solid var(--lacquer-2);
+}
+
+.stack-group h3 {
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ghost);
+}
+
+/* each name in the verse face, knotted to the next like the experience cord */
+.stack-group ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 0;
+}
+
+.stack-group li {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-verse-stack);
+  font-weight: 800;
+  font-size: clamp(1.25rem, 1.9vw, 1.75rem);
+  line-height: 1.2;
+  color: var(--mist-hi);
+}
+
+/* the knot trails each name, so a wrapped line never begins with one */
+.stack-group li:not(:last-child)::after {
+  content: "";
+  width: 8px;
+  height: 8px;
+  margin-inline: clamp(12px, 1.6vw, 20px);
+  background: var(--cord);
+  transform: rotate(45deg);
+}
+
+.stack .placeholder-note {
+  margin-top: 20px;
+}
+
 /* ---------- about: Soul Society's white walls ---------- */
 
 .about {
@@ -1401,8 +1472,17 @@ span.resume-close {
     grid-template-columns: 1fr;
   }
 
-  .path h2 {
+  .path h2,
+  .stack h2 {
     position: static;
+  }
+
+  .stack {
+    grid-template-columns: 1fr;
+  }
+
+  .stack-group {
+    grid-template-columns: 1fr;
   }
 
 
