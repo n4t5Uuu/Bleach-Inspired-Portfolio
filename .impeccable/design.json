@@ -1,0 +1,154 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-24T00:00:00Z",
+  "title": "Design System: Senkaimon Verse",
+  "extensions": {
+    "colorMeta": {
+      "cord": { "role": "primary", "displayName": "Cord Vermilion", "canonical": "#d2381e", "tonalRamp": ["oklch(15% 0.06 35)", "oklch(26% 0.10 35)", "oklch(38% 0.15 35)", "oklch(50% 0.18 35)", "oklch(58% 0.19 35)", "oklch(70% 0.15 35)", "oklch(83% 0.08 35)", "oklch(95% 0.02 35)"] },
+      "cord-lit": { "role": "primary", "displayName": "Lit Vermilion", "canonical": "#ff6a4d", "tonalRamp": ["oklch(15% 0.06 33)", "oklch(26% 0.10 33)", "oklch(38% 0.15 33)", "oklch(50% 0.19 33)", "oklch(68% 0.19 33)", "oklch(76% 0.14 33)", "oklch(86% 0.08 33)", "oklch(95% 0.02 33)"] },
+      "cord-deep": { "role": "primary", "displayName": "Deep Vermilion", "canonical": "#b8301a", "tonalRamp": ["oklch(15% 0.06 35)", "oklch(25% 0.10 35)", "oklch(36% 0.14 35)", "oklch(52% 0.17 35)", "oklch(62% 0.17 35)", "oklch(72% 0.13 35)", "oklch(84% 0.07 35)", "oklch(95% 0.02 35)"] },
+      "seam": { "role": "secondary", "displayName": "Seam Light", "canonical": "#e9e3ff", "tonalRamp": ["oklch(15% 0.03 295)", "oklch(27% 0.04 295)", "oklch(39% 0.05 295)", "oklch(51% 0.05 295)", "oklch(63% 0.05 295)", "oklch(75% 0.04 295)", "oklch(85% 0.04 295)", "oklch(93% 0.035 295)"] },
+      "lacquer": { "role": "neutral", "displayName": "Black Lacquer", "canonical": "#0b0b0c", "tonalRamp": ["oklch(15% 0.002 285)", "oklch(26% 0.002 285)", "oklch(37% 0.002 285)", "oklch(48% 0.002 285)", "oklch(60% 0.002 285)", "oklch(72% 0.002 285)", "oklch(84% 0.002 285)", "oklch(95% 0.002 285)"] },
+      "lacquer-2": { "role": "neutral", "displayName": "Lacquer Edge", "canonical": "#1c1c1e", "tonalRamp": ["oklch(15% 0.004 285)", "oklch(22% 0.004 285)", "oklch(34% 0.004 285)", "oklch(46% 0.004 285)", "oklch(58% 0.004 285)", "oklch(70% 0.004 285)", "oklch(83% 0.004 285)", "oklch(95% 0.004 285)"] },
+      "void": { "role": "neutral", "displayName": "Void", "canonical": "#050506", "tonalRamp": ["oklch(12% 0.002 285)", "oklch(24% 0.002 285)", "oklch(36% 0.002 285)", "oklch(48% 0.002 285)", "oklch(60% 0.002 285)", "oklch(72% 0.002 285)", "oklch(84% 0.002 285)", "oklch(95% 0.002 285)"] },
+      "washi": { "role": "neutral", "displayName": "Washi", "canonical": "#f3f3ef", "tonalRamp": ["oklch(15% 0.005 110)", "oklch(27% 0.005 110)", "oklch(39% 0.005 110)", "oklch(51% 0.005 110)", "oklch(63% 0.005 110)", "oklch(75% 0.005 110)", "oklch(86% 0.005 110)", "oklch(96% 0.005 110)"] },
+      "washi-hi": { "role": "neutral", "displayName": "Bright Washi", "canonical": "#fbfbf8", "tonalRamp": ["oklch(15% 0.004 110)", "oklch(27% 0.004 110)", "oklch(39% 0.004 110)", "oklch(51% 0.004 110)", "oklch(63% 0.004 110)", "oklch(75% 0.004 110)", "oklch(87% 0.004 110)", "oklch(98.5% 0.004 110)"] },
+      "ghost": { "role": "neutral", "displayName": "Ghost", "canonical": "#8e8e8b", "tonalRamp": ["oklch(15% 0.003 110)", "oklch(27% 0.003 110)", "oklch(39% 0.003 110)", "oklch(51% 0.003 110)", "oklch(64% 0.003 110)", "oklch(75% 0.003 110)", "oklch(86% 0.003 110)", "oklch(95% 0.003 110)"] },
+      "mist": { "role": "neutral", "displayName": "Mist", "canonical": "#bdbdb7", "tonalRamp": ["oklch(15% 0.006 110)", "oklch(27% 0.006 110)", "oklch(39% 0.006 110)", "oklch(51% 0.006 110)", "oklch(63% 0.006 110)", "oklch(79% 0.006 110)", "oklch(87% 0.006 110)", "oklch(95% 0.006 110)"] },
+      "mist-hi": { "role": "neutral", "displayName": "Mist High", "canonical": "#cfcfca", "tonalRamp": ["oklch(15% 0.005 110)", "oklch(27% 0.005 110)", "oklch(39% 0.005 110)", "oklch(51% 0.005 110)", "oklch(63% 0.005 110)", "oklch(75% 0.005 110)", "oklch(85% 0.005 110)", "oklch(95% 0.005 110)"] },
+      "ink-soft": { "role": "neutral", "displayName": "Soft Ink", "canonical": "#5c5c58", "tonalRamp": ["oklch(15% 0.005 110)", "oklch(27% 0.005 110)", "oklch(39% 0.005 110)", "oklch(46% 0.005 110)", "oklch(60% 0.005 110)", "oklch(72% 0.005 110)", "oklch(84% 0.005 110)", "oklch(95% 0.005 110)"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Section titles: Projects, About, the close; Experience at a smaller sticky step." },
+      "numeral": { "displayName": "Numeral", "purpose": "Volume numbers on covers and the passage 01." },
+      "verse": { "displayName": "Verse", "purpose": "The gate verse, set vertically, one column per line; largest type at the gate." },
+      "headline": { "displayName": "Headline", "purpose": "Project titles beside their covers." },
+      "title": { "displayName": "Title", "purpose": "Index rows, resume tag, timeline role titles (larger step)." },
+      "lead": { "displayName": "Lead", "purpose": "Mincho voiced lines: About lead, cover poems, organisation names." },
+      "body": { "displayName": "Body", "purpose": "Summaries and prose, 62ch measure." },
+      "nav": { "displayName": "Nav", "purpose": "Registry destinations, uppercase, with display-face numerals." },
+      "label": { "displayName": "Label", "purpose": "Field labels, status and placeholder notes, sub-labels. Never an eyebrow above a heading." }
+    },
+    "shadows": [
+      { "name": "lintel-drop", "value": "0 18px 30px -12px rgb(0 0 0 / 0.65)", "purpose": "The lintel casting onto the doors." },
+      { "name": "door-edge", "value": "18px 0 40px -18px rgb(0 0 0 / calc(0.7 * var(--door, 0)))", "purpose": "Inner door edge as the doors part; mirrored on the right door." },
+      { "name": "hanging-tag", "value": "0 10px 18px -8px rgb(0 0 0 / 0.35)", "purpose": "The resume tag hanging on paper." },
+      { "name": "seam-glow", "value": "0 0 70px 22px rgb(233 227 255 / 0.55)", "purpose": "Light leaking at the gate seam." },
+      { "name": "cover-glow", "value": "0 40px 90px -30px rgb(233 227 255 / 0.22)", "purpose": "Faint violet light under volume covers on void." },
+      { "name": "cord-glow", "value": "0 14px 28px -12px rgb(210 56 30 / 0.55)", "purpose": "Under the solid vermilion resume button." }
+    ],
+    "motion": [
+      { "name": "ease-out", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Bar slide-in (0.4s), cover dimming (0.7s), tassel drop (0.45s)." },
+      { "name": "weighted-wood", "value": "cubic in-out: t < 0.5 ? 4t^3 : 1 - (-2t + 2)^3 / 2", "purpose": "Scroll-linked door parting; slow to start, decisive at the end." },
+      { "name": "passage-timeline", "value": "pull 0-0.12, door 0.03-0.40, flood 0.10-0.42, black 0.40-0.60, head 0.77-0.88 of a 170svh track", "purpose": "Gate passage phases, including the held black beat." },
+      { "name": "flap", "value": "scaleX 1 to 0.35, 1.6s ease-in-out infinite (1.25s on the small butterfly)", "purpose": "Butterfly wings; reduced-motion disables." },
+      { "name": "snap", "value": "no transition", "purpose": "Ghost-to-struck colour changes on nav, index and links." }
+    ],
+    "breakpoints": [
+      { "name": "narrow", "value": "760px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button (Resume)",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The solid vermilion resume download at the close; the only filled button.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\">Download resume <small>PDF</small></a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: baseline; gap: 14px; padding: 18px 28px; background: var(--cord-deep, #b8301a); color: var(--washi-hi, #fbfbf8); font-family: var(--font-ui-stack, 'Zen Kaku Gothic New', system-ui, sans-serif); font-size: 1.25rem; font-weight: 700; text-decoration: none; border-radius: 0; box-shadow: 0 14px 28px -12px rgb(210 56 30 / 0.55); } .ds-btn-primary small { font-size: 0.8125rem; letter-spacing: 0.16em; } .ds-btn-primary:hover { background: var(--cord, #d2381e); } .ds-btn-primary:focus-visible { outline: 2px solid var(--cord-lit, #ff6a4d); outline-offset: 4px; border-radius: 2px; }"
+    },
+    {
+      "name": "Unavailable Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The resume button when no file exists yet: same shape, no link, says so.",
+      "html": "<span class=\"ds-btn-pending\">Download resume <small>Coming soon</small></span>",
+      "css": ".ds-btn-pending { display: inline-flex; align-items: baseline; gap: 14px; padding: 18px 28px; background: transparent; color: var(--mist, #bdbdb7); font-family: var(--font-ui-stack, 'Zen Kaku Gothic New', system-ui, sans-serif); font-size: 1.25rem; font-weight: 700; outline: 2px solid var(--lacquer-2, #1c1c1e); outline-offset: -2px; } .ds-btn-pending small { font-size: 0.8125rem; letter-spacing: 0.16em; }"
+    },
+    {
+      "name": "Resume Tag",
+      "kind": "custom",
+      "refersTo": "resume-tag",
+      "description": "Paper tag hanging from a lacquer string on the right gate door.",
+      "html": "<div style=\"background:#f3f3ef;padding:0 24px 24px\"><div class=\"ds-tag-wrap\"><a class=\"ds-resume-tag\" href=\"#\">Resume<small>PDF</small></a></div></div>",
+      "css": ".ds-tag-wrap { position: relative; display: inline-block; padding-top: 40px; } .ds-tag-wrap::before { content: ''; position: absolute; top: 0; left: 50%; width: 2px; height: 40px; background: var(--lacquer, #0b0b0c); } .ds-resume-tag { display: flex; flex-direction: column; align-items: center; gap: 2px; min-width: 9.5rem; padding: 14px 18px 12px; background: var(--washi-hi, #fbfbf8); border: 3px solid var(--lacquer, #0b0b0c); color: var(--lacquer, #0b0b0c); font-family: var(--font-display-stack, 'Dela Gothic One', sans-serif); font-size: 1.5rem; line-height: 1.1; text-decoration: none; box-shadow: 0 10px 18px -8px rgb(0 0 0 / 0.35); } .ds-resume-tag small { font-family: var(--font-ui-stack, 'Zen Kaku Gothic New', sans-serif); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft, #5c5c58); } .ds-resume-tag:hover { border-color: var(--cord-deep, #b8301a); color: var(--cord-deep, #b8301a); } .ds-resume-tag:focus-visible { outline: 2px solid var(--cord-lit, #ff6a4d); outline-offset: 4px; }"
+    },
+    {
+      "name": "Strike Link",
+      "kind": "custom",
+      "refersTo": "link-strike",
+      "description": "Inline action link on black; vermilion until struck, then washi with a vermilion underline.",
+      "html": "<div style=\"background:#050506;padding:16px\"><a class=\"ds-strike\" href=\"#\">Read the case study</a> <span class=\"ds-pending\">Live link, add later</span></div>",
+      "css": ".ds-strike { display: inline-flex; align-items: center; min-height: 44px; margin-right: 28px; color: var(--cord-lit, #ff6a4d); font-family: var(--font-ui-stack, 'Zen Kaku Gothic New', sans-serif); font-weight: 700; text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.28em; } .ds-strike:hover { color: var(--washi, #f3f3ef); text-decoration-color: var(--cord-lit, #ff6a4d); } .ds-strike:focus-visible { outline: 2px solid var(--cord-lit, #ff6a4d); outline-offset: 4px; border-radius: 2px; } .ds-pending { display: inline-flex; align-items: center; min-height: 44px; color: var(--ghost, #8e8e8b); font-family: var(--font-ui-stack, 'Zen Kaku Gothic New', sans-serif); font-size: 0.9375rem; }"
+    },
+    {
+      "name": "Registry Navigation",
+      "kind": "nav",
+      "refersTo": "nav-item",
+      "description": "Numbered destinations, ghosted until struck; a small ink butterfly appears on the struck item.",
+      "html": "<nav class=\"ds-registry\" aria-label=\"Primary\"><ol><li><a href=\"#\"><svg class=\"ds-guide\" viewBox=\"0 0 48 36\" aria-hidden=\"true\"><path d=\"M23 17C17 4 5-1 2 4c-3 6 6 13 21 13Z\"/><path d=\"M23 19C13 19 5 25 7 31c2 5 11 1 16-12Z\"/><path d=\"M25 17C31 4 43-1 46 4c3 6-6 13-21 13Z\"/><path d=\"M25 19c10 0 18 6 16 12-2 5-11 1-16-12Z\"/><path d=\"M23 12h2v16h-2z\"/></svg><span class=\"ds-n\">01</span>Projects</a></li><li><a href=\"#\"><svg class=\"ds-guide\" viewBox=\"0 0 48 36\" aria-hidden=\"true\"><path d=\"M23 17C17 4 5-1 2 4c-3 6 6 13 21 13Z\"/><path d=\"M23 19C13 19 5 25 7 31c2 5 11 1 16-12Z\"/><path d=\"M25 17C31 4 43-1 46 4c3 6-6 13-21 13Z\"/><path d=\"M25 19c10 0 18 6 16 12-2 5-11 1-16-12Z\"/><path d=\"M23 12h2v16h-2z\"/></svg><span class=\"ds-n\">02</span>Experience</a></li><li><a href=\"#\"><svg class=\"ds-guide\" viewBox=\"0 0 48 36\" aria-hidden=\"true\"><path d=\"M23 17C17 4 5-1 2 4c-3 6 6 13 21 13Z\"/><path d=\"M23 19C13 19 5 25 7 31c2 5 11 1 16-12Z\"/><path d=\"M25 17C31 4 43-1 46 4c3 6-6 13-21 13Z\"/><path d=\"M25 19c10 0 18 6 16 12-2 5-11 1-16-12Z\"/><path d=\"M23 12h2v16h-2z\"/></svg><span class=\"ds-n\">03</span>About</a></li></ol></nav>",
+      "css": ".ds-registry { background: var(--lacquer, #0b0b0c); padding: 12px 24px; } .ds-registry ol { display: flex; flex-wrap: wrap; gap: 4px 32px; margin: 0; padding: 0; list-style: none; } .ds-registry a { position: relative; display: inline-flex; align-items: center; gap: 0.5em; min-height: 44px; color: var(--ghost, #8e8e8b); font-family: var(--font-ui-stack, 'Zen Kaku Gothic New', sans-serif); font-size: 1rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; text-decoration: none; } .ds-n { font-family: var(--font-display-stack, 'Dela Gothic One', sans-serif); letter-spacing: 0; } .ds-guide { position: absolute; top: -6px; left: -6px; width: 20px; fill: var(--cord-lit, #ff6a4d); opacity: 0; } .ds-registry a:hover, .ds-registry a:focus-visible { color: var(--cord-lit, #ff6a4d); } .ds-registry a:hover .ds-guide, .ds-registry a:focus-visible .ds-guide { opacity: 1; } .ds-registry a:focus-visible { outline: 2px solid var(--cord-lit, #ff6a4d); outline-offset: 4px; border-radius: 2px; }"
+    },
+    {
+      "name": "Volume Index Row",
+      "kind": "custom",
+      "refersTo": "index-row",
+      "description": "Numbered list of every volume at a glance, hairline-ruled.",
+      "html": "<ol class=\"ds-index\"><li><a href=\"#\"><span class=\"ds-index-n\">01</span><span class=\"ds-index-title\">Project title</span><span class=\"ds-index-stack\">Stack · Tools</span></a></li><li><a href=\"#\"><span class=\"ds-index-n\">02</span><span class=\"ds-index-title\">Project title</span><span class=\"ds-index-stack\">Stack · Tools</span></a></li></ol>",
+      "css": ".ds-index { margin: 0; padding: 16px 24px; list-style: none; background: var(--void, #050506); color: var(--washi, #f3f3ef); } .ds-index a { display: grid; grid-template-columns: 3.25rem minmax(0, 1fr) auto; align-items: baseline; gap: 16px; min-height: 44px; padding: 14px 0; border-top: 1px solid var(--lacquer-2, #1c1c1e); color: inherit; text-decoration: none; } .ds-index li:last-child a { border-bottom: 1px solid var(--lacquer-2, #1c1c1e); } .ds-index-n { font-family: var(--font-display-stack, 'Dela Gothic One', sans-serif); color: var(--ghost, #8e8e8b); } .ds-index-title { font-family: var(--font-display-stack, 'Dela Gothic One', sans-serif); font-size: 1.5rem; line-height: 1.15; } .ds-index-stack { color: var(--mist, #bdbdb7); font-family: var(--font-ui-stack, 'Zen Kaku Gothic New', sans-serif); font-size: 0.9375rem; text-align: right; } .ds-index a:hover .ds-index-n, .ds-index a:hover .ds-index-title, .ds-index a:focus-visible .ds-index-n, .ds-index a:focus-visible .ds-index-title { color: var(--cord-lit, #ff6a4d); } .ds-index a:focus-visible { outline: 2px solid var(--cord-lit, #ff6a4d); outline-offset: 4px; }"
+    },
+    {
+      "name": "Volume Cover",
+      "kind": "card",
+      "refersTo": "volume-cover",
+      "description": "3:4 washi cover with lacquer spine, vertical Mincho title, poem, and giant numeral; dims under void when not held.",
+      "html": "<div style=\"background:#050506;padding:32px\"><div class=\"ds-cover\"><span class=\"ds-cover-n\">01</span><span class=\"ds-cover-spine\">Project title</span><p class=\"ds-cover-verse\">One line that says why this work mattered</p><span class=\"ds-cover-note\">Placeholder cover</span></div></div>",
+      "css": ".ds-cover { position: relative; display: grid; grid-template-rows: 1fr auto; width: 280px; aspect-ratio: 3 / 4; padding: 24px 24px 24px 52px; background: var(--washi, #f3f3ef); color: var(--lacquer, #0b0b0c); overflow: hidden; box-shadow: 0 40px 90px -30px rgb(233 227 255 / 0.22); } .ds-cover::before { content: ''; position: absolute; inset: 0 auto 0 0; width: 24px; background: var(--lacquer, #0b0b0c); } .ds-cover-n { grid-row: 2; align-self: end; font-family: var(--font-display-stack, 'Dela Gothic One', sans-serif); font-size: 6rem; line-height: 0.8; letter-spacing: -0.02em; } .ds-cover-spine { position: absolute; top: 24px; right: 20px; writing-mode: vertical-rl; max-height: 70%; font-family: var(--font-verse-stack, 'Shippori Mincho B1', serif); font-weight: 800; font-size: 1.5rem; line-height: 1.15; } .ds-cover-verse { grid-row: 1; align-self: center; max-width: 18ch; margin: 0 56px 0 0; font-family: var(--font-verse-stack, 'Shippori Mincho B1', serif); font-weight: 500; font-size: 1.25rem; line-height: 1.4; } .ds-cover-note { position: absolute; left: 52px; top: 24px; font-family: var(--font-ui-stack, 'Zen Kaku Gothic New', sans-serif); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft, #5c5c58); }"
+    },
+    {
+      "name": "Cord Timeline",
+      "kind": "custom",
+      "description": "The gate cord continued as the experience timeline, with rotated-square knots.",
+      "html": "<ol class=\"ds-path\"><li><span class=\"ds-knot\"></span><h3>Role title<span>Company</span></h3><p class=\"ds-period\">Start – End</p></li><li><span class=\"ds-knot\"></span><h3>Role title<span>Company</span></h3><p class=\"ds-period\">Start – End</p></li></ol>",
+      "css": ".ds-path { position: relative; margin: 0; padding: 24px 24px 0 72px; list-style: none; background: var(--void, #050506); color: var(--washi, #f3f3ef); } .ds-path::before { content: ''; position: absolute; top: 0; bottom: 0; left: 30px; width: 4px; background: var(--cord, #d2381e); } .ds-path li { position: relative; padding-bottom: 48px; } .ds-knot { position: absolute; top: 0.45em; left: -47px; width: 14px; height: 14px; background: var(--cord, #d2381e); transform: rotate(45deg); outline: 4px solid var(--void, #050506); } .ds-path h3 { margin: 0; font-family: var(--font-display-stack, 'Dela Gothic One', sans-serif); font-weight: 400; font-size: 2rem; line-height: 1.1; } .ds-path h3 span { display: block; margin-top: 6px; font-family: var(--font-verse-stack, 'Shippori Mincho B1', serif); font-weight: 500; font-size: 1.25rem; color: var(--mist-hi, #cfcfca); } .ds-period { margin: 8px 0 0; font-family: var(--font-ui-stack, 'Zen Kaku Gothic New', sans-serif); font-size: 0.875rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ghost, #8e8e8b); font-variant-numeric: tabular-nums; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Senkaimon Verse",
+    "overview": "The site is a passage through a gate. Black lacquer frames every region, cool washi paper fills the surfaces that carry words, and the space beyond the gate is a velvet black lit only by taking darkness away. One vermilion cord runs through the whole system: it is the primary control at the gate, it becomes the experience timeline, and its colour marks every action a visitor can take. Everything else is held in ghosted greys until it is struck.\n\nDensity is low and deliberate. Sections are tall, type is large, and the content holds one world at a time: on the gate the doors and their verse; in the work, one lit volume while the others sink into shade. Motion is heavy and decisive, like weighted wood; ghost-to-struck states snap with no transition. Bleach is evoked through original material (gate, paper, lacquer, cord, ink butterflies), never through borrowed artwork.\n\nAll copy and project data in the shipped build is placeholder by design and is marked as such in the interface; nothing here describes real projects, employers, or biography.",
+    "keyCharacteristics": [
+      "Three materials: lacquer frames, washi surfaces, void depth.",
+      "One accent, vermilion, reserved for controls and the cord line.",
+      "Three type voices: heavy display gothic, vertical-capable Mincho for verse, quiet gothic for UI and prose.",
+      "Square forms, structural borders, no card rounding.",
+      "Light and focus conveyed by removing darkness, not by adding colour."
+    ],
+    "rules": [
+      { "name": "The One Cord Rule", "body": "Vermilion marks only what can be acted on (controls, links, focus) and the cord line itself, including its continuation as the timeline. It never decorates headings, fills sections, or tints imagery.", "section": "colors" },
+      { "name": "The Removal of Darkness Rule", "body": "Focus and arrival are shown by lifting a void shade (unlit covers sit under a 60% void overlay) or by the seam flood, not by adding colour or brightness to the focused thing.", "section": "colors" },
+      { "name": "The Cool Paper Rule", "body": "Paper is washi (cool, slightly green-grey). Never warm it toward cream or parchment.", "section": "colors" },
+      { "name": "The Spoken Line Rule", "body": "Mincho is for lines that are voiced (verse, cover poems, the About lead, organisation names). It never sets UI, labels or buttons.", "section": "typography" },
+      { "name": "The Numbered Registry Rule", "body": "Destinations and volumes carry two-digit display numerals (01, 02...). Numbers are part of the name, set in the display face.", "section": "typography" },
+      { "name": "The Label Is Data Rule", "body": "Uppercase tracked labels name a field, a status, or a destination. They never sit above a heading as an eyebrow.", "section": "typography" },
+      { "name": "The Planes Not Cards Rule", "body": "Elevation comes from one material sitting in front of another (lacquer over paper, paper over void). Do not add generic card shadows to lift content off a background.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do frame every region in lacquer and put words that are meant to be read slowly on washi paper.",
+      "Do keep vermilion to controls, links, focus and the cord line; use Lit Vermilion on black and Deep Vermilion under white text or on paper.",
+      "Do show state by snapping ghost to struck, with no colour transition on hover.",
+      "Do show focus or arrival by lifting darkness (void shade, seam flood) rather than adding colour.",
+      "Do number destinations and volumes with two-digit display numerals.",
+      "Do honour reduced motion: the gate stays whole and nothing parts, flaps, or dims.",
+      "Do keep every interactive target at least 44px tall and every placeholder visibly labelled."
+    ],
+    "donts": [
+      "Don't warm the paper toward cream or parchment.",
+      "Don't introduce a second accent colour or use vermilion on headings or backgrounds.",
+      "Don't round surfaces or controls; corners stay square apart from the 2px focus ring.",
+      "Don't set UI, buttons or labels in Mincho.",
+      "Don't place uppercase tracked labels above headings as eyebrows.",
+      "Don't use official Bleach artwork, logos, characters or quoted text; butterflies, gate and cord are original drawings.",
+      "Don't use bouncy or elastic easing; motion is weighted and decisive."
+    ]
+  }
+}
