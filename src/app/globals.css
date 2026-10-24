@@ -213,3 +213,231 @@ ol {
   cursor: default;
 }
 
+/* ---------- the Dangai: the work ---------- */
+
+.dangai {
+  padding: clamp(48px, 9vh, 104px) var(--gutter) clamp(96px, 14vh, 160px);
+  background: var(--void);
+  scroll-margin-top: 0;
+}
+
+/* what lands after the black beat: every volume at a glance */
+.dangai-head {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  align-items: end;
+  gap: 24px clamp(28px, 6vw, 112px);
+}
+
+.index li a {
+  display: grid;
+  grid-template-columns: 3.25rem minmax(0, 1fr) auto;
+  align-items: baseline;
+  gap: 16px;
+  min-height: 44px;
+  padding: 14px 0;
+  border-top: 1px solid var(--lacquer-2);
+  text-decoration: none;
+}
+
+.index li:last-child a {
+  border-bottom: 1px solid var(--lacquer-2);
+}
+
+.index-n {
+  font-family: var(--font-display-stack);
+  color: var(--ghost);
+}
+
+.index-title {
+  font-family: var(--font-display-stack);
+  font-size: clamp(1.125rem, 1.6vw, 1.5rem);
+  line-height: 1.15;
+}
+
+.index-stack {
+  color: var(--mist);
+  font-size: 0.9375rem;
+  text-align: right;
+}
+
+.index a:hover .index-n,
+.index a:hover .index-title,
+.index a:focus-visible .index-n,
+.index a:focus-visible .index-title {
+  color: var(--cord-lit);
+}
+
+.volume {
+  scroll-margin-top: 72px;
+}
+
+.dangai > * {
+  max-width: 1240px;
+  margin-inline: auto;
+}
+
+.dangai-title,
+.path h2,
+.about h2 {
+  font-family: var(--font-display-stack);
+  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  line-height: 1;
+}
+
+.volume {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+  align-items: center;
+  gap: clamp(28px, 6vw, 112px);
+  margin-top: clamp(80px, 13vh, 150px);
+}
+
+/* mirrored spread: the cover keeps the narrow column on either side */
+.volume:nth-of-type(even) {
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+}
+
+.volume:nth-of-type(even) .volume-cover {
+  order: 2;
+}
+
+.volume-cover {
+  position: relative;
+  display: grid;
+  grid-template-rows: 1fr auto;
+  aspect-ratio: 3 / 4;
+  padding: clamp(18px, 2.4vw, 32px) clamp(18px, 2.4vw, 32px) clamp(18px, 2.4vw, 32px) clamp(40px, 5vw, 64px);
+  background: var(--washi);
+  color: var(--lacquer);
+  overflow: hidden;
+  box-shadow: 0 40px 90px -30px rgb(233 227 255 / 0.22);
+}
+
+/* lacquer spine */
+.volume-cover::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: clamp(18px, 2.2vw, 30px);
+  background: var(--lacquer);
+}
+
+/* unlit covers sink into the dark; the placeholder note stays legible above the shade */
+.volume-cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--void);
+  opacity: 0;
+  transition: opacity 0.7s var(--ease-out);
+}
+
+.volume[data-lit="false"] .volume-cover::after {
+  opacity: 0.6;
+}
+
+.volume[data-lit="false"] .volume-cover .placeholder-note {
+  color: var(--washi-hi);
+}
+
+.volume-cover .placeholder-note {
+  z-index: 1;
+}
+
+
+.volume-n {
+  grid-row: 2;
+  align-self: end;
+  font-family: var(--font-display-stack);
+  font-size: clamp(5rem, 11vw, 10rem);
+  line-height: 0.8;
+  letter-spacing: -0.02em;
+}
+
+.volume-spine {
+  position: absolute;
+  top: clamp(18px, 2.4vw, 32px);
+  right: clamp(16px, 2vw, 28px);
+  writing-mode: vertical-rl;
+  max-height: 70%;
+  font-family: var(--font-verse-stack);
+  font-weight: 800;
+  font-size: clamp(1.375rem, 2.3vw, 2.125rem);
+  line-height: 1.15;
+}
+
+.volume-cover .placeholder-note {
+  position: absolute;
+  left: clamp(40px, 5vw, 64px);
+  top: clamp(18px, 2.4vw, 32px);
+  color: var(--ink-soft);
+}
+
+/* the volume poem, set on its own cover */
+.volume-verse {
+  grid-row: 1;
+  align-self: center;
+  position: relative;
+  z-index: 0;
+  max-width: 18ch;
+  margin-right: clamp(48px, 5vw, 72px);
+  text-wrap: balance;
+  font-family: var(--font-verse-stack);
+  font-weight: 500;
+  font-size: clamp(1.125rem, 1.8vw, 1.625rem);
+  line-height: 1.4;
+  color: var(--lacquer);
+}
+
+.volume-text h3 {
+  margin-top: 0;
+  font-family: var(--font-display-stack);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.02;
+}
+
+/* the keywords a recruiter scans for sit right under the title */
+.volume-stack {
+  margin-top: 12px;
+  color: var(--washi);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.volume-summary {
+  margin-top: 14px;
+  max-width: var(--measure);
+  color: var(--mist);
+}
+
+.volume-meta {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, max-content));
+  gap: 12px clamp(24px, 4vw, 56px);
+  margin-top: 28px;
+}
+
+.volume-meta dt,
+.about-facts dt {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ghost);
+}
+
+.volume-meta dd {
+  margin-top: 2px;
+  font-weight: 500;
+}
+
+.volume-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0 28px;
+  margin-top: 20px;
+}
+
