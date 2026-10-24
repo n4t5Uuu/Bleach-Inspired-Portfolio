@@ -441,3 +441,83 @@ ol {
   margin-top: 20px;
 }
 
+/* ---------- the path: the cord becomes the timeline ---------- */
+
+.path {
+  display: grid;
+  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
+  gap: clamp(32px, 6vw, 112px);
+  padding: clamp(96px, 18vh, 200px) var(--gutter);
+  background: var(--void);
+}
+
+.path h2 {
+  align-self: start;
+  position: sticky;
+  top: 96px;
+  font-size: clamp(2.25rem, 3.6vw, 3.75rem);
+}
+
+.path-cord {
+  position: relative;
+  padding-left: clamp(36px, 4vw, 56px);
+}
+
+.path-cord::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 6px;
+  width: 4px;
+  background: var(--cord);
+}
+
+.path-cord li {
+  position: relative;
+  padding-bottom: clamp(48px, 9vh, 96px);
+}
+
+.path-knot {
+  position: absolute;
+  top: 0.45em;
+  left: calc(-1 * clamp(36px, 4vw, 56px) + 1px);
+  width: 14px;
+  height: 14px;
+  background: var(--cord);
+  transform: rotate(45deg);
+  outline: 4px solid var(--void);
+}
+
+.path-period {
+  margin-top: 8px;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ghost);
+  font-variant-numeric: tabular-nums;
+}
+
+.path-cord h3 {
+  margin-top: 0;
+  font-family: var(--font-display-stack);
+  font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+  line-height: 1.1;
+}
+
+.path-cord h3 span {
+  display: block;
+  margin-top: 6px;
+  font-family: var(--font-verse-stack);
+  font-weight: 500;
+  font-size: clamp(1.125rem, 1.6vw, 1.375rem);
+  color: var(--mist-hi);
+}
+
+.path-cord li > p:last-child {
+  margin-top: 10px;
+  max-width: var(--measure);
+  color: var(--mist);
+}
+
