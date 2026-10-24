@@ -375,6 +375,33 @@ ol {
   opacity: 0;
 }
 
+/* each line inks down its column in reading order: left door, then the right door's two */
+@media (prefers-reduced-motion: no-preference) {
+  .gate-verse {
+    transition: none;
+  }
+
+  .gate-verse[data-ready="true"] span {
+    animation: ink-down 0.7s var(--ease-out) both;
+  }
+
+  .gate-door-r .gate-verse[data-ready="true"] span:nth-child(1) {
+    animation-delay: 0.35s;
+  }
+
+  .gate-door-r .gate-verse[data-ready="true"] span:nth-child(2) {
+    animation-delay: 0.7s;
+  }
+}
+
+@keyframes ink-down {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
 
 .gate-verse span {
   display: block;
