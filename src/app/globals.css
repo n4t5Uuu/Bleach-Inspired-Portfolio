@@ -213,6 +213,87 @@ ol {
   cursor: default;
 }
 
+/* ---------- the companion: a butterfly that follows the pointer ---------- */
+
+/* the flying companion replaces the per-link guides wherever it runs */
+:root[data-companion="on"] .registry-guide {
+  display: none;
+}
+
+.companion {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 60;
+  width: 26px;
+  pointer-events: none;
+  opacity: 0;
+  /* inverts against what it crosses: ink on paper, pale on the dark */
+  mix-blend-mode: difference;
+  transition: opacity 0.3s var(--ease-out);
+  will-change: transform;
+}
+
+.companion[data-shown="true"] {
+  opacity: 1;
+}
+
+.companion[data-shown="false"] .wing {
+  animation-play-state: paused;
+}
+
+/* the swarm: each smaller and out of step with the lead */
+.companion-2 {
+  width: 20px;
+}
+
+.companion-3 {
+  width: 16px;
+}
+
+.companion-2 .wing {
+  animation-duration: 0.29s;
+  animation-delay: -0.1s;
+}
+
+.companion-3 .wing {
+  animation-duration: 0.4s;
+  animation-delay: -0.22s;
+}
+
+.companion svg {
+  display: block;
+  width: 100%;
+  fill: var(--washi);
+  transition: fill 0.2s var(--ease-out);
+}
+
+.companion .wing {
+  transform-box: fill-box;
+  animation: flap 0.34s ease-in-out infinite;
+}
+
+.companion .wing-l {
+  transform-origin: right center;
+}
+
+.companion .wing-r {
+  transform-origin: left center;
+}
+
+/* perched on a destination: struck vermilion, wings slow to rest */
+.companion[data-state="perched"] {
+  mix-blend-mode: normal;
+}
+
+.companion[data-state="perched"] svg {
+  fill: var(--cord-lit);
+}
+
+.companion[data-state="perched"] .wing {
+  animation-duration: 1.6s;
+}
+
 /* ---------- the gate ---------- */
 
 .gate {

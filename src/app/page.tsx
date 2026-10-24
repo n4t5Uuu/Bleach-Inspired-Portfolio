@@ -2,6 +2,7 @@ import { site } from "@/content/site";
 import { Gate } from "@/components/Gate";
 import { Registry, ResumeLink } from "@/components/Registry";
 import { VolumeFocus } from "@/components/VolumeFocus";
+import { Companion } from "@/components/Companion";
 
 const volumeNumber = (i: number) => String(i + 1).padStart(2, "0");
 
@@ -18,6 +19,8 @@ export default function Home() {
         </a>
         <Registry />
       </div>
+
+      <Companion />
 
       <Gate />
 
