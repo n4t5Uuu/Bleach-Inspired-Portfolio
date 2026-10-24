@@ -20,6 +20,24 @@
         ],
         "createdAt": "2026-10-24T12:30:26.350Z",
         "reason": "agent: unchosen sketch from a closed direction round; spent fixture, not shipping UI"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "segoe ui black",
+        "files": [
+          ".impeccable/mocks/decision/model-pick.html"
+        ],
+        "createdAt": "2026-10-24T13:24:47.276Z",
+        "reason": "agent: unchosen direction-round sketch predating DESIGN.md; spent fixture, not shipping UI"
+      },
+      {
+        "rule": "design-system-font",
+        "value": "georgia",
+        "files": [
+          ".impeccable/mocks/decision/model-pick.html"
+        ],
+        "createdAt": "2026-10-24T13:24:47.491Z",
+        "reason": "agent: unchosen direction-round sketch predating DESIGN.md; spent fixture, not shipping UI"
       }
     ]
   }
