@@ -1,14 +1,22 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Dela_Gothic_One, Shippori_Mincho_B1, Zen_Kaku_Gothic_New } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const display = Dela_Gothic_One({
+  variable: "--font-display",
+  weight: "400",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const verse = Shippori_Mincho_B1({
+  variable: "--font-verse",
+  weight: ["500", "800"],
+  subsets: ["latin"],
+});
+
+const ui = Zen_Kaku_Gothic_New({
+  variable: "--font-ui",
+  weight: ["400", "500", "700"],
   subsets: ["latin"],
 });
 
@@ -19,11 +27,8 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">{children}</body>
+    <html lang="en" className={`${display.variable} ${verse.variable} ${ui.variable}`}>
+      <body>{children}</body>
     </html>
   );
 }
