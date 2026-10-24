@@ -626,6 +626,11 @@ a.resume-tag:hover {
   }
 }
 
+/* the wing loop stops once the gate is behind the visitor */
+:root[data-passed="true"] .drift .wing {
+  animation-play-state: paused;
+}
+
 @keyframes flap {
   0%,
   100% {
