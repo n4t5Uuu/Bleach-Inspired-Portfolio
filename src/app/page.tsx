@@ -130,6 +130,25 @@ export default function Home() {
           </ol>
         </section>
 
+        <section id="stack" className="stack" aria-labelledby="stack-title">
+          <h2 id="stack-title">Technologies</h2>
+          <div className="stack-groups">
+            {site.technologies.map((g) => (
+              <div key={g.label} className="stack-group">
+                <h3>{g.label}</h3>
+                <ul>
+                  {g.items.map((item) => (
+                    <li key={item}>{item}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+            {site.technologiesPlaceholder && (
+              <p className="placeholder-note">Placeholder technologies</p>
+            )}
+          </div>
+        </section>
+
         <section id="about" className="about" aria-labelledby="about-title">
           <h2 id="about-title">About</h2>
           <p className="about-lead">{site.about.lead}</p>
