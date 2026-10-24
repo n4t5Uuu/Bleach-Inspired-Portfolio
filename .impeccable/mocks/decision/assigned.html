@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440">
+<title>Senkaimon Passage sketch</title>
+<style>
+  :root { --paper:#F4F4F1; --lacquer:#0B0B0C; --dangai:#1A1426; --cord:#D2381E; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html,body { width:1440px; height:900px; overflow:hidden; background:var(--dangai); font-family: "Segoe UI", system-ui, sans-serif; color:var(--lacquer); }
+  .nav { position:absolute; top:0; left:0; right:0; height:64px; display:flex; align-items:center; justify-content:space-between; padding:0 56px; color:var(--paper); }
+  .nav b { font-size:15px; letter-spacing:.3em; }
+  .nav span { font-size:14px; opacity:.7; }
+  .gate { position:absolute; left:170px; top:84px; width:1100px; height:816px; }
+  .roof { position:absolute; left:-70px; right:-70px; top:0; height:58px; background:var(--lacquer); }
+  .lintel { position:absolute; left:0; right:0; top:58px; height:104px; background:var(--lacquer); border-top:6px solid #222; display:flex; align-items:center; justify-content:center; gap:64px; color:var(--paper); }
+  .lintel a { font-size:22px; letter-spacing:.24em; color:var(--paper); text-decoration:none; }
+  .lintel a i { font-style:normal; color:#FF6A4D; margin-right:10px; }
+  .post { position:absolute; top:162px; bottom:0; width:70px; background:var(--lacquer); }
+  .post.l { left:0; } .post.r { right:0; }
+  .door { position:absolute; top:162px; bottom:0; width:470px; background:var(--paper);
+          background-image: linear-gradient(90deg, rgba(11,11,12,.16) 2px, transparent 2px), linear-gradient(rgba(11,11,12,.16) 2px, transparent 2px);
+          background-size: 117px 128px; }
+  .door.l { left:70px; } .door.r { right:70px; }
+  .seam { position:absolute; top:162px; bottom:0; left:540px; width:20px; background:linear-gradient(90deg,#fff 0,#e9e3ff 50%,#fff 100%); box-shadow:0 0 90px 30px rgba(233,227,255,.55); }
+  .name { position:absolute; left:120px; top:250px; width:400px; background:var(--paper); padding:24px 0; }
+  .name h1 { font-size:96px; line-height:.92; font-weight:900; letter-spacing:-.02em; }
+  .name p { margin-top:22px; font-size:28px; font-weight:600; }
+  .name small { display:block; margin-top:14px; font-size:16px; opacity:.6; }
+  .tag { position:absolute; right:150px; top:300px; width:220px; background:var(--paper); border:3px solid var(--lacquer); padding:26px 22px; text-align:center; }
+  .tag strong { display:block; font-size:28px; font-weight:800; }
+  .tag span { display:block; margin-top:8px; font-size:15px; }
+  .cord { position:absolute; left:547px; top:162px; width:6px; height:420px; background:var(--cord); }
+  .tassel { position:absolute; left:528px; top:582px; width:44px; height:96px; background:var(--cord); border-radius:6px 6px 22px 22px; }
+  .pull { position:absolute; left:470px; top:700px; width:200px; text-align:center; font-size:24px; font-weight:700; letter-spacing:.2em; color:var(--cord); background:var(--paper); padding:10px 0; }
+  .butterfly { position:absolute; left:760px; top:600px; width:70px; height:46px; }
+  .butterfly::before, .butterfly::after { content:""; position:absolute; top:0; width:34px; height:46px; background:var(--lacquer); border-radius:60% 40% 50% 50%; }
+  .butterfly::before { left:0; transform:skewY(18deg); } .butterfly::after { right:0; transform:skewY(-18deg); }
+</style>
+</head>
+<body>
+  <div class="nav"><b>YOUR NAME</b><span>Placeholder content</span></div>
+  <div class="gate">
+    <div class="roof"></div>
+    <div class="lintel">
+      <a href="#"><i>01</i>PROJECTS</a>
+      <a href="#"><i>02</i>EXPERIENCE</a>
+      <a href="#"><i>03</i>ABOUT</a>
+      <a href="#"><i>04</i>RESUME</a>
+    </div>
+    <div class="post l"></div><div class="post r"></div>
+    <div class="door l"></div><div class="door r"></div>
+    <div class="seam"></div>
+    <div class="cord"></div><div class="tassel"></div>
+  </div>
+  <div class="name"><h1>Your<br>Name</h1><p>Software Developer</p><small>One line on what you build, placeholder</small></div>
+  <div class="tag"><strong>Resume</strong><span>Download PDF</span></div>
+  <div class="pull">PULL TO OPEN</div>
+  <div class="butterfly"></div>
+</body>
+</html>

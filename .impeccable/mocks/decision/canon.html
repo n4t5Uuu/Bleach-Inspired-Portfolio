@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440">
+<title>Category standard sketch</title>
+<style>
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html,body { width:1440px; height:900px; overflow:hidden; background:#0B0D12; color:#E6E8EE; font-family:"Segoe UI",system-ui,sans-serif; }
+  .nav { height:72px; display:flex; align-items:center; justify-content:space-between; padding:0 120px; font-size:15px; }
+  .nav div { display:flex; gap:32px; }
+  .hero { padding:110px 120px 0; }
+  .hero h1 { font-size:72px; font-weight:800; line-height:1.05; }
+  .hero h1 span { color:#7C5CFF; }
+  .hero p { margin-top:24px; font-size:24px; opacity:.7; max-width:700px; }
+  .btns { margin-top:40px; display:flex; gap:16px; }
+  .btn { padding:16px 28px; border-radius:10px; font-size:18px; font-weight:600; }
+  .btn.a { background:#6A48F5; color:#fff; } .btn.b { border:1px solid #333a48; }
+  .cards { position:absolute; left:120px; right:120px; bottom:0; height:200px; display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+  .card { background:#151925; border-radius:16px 16px 0 0; }
+</style>
+</head>
+<body>
+  <div class="nav"><b>yourname.dev</b><div><span>Projects</span><span>Experience</span><span>About</span><span>Resume</span></div></div>
+  <div class="hero">
+    <h1>Hi, I'm <span>Your Name</span>.<br>I build things for the web.</h1>
+    <p>Software developer, placeholder summary line.</p>
+    <div class="btns"><div class="btn a">View projects</div><div class="btn b">Download resume</div></div>
+  </div>
+  <div class="cards"><div class="card"></div><div class="card"></div><div class="card"></div></div>
+</body>
+</html>
