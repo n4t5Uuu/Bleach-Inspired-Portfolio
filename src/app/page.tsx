@@ -1,4 +1,5 @@
 import { site } from "@/content/site";
+import { Gate } from "@/components/Gate";
 import { ResumeLink } from "@/components/Registry";
 import { VolumeFocus } from "@/components/VolumeFocus";
 
@@ -7,6 +8,12 @@ const volumeNumber = (i: number) => String(i + 1).padStart(2, "0");
 export default function Home() {
   return (
     <>
+      <a className="skip" href="#work">
+        Skip to the projects
+      </a>
+
+      <Gate />
+
       <main>
         <section id="work" className="dangai" aria-labelledby="work-title">
           <div className="dangai-head">

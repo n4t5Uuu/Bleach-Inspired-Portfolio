@@ -213,7 +213,408 @@ ol {
   cursor: default;
 }
 
+/* ---------- the gate ---------- */
+
+.gate {
+  position: relative;
+  background: var(--lacquer);
+}
+
+.gate[data-armed="true"] {
+  height: 170svh;
+}
+
+.gate-stage {
+  position: sticky;
+  top: 0;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr);
+  height: 100svh;
+  min-height: 560px;
+  overflow: hidden;
+}
+
+.gate-lintel {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 12px 32px;
+  padding: clamp(18px, 3vh, 32px) var(--gutter) clamp(16px, 2.4vh, 28px);
+  background: var(--lacquer);
+  border-top: 8px solid var(--lacquer-2);
+  box-shadow: 0 18px 30px -12px rgb(0 0 0 / 0.65);
+}
+
+.gate-id h1 {
+  font-family: var(--font-display-stack);
+  /* the verse, not the name, is the largest type at the gate */
+  font-size: clamp(1.75rem, 3.2vw, 3.25rem);
+  line-height: 0.95;
+  letter-spacing: 0.01em;
+  color: var(--washi);
+}
+
+.gate-role {
+  margin-top: 10px;
+  color: var(--mist);
+  font-size: clamp(0.8125rem, 0.95vw, 0.9375rem);
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+/* the plain line a recruiter reads first */
+.gate-tagline {
+  margin-top: 6px;
+  max-width: 56ch;
+  color: var(--washi);
+  font-size: clamp(1.0625rem, 1.3vw, 1.25rem);
+  line-height: 1.45;
+}
+
+.gate-tagline .placeholder-note {
+  margin-left: 0.5em;
+}
+
+.gate-frame {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-inline: var(--post);
+  background: var(--lacquer);
+}
+
+/* posts: the doors slide behind them */
+.gate-frame::before,
+.gate-frame::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  width: var(--post);
+  background: var(--lacquer);
+}
+
+.gate-frame::before {
+  left: 0;
+}
+
+.gate-frame::after {
+  right: 0;
+}
+
+.gate-dangai {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background:
+    radial-gradient(
+      ellipse 30% 62% at 50% 52%,
+      rgb(251 251 248 / calc(0.95 * var(--flood, 0))),
+      rgb(233 227 255 / calc(0.4 * var(--flood, 0))) 40%,
+      transparent 78%
+    ),
+    var(--void);
+}
+
+/* the first volume, left standing in the dark the light has not reached */
+.gate-dangai-n {
+  font-family: var(--font-display-stack);
+  font-size: clamp(9rem, 26vw, 24rem);
+  line-height: 0.8;
+  color: var(--void);
+  opacity: var(--flood, 0);
+  transform: scale(calc(0.92 + var(--flood, 0) * 0.08));
+}
+
+.gate-door {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  min-height: 0;
+  overflow: hidden;
+  padding: clamp(20px, 5vh, 56px) clamp(16px, 3vw, 48px);
+  /* kumiko: lacquer-tinted wooden bars over the paper, a coarse 3 by 4 lattice */
+  --bar: clamp(5px, 0.55vw, 9px);
+  background-color: var(--washi);
+  background-image:
+    linear-gradient(90deg, rgb(28 26 24 / 0.62) var(--bar), transparent var(--bar)),
+    linear-gradient(rgb(28 26 24 / 0.62) var(--bar), transparent var(--bar));
+  background-size: 33.334% 25%;
+  background-position: calc(var(--bar) / -2) calc(var(--bar) / -2);
+  border: clamp(10px, 1.2vw, 18px) solid var(--lacquer);
+  will-change: transform;
+}
+
+.gate-door-l {
+  transform: translateX(calc(var(--door, 0) * -104%));
+  box-shadow: 18px 0 40px -18px rgb(0 0 0 / calc(0.7 * var(--door, 0)));
+}
+
+.gate-door-r {
+  transform: translateX(calc(var(--door, 0) * 104%));
+  box-shadow: -18px 0 40px -18px rgb(0 0 0 / calc(0.7 * var(--door, 0)));
+}
+
+.gate-verse {
+  display: flex;
+  flex-direction: row;
+  gap: clamp(8px, 1.4vw, 24px);
+  height: 100%;
+}
+
+.gate-verse span {
+  display: block;
+  height: 100%;
+  writing-mode: vertical-rl;
+  font-family: var(--font-verse-stack);
+  font-weight: 800;
+  /* sized from both axes so a ~20 character line holds one column at any shape */
+  font-size: clamp(2.25rem, min(9.6vh, 5.4vw), 6.5rem);
+  line-height: 1.15;
+  letter-spacing: 0.01em;
+  color: var(--lacquer);
+}
+
+
+.gate-note {
+  position: absolute;
+  left: clamp(16px, 2vw, 28px);
+  bottom: clamp(14px, 2vh, 24px);
+  padding: 4px 8px;
+  background: var(--washi);
+  color: var(--ink-soft);
+}
+
+.gate-tag {
+  position: absolute;
+  top: 0;
+  right: clamp(18px, 9%, 96px);
+  padding-top: clamp(28px, 6vh, 64px);
+}
+
+/* the string the tag hangs from */
+.gate-tag::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: clamp(28px, 6vh, 64px);
+  background: var(--lacquer);
+}
+
+.resume-tag {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 9.5rem;
+  padding: 14px 18px 12px;
+  background: var(--washi-hi);
+  border: 3px solid var(--lacquer);
+  color: var(--lacquer);
+  font-family: var(--font-display-stack);
+  font-size: clamp(1.125rem, 1.6vw, 1.5rem);
+  line-height: 1.1;
+  text-decoration: none;
+  box-shadow: 0 10px 18px -8px rgb(0 0 0 / 0.35);
+}
+
+.resume-tag small {
+  font-family: var(--font-ui-stack);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+
+a.resume-tag:hover {
+  border-color: var(--cord-deep);
+  color: var(--cord-deep);
+}
+
+.gate-seam {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  z-index: 1;
+  width: 6px;
+  background: var(--seam);
+  box-shadow: 0 0 70px 22px rgb(233 227 255 / 0.55);
+  transform: translateX(-50%) scaleX(calc(1 + var(--flood, 0) * 3));
+  opacity: calc(1 - var(--door, 0) * 0.85);
+}
+
+.gate-cord {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  /* pulled: the cord rides up out of the frame as the doors part */
+  transform: translate(-50%, calc(var(--door, 0) * -70%));
+  padding-inline: 18px;
+  color: var(--washi);
+  text-decoration: none;
+  opacity: calc(1 - var(--pull, 0));
+}
+
+.gate-cord-line {
+  display: block;
+  width: 6px;
+  height: clamp(110px, 24vh, 260px);
+  background: var(--cord);
+  border-radius: 0 0 2px 2px;
+}
+
+.gate-cord-tassel {
+  display: block;
+  width: 40px;
+  height: auto;
+  margin-top: -2px;
+  fill: var(--cord);
+  transition: transform 0.45s var(--ease-out);
+}
+
+.tassel-knot {
+  fill: #9e2814;
+}
+
+.tassel-strands {
+  fill: none;
+  stroke: rgb(0 0 0 / 0.28);
+  stroke-width: 1.2;
+}
+
+.gate-cord:hover .gate-cord-tassel,
+.gate-cord:focus-visible .gate-cord-tassel {
+  fill: var(--cord-lit);
+}
+
+/* a narrow paper strip hanging from the tassel, so it never covers the verse */
+.gate-cord-label {
+  margin-top: 12px;
+  padding: 14px 8px;
+  writing-mode: vertical-rl;
+  background: var(--lacquer);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.gate-cord:hover .gate-cord-tassel,
+.gate-cord:focus-visible .gate-cord-tassel {
+  transform: translateY(14px);
+}
+
+.gate-cord:hover .gate-cord-label,
+.gate-cord:focus-visible .gate-cord-label {
+  color: var(--cord-lit);
+}
+
+.gate-black {
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  background: var(--void);
+  opacity: var(--black, 0);
+  pointer-events: none;
+}
+
+/* butterflies */
+.drift {
+  position: absolute;
+  z-index: 3;
+  width: clamp(30px, 3vw, 48px);
+  fill: var(--lacquer);
+  transform: translate(calc(var(--flood, 0) * -60px), calc(var(--flood, 0) * -40vh));
+}
+
+/* they rest on the left door's open paper, clear of the verse and the cord */
+.drift-a {
+  top: 74%;
+  left: 9%;
+}
+
+.drift-b {
+  top: 66%;
+  left: 14%;
+  width: clamp(22px, 2.2vw, 34px);
+}
+
+.drift .body {
+  fill: var(--lacquer);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .drift .wing {
+    transform-box: fill-box;
+    animation: flap 1.6s ease-in-out infinite;
+  }
+
+  .drift .wing-l {
+    transform-origin: right center;
+  }
+
+  .drift .wing-r {
+    transform-origin: left center;
+  }
+
+  .drift-b .wing {
+    animation-duration: 1.25s;
+    animation-delay: -0.4s;
+  }
+}
+
+@keyframes flap {
+  0%,
+  100% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(0.35);
+  }
+}
+
 /* ---------- the Dangai: the work ---------- */
+
+/* With the passage armed, the work section sits over the sticky stage (its top
+   just below the first viewport) on a transparent ground, so the Projects head
+   arrives with the black beat instead of a viewport later. */
+.gate[data-armed="true"] + main {
+  position: relative;
+  z-index: 1;
+  margin-top: -70svh;
+}
+
+.gate[data-armed="true"] + main .dangai {
+  padding-top: 4svh;
+  background: transparent;
+  pointer-events: none;
+}
+
+/* the whole work section arrives after the black hold, never during it */
+.gate[data-armed="true"] + main .dangai > * {
+  opacity: var(--head, 1);
+  pointer-events: auto;
+}
+
+:root:not([data-beat="true"]) .gate[data-armed="true"] + main .dangai > * {
+  pointer-events: none;
+}
 
 .dangai {
   padding: clamp(48px, 9vh, 104px) var(--gutter) clamp(96px, 14vh, 160px);
