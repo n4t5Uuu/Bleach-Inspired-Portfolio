@@ -15,7 +15,7 @@ A Bleach-inspired personal portfolio site for a software developer. Product trut
 - **Stack:** Next.js 16.4 (App Router, `src/app/`), React 19, TypeScript, Tailwind CSS 4, ESLint 9. Next 16 and React 19 may differ from what you remember; check `node_modules/next` or the official docs before using an API from memory.
 - **Commands:** `npm run dev` (http://localhost:3000), `npm run build`, `npm run start`, `npm run lint`. No test runner is configured, so verify with `npm run lint`, `npm run build`, and a visual check on the dev server.
 - **Design work:** use the Impeccable skill (`.claude/skills/impeccable`). Invoke it as `/impeccable <command>`; shortcuts like `/polish`, `/audit`, `/layout` are pinned. Run `/impeccable init` first so it writes `PRODUCT.md`; every other command reads that file and `DESIGN.md` before acting. Do not hand-write visual design without it.
-- **Code style:** Ponytail skills (`/ponytail-review`, `/ponytail-audit`, `/ponytail-debt`) are installed. The always-on Ponytail plugin is not.
+- **Ponytail on every task:** apply the `ponytail` skill (full level) to every request, coding or not, to keep token spend low: the smallest change that fully solves the task, no speculative work, and short replies. Load it at the start of each task if the always-on plugin (installed user-wide) has not already injected it. Use `/ponytail-review` for reviews and `/ponytail-audit` for whole-repo audits. Impeccable's design process still governs design work; Ponytail keeps it lean, never skips its steps.
 - **Git:** remote `origin` is `n4t5Uuu/Bleach-Inspired-Portfolio`, branch `main`. Do not push unless asked.
 - **Environment:** Windows 11. The Bash tool is Git Bash; the other shell is PowerShell. Use forward slashes and POSIX syntax in Bash.
 
