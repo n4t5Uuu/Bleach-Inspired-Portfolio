@@ -28,9 +28,23 @@ export const site = {
   // One plain line a recruiter can read at a glance: what you build, for whom.
   tagline: "One plain line on what you build and who it is for.",
   taglinePlaceholder: true,
-  // Three short lines in your own voice. They open the gate.
-  // Keep each line to about 14 characters so it stands in one column on the doors.
-  verse: ["Your verse", "in three lines", "your own voice"],
+  // The gate opens on one of these, picked at random on each visit.
+  // Original verses in the spirit of a volume's opening poem: replace or add your own.
+  // Three lines each, about 14 characters per line, so each stands in one column on the doors.
+  verses: [
+    ["A blade waits", "for a hand", "steady enough"],
+    ["The moon cuts", "no shadow", "it cannot keep"],
+    ["I walk ahead", "so the dark", "walks behind"],
+    ["Fear is a door", "I have opened", "every morning"],
+    ["Let it rain", "the fire I am", "does not drown"],
+    ["What I protect", "is the reason", "I stand"],
+    ["Name the storm", "and it becomes", "a blade"],
+    ["No heart beats", "for nothing", "not even mine"],
+    ["Ash is only", "fire that", "chose to rest"],
+    ["The gate opens", "for those who", "keep walking"],
+    ["Silence too", "has an edge", "hold it well"],
+    ["Every promise", "is a weight", "I carry home"],
+  ],
   versePlaceholder: true,
   projectsPlaceholder: true,
   aboutPlaceholder: true,
