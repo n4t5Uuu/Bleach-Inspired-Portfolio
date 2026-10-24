@@ -10,7 +10,7 @@ Section 0 overrides everything else here. Section 10 holds corrections learned i
 
 ## Project
 
-A Bleach-inspired personal portfolio site. It is still the unmodified `create-next-app` starter: `src/app/page.tsx` is the default template and there are no `PRODUCT.md` or `DESIGN.md` files yet.
+A Bleach-inspired personal portfolio site for a software developer. Product truth (audience, content, constraints) lives in `PRODUCT.md`; read it before any design or content work. The UI is still the unmodified `create-next-app` starter (`src/app/page.tsx`), and there is no `DESIGN.md` yet.
 
 - **Stack:** Next.js 16.4 (App Router, `src/app/`), React 19, TypeScript, Tailwind CSS 4, ESLint 9. Next 16 and React 19 may differ from what you remember; check `node_modules/next` or the official docs before using an API from memory.
 - **Commands:** `npm run dev` (http://localhost:3000), `npm run build`, `npm run start`, `npm run lint`. No test runner is configured, so verify with `npm run lint`, `npm run build`, and a visual check on the dev server.
