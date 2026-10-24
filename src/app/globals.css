@@ -568,3 +568,74 @@ ol {
   color: var(--ink-soft);
 }
 
+/* ---------- the close: the far side of the gate ---------- */
+
+.close {
+  padding: clamp(112px, 20vh, 220px) var(--gutter) 48px;
+  background: var(--lacquer);
+  border-top: 8px solid var(--lacquer-2);
+}
+
+.close > * {
+  max-width: 1240px;
+  margin-inline: auto;
+}
+
+.close h2 {
+  max-width: 14ch;
+  margin-inline: 0 auto;
+  font-family: var(--font-display-stack);
+  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  line-height: 1;
+}
+
+.close-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px 36px;
+  margin-top: clamp(40px, 7vh, 72px);
+}
+
+.resume-close {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 14px;
+  padding: 18px 28px;
+  background: var(--cord-deep);
+  color: var(--washi-hi);
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 14px 28px -12px rgb(210 56 30 / 0.55);
+}
+
+a.resume-close:hover {
+  background: var(--cord);
+}
+
+.resume-close small {
+  font-size: 0.8125rem;
+  letter-spacing: 0.16em;
+}
+
+span.resume-close {
+  background: transparent;
+  color: var(--mist);
+  box-shadow: none;
+  outline: 2px solid var(--lacquer-2);
+  outline-offset: -2px;
+}
+
+.close-contact {
+  font-size: 1.125rem;
+}
+
+.close-credit {
+  margin-top: clamp(96px, 16vh, 160px);
+  padding-top: 24px;
+  border-top: 1px solid var(--lacquer-2);
+  font-size: 0.875rem;
+  color: var(--ghost);
+}
+

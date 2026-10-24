@@ -1,4 +1,5 @@
 import { site } from "@/content/site";
+import { ResumeLink } from "@/components/Registry";
 import { VolumeFocus } from "@/components/VolumeFocus";
 
 const volumeNumber = (i: number) => String(i + 1).padStart(2, "0");
@@ -126,6 +127,24 @@ export default function Home() {
           {site.aboutPlaceholder && <p className="placeholder-note">Placeholder biography</p>}
         </section>
       </main>
+
+      <footer id="close" className="close">
+        <h2>{site.resumeHref ? "Take the resume with you." : "The resume is on its way."}</h2>
+        <div className="close-actions">
+          <ResumeLink variant="close" />
+          {site.contactHref ? (
+            <a className="close-contact strike" href={site.contactHref}>
+              Get in touch
+            </a>
+          ) : (
+            <span className="close-contact pending">Contact method, add later</span>
+          )}
+        </div>
+        <p className="close-credit">
+          Inspired by <cite>Bleach</cite> by Tite Kubo. Everything drawn here is original; this site
+          is not affiliated with the series.
+        </p>
+      </footer>
     </>
   );
 }
