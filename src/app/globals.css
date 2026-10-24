@@ -431,6 +431,19 @@ ol {
   top: 0;
   right: clamp(18px, 9%, 96px);
   padding-top: clamp(28px, 6vh, 64px);
+  transform-origin: top center;
+}
+
+/* the tag sways on its string when reached for */
+@media (prefers-reduced-motion: no-preference) {
+  .gate-tag {
+    transition: rotate 0.5s var(--ease-out);
+  }
+
+  .gate-tag:hover,
+  .gate-tag:focus-within {
+    rotate: 3deg;
+  }
 }
 
 /* the string the tag hangs from */
