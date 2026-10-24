@@ -761,6 +761,39 @@ a.resume-tag:hover {
   scroll-margin-top: 72px;
 }
 
+/* arriving from the index: the chosen volume's cover is struck once, then settles */
+.volume:target .volume-cover {
+  animation: arrive 1.6s var(--ease-out);
+}
+
+@keyframes arrive {
+  from {
+    outline: 3px solid var(--cord-lit);
+    outline-offset: 12px;
+  }
+  to {
+    outline: 3px solid transparent;
+    outline-offset: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .volume:target .volume-cover {
+    animation-name: arrive-still;
+  }
+}
+
+@keyframes arrive-still {
+  from {
+    outline: 3px solid var(--cord-lit);
+    outline-offset: 6px;
+  }
+  to {
+    outline: 3px solid transparent;
+    outline-offset: 6px;
+  }
+}
+
 .dangai > * {
   max-width: 1240px;
   margin-inline: auto;
