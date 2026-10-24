@@ -995,6 +995,46 @@ a.resume-tag:hover {
   background: var(--cord);
 }
 
+/* the cord draws itself down the timeline as it scrolls in, and each knot ties as its role arrives */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .path-cord {
+      view-timeline: --cord block;
+    }
+
+    .path-cord::before {
+      transform-origin: top;
+      animation: cord-draw linear both;
+      animation-timeline: --cord;
+      animation-range: entry 15% cover 55%;
+    }
+
+    .path-knot {
+      animation: knot-tie linear both;
+      animation-timeline: view();
+      animation-range: entry 30% entry 90%;
+    }
+  }
+}
+
+@keyframes cord-draw {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}
+
+@keyframes knot-tie {
+  from {
+    transform: rotate(45deg) scale(0);
+  }
+  to {
+    transform: rotate(45deg) scale(1);
+  }
+}
+
 .path-cord li {
   position: relative;
   padding-bottom: clamp(48px, 9vh, 96px);
