@@ -94,6 +94,23 @@ export default function Home() {
           })}
           <VolumeFocus />
         </section>
+
+        <section id="path" className="path" aria-labelledby="path-title">
+          <h2 id="path-title">Experience</h2>
+          <ol className="path-cord">
+            {site.experience.map((r, i) => (
+              <li key={i}>
+                <span className="path-knot" aria-hidden="true" />
+                <h3>
+                  {r.title}
+                  <span>{r.org}</span>
+                </h3>
+                <p className="path-period">{r.period}</p>
+                <p className="path-summary">{r.summary}</p>
+              </li>
+            ))}
+          </ol>
+        </section>
       </main>
     </>
   );
