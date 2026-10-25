@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { site } from "@/content/site";
 import { Gate } from "@/components/Gate";
 import { Registry, ResumeLink } from "@/components/Registry";
@@ -73,17 +74,37 @@ export default function Home() {
         </div>
 
         <section id="about" className="about" aria-labelledby="about-title">
-          <h2 id="about-title">About</h2>
-          <p className="about-lead">{site.about.lead}</p>
-          <dl className="about-facts">
-            {site.about.facts.map((f) => (
-              <div key={f.label}>
-                <dt>{f.label}</dt>
-                <dd>{f.value}</dd>
+          <div className="scroll">
+            <div className="scroll-paper">
+              <h2 id="about-title">About</h2>
+              <div className="about-grid">
+                <figure className="portrait">
+                  {site.about.portrait ? (
+                    <Image src={site.about.portrait} alt={`Portrait of ${site.name}`} fill sizes="320px" />
+                  ) : (
+                    <div className="portrait-empty">
+                      <span>Portrait</span>
+                      <span className="placeholder-note">Placeholder portrait</span>
+                    </div>
+                  )}
+                </figure>
+                <div>
+                  <p className="about-lead">{site.about.lead}</p>
+                  <dl className="about-facts">
+                    {site.about.facts.map((f) => (
+                      <div key={f.label}>
+                        <dt>{f.label}</dt>
+                        <dd>{f.value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                  {site.aboutPlaceholder && (
+                    <p className="placeholder-note">Placeholder biography</p>
+                  )}
+                </div>
               </div>
-            ))}
-          </dl>
-          {site.aboutPlaceholder && <p className="placeholder-note">Placeholder biography</p>}
+            </div>
+          </div>
         </section>
       </main>
 
