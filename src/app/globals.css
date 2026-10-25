@@ -150,7 +150,7 @@ ol {
 }
 
 /* 44px touch targets for inline links and their pending stand-ins */
-.volume-links > *,
+.panel-links > *,
 .close-contact {
   display: inline-flex;
   align-items: center;
@@ -874,7 +874,7 @@ a.resume-tag:hover {
   display: none;
 }
 
-/* ---------- the Dangai: the work ---------- */
+/* ---------- the Dangai: a shelf of volumes ---------- */
 
 /* With the passage armed, the work section sits over the sticky stage (its top
    just below the first viewport) on a transparent ground, so the Projects head
@@ -904,91 +904,6 @@ a.resume-tag:hover {
 .dangai {
   padding: clamp(48px, 9vh, 104px) var(--gutter) clamp(96px, 14vh, 160px);
   background: var(--void);
-  scroll-margin-top: 0;
-}
-
-/* what lands after the black beat: every volume at a glance */
-.dangai-head {
-  display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-  align-items: end;
-  gap: 24px clamp(28px, 6vw, 112px);
-}
-
-.index li a {
-  display: grid;
-  grid-template-columns: 3.25rem minmax(0, 1fr) auto;
-  align-items: baseline;
-  gap: 16px;
-  min-height: 44px;
-  padding: 14px 0;
-  border-top: 1px solid var(--lacquer-2);
-  text-decoration: none;
-}
-
-.index li:last-child a {
-  border-bottom: 1px solid var(--lacquer-2);
-}
-
-.index-n {
-  font-family: var(--font-display-stack);
-  color: var(--ghost);
-}
-
-.index-title {
-  font-family: var(--font-display-stack);
-  font-size: clamp(1.125rem, 1.6vw, 1.5rem);
-  line-height: 1.15;
-}
-
-.index-stack {
-  color: var(--mist);
-  font-size: 0.9375rem;
-  text-align: right;
-}
-
-.index a:hover .index-n,
-.index a:hover .index-title,
-.index a:focus-visible .index-n,
-.index a:focus-visible .index-title {
-  color: var(--cord-lit);
-}
-
-.volume {
-  scroll-margin-top: 72px;
-}
-
-/* arriving from the index: the chosen volume's cover is struck once, then settles */
-.volume:target .volume-cover {
-  animation: arrive 1.6s var(--ease-out);
-}
-
-@keyframes arrive {
-  from {
-    outline: 3px solid var(--cord-lit);
-    outline-offset: 12px;
-  }
-  to {
-    outline: 3px solid transparent;
-    outline-offset: 0;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .volume:target .volume-cover {
-    animation-name: arrive-still;
-  }
-}
-
-@keyframes arrive-still {
-  from {
-    outline: 3px solid var(--cord-lit);
-    outline-offset: 6px;
-  }
-  to {
-    outline: 3px solid transparent;
-    outline-offset: 6px;
-  }
 }
 
 .dangai > * {
@@ -998,148 +913,193 @@ a.resume-tag:hover {
 
 .dangai-title,
 .path h2,
+.stack h2,
 .about h2 {
   font-family: var(--font-display-stack);
-  font-size: clamp(2.5rem, 6vw, 5.5rem);
+  font-size: clamp(2.25rem, 4.6vw, 4.5rem);
   line-height: 1;
 }
 
-.volume {
-  display: grid;
-  grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
-  align-items: center;
-  gap: clamp(28px, 6vw, 112px);
-  margin-top: clamp(80px, 13vh, 150px);
+.shelf-wrap {
+  margin-top: clamp(32px, 6vh, 64px);
 }
 
-/* mirrored spread: the cover keeps the narrow column on either side */
-.volume:nth-of-type(even) {
-  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+.shelf {
+  isolation: isolate;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  gap: clamp(20px, 3vh, 36px) clamp(14px, 2vw, 28px);
 }
 
-.volume:nth-of-type(even) .volume-cover {
-  order: 2;
+/* each book stands on its own length of plank; side by side they read as one shelf */
+.book {
+  position: relative;
+  flex: 1 1 calc(33.333% - 28px);
+  min-width: 150px;
+  max-width: 340px;
+  margin-bottom: 16px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  text-align: left;
+  color: inherit;
+  font: inherit;
+  background: none;
+  border: 0;
+  cursor: pointer;
 }
 
-.volume-cover {
+.book::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  bottom: -16px;
+  left: calc(-0.5 * clamp(14px, 2vw, 28px));
+  right: calc(-0.5 * clamp(14px, 2vw, 28px));
+  height: 16px;
+  background-color: #1d1916;
+  background-image: var(--grain-wood);
+  box-shadow: 0 20px 28px -12px rgb(0 0 0 / 0.9);
+}
+
+.book-cover {
   position: relative;
   display: grid;
   grid-template-rows: 1fr auto;
   aspect-ratio: 3 / 4;
-  padding: clamp(18px, 2.4vw, 32px) clamp(18px, 2.4vw, 32px) clamp(18px, 2.4vw, 32px) clamp(40px, 5vw, 64px);
-  background: var(--washi);
-  color: var(--lacquer);
+  padding: calc(clamp(14px, 1.8vw, 24px) + 16px) clamp(14px, 1.8vw, 24px) clamp(14px, 1.8vw, 24px)
+    clamp(32px, 3.6vw, 48px);
   overflow: hidden;
-  box-shadow: 0 40px 90px -30px rgb(233 227 255 / 0.22);
+  background-color: var(--washi);
+  background-image: var(--grain-paper);
+  color: var(--lacquer);
+  box-shadow: 0 30px 60px -30px rgb(233 227 255 / 0.2);
+  transition:
+    translate 0.5s var(--ease-out),
+    filter 0.5s var(--ease-out);
 }
 
 /* lacquer spine */
-.volume-cover::before {
+.book-cover::before {
   content: "";
   position: absolute;
   inset: 0 auto 0 0;
-  width: clamp(18px, 2.2vw, 30px);
+  width: clamp(14px, 1.8vw, 24px);
   background: var(--lacquer);
 }
 
-/* unlit covers sink into the dark; the placeholder note stays legible above the shade */
-.volume-cover::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: var(--void);
-  opacity: 0;
-  transition: opacity 0.7s var(--ease-out);
-}
-
-.volume[data-lit="false"] .volume-cover::after {
-  opacity: 0.6;
-}
-
-.volume[data-lit="false"] .volume-cover .placeholder-note {
-  color: var(--washi-hi);
-}
-
-.volume-cover .placeholder-note {
-  z-index: 1;
-}
-
-
-.volume-n {
+.book-n {
   grid-row: 2;
   align-self: end;
   font-family: var(--font-display-stack);
-  font-size: clamp(5rem, 11vw, 10rem);
+  font-size: clamp(3.5rem, 7vw, 6.5rem);
   line-height: 0.8;
   letter-spacing: -0.02em;
 }
 
-.volume-spine {
-  position: absolute;
-  top: clamp(18px, 2.4vw, 32px);
-  right: clamp(16px, 2vw, 28px);
-  writing-mode: vertical-rl;
-  max-height: 70%;
+/* the volume's poem, set on its own cover */
+.book-verse {
+  grid-row: 1;
+  max-width: 16ch;
   font-family: var(--font-verse-stack);
-  font-weight: 800;
-  font-size: clamp(1.375rem, 2.3vw, 2.125rem);
-  line-height: 1.15;
+  font-weight: 500;
+  font-size: clamp(0.9375rem, 1.35vw, 1.25rem);
+  line-height: 1.4;
+  text-wrap: balance;
 }
 
-.volume-cover .placeholder-note {
+.book-cover .placeholder-note {
   position: absolute;
-  left: clamp(40px, 5vw, 64px);
-  top: clamp(18px, 2.4vw, 32px);
+  left: clamp(32px, 3.6vw, 48px);
+  top: 8px;
   color: var(--ink-soft);
 }
 
-/* the volume poem, set on its own cover */
-.volume-verse {
-  grid-row: 1;
-  align-self: center;
-  position: relative;
-  z-index: 0;
-  max-width: 18ch;
-  margin-right: clamp(48px, 5vw, 72px);
-  text-wrap: balance;
-  font-family: var(--font-verse-stack);
-  font-weight: 500;
-  font-size: clamp(1.125rem, 1.8vw, 1.625rem);
-  line-height: 1.4;
-  color: var(--lacquer);
+.book-title {
+  margin-top: 16px;
+  font-family: var(--font-display-stack);
+  font-size: clamp(1.0625rem, 1.5vw, 1.375rem);
+  line-height: 1.15;
 }
 
-.volume-text h3 {
-  margin-top: 0;
+.book-stack {
+  margin-top: 4px;
+  color: var(--mist);
+  font-size: 0.9375rem;
+}
+
+/* one world held at a time: the chosen book is pulled forward, the rest sink back */
+.shelf[data-ready="true"] .book[data-active="true"] .book-cover {
+  translate: 0 -18px;
+}
+
+.shelf[data-ready="true"] .book[data-active="false"] .book-cover {
+  filter: brightness(0.55);
+}
+
+.shelf[data-ready="true"] .book[data-active="false"]:hover .book-cover {
+  filter: brightness(0.8);
+}
+
+/* colour is not the only cue: the chosen title is also underlined */
+.book[data-active="true"] .book-title {
+  color: var(--cord-lit);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.25em;
+}
+
+.panel {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-areas:
+    "title"
+    "stack"
+    "summary"
+    "meta"
+    "links";
+  max-width: 820px;
+  gap: 8px;
+  margin-top: clamp(36px, 6vh, 64px);
+  padding-top: clamp(28px, 4vh, 44px);
+  border-top: 1px solid var(--lacquer-2);
+}
+
+.panel[hidden] {
+  display: none;
+}
+
+.panel h3 {
+  grid-area: title;
   font-family: var(--font-display-stack);
   font-size: clamp(2rem, 4vw, 3.5rem);
   line-height: 1.02;
 }
 
-/* the keywords a recruiter scans for sit right under the title */
-.volume-stack {
-  margin-top: 12px;
+.panel-stack {
+  grid-area: stack;
   color: var(--washi);
   font-size: 1.0625rem;
   font-weight: 700;
-  letter-spacing: 0.02em;
 }
 
-.volume-summary {
-  margin-top: 14px;
+.panel-summary {
+  grid-area: summary;
+  margin-top: 12px;
   max-width: var(--measure);
   color: var(--mist);
 }
 
-.volume-meta {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, max-content));
+.panel-meta {
+  grid-area: meta;
+  display: flex;
   gap: 12px clamp(24px, 4vw, 56px);
-  margin-top: 28px;
+  margin-top: 16px;
 }
 
-.volume-meta dt,
-.about-facts dt {
+.panel-meta dt {
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.16em;
@@ -1147,17 +1107,31 @@ a.resume-tag:hover {
   color: var(--ghost);
 }
 
-.volume-meta dd {
+.panel-meta dd {
   margin-top: 2px;
   font-weight: 500;
 }
 
-.volume-links {
+.panel-links {
+  grid-area: links;
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
   gap: 0 28px;
-  margin-top: 20px;
+  margin-top: 8px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .panel:not([hidden]) {
+    animation: panel-in 0.5s var(--ease-out);
+  }
+}
+
+@keyframes panel-in {
+  from {
+    opacity: 0;
+    translate: 0 12px;
+  }
 }
 
 /* ---------- the path: the cord becomes the timeline ---------- */

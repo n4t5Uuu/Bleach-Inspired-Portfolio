@@ -1,0 +1,120 @@
+"use client";
+
+import { useId, useRef, useState, useSyncExternalStore, type KeyboardEvent } from "react";
+import type { Project } from "@/content/site";
+
+type Props = { projects: Project[]; placeholder: boolean };
+
+const subscribe = () => () => {};
+const pad = (i: number) => String(i + 1).padStart(2, "0");
+
+// The volumes stand on a shelf; one is pulled forward and its details open below.
+// Without JavaScript every panel stays open, stacked under the shelf.
+export function Shelf({ projects, placeholder }: Props) {
+  const [active, setActive] = useState(0);
+  const ready = useSyncExternalStore(subscribe, () => true, () => false);
+  const uid = useId();
+  const tabs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  const onKey = (e: KeyboardEvent, i: number) => {
+    const last = projects.length - 1;
+    const next =
+      e.key === "ArrowRight" || e.key === "ArrowDown" ? (i === last ? 0 : i + 1)
+      : e.key === "ArrowLeft" || e.key === "ArrowUp" ? (i === 0 ? last : i - 1)
+      : e.key === "Home" ? 0
+      : e.key === "End" ? last
+      : -1;
+    if (next < 0) return;
+    e.preventDefault();
+    setActive(next);
+    tabs.current[next]?.focus();
+  };
+
+  if (!projects.length) return null;
+
+  return (
+    <div className="shelf-wrap">
+      <div className="shelf" role="tablist" aria-label="Projects" data-ready={ready}>
+        {projects.map((p, i) => (
+          <button
+            key={p.slug}
+            ref={(el) => {
+              tabs.current[i] = el;
+            }}
+            id={`${uid}-tab-${i}`}
+            type="button"
+            role="tab"
+            aria-selected={ready ? i === active : undefined}
+            aria-controls={`${uid}-panel-${i}`}
+            tabIndex={ready && i !== active ? -1 : 0}
+            className="book"
+            data-active={i === active}
+            onClick={() => setActive(i)}
+            onKeyDown={(e) => onKey(e, i)}
+          >
+            <span className="book-cover">
+              <span className="book-n" aria-hidden="true">
+                {pad(i)}
+              </span>
+              <span className="book-verse">{p.verse}</span>
+              {placeholder && <span className="placeholder-note">Placeholder cover</span>}
+            </span>
+            <span className="book-title">
+              <span className="sr-only">Volume {pad(i)}: </span>
+              {p.title}
+            </span>
+            <span className="book-stack">{p.stack.join(" · ")}</span>
+          </button>
+        ))}
+      </div>
+
+      {projects.map((p, i) => (
+        <article
+          key={p.slug}
+          id={`${uid}-panel-${i}`}
+          role="tabpanel"
+          aria-labelledby={`${uid}-tab-${i}`}
+          hidden={ready && i !== active}
+          className="panel"
+        >
+          <h3>{p.title}</h3>
+          <p className="panel-stack">{p.stack.join(" · ")}</p>
+          <p className="panel-summary">{p.summary}</p>
+          <dl className="panel-meta">
+            <div>
+              <dt>Role</dt>
+              <dd>{p.role}</dd>
+            </div>
+            <div>
+              <dt>Year</dt>
+              <dd>{p.year}</dd>
+            </div>
+          </dl>
+          <p className="panel-links">
+            {p.caseStudyUrl ? (
+              <a className="strike" href={p.caseStudyUrl}>
+                Read the case study<span className="sr-only"> for {p.title}</span>
+              </a>
+            ) : (
+              <span className="pending">Case study, add later</span>
+            )}
+            {p.liveUrl ? (
+              <a className="strike" href={p.liveUrl}>
+                Live site<span className="sr-only"> for {p.title}</span>
+              </a>
+            ) : (
+              <span className="pending">Live link, add later</span>
+            )}
+            {p.sourceUrl ? (
+              <a className="strike" href={p.sourceUrl}>
+                Source<span className="sr-only"> for {p.title}</span>
+              </a>
+            ) : (
+              <span className="pending">Source link, add later</span>
+            )}
+          </p>
+        </article>
+      ))}
+    </div>
+  );
+}
