@@ -1703,13 +1703,28 @@ span.resume-close {
     gap: 0 28px;
   }
 
-  .gate-verse span {
-    font-size: clamp(1.625rem, min(5.8vh, 10.5vw), 2.75rem);
+  /* clear of the pull and the cord label on the seam side */
+  .gate-door-l {
+    padding: clamp(16px, 3vh, 28px) 34px clamp(16px, 3vh, 28px) 10px;
   }
 
-  /* on a narrow door the tag gets its own band at the top */
   .gate-door-r {
-    padding-top: 124px;
+    padding-inline: 34px 10px;
+  }
+
+  .gate-verse span {
+    font-size: clamp(1.15rem, 5.2vw, 1.6rem);
+    overflow-wrap: anywhere;
+  }
+
+  .gate-verse span:nth-child(2),
+  .gate-verse span:nth-child(3) {
+    margin-left: 0;
+  }
+
+  /* on a narrow door the tag gets its own band at the top, the seal sits under it */
+  .gate-door-r {
+    padding-top: 112px;
   }
 
   .gate-tag {
@@ -1722,9 +1737,13 @@ span.resume-close {
     height: 22px;
   }
 
+  .seal {
+    width: clamp(84px, 24vw, 120px);
+  }
+
   .drift-a {
-    top: 86%;
-    left: 8%;
+    top: 18%;
+    left: 70%;
   }
 
   .drift-b {
@@ -1774,55 +1793,96 @@ span.resume-close {
     display: none;
   }
 
-  .dangai-head {
+  /* the shelf becomes a row you swipe along */
+  .shelf {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding-bottom: 20px;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+  }
+
+  .book {
+    flex: 0 0 62%;
+    scroll-snap-align: center;
+  }
+
+  .panel {
     grid-template-columns: 1fr;
+    grid-template-areas:
+      "title"
+      "stack"
+      "summary"
+      "meta"
+      "links";
   }
 
-  .index li a {
-    grid-template-columns: 2.5rem minmax(0, 1fr);
+  /* the cord moves to the left edge; dates sit above their role */
+  .thread {
+    --dates: 0px;
+    --knot-col: 2rem;
   }
 
-  .index-stack {
+  .path-cord li {
+    grid-template-columns: var(--knot-col) minmax(0, 1fr);
+  }
+
+  .path-period {
     grid-column: 2;
+    grid-row: 2;
+    padding-right: 0;
+    margin-top: 4px;
     text-align: left;
   }
 
-  .volume,
-  .volume:nth-of-type(even) {
-    grid-template-columns: 1fr;
+  .path-knot {
+    grid-column: 1;
   }
 
-  .volume:nth-of-type(even) .volume-cover {
-    order: 0;
+  .path-body {
+    grid-column: 2;
   }
 
-  .volume-cover {
-    max-width: 360px;
+  .path > h2,
+  .stack > h2 {
+    grid-column: 2;
   }
 
-  .volume-meta {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  .path {
-    grid-template-columns: 1fr;
-  }
-
-  .path h2,
-  .stack h2 {
-    position: static;
-  }
-
-  .stack {
-    grid-template-columns: 1fr;
-  }
-
+  .path,
+  .stack,
   .stack-group {
+    grid-template-columns: var(--knot-col) minmax(0, 1fr);
+  }
+
+  .stack-group h3 {
+    grid-column: 2;
+    justify-self: start;
+    text-align: left;
+    margin-bottom: 4px;
+  }
+
+  .stack-group ul {
+    grid-column: 2;
+    gap: 0 12px;
+  }
+
+  .stack-group::before {
+    display: none;
+  }
+
+  .stack .placeholder-note {
+    padding-left: var(--knot-col);
+  }
+
+  .about-grid {
     grid-template-columns: 1fr;
   }
 
+  .portrait {
+    max-width: 200px;
+  }
 
-  .about-facts {
-    grid-template-columns: 1fr;
+  .close-door {
+    width: 28px;
   }
 }
