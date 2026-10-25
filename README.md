@@ -20,7 +20,7 @@ pnpm dev        # http://localhost:3000
 | `pnpm build` | production build |
 | `pnpm start` | serve the production build |
 | `pnpm lint` | ESLint |
-| `pnpm doctor` | React Doctor scan |
+| `pnpm react-doctor` | React Doctor scan |
 
 ## Edit the content
 
