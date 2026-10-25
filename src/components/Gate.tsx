@@ -33,12 +33,11 @@ export function Gate() {
           </noscript>
 
           <div className="gate-door gate-door-l">
-            <GateVerse verses={site.verses} part="left" />
+            <GateVerse verses={site.verses} part="all" />
             {site.versePlaceholder && <p className="placeholder-note gate-note">Placeholder verse</p>}
           </div>
 
           <div className="gate-door gate-door-r">
-            <GateVerse verses={site.verses} part="right" />
             <div className="gate-tag">
               <ResumeLink variant="tag" />
             </div>
