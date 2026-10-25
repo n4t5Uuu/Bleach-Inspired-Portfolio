@@ -5,6 +5,13 @@ primary_target: "src/app/page.tsx"
 related_targets: []
 ---
 
+---
+version: 1
+slug: "src-app-page-tsx"
+primary_target: "src/app/page.tsx"
+related_targets: []
+---
+
 # Homepage
 
 **Scope:** the portfolio homepage (`/`), production-ready and responsive. The Projects, Experience and About routes get sealed-gate stubs so their links resolve; their full builds are later surfaces.
@@ -27,7 +34,9 @@ OWN-WORLD: Black lacquer (#0B0B0C) frames every region; washi paper (#F3F3EF, co
 
 STORY: The visitor reads a name, a role and a verse, sees the resume tag and four numbered destinations, opens the gate, and meets the work volume by volume before a vermilion line carries them through experience to a close with the resume and contact.
 
-FIRST VIEWPORT: A full-bleed gate. A black lintel across the top carries the name (largest type on the screen after the verse), the role, and the nav 01 Projects, 02 Experience, 03 About, 04 Resume as dim ghosts that strike vermilion on hover or focus. Two paper doors fill the rest; the verse falls in giant vertical Mincho, one stanza per door. A paper resume tag hangs on the right door. The vermilion cord and tassel hang at the glowing seam and are the primary control: "Open the gate".
+FIRST VIEWPORT: A full-bleed gate of two paper-and-kumiko doors with real paper-fibre and wood-grain texture. A black lintel across the top carries the name, role, a plain tagline and the numbered registry. The left door holds the verse set horizontally, each line on its own pasted paper slip (tanzaku), stepping in like a poem; the right door holds the owner's vermilion hanko seal and the hanging resume tag. The vermilion cord and tassel hang at the glowing seam as the primary control: "Open the gate". The page is locked until the cord, a downward scroll or a menu link plays the opening (about 3.2s).
+
+REDESIGN (after the first critique): below the gate every section has its own composition, all attached to the one cord: Projects as a shelf of book covers with one detail panel, Experience as dates beside the cord, Technologies as paper strips hung from rails off the cord, About as an unrolled scroll with a portrait slot and stamped facts, Close as the gate seen from behind with the tassel and closing doors.
 
 FORM: Senkaimon Verse, the user-steered fusion of my grounded candidates 4 (Senkaimon gate) and 1 (tankobon volume poems), raised by the bolder hand: solid black reserved for the decisive beat, light only by removing darkness, one world held at a time with the rest dimmed, ghost destinations struck forward, gravity-ordered verse, and the cord continuing as the experience timeline. seed:39275dc87da1ab8e
 
