@@ -3,6 +3,7 @@ import { Butterfly } from "./Butterfly";
 import { Registry, ResumeLink } from "./Registry";
 import { GateMotion } from "./GateMotion";
 import { GateVerse } from "./GateVerse";
+import { Seal } from "./Seal";
 import { Tassel } from "./Tassel";
 
 export function Gate() {
@@ -38,6 +39,7 @@ export function Gate() {
           </div>
 
           <div className="gate-door gate-door-r">
+            <Seal />
             <div className="gate-tag">
               <ResumeLink variant="tag" />
             </div>
