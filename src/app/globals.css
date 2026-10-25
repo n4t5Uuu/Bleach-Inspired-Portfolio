@@ -1414,49 +1414,133 @@ a.resume-tag:hover {
   padding-left: calc(var(--dates) + var(--knot-col));
 }
 
-/* ---------- about: Soul Society's white walls ---------- */
+/* ---------- about: an unrolled scroll ---------- */
 
 .about {
-  padding: clamp(96px, 16vh, 180px) var(--gutter);
-  background: var(--washi);
-  color: var(--lacquer);
+  scroll-margin-top: 72px;
+  padding: 0 var(--gutter) clamp(96px, 16vh, 180px);
+  background: var(--void);
 }
 
-.about > * {
-  max-width: 1240px;
+.scroll {
+  max-width: 1100px;
   margin-inline: auto;
 }
 
-.about-lead {
+/* the two rollers the paper hangs between */
+.scroll::before,
+.scroll::after {
+  content: "";
+  display: block;
+  height: 26px;
+  margin-inline: -14px;
+  border-radius: 13px;
+  background-color: #1d1916;
+  background-image: var(--grain-wood);
+  box-shadow: 0 8px 18px -6px rgb(0 0 0 / 0.8);
+}
+
+.scroll-paper {
+  padding: clamp(36px, 6vw, 80px);
+  background-color: var(--washi);
+  background-image:
+    var(--grain-paper),
+    linear-gradient(90deg, rgb(60 45 30 / 0.07), transparent 7%, transparent 93%, rgb(60 45 30 / 0.07));
+  color: var(--lacquer);
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .scroll {
+      animation: unroll linear both;
+      animation-timeline: view();
+      animation-range: entry 5% cover 40%;
+    }
+  }
+}
+
+@keyframes unroll {
+  from {
+    clip-path: inset(0 0 100% 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 7fr);
+  gap: clamp(28px, 5vw, 72px);
+  align-items: start;
   margin-top: clamp(28px, 5vh, 48px);
-  max-width: 30ch;
-  margin-inline: auto 0;
+}
+
+.portrait {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  border: 3px solid var(--lacquer);
+}
+
+.portrait img {
+  object-fit: cover;
+}
+
+.portrait-empty {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  gap: 8px;
+  text-align: center;
+  font-family: var(--font-display-stack);
+  font-size: 1.25rem;
+  background: rgb(60 45 30 / 0.06);
+}
+
+.about-lead {
+  max-width: 28ch;
   font-family: var(--font-verse-stack);
   font-weight: 500;
-  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-size: clamp(1.5rem, 2.8vw, 2.4rem);
   line-height: 1.4;
 }
 
+/* each fact is stamped like a seal impression */
 .about-facts {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 24px clamp(24px, 4vw, 64px);
-  margin-top: clamp(48px, 8vh, 88px);
-  padding-top: 24px;
-  border-top: 2px solid var(--lacquer);
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 18px;
+  margin-top: clamp(28px, 5vh, 44px);
+}
+
+.about-facts > div {
+  padding: 14px 16px;
+  border: 2px solid var(--cord-deep);
+  rotate: -1deg;
+}
+
+.about-facts > div:nth-child(even) {
+  rotate: 1.2deg;
 }
 
 .about-facts dt {
-  color: var(--ink-soft);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--cord-deep);
 }
 
 .about-facts dd {
   margin-top: 4px;
   font-size: 1.125rem;
-  font-weight: 500;
+  font-weight: 700;
 }
 
-.about > .placeholder-note {
+.about .placeholder-note {
   margin-top: 24px;
   color: var(--ink-soft);
 }
