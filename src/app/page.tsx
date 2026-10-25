@@ -30,41 +30,47 @@ export default function Home() {
           <Shelf projects={site.projects} placeholder={site.projectsPlaceholder} />
         </section>
 
-        <section id="path" className="path" aria-labelledby="path-title">
-          <h2 id="path-title">Experience</h2>
-          <ol className="path-cord">
-            {site.experience.map((r) => (
-              <li key={r.id}>
-                <span className="path-knot" aria-hidden="true" />
-                <h3>
-                  {r.title}
-                  <span>{r.org}</span>
-                </h3>
-                <p className="path-period">{r.period}</p>
-                <p className="path-summary">{r.summary}</p>
-              </li>
-            ))}
-          </ol>
-        </section>
+        <div className="thread">
+          <section id="path" className="path" aria-labelledby="path-title">
+            <h2 id="path-title">Experience</h2>
+            <ol className="path-cord">
+              {site.experience.map((r) => (
+                <li key={r.id}>
+                  <span className="path-knot" aria-hidden="true" />
+                  <div className="path-body">
+                    <h3>
+                      {r.title}
+                      <span>{r.org}</span>
+                    </h3>
+                    <p className="path-summary">{r.summary}</p>
+                  </div>
+                  <p className="path-period">{r.period}</p>
+                </li>
+              ))}
+            </ol>
+          </section>
 
-        <section id="stack" className="stack" aria-labelledby="stack-title">
-          <h2 id="stack-title">Technologies</h2>
-          <div className="stack-groups">
-            {site.technologies.map((g) => (
-              <div key={g.label} className="stack-group">
-                <h3>{g.label}</h3>
-                <ul>
-                  {g.items.map((item) => (
-                    <li key={item}>{item}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-            {site.technologiesPlaceholder && (
-              <p className="placeholder-note">Placeholder technologies</p>
-            )}
-          </div>
-        </section>
+          <section id="stack" className="stack" aria-labelledby="stack-title">
+            <h2 id="stack-title">Technologies</h2>
+            <div className="stack-groups">
+              {site.technologies.map((g) => (
+                <div key={g.label} className="stack-group">
+                  <h3>{g.label}</h3>
+                  <ul>
+                    {g.items.map((item) => (
+                      <li key={item}>
+                        <span className="strip">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+              {site.technologiesPlaceholder && (
+                <p className="placeholder-note">Placeholder technologies</p>
+              )}
+            </div>
+          </section>
+        </div>
 
         <section id="about" className="about" aria-labelledby="about-title">
           <h2 id="about-title">About</h2>

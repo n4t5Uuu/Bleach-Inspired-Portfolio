@@ -1134,50 +1134,40 @@ a.resume-tag:hover {
   }
 }
 
-/* ---------- the path: the cord becomes the timeline ---------- */
+/* ---------- the thread: the cord runs through experience and technologies ---------- */
 
-.path {
-  display: grid;
-  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
-  gap: clamp(32px, 6vw, 112px);
-  padding: clamp(96px, 18vh, 200px) var(--gutter);
+.thread {
+  --dates: clamp(6.5rem, 15vw, 14rem);
+  --knot-col: 3.25rem;
+  --pad: max(var(--gutter), calc((100% - 1100px) / 2));
+  position: relative;
+  padding: clamp(96px, 16vh, 180px) var(--pad);
   background: var(--void);
 }
 
-.path h2 {
-  align-self: start;
-  position: sticky;
-  top: 96px;
-  font-size: clamp(2.25rem, 3.6vw, 3.75rem);
-}
-
-.path-cord {
+.thread > * {
   position: relative;
-  padding-left: clamp(36px, 4vw, 56px);
+  z-index: 1;
 }
 
-.path-cord::before {
+/* the one cord: it draws itself down as the section scrolls into view */
+.thread::before {
   content: "";
   position: absolute;
   top: 0;
   bottom: 0;
-  left: 6px;
+  left: calc(var(--pad) + var(--dates) + var(--knot-col) / 2 - 2px);
   width: 4px;
   background: var(--cord);
+  transform-origin: top;
 }
 
-/* the cord draws itself down the timeline as it scrolls in, and each knot ties as its role arrives */
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
-    .path-cord {
-      view-timeline: --cord block;
-    }
-
-    .path-cord::before {
-      transform-origin: top;
+    .thread::before {
       animation: cord-draw linear both;
-      animation-timeline: --cord;
-      animation-range: entry 15% cover 55%;
+      animation-timeline: view();
+      animation-range: entry 10% cover 55%;
     }
 
     .path-knot {
@@ -1206,34 +1196,64 @@ a.resume-tag:hover {
   }
 }
 
+.path,
+.stack {
+  scroll-margin-top: 72px;
+  display: grid;
+  grid-template-columns: var(--dates) var(--knot-col) minmax(0, 1fr);
+}
+
+.path > h2,
+.stack > h2 {
+  grid-column: 3;
+  margin-bottom: clamp(40px, 7vh, 72px);
+}
+
+.stack {
+  margin-top: clamp(96px, 16vh, 180px);
+}
+
+/* experience: the date beside the cord, the role on the other side */
+.path-cord {
+  grid-column: 1 / -1;
+}
+
 .path-cord li {
-  position: relative;
+  display: grid;
+  grid-template-columns: var(--dates) var(--knot-col) minmax(0, 1fr);
   padding-bottom: clamp(48px, 9vh, 96px);
 }
 
+.path-period {
+  grid-column: 1;
+  grid-row: 1;
+  padding-right: 12px;
+  text-align: right;
+  font-family: var(--font-display-stack);
+  font-size: clamp(1rem, 1.5vw, 1.375rem);
+  line-height: 1.3;
+  color: var(--mist);
+  font-variant-numeric: tabular-nums;
+}
+
 .path-knot {
-  position: absolute;
-  top: 0.45em;
-  left: calc(-1 * clamp(36px, 4vw, 56px) + 1px);
+  grid-column: 2;
+  grid-row: 1;
+  justify-self: center;
   width: 14px;
   height: 14px;
+  margin-top: 0.4em;
   background: var(--cord);
   transform: rotate(45deg);
   outline: 4px solid var(--void);
 }
 
-.path-period {
-  margin-top: 8px;
-  font-size: 0.875rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--ghost);
-  font-variant-numeric: tabular-nums;
+.path-body {
+  grid-column: 3;
+  grid-row: 1;
 }
 
 .path-cord h3 {
-  margin-top: 0;
   font-family: var(--font-display-stack);
   font-size: clamp(1.5rem, 2.6vw, 2.25rem);
   line-height: 1.1;
@@ -1248,81 +1268,150 @@ a.resume-tag:hover {
   color: var(--mist-hi);
 }
 
-.path-cord li > p:last-child {
+.path-summary {
   margin-top: 10px;
   max-width: var(--measure);
   color: var(--mist);
 }
 
-/* ---------- technologies: names inscribed on the cord ---------- */
-
-.stack {
+/* technologies: names on paper strips hung from a rail off the cord */
+.stack-groups {
+  grid-column: 1 / -1;
   display: grid;
-  grid-template-columns: minmax(0, 4fr) minmax(0, 7fr);
-  gap: clamp(32px, 6vw, 112px);
-  padding: 0 var(--gutter) clamp(96px, 16vh, 180px);
-  background: var(--void);
-}
-
-.stack h2 {
-  align-self: start;
-  position: sticky;
-  top: 96px;
-  font-family: var(--font-display-stack);
-  font-size: clamp(2.25rem, 3.6vw, 3.75rem);
-  line-height: 1;
+  gap: clamp(32px, 5vh, 56px);
 }
 
 .stack-group {
+  position: relative;
   display: grid;
-  grid-template-columns: minmax(0, 11rem) minmax(0, 1fr);
-  gap: 12px 28px;
-  align-items: baseline;
-  padding: 24px 0;
-  border-top: 1px solid var(--lacquer-2);
+  grid-template-columns: var(--dates) var(--knot-col) minmax(0, 1fr);
+  align-items: start;
 }
 
-.stack-group:last-of-type {
-  border-bottom: 1px solid var(--lacquer-2);
+/* the rail leaves the cord and runs along the top of the group */
+.stack-group::before {
+  content: "";
+  position: absolute;
+  top: 18px;
+  left: calc(var(--dates) + var(--knot-col) / 2);
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--cord), var(--ghost) 10%, var(--ghost));
+  opacity: 0.6;
+}
+
+/* a knot where the rail leaves the cord */
+.stack-group::after {
+  content: "";
+  position: absolute;
+  top: 13px;
+  left: calc(var(--dates) + var(--knot-col) / 2 - 5px);
+  width: 10px;
+  height: 10px;
+  background: var(--cord);
+  transform: rotate(45deg);
+  outline: 4px solid var(--void);
 }
 
 .stack-group h3 {
+  grid-column: 1;
+  justify-self: end;
+  padding: 10px 14px;
+  background: var(--lacquer-2);
   font-size: 0.8125rem;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--ghost);
-}
-
-/* each name in the verse face, knotted to the next like the experience cord */
-.stack-group ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px 0;
-}
-
-.stack-group li {
-  display: inline-flex;
-  align-items: center;
-  font-family: var(--font-verse-stack);
-  font-weight: 800;
-  font-size: clamp(1.25rem, 1.9vw, 1.75rem);
-  line-height: 1.2;
+  text-align: right;
   color: var(--mist-hi);
 }
 
-/* the knot trails each name, so a wrapped line never begins with one */
-.stack-group li:not(:last-child)::after {
+.stack-group ul {
+  grid-column: 3;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 clamp(14px, 2vw, 28px);
+  padding-top: 18px;
+}
+
+.stack-group li {
+  position: relative;
+  padding-top: var(--drop, 28px);
+  transform-origin: top center;
+}
+
+/* the string the strip hangs by */
+.stack-group li::before {
   content: "";
-  width: 8px;
-  height: 8px;
-  margin-inline: clamp(12px, 1.6vw, 20px);
-  background: var(--cord);
-  transform: rotate(45deg);
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 1px;
+  height: var(--drop, 28px);
+  background: var(--mist);
+  opacity: 0.6;
+}
+
+.stack-group li:nth-child(3n + 1) {
+  --drop: 26px;
+  --tilt: -1.2deg;
+}
+
+.stack-group li:nth-child(3n + 2) {
+  --drop: 48px;
+  --tilt: 0.9deg;
+}
+
+.stack-group li:nth-child(3n) {
+  --drop: 36px;
+  --tilt: -0.5deg;
+}
+
+.strip {
+  display: block;
+  padding: 10px 16px;
+  background-color: var(--washi);
+  background-image: var(--grain-paper);
+  color: var(--lacquer);
+  font-family: var(--font-verse-stack);
+  font-weight: 800;
+  font-size: clamp(1.125rem, 1.6vw, 1.4rem);
+  line-height: 1.2;
+  rotate: var(--tilt, 0deg);
+  box-shadow: 0 10px 16px -8px rgb(0 0 0 / 0.7);
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .stack-group li {
+      animation: swing linear both;
+      animation-timeline: view();
+      animation-range: entry 5% entry 95%;
+    }
+  }
+}
+
+@keyframes swing {
+  0% {
+    rotate: 7deg;
+  }
+  30% {
+    rotate: -4.5deg;
+  }
+  55% {
+    rotate: 2.4deg;
+  }
+  80% {
+    rotate: -0.9deg;
+  }
+  100% {
+    rotate: 0deg;
+  }
 }
 
 .stack .placeholder-note {
-  margin-top: 20px;
+  margin-top: 4px;
+  padding-left: calc(var(--dates) + var(--knot-col));
 }
 
 /* ---------- about: Soul Society's white walls ---------- */
