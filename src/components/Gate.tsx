@@ -3,6 +3,7 @@ import { Butterfly } from "./Butterfly";
 import { Registry, ResumeLink } from "./Registry";
 import { GateMotion } from "./GateMotion";
 import { GateVerse } from "./GateVerse";
+import { Tassel } from "./Tassel";
 
 export function Gate() {
   return (
@@ -47,15 +48,7 @@ export function Gate() {
 
           <a className="gate-cord" href="#work">
             <span className="gate-cord-line" aria-hidden="true" />
-            <svg className="gate-cord-tassel" viewBox="0 0 40 112" aria-hidden="true" focusable="false">
-              <path className="tassel-cap" d="M20 0c7 0 12 5 12 12v10H8V12C8 5 13 0 20 0Z" />
-              <rect className="tassel-knot" x="6" y="22" width="28" height="9" rx="3" />
-              <path className="tassel-fringe" d="M9 33h22l5 75H4Z" />
-              <path
-                className="tassel-strands"
-                d="M12 36l-3 70M16 36l-1 70M20 36v70M24 36l1 70M28 36l3 70"
-              />
-            </svg>
+            <Tassel className="gate-cord-tassel" />
             <span className="gate-cord-label">Open the gate to the work</span>
           </a>
 
