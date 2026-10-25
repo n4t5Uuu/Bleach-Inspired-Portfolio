@@ -846,6 +846,13 @@ a.resume-tag:hover {
 }
 
 .bar-name {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  max-width: 50vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   font-family: var(--font-display-stack);
   font-size: 1.125rem;
   text-decoration: none;
