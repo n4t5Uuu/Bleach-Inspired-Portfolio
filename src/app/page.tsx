@@ -4,6 +4,7 @@ import { Gate } from "@/components/Gate";
 import { Registry, ResumeLink } from "@/components/Registry";
 import { Shelf } from "@/components/Shelf";
 import { Companion } from "@/components/Companion";
+import { Tassel } from "@/components/Tassel";
 
 export default function Home() {
   return (
@@ -109,21 +110,26 @@ export default function Home() {
       </main>
 
       <footer id="close" className="close">
-        <h2>{site.resumeHref ? "Take the resume with you." : "The resume is on its way."}</h2>
-        <div className="close-actions">
-          <ResumeLink variant="close" />
-          {site.contactHref ? (
-            <a className="close-contact strike" href={site.contactHref}>
-              Get in touch
-            </a>
-          ) : (
-            <span className="close-contact pending">Contact method, add later</span>
-          )}
+        <div className="close-door close-door-l" aria-hidden="true" />
+        <div className="close-door close-door-r" aria-hidden="true" />
+        <div className="close-center">
+          <Tassel className="close-tassel" />
+          <h2>Let&apos;s talk.</h2>
+          <div className="close-actions">
+            {site.contactHref ? (
+              <a className="close-contact" href={site.contactHref}>
+                Get in touch
+              </a>
+            ) : (
+              <span className="close-contact pending">Contact method, add later</span>
+            )}
+            <ResumeLink variant="close" />
+          </div>
+          <p className="close-credit">
+            Inspired by <cite>Bleach</cite> by Tite Kubo. Everything drawn here is original; this
+            site is not affiliated with the series.
+          </p>
         </div>
-        <p className="close-credit">
-          Inspired by <cite>Bleach</cite> by Tite Kubo. Everything drawn here is original; this site
-          is not affiliated with the series.
-        </p>
       </footer>
     </>
   );

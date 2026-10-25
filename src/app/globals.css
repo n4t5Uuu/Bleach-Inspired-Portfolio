@@ -1545,50 +1545,124 @@ a.resume-tag:hover {
   color: var(--ink-soft);
 }
 
-/* ---------- the close: the far side of the gate ---------- */
+/* ---------- the close: the gate seen from the far side ---------- */
 
 .close {
-  padding: clamp(112px, 20vh, 220px) var(--gutter) 48px;
+  position: relative;
+  overflow: hidden;
+  padding: 0 var(--gutter) 48px;
   background: var(--lacquer);
   border-top: 8px solid var(--lacquer-2);
 }
 
-.close > * {
-  max-width: 1240px;
+.close-door {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: clamp(36px, 12vw, 200px);
+}
+
+.close-door-l {
+  left: 0;
+  border-left: 0;
+}
+
+.close-door-r {
+  right: 0;
+  border-right: 0;
+}
+
+/* the doors slide shut as the page ends */
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .close-door-l {
+      animation: shut-l linear both;
+      animation-timeline: view();
+      animation-range: entry 20% entry 100%;
+    }
+
+    .close-door-r {
+      animation: shut-r linear both;
+      animation-timeline: view();
+      animation-range: entry 20% entry 100%;
+    }
+  }
+}
+
+@keyframes shut-l {
+  from {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes shut-r {
+  from {
+    transform: translateX(100%);
+  }
+}
+
+.close-center {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 760px;
   margin-inline: auto;
+  text-align: center;
+}
+
+/* the cord comes down from the top edge and ends in the tassel it began with */
+.close-center::before {
+  content: "";
+  width: 6px;
+  height: clamp(90px, 16vh, 170px);
+  background: var(--cord);
+}
+
+.close-tassel {
+  width: 40px;
+  height: auto;
+  margin-top: -2px;
+  fill: var(--cord);
 }
 
 .close h2 {
-  max-width: 14ch;
-  margin-inline: 0 auto;
+  max-width: 16ch;
+  margin-top: clamp(36px, 6vh, 64px);
   font-family: var(--font-display-stack);
-  font-size: clamp(2.5rem, 6vw, 5.5rem);
-  line-height: 1;
+  font-size: clamp(2.25rem, 5vw, 4.5rem);
+  line-height: 1.1;
 }
 
 .close-actions {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 20px 36px;
-  margin-top: clamp(40px, 7vh, 72px);
+  justify-content: center;
+  gap: 16px 28px;
+  margin-top: clamp(32px, 6vh, 56px);
 }
 
-.resume-close {
+.resume-close,
+a.close-contact {
   display: inline-flex;
   align-items: baseline;
   gap: 14px;
   padding: 18px 28px;
-  background: var(--cord-deep);
-  color: var(--washi-hi);
+  background-color: var(--washi);
+  background-image: var(--grain-paper);
+  border-bottom: 4px solid var(--cord-deep);
+  color: var(--lacquer);
   font-size: 1.25rem;
   font-weight: 700;
   text-decoration: none;
-  box-shadow: 0 14px 28px -12px rgb(210 56 30 / 0.55);
+  box-shadow: 0 14px 24px -12px rgb(0 0 0 / 0.8);
 }
 
-a.resume-close:hover {
-  background: var(--cord);
+a.resume-close:hover,
+a.close-contact:hover {
+  color: var(--cord-deep);
 }
 
 .resume-close small {
@@ -1599,9 +1673,8 @@ a.resume-close:hover {
 span.resume-close {
   background: transparent;
   color: var(--mist);
+  border: 2px solid var(--lacquer-2);
   box-shadow: none;
-  outline: 2px solid var(--lacquer-2);
-  outline-offset: -2px;
 }
 
 .close-contact {
@@ -1609,7 +1682,7 @@ span.resume-close {
 }
 
 .close-credit {
-  margin-top: clamp(96px, 16vh, 160px);
+  margin-top: clamp(80px, 14vh, 140px);
   padding-top: 24px;
   border-top: 1px solid var(--lacquer-2);
   font-size: 0.875rem;
