@@ -25,6 +25,8 @@ export type Role = {
 
 export const site = {
   name: "Your Name",
+  // Two letters for the seal on the gate.
+  initials: "YN",
   role: "Software Developer",
   // One plain line a recruiter can read at a glance: what you build, for whom.
   tagline: "One plain line on what you build and who it is for.",
@@ -62,6 +64,8 @@ export const site = {
   // Set once a contact method is decided, e.g. "mailto:you@example.com".
   contactHref: null as string | null,
   about: {
+    // Set to an image path in /public once there is a portrait; null shows a marked placeholder frame.
+    portrait: null as string | null,
     lead: "A few sentences on who you are, what you build, and what you care about in the work.",
     facts: [
       { label: "Based in", value: "City, Country" },
