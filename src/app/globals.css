@@ -851,6 +851,12 @@ a.resume-tag:hover {
   text-decoration: none;
 }
 
+/* past the gate the bar takes over: the gate's own copies leave the tab order */
+:root[data-passed="true"] .gate-cord,
+:root[data-passed="true"] .gate-lintel .registry {
+  visibility: hidden;
+}
+
 .bar .registry .resume small {
   display: none;
 }
