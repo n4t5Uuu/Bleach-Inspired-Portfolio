@@ -116,8 +116,8 @@ export default function Home() {
         <section id="path" className="path" aria-labelledby="path-title">
           <h2 id="path-title">Experience</h2>
           <ol className="path-cord">
-            {site.experience.map((r, i) => (
-              <li key={i}>
+            {site.experience.map((r) => (
+              <li key={r.id}>
                 <span className="path-knot" aria-hidden="true" />
                 <h3>
                   {r.title}

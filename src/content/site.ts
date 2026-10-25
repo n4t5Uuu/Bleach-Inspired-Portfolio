@@ -16,6 +16,7 @@ export type Project = {
 };
 
 export type Role = {
+  id: string;
   title: string;
   org: string;
   period: string;
@@ -111,18 +112,21 @@ export const site = {
   ] satisfies Project[],
   experience: [
     {
+      id: "role-1",
       title: "Role title",
       org: "Company",
       period: "Start – End",
       summary: "One line on what you owned and the outcome.",
     },
     {
+      id: "role-2",
       title: "Role title",
       org: "Company",
       period: "Start – End",
       summary: "One line on what you owned and the outcome.",
     },
     {
+      id: "role-3",
       title: "Role title",
       org: "Company or school",
       period: "Start – End",
