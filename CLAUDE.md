@@ -112,6 +112,7 @@ For every task:
 - After two failed corrections on the same issue, stop. Summarize what you learned and ask the user to reset the session with a sharper prompt.
 - Use subagents (Claude Code: "use subagents to investigate X") for exploration tasks that would otherwise pollute the main context with dozens of file reads.
 - When committing, write descriptive commit messages (subject under 72 chars, body explains the why). No "update file" or "fix bug" commits. No "Co-Authored-By: Claude" attribution unless the project explicitly wants it.
+- Squash commits when it is necessary: fixups, reverts of your own just-made commits, or several commits that only make sense together. Squash only commits that are not pushed yet, and never rewrite pushed history without asking.
 - When the user says "commit this" (or similar) after a multi-part change, do not make one commit. Split the diff into atomic commits along logical boundaries: core logic, then call-sites/wiring that use it, then tests, then docs — in that order, each buildable/passing on its own. One concern per commit; group only files that fail to compile or make no sense without each other. If a single concern touches multiple files, that is still one commit.
 
 ---
