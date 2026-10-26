@@ -3,6 +3,7 @@ import { site } from "@/content/site";
 import { Gate } from "@/components/Gate";
 import { Registry, ResumeLink } from "@/components/Registry";
 import { Shelf } from "@/components/Shelf";
+import { CordFliers } from "@/components/CordFliers";
 import { Companion } from "@/components/Companion";
 import { Tassel } from "@/components/Tassel";
 import { ThemeToggle } from "@/components/ThemeToggle";
@@ -80,6 +81,9 @@ export default function Home() {
         </section>
 
         <div className="thread">
+          {/* a group of ink butterflies rides the tip of the cord as it draws */}
+          <CordFliers />
+
           <section id="path" className="path" aria-labelledby="path-title">
             <h2 id="path-title">Experience</h2>
             <ol className="path-cord">
