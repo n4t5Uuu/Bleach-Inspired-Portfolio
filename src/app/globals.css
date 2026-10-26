@@ -1417,6 +1417,167 @@ a.resume-tag:hover {
   }
 }
 
+/* the butterflies ride the cord: the same scroll timeline and range that draws the line.
+   The range is about as long as the thread, so the tip keeps pace with the scroll and stays in view. */
+.cord-fliers {
+  display: none;
+}
+
+@supports (animation-timeline: view()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .thread {
+      view-timeline: --cord block;
+    }
+
+    .thread > .cord-fliers {
+      position: absolute;
+      z-index: 2;
+      top: 0;
+      bottom: 0;
+      left: calc(var(--pad) + var(--dates) + var(--knot-col) / 2);
+      display: block;
+      width: 0;
+      /* the stream emerges from the top of the thread instead of flying over the section above */
+      overflow-y: clip;
+      pointer-events: none;
+    }
+
+    .fliers {
+      position: absolute;
+      top: 0;
+      left: 0;
+      animation: ride linear both;
+      animation-timeline: --cord;
+      animation-range: entry 35% cover 80%;
+    }
+
+    /* the lead sits on the tip, hovering a little */
+    .fly {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: var(--s, 22px);
+      fill: var(--washi);
+    }
+
+    .fly svg {
+      display: block;
+      width: 100%;
+    }
+
+    .fly .wing {
+      transform-box: fill-box;
+      animation: flap 0.46s ease-in-out infinite;
+    }
+
+    .fly .wing-l {
+      transform-origin: right center;
+    }
+
+    .fly .wing-r {
+      transform-origin: left center;
+    }
+
+    .fly-lead {
+      --s: clamp(52px, 7vw, 112px);
+      margin: calc(var(--s) * -0.19) 0 0 calc(var(--s) * -0.5);
+      animation: hover 3.4s ease-in-out infinite alternate;
+    }
+
+    /* the stream: each follower trails by --k and flies a loop round the cord. Across (swirl) and
+       up and down (orbit, on the drawing) run a quarter turn out of step, which makes the path a
+       circle; scale and opacity (depth) are in step with orbit, so a butterfly is larger, brighter
+       and lower as it passes in front, and smaller, fainter and higher as it passes behind. */
+    .fly:not(.fly-lead) {
+      top: calc(var(--k) * clamp(-34px, -2.6vw, -22px) - 6px);
+      margin: calc(var(--s) * -0.19) 0 0 calc(var(--s) * -0.5);
+      animation:
+        swirl var(--p) ease-in-out calc(var(--k) * -0.31s) infinite alternate,
+        depth var(--p) ease-in-out calc(var(--k) * -0.31s - var(--p) / 2) infinite alternate;
+    }
+
+    .fly:not(.fly-lead) svg {
+      animation: orbit var(--p) ease-in-out calc(var(--k) * -0.31s - var(--p) / 2) infinite alternate;
+    }
+
+    /* the circling ones beat faster and deeper than the lead, each out of step with the next */
+    .fly:not(.fly-lead) .wing {
+      animation: beat var(--w) ease-in-out calc(var(--k) * -0.07s) infinite;
+    }
+  }
+}
+
+:root[data-theme="light"] .fly {
+  fill: var(--lacquer);
+}
+
+@keyframes ride {
+  0% {
+    top: 0%;
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  93% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0;
+  }
+}
+
+@keyframes swirl {
+  from {
+    translate: calc(var(--r) * var(--rs, 1) * -1) 0;
+    rotate: -14deg;
+  }
+  to {
+    translate: calc(var(--r) * var(--rs, 1)) 0;
+    rotate: 14deg;
+  }
+}
+
+@keyframes beat {
+  0%,
+  100% {
+    transform: scaleX(1);
+  }
+  50% {
+    transform: scaleX(0.12);
+  }
+}
+
+@keyframes orbit {
+  from {
+    transform: translateY(calc(var(--r) * var(--rs, 1) * -0.7));
+  }
+  to {
+    transform: translateY(calc(var(--r) * var(--rs, 1) * 0.7));
+  }
+}
+
+@keyframes depth {
+  from {
+    scale: 0.6;
+    opacity: calc(var(--o) * 0.45);
+  }
+  to {
+    scale: 1.12;
+    opacity: var(--o);
+  }
+}
+
+@keyframes hover {
+  from {
+    transform: translate(-5px, 3px) rotate(-7deg);
+  }
+  to {
+    transform: translate(5px, -4px) rotate(6deg);
+  }
+}
+
 @keyframes cord-draw {
   from {
     transform: scaleY(0);
@@ -2207,6 +2368,8 @@ span.resume-close {
   .thread {
     --dates: 0px;
     --knot-col: 2rem;
+    /* a narrower swarm beside a cord at the left edge */
+    --rs: 0.42;
   }
 
   .path-cord li {
