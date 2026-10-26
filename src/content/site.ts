@@ -24,13 +24,13 @@ export type Role = {
 };
 
 export const site = {
-  name: "Your Name",
+  name: "Alden Alexander Olmedo",
   // Two letters for the seal on the gate.
-  initials: "YN",
+  initials: "AO",
   role: "Software Developer",
   // One plain line a recruiter can read at a glance: what you build, for whom.
-  tagline: "One plain line on what you build and who it is for.",
-  taglinePlaceholder: true,
+  tagline: "4th Year Computer Science student at the University of Santo Tomas, specializing in Data Science.",
+  taglinePlaceholder: false,
   // The gate opens on one of these, picked at random on each visit.
   // Original verses in the spirit of a volume's opening poem: replace or add your own.
   // Three lines each, about 14 characters per line, so each stands in one column on the doors.
@@ -68,9 +68,11 @@ export const site = {
     portrait: null as string | null,
     lead: "A few sentences on who you are, what you build, and what you care about in the work.",
     facts: [
+      { label: "Studying", value: "Computer Science, 4th year" },
+      { label: "School", value: "University of Santo Tomas" },
+      { label: "Specialization", value: "Data Science" },
       { label: "Based in", value: "City, Country" },
       { label: "Open to", value: "Full-time roles, select freelance" },
-      { label: "Focus", value: "Your strongest area" },
     ],
   },
   projects: [
