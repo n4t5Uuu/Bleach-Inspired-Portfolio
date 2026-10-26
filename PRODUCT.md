@@ -36,7 +36,7 @@ A developer portfolio whose identity is heavily inspired by *Bleach*, the series
 
 ## Evidence on Hand
 
-None yet. The developer's name, project list, resume file, experience, and bio have not been provided.
+Confirmed by the owner: the name is Alden Alexander Olmedo, a 4th Year Computer Science student specializing in Data Science at the University of Santo Tomas. Nothing else has been provided yet: the project list, resume file, experience, bio, location, contact method and leadership roles are not supplied.
 
 Until they are, use clearly marked placeholder content and a resume download slot. Never invent employers, dates, project names, metrics, testimonials, or biography facts.
 
