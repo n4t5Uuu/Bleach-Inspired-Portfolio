@@ -1406,7 +1406,7 @@ a.resume-tag:hover {
     .thread::before {
       animation: cord-draw linear both;
       animation-timeline: view();
-      animation-range: entry 10% cover 55%;
+      animation-range: entry 35% cover 80%;
     }
 
     .path-knot {
