@@ -324,49 +324,12 @@ ol {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
-  justify-content: space-between;
+  justify-content: flex-end;
   gap: 12px 32px;
   padding: clamp(18px, 3vh, 32px) var(--gutter) clamp(16px, 2.4vh, 28px);
   background: var(--lacquer);
   border-top: 8px solid var(--lacquer-2);
   box-shadow: 0 18px 30px -12px rgb(0 0 0 / 0.65);
-}
-
-.gate-id {
-  min-width: 0;
-  max-width: 100%;
-}
-
-.gate-id h1 {
-  overflow-wrap: anywhere;
-  font-family: var(--font-display-stack);
-  /* the verse, not the name, is the largest type at the gate */
-  font-size: clamp(1.75rem, 3.2vw, 3.25rem);
-  line-height: 0.95;
-  letter-spacing: 0.01em;
-  color: var(--washi);
-}
-
-.gate-role {
-  margin-top: 10px;
-  color: var(--mist);
-  font-size: clamp(0.8125rem, 0.95vw, 0.9375rem);
-  font-weight: 700;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-}
-
-/* the plain line a recruiter reads first */
-.gate-tagline {
-  margin-top: 6px;
-  max-width: 56ch;
-  color: var(--washi);
-  font-size: clamp(1.0625rem, 1.3vw, 1.25rem);
-  line-height: 1.45;
-}
-
-.gate-tagline .placeholder-note {
-  margin-left: 0.5em;
 }
 
 .gate-frame {
@@ -885,19 +848,19 @@ a.resume-tag:hover {
   margin-top: -70svh;
 }
 
-.gate[data-armed="true"] + main .dangai {
+.gate[data-armed="true"] + main > :first-child {
   padding-top: 4svh;
   background: transparent;
   pointer-events: none;
 }
 
 /* the whole work section arrives after the black hold, never during it */
-.gate[data-armed="true"] + main .dangai > * {
+.gate[data-armed="true"] + main > :first-child > * {
   opacity: var(--head, 1);
   pointer-events: auto;
 }
 
-:root:not([data-beat="true"]) .gate[data-armed="true"] + main .dangai > * {
+:root:not([data-beat="true"]) .gate[data-armed="true"] + main > :first-child > * {
   pointer-events: none;
 }
 
@@ -914,8 +877,7 @@ a.resume-tag:hover {
 
 .dangai-title,
 .path h2,
-.stack h2,
-.about h2 {
+.stack h2 {
   font-family: var(--font-display-stack);
   font-size: clamp(2.25rem, 4.6vw, 4.5rem);
   line-height: 1;
@@ -1472,6 +1434,30 @@ a.resume-tag:hover {
     clip-path: inset(0);
   }
 }
+
+.about-id h1 {
+  font-family: var(--font-display-stack);
+  font-size: clamp(2rem, 5.2vw, 4.75rem);
+  line-height: 0.98;
+  overflow-wrap: anywhere;
+}
+
+.about-role {
+  margin-top: 12px;
+  color: var(--ink-soft);
+  font-size: clamp(0.8125rem, 0.95vw, 0.9375rem);
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+.about-tagline {
+  max-width: 52ch;
+  margin-top: 8px;
+  font-size: clamp(1.0625rem, 1.3vw, 1.25rem);
+  line-height: 1.45;
+}
+
 
 .about-grid {
   display: grid;

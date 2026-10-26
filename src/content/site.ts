@@ -142,7 +142,7 @@ export const site = {
 };
 
 export const destinations = [
-  { n: "01", label: "Projects", href: "#work" },
-  { n: "02", label: "Experience", href: "#path" },
-  { n: "03", label: "About", href: "#about" },
+  { n: "01", label: "About", href: "#about" },
+  { n: "02", label: "Projects", href: "#work" },
+  { n: "03", label: "Experience", href: "#path" },
 ] as const;

@@ -9,8 +9,8 @@ import { Tassel } from "@/components/Tassel";
 export default function Home() {
   return (
     <>
-      <a className="skip" href="#work">
-        Skip to the projects
+      <a className="skip" href="#about">
+        Skip to the content
       </a>
 
       <div className="bar">
@@ -25,6 +25,47 @@ export default function Home() {
       <Gate />
 
       <main>
+        <section id="about" className="about" aria-label="About">
+          <div className="scroll">
+            <div className="scroll-paper">
+              <header className="about-id">
+                <h1>{site.name}</h1>
+                <p className="about-role">{site.role}</p>
+                <p className="about-tagline">
+                  {site.tagline}
+                  {site.taglinePlaceholder && <span className="placeholder-note"> Placeholder</span>}
+                </p>
+              </header>
+              <div className="about-grid">
+                <figure className="portrait">
+                  {site.about.portrait ? (
+                    <Image src={site.about.portrait} alt={`Portrait of ${site.name}`} fill sizes="320px" />
+                  ) : (
+                    <div className="portrait-empty">
+                      <span>Portrait</span>
+                      <span className="placeholder-note">Placeholder portrait</span>
+                    </div>
+                  )}
+                </figure>
+                <div>
+                  <p className="about-lead">{site.about.lead}</p>
+                  <dl className="about-facts">
+                    {site.about.facts.map((f) => (
+                      <div key={f.label}>
+                        <dt>{f.label}</dt>
+                        <dd>{f.value}</dd>
+                      </div>
+                    ))}
+                  </dl>
+                  {site.aboutPlaceholder && (
+                    <p className="placeholder-note">Placeholder biography</p>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <section id="work" className="dangai" aria-labelledby="work-title">
           <h2 id="work-title" className="dangai-title">
             Projects
@@ -73,40 +114,6 @@ export default function Home() {
             </div>
           </section>
         </div>
-
-        <section id="about" className="about" aria-labelledby="about-title">
-          <div className="scroll">
-            <div className="scroll-paper">
-              <h2 id="about-title">About</h2>
-              <div className="about-grid">
-                <figure className="portrait">
-                  {site.about.portrait ? (
-                    <Image src={site.about.portrait} alt={`Portrait of ${site.name}`} fill sizes="320px" />
-                  ) : (
-                    <div className="portrait-empty">
-                      <span>Portrait</span>
-                      <span className="placeholder-note">Placeholder portrait</span>
-                    </div>
-                  )}
-                </figure>
-                <div>
-                  <p className="about-lead">{site.about.lead}</p>
-                  <dl className="about-facts">
-                    {site.about.facts.map((f) => (
-                      <div key={f.label}>
-                        <dt>{f.label}</dt>
-                        <dd>{f.value}</dd>
-                      </div>
-                    ))}
-                  </dl>
-                  {site.aboutPlaceholder && (
-                    <p className="placeholder-note">Placeholder biography</p>
-                  )}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
       </main>
 
       <footer id="close" className="close">
