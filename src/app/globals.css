@@ -1110,6 +1110,8 @@ a.resume-tag:hover {
   position: relative;
   padding: clamp(96px, 16vh, 180px) var(--pad);
   background: var(--void);
+  /* the strips swing wider than a narrow screen as they settle */
+  overflow-x: clip;
 }
 
 .thread > * {
@@ -1977,5 +1979,15 @@ span.resume-close {
 
   .close-door {
     width: 28px;
+  }
+}
+
+/* narrowest phones */
+@media (max-width: 420px) {
+  /* section titles fit beside the cord on the narrowest screens */
+  .dangai-title,
+  .path h2,
+  .stack h2 {
+    font-size: 1.875rem;
   }
 }
