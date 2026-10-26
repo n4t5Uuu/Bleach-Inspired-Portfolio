@@ -5,12 +5,14 @@ import { GateMotion } from "./GateMotion";
 import { GateVerse } from "./GateVerse";
 import { Seal } from "./Seal";
 import { Tassel } from "./Tassel";
+import { ThemeToggle } from "./ThemeToggle";
 
 export function Gate() {
   return (
     <header id="gate" className="gate">
       <div className="gate-stage">
         <div className="gate-lintel">
+          <ThemeToggle id="moon-gate" />
           <Registry />
         </div>
 

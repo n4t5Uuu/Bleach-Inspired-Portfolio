@@ -5,6 +5,8 @@ import { Registry, ResumeLink } from "@/components/Registry";
 import { Shelf } from "@/components/Shelf";
 import { Companion } from "@/components/Companion";
 import { Tassel } from "@/components/Tassel";
+import { ThemeToggle } from "@/components/ThemeToggle";
+import { Night } from "@/components/Night";
 
 export default function Home() {
   return (
@@ -14,12 +16,16 @@ export default function Home() {
       </a>
 
       <div className="bar">
-        <a className="bar-name" href="#gate">
-          {site.name}
-        </a>
+        <div className="bar-start">
+          <a className="bar-name" href="#gate">
+            {site.name}
+          </a>
+          <ThemeToggle id="moon-bar" />
+        </div>
         <Registry />
       </div>
 
+      <Night />
       <Companion />
 
       <Gate />

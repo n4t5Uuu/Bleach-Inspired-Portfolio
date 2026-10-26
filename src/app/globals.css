@@ -14,6 +14,8 @@
   --mist: #bdbdb7;
   --mist-hi: #cfcfca;
   --ink-soft: #5c5c58;
+  /* the page ground: the void at night, a printed page by day */
+  --ground: #050506;
 
   --font-display-stack: var(--font-display), "Yu Gothic", sans-serif;
   --font-verse-stack: var(--font-verse), "Yu Mincho", serif;
@@ -47,7 +49,7 @@
 
 body {
   margin: 0;
-  background: var(--void);
+  background: var(--ground);
   color: var(--washi);
   font-family: var(--font-ui-stack);
   font-size: 1.0625rem;
@@ -297,6 +299,216 @@ ol {
   animation-duration: 1.6s;
 }
 
+/* ---------- the moon: theme toggle and the sky ---------- */
+
+/* the crescent is dark mode, the full moon is light mode */
+.theme-toggle {
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  align-self: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  color: var(--washi);
+  background: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+  color: var(--cord-lit);
+}
+
+.theme-toggle .moon {
+  width: 26px;
+  rotate: -18deg;
+  transition: rotate 0.9s var(--ease-out);
+}
+
+.theme-toggle .moon-disc {
+  fill: currentColor;
+}
+
+.moon-shade {
+  transform: translate(-24px, -12px);
+  transition: transform 0.9s var(--ease-out);
+}
+
+:root[data-theme="light"] .moon-shade {
+  transform: translate(-100px, -50px);
+}
+
+:root[data-theme="light"] .theme-toggle .moon {
+  rotate: 24deg;
+}
+
+/* once the passage is through, the spent stage steps aside so the sky shows from the first screen */
+:root[data-passed="true"] .gate[data-armed="true"] {
+  background: none;
+}
+
+:root[data-passed="true"] .gate[data-armed="true"] .gate-stage {
+  visibility: hidden;
+}
+
+/* the sky sits behind every section; the gate and the close cover it */
+.night {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.sky-moon {
+  position: absolute;
+  top: 12vh;
+  right: -7vw;
+  width: clamp(280px, 36vw, 600px);
+  filter: drop-shadow(0 0 90px rgb(233 227 255 / 0.1));
+}
+
+.sky-moon .moon-disc {
+  fill: rgb(233 227 255 / 0.075);
+}
+
+.mote {
+  position: absolute;
+  bottom: -12px;
+  left: var(--x);
+  width: var(--size);
+  height: var(--size);
+  border-radius: 50%;
+  background: var(--seam);
+  box-shadow: 0 0 8px 1px rgb(233 227 255 / 0.5);
+  opacity: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .mote {
+    animation: rise var(--rise) linear var(--delay) infinite;
+  }
+}
+
+@keyframes rise {
+  0% {
+    opacity: 0;
+    transform: translate(0, 0);
+  }
+  12% {
+    opacity: 0.7;
+  }
+  50% {
+    transform: translate(14px, -55vh);
+  }
+  88% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-6px, -112vh);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .moon-shade,
+  .theme-toggle .moon {
+    transition: none;
+  }
+}
+
+/* ---------- light mode: a printed manga page ---------- */
+
+/* the lacquer frames stay black ink; only the ground the work sits on turns to paper */
+:root[data-theme="light"] {
+  color-scheme: light;
+  --ground: #f6f6f2;
+}
+
+:root[data-theme="light"] body {
+  color: var(--lacquer);
+}
+
+:root[data-theme="light"] main {
+  --void: var(--ground);
+  --mist: #46463f;
+  --mist-hi: #2b2b27;
+  --ghost: #63635c;
+  --cord-lit: var(--cord-deep);
+}
+
+:root[data-theme="light"] .bar-name,
+:root[data-theme="light"] .close {
+  color: var(--washi);
+}
+
+:root[data-theme="light"] main .strike:hover,
+:root[data-theme="light"] .panel-stack {
+  color: var(--lacquer);
+}
+
+:root[data-theme="light"] .stack-group h3 {
+  background: var(--lacquer);
+  color: var(--washi);
+}
+
+/* paper on a white page takes an inked edge, like a panel border */
+:root[data-theme="light"] .book-cover {
+  box-shadow:
+    0 0 0 2px var(--lacquer),
+    0 26px 40px -28px rgb(11 11 12 / 0.5);
+}
+
+:root[data-theme="light"] .strip {
+  box-shadow:
+    0 0 0 1.5px var(--lacquer),
+    0 10px 16px -10px rgb(11 11 12 / 0.45);
+}
+
+/* on a white page an unchosen book recedes by fading, not by darkening */
+:root[data-theme="light"] .shelf[data-ready="true"] .book[data-active="false"] .book-cover {
+  filter: opacity(0.5);
+}
+
+:root[data-theme="light"] .shelf[data-ready="true"] .book[data-active="false"]:hover .book-cover {
+  filter: opacity(0.8);
+}
+
+:root[data-theme="light"] .scroll-paper {
+  box-shadow:
+    inset 2px 0 0 var(--lacquer),
+    inset -2px 0 0 var(--lacquer);
+}
+
+/* a halftone screen in the side margins, clear behind the content */
+:root[data-theme="light"] .night::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgb(11 11 12 / 0.2) 0.9px, transparent 1.25px);
+  background-size: 7px 7px;
+  mask-image: linear-gradient(90deg, #000, transparent 24%, transparent 76%, #000);
+}
+
+:root[data-theme="light"] .sky-moon {
+  filter: none;
+}
+
+:root[data-theme="light"] .sky-moon .moon-disc {
+  fill: url(#sky-tone);
+}
+
+:root[data-theme="light"] #sky-tone circle {
+  fill: rgb(11 11 12 / 0.3);
+}
+
+:root[data-theme="light"] .mote {
+  background: rgb(11 11 12 / 0.55);
+  box-shadow: none;
+}
+
 /* ---------- the gate ---------- */
 
 .gate {
@@ -324,7 +536,7 @@ ol {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-end;
-  justify-content: flex-end;
+  justify-content: space-between;
   gap: 12px 32px;
   padding: clamp(18px, 3vh, 32px) var(--gutter) clamp(16px, 2.4vh, 28px);
   background: var(--lacquer);
@@ -730,7 +942,7 @@ a.resume-tag:hover {
   position: absolute;
   inset: 0;
   z-index: 6;
-  background: var(--void);
+  background: var(--ground);
   opacity: var(--black, 0);
   pointer-events: none;
 }
@@ -821,6 +1033,14 @@ a.resume-tag:hover {
   transition: transform 0.4s var(--ease-out);
 }
 
+.bar-start {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  /* the name truncates first; the moon always keeps its 44px */
+  min-width: 44px;
+}
+
 .bar-name {
   display: inline-flex;
   align-items: center;
@@ -874,7 +1094,6 @@ a.resume-tag:hover {
 .dangai {
   scroll-margin-top: 72px;
   padding: clamp(48px, 9vh, 104px) var(--gutter) clamp(96px, 14vh, 160px);
-  background: var(--void);
 }
 
 .dangai > * {
@@ -1116,7 +1335,6 @@ a.resume-tag:hover {
   --pad: max(var(--gutter), calc((100% - 1100px) / 2));
   position: relative;
   padding: clamp(96px, 16vh, 180px) var(--pad);
-  background: var(--void);
   /* the strips swing wider than a narrow screen as they settle */
   overflow-x: clip;
 }
@@ -1395,7 +1613,6 @@ a.resume-tag:hover {
 .about {
   scroll-margin-top: 72px;
   padding: 0 var(--gutter) clamp(96px, 16vh, 180px);
-  background: var(--void);
 }
 
 .scroll {
@@ -1785,6 +2002,17 @@ span.resume-close {
     align-items: stretch;
   }
 
+  .sky-moon {
+    top: 6vh;
+    right: -28vw;
+    width: 72vw;
+  }
+
+  .gate-lintel .theme-toggle {
+    align-self: flex-start;
+    margin-left: -10px;
+  }
+
   .gate-lintel .registry {
     flex: none;
   }
@@ -1989,8 +2217,23 @@ span.resume-close {
   }
 }
 
-/* narrowest phones */
+/* narrowest phones: the bar fits the moon and all four links */
 @media (max-width: 420px) {
+  .bar {
+    gap: 4px;
+    padding-inline: 8px 12px;
+  }
+
+  .bar .registry ol {
+    gap: 0 10px;
+  }
+
+  .bar .registry a,
+  .bar .registry .resume {
+    font-size: 0.6875rem;
+    letter-spacing: 0.02em;
+  }
+
   /* section titles fit beside the cord on the narrowest screens */
   .dangai-title,
   .path h2,
