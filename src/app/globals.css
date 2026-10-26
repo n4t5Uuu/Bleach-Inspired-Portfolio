@@ -667,9 +667,22 @@ a.resume-tag:hover {
 .gate-cord-line {
   display: block;
   width: 6px;
+  box-sizing: content-box;
   height: clamp(32px, 9vh, 200px);
   background: var(--cord);
   border-radius: 0 0 2px 2px;
+}
+
+/* a tug lengthens the rope itself, so the tassel and its label are carried down with it */
+.gate-cord:hover .gate-cord-line,
+.gate-cord:focus-visible .gate-cord-line {
+  padding-bottom: 14px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .gate-cord-line {
+    transition: padding-bottom 0.45s var(--ease-out);
+  }
 }
 
 .gate-cord-tassel {
@@ -678,7 +691,6 @@ a.resume-tag:hover {
   height: auto;
   margin-top: -2px;
   fill: var(--cord);
-  transition: transform 0.45s var(--ease-out);
 }
 
 .tassel-knot {
@@ -707,11 +719,6 @@ a.resume-tag:hover {
   letter-spacing: 0.16em;
   text-transform: uppercase;
   white-space: nowrap;
-}
-
-.gate-cord:hover .gate-cord-tassel,
-.gate-cord:focus-visible .gate-cord-tassel {
-  transform: translateY(14px);
 }
 
 .gate-cord:hover .gate-cord-label,
