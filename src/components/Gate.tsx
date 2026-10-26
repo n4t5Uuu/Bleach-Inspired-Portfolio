@@ -11,14 +11,6 @@ export function Gate() {
     <header id="gate" className="gate">
       <div className="gate-stage">
         <div className="gate-lintel">
-          <div className="gate-id">
-            <h1>{site.name}</h1>
-            <p className="gate-role">{site.role}</p>
-            <p className="gate-tagline">
-              {site.tagline}
-              {site.taglinePlaceholder && <span className="placeholder-note"> Placeholder</span>}
-            </p>
-          </div>
           <Registry />
         </div>
 
@@ -47,10 +39,10 @@ export function Gate() {
 
           <div className="gate-seam" aria-hidden="true" />
 
-          <a className="gate-cord" href="#work">
+          <a className="gate-cord" href="#about">
             <span className="gate-cord-line" aria-hidden="true" />
             <Tassel className="gate-cord-tassel" />
-            <span className="gate-cord-label">Open the gate to the work</span>
+            <span className="gate-cord-label">Open the gate</span>
           </a>
 
           <Butterfly className="drift drift-a" />
