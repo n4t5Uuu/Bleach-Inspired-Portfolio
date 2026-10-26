@@ -301,23 +301,64 @@ ol {
 
 /* ---------- the moon: theme toggle and the sky ---------- */
 
-/* the crescent is dark mode, the full moon is light mode */
-.theme-toggle {
-  display: inline-grid;
-  place-items: center;
+/* the crescent is dark mode, the full moon is light mode; the label names the mode in force */
+.theme {
+  display: flex;
   flex: none;
   align-self: center;
-  width: 44px;
-  height: 44px;
-  padding: 0;
-  color: var(--washi);
+  align-items: center;
+}
+
+.theme-toggle,
+.theme-system {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 10px;
+  color: var(--ghost);
   background: none;
   border: 0;
+  font: inherit;
+  font-size: clamp(0.8125rem, 1.05vw, 1rem);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   cursor: pointer;
 }
 
+.theme-toggle {
+  padding-left: 9px;
+  color: var(--washi);
+}
+
+/* a hairline between the moon and the system choice */
+.theme-system {
+  position: relative;
+}
+
+.theme-system::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 14px;
+  bottom: 14px;
+  width: 1px;
+  background: var(--lacquer-2);
+}
+
+/* following the system: struck, and underlined so colour is not the only cue */
+.theme-system[aria-pressed="true"] {
+  color: var(--cord-lit);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.4em;
+}
+
 .theme-toggle:hover,
-.theme-toggle:focus-visible {
+.theme-toggle:focus-visible,
+.theme-system:hover,
+.theme-system:focus-visible {
   color: var(--cord-lit);
 }
 
@@ -1969,6 +2010,17 @@ span.resume-close {
 
 /* tablets and phones: the registry becomes a rail of equal slats under the name, instead of loose links wrapping into a corner */
 @media (max-width: 1100px) {
+  .bar .theme-name,
+  .bar .theme-system {
+    display: none;
+  }
+
+  .bar .theme-toggle {
+    width: 44px;
+    justify-content: center;
+    padding: 0;
+  }
+
   .gate-lintel .registry {
     flex: 1 1 100%;
     border-block: 1px solid var(--lacquer-2);
@@ -2008,9 +2060,9 @@ span.resume-close {
     width: 72vw;
   }
 
-  .gate-lintel .theme-toggle {
+  .gate-lintel .theme {
     align-self: flex-start;
-    margin-left: -10px;
+    margin-left: -9px;
   }
 
   .gate-lintel .registry {

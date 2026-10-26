@@ -21,7 +21,7 @@ const ui = Zen_Kaku_Gothic_New({
   subsets: ["latin"],
 });
 
-const themeScript = `try{var t=localStorage.getItem("theme");if(t!=="light"&&t!=="dark")t=matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";document.documentElement.dataset.theme=t}catch(e){document.documentElement.dataset.theme="dark"}`;
+const themeScript = `try{var d=document.documentElement.dataset,t=localStorage.getItem("theme");d.themeSource=t==="light"||t==="dark"?"user":"system";if(d.themeSource==="system")t=matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";d.theme=t}catch(e){document.documentElement.dataset.theme="dark"}`;
 
 export const metadata: Metadata = {
   title: `${site.name}, ${site.role}`,
@@ -37,7 +37,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
     // the theme script sets data-theme before hydration, so React must not compare it
     <html lang="en" className={`${display.variable} ${verse.variable} ${ui.variable}`} suppressHydrationWarning>
       <head>
-        {/* pick the theme before first paint: the saved choice, else the system setting */}
+        {/* pick the theme before first paint: the saved choice, else follow the system setting */}
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
       </head>
       <body>{children}</body>
