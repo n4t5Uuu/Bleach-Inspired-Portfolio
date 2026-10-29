@@ -120,25 +120,43 @@ export const site = {
   ] satisfies Project[],
   experience: [
     {
-      id: "role-1",
-      title: "Role title",
-      org: "Company",
-      period: "Start – End",
-      summary: "One line on what you owned and the outcome.",
+      id: "aws-builders-ust",
+      title: "External Vice President / Chief Relations Officer",
+      org: "AWS Builders – UST",
+      period: "Jun 2026 – Present",
+      summary:
+        "Lead the Marketing, External Affairs and Sponsorships committees; secured 10 yearlong partners, including AWS-HERON and AWS-Adamson.",
     },
     {
-      id: "role-2",
-      title: "Role title",
-      org: "Company",
-      period: "Start – End",
-      summary: "One line on what you owned and the outcome.",
+      id: "ust-technovation",
+      title: "Executive Assistant to the Chief Relations Officer",
+      org: "UST Technovation Society",
+      period: "Nov 2025 – Present",
+      summary:
+        "Built the society's first sponsorship and partnership database, organizing 1,000+ company and contact records, and pitched to prospective sponsors.",
     },
     {
-      id: "role-3",
-      title: "Role title",
-      org: "Company or school",
-      period: "Start – End",
-      summary: "One line on what you owned and the outcome.",
+      id: "tomasinoweb",
+      title: "Frontend Developer",
+      org: "TomasinoWeb",
+      period: "Aug 2025 – Present",
+      summary:
+        "Built the homepage and loading screen of join.tomasinoweb.org from Figma designs in Next.js, React, TypeScript and SCSS, responsive and accessible (Lighthouse accessibility 87 mobile, 91 desktop).",
+    },
+    {
+      id: "wyvern-innovations",
+      title: "Business Development Intern",
+      org: "Wyvern Innovations",
+      period: "Jul 2025 – Sept 2025",
+      summary: "Ran QA test cases on customer applications nearing deployment, reporting defects ahead of the production deadline.",
+    },
+    {
+      id: "cics-student-council",
+      title: "Executive Associate to the External Vice President",
+      org: "CICS Student Council, UST",
+      period: "Sept 2024 – Jun 2026",
+      summary:
+        "Raised ₱35,000 from 2 major sponsors for the freshman orientation and secured 15 College Week booth sponsors, plus speakers and mentors from IBM and GCash.",
     },
   ] satisfies Role[],
 };
