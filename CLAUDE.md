@@ -163,6 +163,6 @@ After every session where the agent did something wrong:
 
 When the user corrects your approach, append a one-line rule here before ending the session. Write it concretely ("Always use X for Y"), never abstractly ("be careful with Y"). If an existing line already covers the correction, tighten it instead of adding a new one. Remove lines when the underlying issue goes away (model upgrades, refactors, process changes).
 
-(none yet)
+- Never link the repo's `node_modules` into a git worktree with a junction or symlink: `git worktree remove --force` on Windows follows it and deletes the real `node_modules`. Run lint and tsc for a worktree from the main checkout, or install the worktree its own dependencies.
 
 ---
