@@ -23,6 +23,12 @@ const ui = Zen_Kaku_Gothic_New({
 
 const themeScript = `try{var d=document.documentElement.dataset,t=localStorage.getItem("theme");d.themeSource=t==="light"||t==="dark"?"user":"system";if(d.themeSource==="system")t=matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";d.theme=t}catch(e){document.documentElement.dataset.theme="dark"}`;
 
+// A reload that the browser scrolls back past the gate is shown as passed from its first paint, before
+// the gate script loads; otherwise the closed doors and the rolled-up about scroll flash for a moment.
+// The browser restores the scroll without a timely scroll event, so it checks before each paint, and
+// stops once the gate script has taken over (it sets data-gate).
+const restoreScript = `(function(){var d=document.documentElement.dataset,n=0;function c(){var g=document.getElementById("gate");if(d.gate||n++>600)return;if(g&&scrollY>0&&scrollY>=g.offsetHeight-innerHeight&&!matchMedia("(prefers-reduced-motion: reduce)").matches){d.passed="true";d.beat="true";d.gate="open";d.restored="";return}requestAnimationFrame(c)}requestAnimationFrame(c)})()`;
+
 export const metadata: Metadata = {
   title: `${site.name}, ${site.role}`,
   description: `Projects, experience, and resume of ${site.name}, ${site.role.toLowerCase()}.`,
@@ -39,6 +45,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       <head>
         {/* pick the theme before first paint: the saved choice, else follow the system setting */}
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
+        <script dangerouslySetInnerHTML={{ __html: restoreScript }} />
       </head>
       <body>{children}</body>
     </html>

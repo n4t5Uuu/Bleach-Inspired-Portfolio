@@ -162,6 +162,7 @@ export function GateMotion() {
         if (window.scrollY <= 0 && gate.dataset.armed === "true") {
           locked = true;
           root.dataset.gate = "closed";
+          delete root.dataset.restored; // the next opening unrolls the about scroll as usual
         }
         return;
       }

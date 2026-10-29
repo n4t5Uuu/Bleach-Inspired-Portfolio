@@ -429,6 +429,15 @@ ol {
   visibility: hidden;
 }
 
+/* a reload restored past the gate (see restoreScript in layout.tsx): spent from the first paint */
+:root[data-restored] .gate {
+  background: none;
+}
+
+:root[data-restored] .gate-stage {
+  visibility: hidden;
+}
+
 /* the sky sits behind every section; the gate and the close cover it */
 .night {
   position: fixed;
@@ -2320,6 +2329,13 @@ a.resume-tag:hover {
     background-position: 0 -480px;
   }
 }
+
+  /* after a reload past the gate the scroll is already open: it does not roll up and unroll again */
+  :root[data-restored] .gate[data-armed="true"] + main .scroll-paper,
+  :root[data-restored] .gate[data-armed="true"] + main .scroll::after {
+    animation-duration: 0s;
+    animation-delay: 0s;
+  }
 
 .about-id h1 {
   font-family: var(--font-display-stack);
