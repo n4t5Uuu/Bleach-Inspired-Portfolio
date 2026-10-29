@@ -641,6 +641,14 @@ ol {
 }
 
 :root[data-theme="light"] .scroll-paper {
+  --paper: var(--washi);
+  --paper-ink: var(--lacquer);
+  --paper-soft: #55554f;
+  --paper-accent: var(--cord-deep);
+  --paper-line: var(--cobalt);
+  --paper-rule: rgb(10 34 96 / 0.18);
+  --paper-well: rgb(60 45 30 / 0.06);
+  --paper-edge: rgb(60 45 30 / 0.07);
   box-shadow:
     inset 2px 0 0 var(--navy),
     inset -2px 0 0 var(--navy);
@@ -2105,12 +2113,21 @@ a.resume-tag:hover {
 }
 
 .scroll-paper {
+  --paper: var(--door-paper);
+  --paper-ink: var(--washi);
+  --paper-soft: #a9adc8;
+  --paper-accent: var(--cord-lit);
+  --paper-line: #6f95ff;
+  --paper-rule: rgb(233 227 255 / 0.18);
+  --paper-frame: var(--lacquer);
+  --paper-well: rgb(0 0 20 / 0.3);
+  --paper-edge: rgb(2 4 20 / 0.35);
   padding: clamp(36px, 6vw, 80px);
-  background-color: var(--washi);
+  background-color: var(--paper);
   background-image:
     var(--grain-paper),
-    linear-gradient(90deg, rgb(60 45 30 / 0.07), transparent 7%, transparent 93%, rgb(60 45 30 / 0.07));
-  color: var(--lacquer);
+    linear-gradient(90deg, var(--paper-edge), transparent 7%, transparent 93%, var(--paper-edge));
+  color: var(--paper-ink);
 }
 
 @supports (animation-timeline: view()) {
@@ -2141,7 +2158,7 @@ a.resume-tag:hover {
 
 .about-role {
   margin-top: 12px;
-  color: var(--ink-soft);
+  color: var(--paper-soft);
   font-size: clamp(0.8125rem, 0.95vw, 0.9375rem);
   font-weight: 700;
   letter-spacing: 0.32em;
@@ -2164,12 +2181,15 @@ a.resume-tag:hover {
   margin-top: clamp(28px, 5vh, 48px);
 }
 
+/* a manga panel: a heavy frame with a thin blue rule set just outside it */
 .portrait {
   position: relative;
   margin: 0;
   aspect-ratio: 3 / 4;
   overflow: hidden;
-  border: 3px solid var(--lacquer);
+  border: 4px solid var(--paper-frame);
+  outline: 1px solid var(--paper-line);
+  outline-offset: 5px;
 }
 
 .portrait img {
@@ -2185,7 +2205,7 @@ a.resume-tag:hover {
   text-align: center;
   font-family: var(--font-display-stack);
   font-size: 1.25rem;
-  background: rgb(60 45 30 / 0.06);
+  background: var(--paper-well);
 }
 
 .about-lead {
@@ -2196,22 +2216,28 @@ a.resume-tag:hover {
   line-height: 1.4;
 }
 
-/* each fact is stamped like a seal impression */
+.about-body {
+  max-width: 52ch;
+  margin-top: 20px;
+  color: var(--paper-soft);
+  font-size: clamp(1.0625rem, 1.2vw, 1.1875rem);
+  line-height: 1.6;
+}
+
+/* the facts are a quiet ruled list; the one stamp below them is the section's only accent */
 .about-facts {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
-  gap: 18px;
+  max-width: 560px;
   margin-top: clamp(28px, 5vh, 44px);
+  border-top: 1px solid var(--paper-rule);
 }
 
 .about-facts > div {
-  padding: 14px 16px;
-  border: 2px solid var(--cord-deep);
-  rotate: -1deg;
-}
-
-.about-facts > div:nth-child(even) {
-  rotate: 1.2deg;
+  display: grid;
+  grid-template-columns: 9.5rem minmax(0, 1fr);
+  gap: 16px;
+  align-items: baseline;
+  padding-block: 12px;
+  border-bottom: 1px solid var(--paper-rule);
 }
 
 .about-facts dt {
@@ -2219,18 +2245,47 @@ a.resume-tag:hover {
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--cord-deep);
+  color: var(--paper-soft);
 }
 
 .about-facts dd {
-  margin-top: 4px;
+  font-size: 1.0625rem;
+  font-weight: 600;
+}
+
+/* what you are open to, stamped like a seal impression */
+.about-open {
+  display: inline-block;
+  max-width: 100%;
+  margin-top: clamp(24px, 4vh, 36px);
+  padding: 12px 18px 14px;
+  border: 2px solid var(--paper-accent);
+  box-shadow: inset 0 0 0 3px var(--paper), inset 0 0 0 4px var(--paper-accent);
+  rotate: -1.5deg;
   font-size: 1.125rem;
   font-weight: 700;
 }
 
+.about-open span {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--paper-accent);
+}
+
 .about .placeholder-note {
   margin-top: 24px;
-  color: var(--ink-soft);
+  color: var(--paper-soft);
+}
+
+/* a narrow phone stacks each fact's label over its value */
+@media (max-width: 420px) {
+  .about-facts > div {
+    grid-template-columns: 1fr;
+    gap: 2px;
+  }
 }
 
 /* ---------- the close: the gate seen from the far side ---------- */
