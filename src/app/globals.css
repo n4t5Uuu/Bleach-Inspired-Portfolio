@@ -2929,33 +2929,13 @@ span.resume-close {
     0.03em 0 rgb(28 79 180 / 0.45);
 }
 
-/* the picture: faint scan lines over everything (the page's grain already lies under it) and the
-   corner marks of a TV safe area around the screen. Fixed and still; under the bar, over the page */
+/* the picture: faint scan lines over everything (the page's grain already lies under it). Fixed and
+   still; under the bar, over the page */
 :root[data-theme="light"] body::after {
-  --mark: rgb(10 34 96 / 0.45);
-  --arm: 28px;
   content: "";
   position: fixed;
   inset: 0;
   z-index: 45;
   pointer-events: none;
-  background:
-    /* top-left, top-right, bottom-left, bottom-right corner marks (one bar across, one down, each) */
-    linear-gradient(var(--mark), var(--mark)) left 22px top 80px / var(--arm) 2px no-repeat,
-    linear-gradient(var(--mark), var(--mark)) left 22px top 80px / 2px var(--arm) no-repeat,
-    linear-gradient(var(--mark), var(--mark)) right 22px top 80px / var(--arm) 2px no-repeat,
-    linear-gradient(var(--mark), var(--mark)) right 22px top 80px / 2px var(--arm) no-repeat,
-    linear-gradient(var(--mark), var(--mark)) left 22px bottom 22px / var(--arm) 2px no-repeat,
-    linear-gradient(var(--mark), var(--mark)) left 22px bottom 22px / 2px var(--arm) no-repeat,
-    linear-gradient(var(--mark), var(--mark)) right 22px bottom 22px / var(--arm) 2px no-repeat,
-    linear-gradient(var(--mark), var(--mark)) right 22px bottom 22px / 2px var(--arm) no-repeat,
-    repeating-linear-gradient(transparent 0 2px, rgb(10 34 96 / 0.035) 2px 3px);
-}
-
-/* a phone has no room for the marks; the lines stay */
-@media (max-width: 760px) {
-  :root[data-theme="light"] body::after {
-    background:
-      repeating-linear-gradient(transparent 0 2px, rgb(10 34 96 / 0.035) 2px 3px);
-  }
+  background: repeating-linear-gradient(transparent 0 2px, rgb(10 34 96 / 0.035) 2px 3px);
 }
