@@ -50,7 +50,7 @@ export const site = {
   ],
   versePlaceholder: true,
   projectsPlaceholder: true,
-  aboutPlaceholder: true,
+  aboutPlaceholder: false,
   technologiesPlaceholder: true,
   // Group the tools you actually use; keep each group to a handful of names.
   technologies: [
@@ -66,14 +66,16 @@ export const site = {
   about: {
     // Set to an image path in /public once there is a portrait; null shows a marked placeholder frame.
     portrait: null as string | null,
-    lead: "A few sentences on who you are, what you build, and what you care about in the work.",
+    // Large type: keep it to about 25 words. The body sits under it in smaller text.
+    lead: "I build apps that solve real problems for people, and projects that are simply fun to make. Right now I'm going deeper into AI and data engineering.",
+    body: "I enjoy coding, building and studying for their own sake, and I put in the hours to keep sharpening my skills.",
     facts: [
-      { label: "Studying", value: "Computer Science, 4th year" },
-      { label: "School", value: "University of Santo Tomas" },
+      { label: "Studying", value: "4th Year Computer Science, University of Santo Tomas" },
       { label: "Specialization", value: "Data Science" },
-      { label: "Based in", value: "City, Country" },
-      { label: "Open to", value: "Full-time roles, select freelance" },
+      { label: "Based in", value: "Quezon City" },
     ],
+    // Stamped on its own under the facts: the line recruiters look for.
+    openTo: "Software, Full-Stack, AI and Data Engineering",
   },
   projects: [
     {
