@@ -3264,3 +3264,164 @@ span.resume-close {
 .getsuga[data-to="light"] .getsuga-trail {
   fill: rgb(147 181 255 / 0.3);
 }
+
+/* ---------- hover: links and buttons answer ---------- */
+
+/* Each answers in the page's own language (a cut, a strike, a seam, a rising red), the same for the
+   pointer and the keyboard. Colour changes always show; movement waits for a real pointer and for
+   motion being allowed. Exits are quicker than entrances. */
+
+/* the menu by night: a red stroke cuts in under the link, left to right (by day it lights its fire) */
+:root:not([data-theme="light"]) .registry a::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 8px;
+  height: 2px;
+  background: var(--cord-lit);
+  scale: 0 1;
+  transform-origin: left;
+  pointer-events: none;
+}
+
+:root:not([data-theme="light"]) .registry a:is(:hover, :focus-visible)::after {
+  scale: 1 1;
+}
+
+/* the name in the bar leads back to the gate: a red seam opens from its centre */
+.bar-name {
+  background: linear-gradient(var(--cord), var(--cord)) center bottom 8px / 0 2px no-repeat;
+}
+
+.bar-name:is(:hover, :focus-visible) {
+  background-size: 100% 2px;
+}
+
+/* the system choice: its underline draws in */
+.theme-system:not([aria-pressed="true"]) {
+  background: linear-gradient(currentColor, currentColor) left 10px bottom 9px / 0 2px no-repeat;
+}
+
+.theme-system:not([aria-pressed="true"]):is(:hover, :focus-visible) {
+  background-size: calc(100% - 20px) 2px;
+}
+
+/* the closing buttons: red rises from their red foot until it fills them, and the ink turns to paper */
+a.resume-close,
+a.close-contact {
+  background-image:
+    linear-gradient(var(--cord-deep), var(--cord-deep)),
+    var(--grain-paper);
+  background-size: 100% 0, auto;
+  background-position: bottom, 0 0;
+  background-repeat: no-repeat, repeat;
+}
+
+a.resume-close:is(:hover, :focus-visible),
+a.close-contact:is(:hover, :focus-visible) {
+  background-size: 100% 100%, auto;
+  color: var(--washi-hi);
+}
+
+a.resume-close:is(:hover, :focus-visible) small {
+  color: var(--washi-hi);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  :root:not([data-theme="light"]) .registry a::after {
+    transition: scale 0.18s ease-in;
+  }
+
+  :root:not([data-theme="light"]) .registry a:is(:hover, :focus-visible)::after {
+    transition: scale 0.28s var(--ease-out);
+  }
+
+  .bar-name,
+  .theme-system {
+    transition: background-size 0.18s ease-in, color 0.2s var(--ease-out);
+  }
+
+  .bar-name:is(:hover, :focus-visible),
+  .theme-system:is(:hover, :focus-visible) {
+    transition: background-size 0.3s var(--ease-out), color 0.2s var(--ease-out);
+  }
+
+  a.resume-close,
+  a.close-contact {
+    transition:
+      background-size 0.2s ease-in,
+      color 0.2s ease-in,
+      translate 0.2s var(--ease-out),
+      box-shadow 0.2s var(--ease-out);
+  }
+
+  a.resume-close:is(:hover, :focus-visible),
+  a.close-contact:is(:hover, :focus-visible) {
+    transition:
+      background-size 0.35s var(--ease-out),
+      color 0.25s var(--ease-out) 0.08s,
+      translate 0.3s var(--ease-out),
+      box-shadow 0.3s var(--ease-out);
+  }
+
+  .strike {
+    transition: translate 0.2s var(--ease-out), color 0.2s var(--ease-out), text-decoration-color 0.2s var(--ease-out);
+  }
+
+  .theme-toggle .moon {
+    transition: rotate 0.9s var(--ease-out), transform 0.3s var(--ease-out), filter 0.3s var(--ease-out);
+  }
+
+  .theme-toggle,
+  .theme-system {
+    transition: color 0.2s var(--ease-out);
+  }
+}
+
+/* movement, for a real pointer with motion allowed (the keyboard gets it too) */
+@media (prefers-reduced-motion: no-preference) {
+  /* the project links strike forward */
+  .strike:is(:focus-visible),
+  :is(.close-actions, .panel-links) a:focus-visible {
+    translate: 4px 0;
+  }
+
+  a.resume-close:focus-visible,
+  a.close-contact:focus-visible {
+    translate: 0 -2px;
+  }
+
+  .theme-toggle:focus-visible .moon {
+    transform: rotate(14deg);
+    filter: drop-shadow(0 0 6px rgb(255 106 77 / 0.55));
+  }
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .strike:hover {
+    translate: 4px 0;
+  }
+
+  a.resume-close:hover,
+  a.close-contact:hover {
+    translate: 0 -2px;
+    box-shadow: 0 20px 28px -12px rgb(0 0 0 / 0.85);
+  }
+
+  .theme-toggle:hover .moon {
+    transform: rotate(14deg);
+    filter: drop-shadow(0 0 6px rgb(255 106 77 / 0.55));
+  }
+
+  /* a press sinks the button back under the finger */
+  a.resume-close:active,
+  a.close-contact:active {
+    translate: 0 1px;
+    box-shadow: 0 8px 14px -10px rgb(0 0 0 / 0.8);
+    transition-duration: 0.08s;
+  }
+
+  .theme-toggle:active .moon {
+    transform: rotate(14deg) scale(0.86);
+    transition-duration: 0.08s;
+  }
+}
