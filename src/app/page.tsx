@@ -9,6 +9,7 @@ import { Tassel } from "@/components/Tassel";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { Night } from "@/components/Night";
 import { Timecode } from "@/components/Timecode";
+import { HellButterflies } from "@/components/HellButterflies";
 
 export default function Home() {
   return (
@@ -30,6 +31,7 @@ export default function Home() {
       <Night />
       <Timecode />
       <Companion />
+      <HellButterflies />
 
       <Gate />
 
