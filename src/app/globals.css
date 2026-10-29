@@ -1755,9 +1755,11 @@ a.resume-tag:hover {
       z-index: 2;
       top: 0;
       bottom: 0;
-      left: calc(var(--pad) + var(--dates) + var(--knot-col) / 2);
+      /* a band either side of the cord, wide enough to hold the loops: during a theme switch the
+         stream is drawn from this box (see "every butterfly through the slash"), so it needs a size */
+      left: calc(var(--pad) + var(--dates) + var(--knot-col) / 2 - 130px);
       display: block;
-      width: 0;
+      width: 260px;
       /* the stream emerges from the top of the thread instead of flying over the section above */
       overflow-y: clip;
       pointer-events: none;
@@ -1766,7 +1768,7 @@ a.resume-tag:hover {
     .fliers {
       position: absolute;
       top: 0;
-      left: 0;
+      left: 130px;
       animation: ride linear both;
       animation-timeline: --cord;
       animation-range: entry 35% cover 80%;
@@ -3131,6 +3133,58 @@ span.resume-close {
   }
   to {
     clip-path: var(--slash-clip-to);
+  }
+}
+
+/* every butterfly through the slash: the hell butterflies, the stream round the cord and the pointer's
+   companions are each their own group that follows the live element every frame (no group animation),
+   shown only from the new page, so they keep flying through the cut and their colour fades between the
+   themes instead of freezing in the old snapshot */
+.cord-fliers {
+  view-transition-name: cord-fliers;
+  view-transition-class: live;
+}
+
+.companion {
+  view-transition-class: live;
+}
+
+.companion-1 {
+  view-transition-name: companion-1;
+}
+
+.companion-2 {
+  view-transition-name: companion-2;
+}
+
+.companion-3 {
+  view-transition-name: companion-3;
+}
+
+::view-transition-group(*.live) {
+  animation: none;
+}
+
+::view-transition-old(*.live) {
+  display: none;
+}
+
+::view-transition-new(*.live) {
+  animation: none;
+}
+
+/* the companions ink by difference against what they cross; as their own groups they blend with the
+   page snapshot under them instead */
+::view-transition-group(companion-1),
+::view-transition-group(companion-2),
+::view-transition-group(companion-3) {
+  mix-blend-mode: difference;
+}
+
+/* the cord's butterflies change ink with the theme gradually, as the hell butterflies do */
+@media (prefers-reduced-motion: no-preference) {
+  .fly {
+    transition: fill 0.6s var(--ease-out);
   }
 }
 
