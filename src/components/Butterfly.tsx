@@ -1,9 +1,10 @@
-type Props = { className?: string };
+// fly: where it goes when the gate opens, as "dx,dy" in vw and vh (read by GateMotion)
+type Props = { className?: string; fly?: string };
 
 // Original ink butterfly, a nod to the guides that cross between worlds.
-export function Butterfly({ className }: Props) {
+export function Butterfly({ className, fly }: Props) {
   return (
-    <svg className={className} viewBox="0 0 48 36" aria-hidden="true" focusable="false">
+    <svg className={className} data-fly={fly} viewBox="0 0 48 36" aria-hidden="true" focusable="false">
       <g className="wing wing-l">
         <path d="M23 17C17 4 5-1 2 4c-3 6 6 13 21 13Z" />
         <path d="M23 19C13 19 5 25 7 31c2 5 11 1 16-12Z" />

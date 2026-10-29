@@ -1264,7 +1264,7 @@ a.resume-tag:hover {
   will-change: transform;
 }
 
-/* they rest on the right door, clear of the verse, the seal and the tag */
+/* they rest spread over both doors, clear of the verse, the seal, the tag and the pulls */
 .drift-a {
   top: 34%;
   left: 60%;
@@ -1274,6 +1274,29 @@ a.resume-tag:hover {
   top: 56%;
   left: 90%;
   width: clamp(22px, 2.2vw, 34px);
+}
+
+.drift-c {
+  top: 12%;
+  left: 9%;
+  width: clamp(34px, 3.4vw, 54px);
+}
+
+.drift-d {
+  top: 86%;
+  left: 36%;
+  width: clamp(24px, 2.4vw, 38px);
+}
+
+.drift-e {
+  top: 10%;
+  left: 66%;
+  width: clamp(26px, 2.6vw, 40px);
+}
+
+.drift-f {
+  top: 24%;
+  left: 30%;
 }
 
 .drift .body {
@@ -1294,9 +1317,16 @@ a.resume-tag:hover {
     transform-origin: left center;
   }
 
-  .drift-b .wing {
+  .drift-b .wing,
+  .drift-e .wing {
     animation-duration: 1.25s;
     animation-delay: -0.4s;
+  }
+
+  .drift-c .wing,
+  .drift-f .wing {
+    animation-duration: 1.9s;
+    animation-delay: -0.9s;
   }
 }
 
@@ -2656,7 +2686,9 @@ span.resume-close {
     left: 70%;
   }
 
-  .drift-b {
+  /* the tag takes the top of the right door, so its neighbours rest elsewhere */
+  .drift-b,
+  .drift-e {
     display: none;
   }
 
