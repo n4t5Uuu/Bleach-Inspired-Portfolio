@@ -51,13 +51,30 @@ export const site = {
   versePlaceholder: true,
   projectsPlaceholder: true,
   aboutPlaceholder: false,
-  technologiesPlaceholder: true,
-  // Group the tools you actually use; keep each group to a handful of names.
+  technologiesPlaceholder: false,
+  // One line under the heading, then the tools you actually use, grouped.
+  technologiesIntro: "The languages, frameworks and platforms I build with, across the front end, back end, cloud and AI.",
   technologies: [
-    { label: "Languages", items: ["Language one", "Language two", "Language three"] },
-    { label: "Frontend", items: ["Framework one", "Framework two", "Library three", "Tool four"] },
-    { label: "Backend and data", items: ["Runtime one", "Database two", "Service three"] },
-    { label: "Tooling", items: ["Tool one", "Tool two", "Platform three", "Tool four"] },
+    {
+      label: "Frontend",
+      items: ["JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS", "SCSS", "HTML", "CSS"],
+    },
+    {
+      label: "Backend",
+      items: ["Python", "Java", "SQL", "Hono", "FastAPI", "PostgreSQL", "MySQL", "Supabase", "Pocketbase", "Drizzle ORM"],
+    },
+    {
+      label: "DevOps and cloud",
+      items: ["AWS", "AWS Lambda", "S3", "Google Cloud", "Vercel", "Docker"],
+    },
+    {
+      label: "AI and machine learning",
+      items: ["PyTorch", "TensorFlow", "Hugging Face Transformers", "spaCy", "XGBoost", "scikit-learn", "Jupyter"],
+    },
+    {
+      label: "Developer tools",
+      items: ["Git", "Claude Code", "Figma", "DBeaver", "Excel", "Google Workspace"],
+    },
   ],
   // The PDF lives in /public; set to null to show "Coming soon" instead.
   resumeHref: "/Olmedo_Resume.pdf" as string | null,

@@ -114,6 +114,7 @@ export default function Home() {
 
           <section id="stack" className="stack" aria-labelledby="stack-title">
             <h2 id="stack-title">Technologies</h2>
+            <p className="stack-intro">{site.technologiesIntro}</p>
             <div className="stack-groups">
               {site.technologies.map((g) => (
                 <div key={g.label} className="stack-group">
