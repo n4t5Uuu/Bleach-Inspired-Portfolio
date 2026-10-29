@@ -24,7 +24,7 @@ export type Role = {
 };
 
 export const site = {
-  name: "Alden Alexander Olmedo",
+  name: "Alden Olmedo",
   // Two letters for the seal on the gate.
   initials: "AO",
   role: "Software Developer",
