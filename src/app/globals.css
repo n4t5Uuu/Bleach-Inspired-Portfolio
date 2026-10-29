@@ -1994,6 +1994,13 @@ a.resume-tag:hover {
 }
 
 /* technologies: names on paper strips hung from a rail off the cord */
+.stack-intro {
+  grid-column: -2;
+  max-width: var(--measure);
+  margin: calc(-1 * clamp(16px, 3vh, 32px)) 0 clamp(40px, 7vh, 72px);
+  color: var(--mist);
+}
+
 .stack-groups {
   grid-column: 1 / -1;
   display: grid;
