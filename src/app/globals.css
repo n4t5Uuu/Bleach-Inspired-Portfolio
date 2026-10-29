@@ -46,6 +46,8 @@
   --post: clamp(10px, 3.4vw, 56px);
   --measure: 62ch;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  /* a weight let go: slow to start, settling softly */
+  --ease-roll: cubic-bezier(0.45, 0, 0.2, 1);
   /* tiling noise: paper fibre and wood grain, no image files */
   --grain-paper: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27220%27 height=%27220%27%3E%3Cfilter id=%27n%27%3E%3CfeTurbulence type=%27fractalNoise%27 baseFrequency=%270.85%27 numOctaves=%272%27 stitchTiles=%27stitch%27/%3E%3CfeColorMatrix values=%270 0 0 0 .22 0 0 0 0 .18 0 0 0 0 .14 0 0 0 .3 0%27/%3E%3C/filter%3E%3Crect width=%27100%25%27 height=%27100%25%27 filter=%27url(%23n)%27/%3E%3C/svg%3E");
   --grain-wood: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27400%27 height=%27240%27%3E%3Cfilter id=%27w%27%3E%3CfeTurbulence type=%27fractalNoise%27 baseFrequency=%270.012 0.55%27 numOctaves=%273%27 stitchTiles=%27stitch%27/%3E%3CfeColorMatrix values=%270 0 0 0 .55 0 0 0 0 .4 0 0 0 0 .28 0 0 0 .9 -.12%27/%3E%3C/filter%3E%3Crect width=%27100%25%27 height=%27100%25%27 filter=%27url(%23w)%27/%3E%3C/svg%3E");
@@ -2095,8 +2097,11 @@ a.resume-tag:hover {
 }
 
 .scroll {
+  position: relative;
   max-width: 1100px;
   margin-inline: auto;
+  /* room for the bottom roller, which hangs at the foot of the paper */
+  padding-bottom: 26px;
 }
 
 /* the two rollers the paper hangs between */
@@ -2112,6 +2117,16 @@ a.resume-tag:hover {
   box-shadow: 0 8px 18px -6px rgb(0 0 0 / 0.8);
 }
 
+.scroll::after {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
+/* by night the scroll is the gate's moonlit indigo paper, so it belongs to the dark page instead of
+   standing out as a bright slab; by day it is cream (see the light block). Its inks are local tokens. */
 .scroll-paper {
   --paper: var(--door-paper);
   --paper-ink: var(--washi);
@@ -2130,22 +2145,45 @@ a.resume-tag:hover {
   color: var(--paper-ink);
 }
 
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    .scroll {
-      animation: unroll linear both;
-      animation-timeline: view();
-      animation-range: entry 5% cover 40%;
-    }
+/* The scroll unrolls once the gate is passed: it waits rolled up, both rollers together, then the
+   bottom roller drops and the paper is revealed behind it, the grain turning as it rolls. The paper
+   keeps its full height throughout, so nothing below moves. Without JS or with reduced motion the
+   gate is never armed and the scroll simply hangs open. */
+@media (prefers-reduced-motion: no-preference) {
+  .gate[data-armed="true"] + main .scroll-paper {
+    clip-path: inset(0 0 100% 0);
+  }
+
+  .gate[data-armed="true"] + main .scroll::after {
+    bottom: calc(100% - 52px);
+  }
+
+  :root[data-passed="true"] .gate[data-armed="true"] + main .scroll-paper {
+    animation: unroll-paper 1.7s var(--ease-roll) 0.15s both;
+  }
+
+  :root[data-passed="true"] .gate[data-armed="true"] + main .scroll::after {
+    animation: unroll-roller 1.7s var(--ease-roll) 0.15s both;
   }
 }
 
-@keyframes unroll {
+@keyframes unroll-paper {
   from {
     clip-path: inset(0 0 100% 0);
   }
   to {
     clip-path: inset(0);
+  }
+}
+
+@keyframes unroll-roller {
+  from {
+    bottom: calc(100% - 52px);
+    background-position: 0 0;
+  }
+  to {
+    bottom: 0;
+    background-position: 0 -480px;
   }
 }
 
