@@ -342,10 +342,10 @@ ol {
   content: "";
   position: absolute;
   left: 0;
-  top: 14px;
-  bottom: 14px;
+  top: 12px;
+  bottom: 12px;
   width: 1px;
-  background: var(--lacquer-2);
+  background: var(--mist);
 }
 
 /* following the system: struck, and underlined so colour is not the only cue */
@@ -1169,7 +1169,8 @@ a.resume-tag:hover {
   position: relative;
   flex: 1 1 calc(33.333% - 28px);
   min-width: 150px;
-  max-width: 340px;
+  /* on short viewports (high zoom, landscape) a whole book and its title still fit on screen */
+  max-width: min(340px, max(200px, calc((100svh - 300px) * 0.75)));
   padding: 0;
   display: flex;
   flex-direction: column;
@@ -2458,5 +2459,65 @@ span.resume-close {
   .path h2,
   .stack h2 {
     font-size: 1.875rem;
+  }
+}
+
+/* short viewports (high zoom, landscape phones): the gate header folds into one row, the moon
+   beside the four tabs, so the doors keep the height (narrower than 420px the 2 x 2 tabs stay) */
+@media (max-height: 520px) and (min-width: 420px) {
+  .gate-lintel {
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .gate-lintel .theme {
+    flex: none;
+    align-self: auto;
+    margin-left: -9px;
+  }
+
+  .gate-lintel .theme-name,
+  .gate-lintel .theme-system,
+  .gate-lintel .registry .resume small {
+    display: none;
+  }
+
+  .gate-lintel .theme-toggle {
+    width: 44px;
+    justify-content: center;
+    padding: 0;
+  }
+
+  .gate-lintel .registry {
+    flex: 1 1 auto;
+    min-width: 0;
+    border-block: 0;
+  }
+
+  .gate-lintel .registry ol {
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .gate-lintel .registry li:nth-child(n) {
+    border-top: 0;
+    border-left: 1px solid var(--lacquer-2);
+  }
+
+  /* the verse and the seal size to the door's height, not the screen's width */
+  .gate-verse span {
+    font-size: clamp(0.875rem, 7vh, 1.75rem);
+  }
+
+  .seal {
+    width: 22vh;
+  }
+}
+
+/* at the very shortest (a laptop at 250% zoom and up) the door has room for the verse and the tag only */
+@media (max-height: 360px) {
+  .seal {
+    display: none;
   }
 }
