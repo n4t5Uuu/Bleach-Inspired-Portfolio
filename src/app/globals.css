@@ -48,6 +48,8 @@
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   /* a weight let go: slow to start, settling softly */
   --ease-roll: cubic-bezier(0.45, 0, 0.2, 1);
+  /* a swing: at full speed from the first frame, easing off as it finishes the cut */
+  --ease-slash: cubic-bezier(0.2, 0.7, 0.3, 1);
   /* tiling noise: paper fibre and wood grain, no image files */
   --grain-paper: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27220%27 height=%27220%27%3E%3Cfilter id=%27n%27%3E%3CfeTurbulence type=%27fractalNoise%27 baseFrequency=%270.85%27 numOctaves=%272%27 stitchTiles=%27stitch%27/%3E%3CfeColorMatrix values=%270 0 0 0 .22 0 0 0 0 .18 0 0 0 0 .14 0 0 0 .3 0%27/%3E%3C/filter%3E%3Crect width=%27100%25%27 height=%27100%25%27 filter=%27url(%23n)%27/%3E%3C/svg%3E");
   --grain-wood: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27400%27 height=%27240%27%3E%3Cfilter id=%27w%27%3E%3CfeTurbulence type=%27fractalNoise%27 baseFrequency=%270.012 0.55%27 numOctaves=%273%27 stitchTiles=%27stitch%27/%3E%3CfeColorMatrix values=%270 0 0 0 .55 0 0 0 0 .4 0 0 0 0 .28 0 0 0 .9 -.12%27/%3E%3C/filter%3E%3Crect width=%27100%25%27 height=%27100%25%27 filter=%27url(%23w)%27/%3E%3C/svg%3E");
@@ -404,9 +406,10 @@ ol {
   fill: rgb(0 0 0 / 0.35);
 }
 
+/* an even slide, so the shade is seen to cross the disc and leave it, not snap most of the way */
 .moon-shade {
   transform: translate(-24px, -12px);
-  transition: transform 0.9s var(--ease-out);
+  transition: transform 0.85s var(--ease-roll);
 }
 
 :root[data-theme="light"] .moon-shade {
@@ -3107,4 +3110,103 @@ span.resume-close {
   .hell .wing-r {
     transform-origin: left center;
   }
+}
+
+/* ---------- the slash: switching theme by hand (see ThemeToggle) ---------- */
+
+/* the old page holds still; the new one is revealed behind the blade, along the curve of its edge */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+::view-transition-new(root) {
+  animation: slash-reveal 0.6s var(--ease-slash) both;
+}
+
+@keyframes slash-reveal {
+  from {
+    clip-path: var(--slash-clip-from);
+  }
+  to {
+    clip-path: var(--slash-clip-to);
+  }
+}
+
+/* the blade rides the cut, its middle on the line; it exists only in the new state, as its own group */
+.getsuga {
+  position: fixed;
+  top: -7.5vh;
+  left: 0;
+  z-index: 200;
+  transform: translateX(120vw);
+  pointer-events: none;
+  view-transition-name: getsuga;
+}
+
+.getsuga svg {
+  display: block;
+  overflow: visible;
+}
+
+::view-transition-group(getsuga) {
+  animation: slash-blade 0.6s var(--ease-slash) both;
+}
+
+::view-transition-new(getsuga) {
+  animation: none;
+}
+
+@keyframes slash-blade {
+  from {
+    transform: translate(var(--slash-from), -7.5vh);
+  }
+  to {
+    transform: translate(var(--slash-to), -7.5vh);
+  }
+}
+
+/* The glow is two wide, faint strokes behind the blade rather than a blur: a blur over a blade the
+   height of the screen has to be rasterised before the cut can start, and stalled its first frame. */
+.getsuga-glow {
+  fill: none;
+  stroke-width: 18;
+  stroke-linejoin: round;
+  stroke-opacity: 0.45;
+}
+
+.getsuga-glow-wide {
+  stroke-width: 46;
+  stroke-opacity: 0.18;
+}
+
+/* into the dark: a black blade edged in red energy */
+.getsuga[data-to="dark"] .getsuga-blade {
+  fill: #0b0b0c;
+  stroke: #ff3b2f;
+  stroke-width: 4;
+}
+
+.getsuga[data-to="dark"] .getsuga-glow {
+  stroke: #ff3b2f;
+}
+
+.getsuga[data-to="dark"] .getsuga-trail {
+  fill: rgb(210 30 20 / 0.28);
+}
+
+/* into the light: reishi, white with a cold blue edge */
+.getsuga[data-to="light"] .getsuga-blade {
+  fill: #f2f6ff;
+  stroke: #93b5ff;
+  stroke-width: 4;
+}
+
+.getsuga[data-to="light"] .getsuga-glow {
+  stroke: #93b5ff;
+}
+
+.getsuga[data-to="light"] .getsuga-trail {
+  fill: rgb(147 181 255 / 0.3);
 }
