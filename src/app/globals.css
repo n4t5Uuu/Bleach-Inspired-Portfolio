@@ -1733,10 +1733,12 @@ a.resume-tag:hover {
 
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
+    /* exactly the thread's height of scroll, starting as its top reaches 65% down the screen: the tip
+       moves with the page and stays 65% down, however long the thread is */
     .thread::before {
       animation: cord-draw linear both;
-      animation-timeline: view();
-      animation-range: entry 35% cover 80%;
+      animation-timeline: --cord;
+      animation-range: cover 35vh cover calc(100% - 65vh);
     }
 
     .path-knot {
@@ -1747,8 +1749,9 @@ a.resume-tag:hover {
   }
 }
 
-/* the butterflies ride the cord: the same scroll timeline and range that draws the line.
-   The range is about as long as the thread, so the tip keeps pace with the scroll and stays in view. */
+/* the butterflies ride the cord: the same named timeline, range and kind of motion (a transform) that
+   draws the line, so the browser moves the lead and the tip together and it stays on the tip, in
+   view, all the way down. */
 .cord-fliers {
   display: none;
 }
@@ -1774,13 +1777,15 @@ a.resume-tag:hover {
       pointer-events: none;
     }
 
+    /* as tall as the thread, so translating it by its own height carries the lead from top to foot */
     .fliers {
       position: absolute;
       top: 0;
       left: 130px;
+      height: 100%;
       animation: ride linear both;
       animation-timeline: --cord;
-      animation-range: entry 35% cover 80%;
+      animation-range: cover 35vh cover calc(100% - 65vh);
     }
 
     /* the lead sits on the tip, hovering a little */
@@ -1841,7 +1846,7 @@ a.resume-tag:hover {
 
 @keyframes ride {
   0% {
-    top: 0%;
+    transform: translateY(0);
     opacity: 0;
   }
   5% {
@@ -1851,7 +1856,7 @@ a.resume-tag:hover {
     opacity: 1;
   }
   100% {
-    top: 100%;
+    transform: translateY(100%);
     opacity: 0;
   }
 }
@@ -2324,11 +2329,6 @@ a.resume-tag:hover {
     bottom: calc(100% - 52px);
     background-position: 0 0;
   }
-  to {
-    bottom: 0;
-    background-position: 0 -480px;
-  }
-}
 
   /* after a reload past the gate the scroll is already open: it does not roll up and unroll again */
   :root[data-restored] .gate[data-armed="true"] + main .scroll-paper,
@@ -2336,6 +2336,11 @@ a.resume-tag:hover {
     animation-duration: 0s;
     animation-delay: 0s;
   }
+  to {
+    bottom: 0;
+    background-position: 0 -480px;
+  }
+}
 
 .about-id h1 {
   font-family: var(--font-display-stack);
