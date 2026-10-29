@@ -2154,12 +2154,28 @@ a.resume-tag:hover {
   padding-left: calc(var(--dates) + var(--knot-col));
 }
 
-/* contributions: a year of days beside the cord, one column a week, inked by how much was committed */
+/* contributions: after the thread, a year of days in a column of its own in the middle of the page, one
+   column a week, inked by how much was committed */
+.commits {
+  scroll-margin-top: 72px;
+  padding: 0 var(--gutter) clamp(96px, 16vh, 180px);
+}
+
+.commits > * {
+  max-width: 960px;
+  margin-inline: auto;
+}
+
+.commits-intro {
+  margin-top: clamp(16px, 3vh, 28px);
+  color: var(--mist);
+}
+
 .commits-body {
-  grid-column: -2;
   display: grid;
   gap: 20px;
   justify-items: start;
+  margin-top: clamp(32px, 6vh, 56px);
 }
 
 .commits-total {
@@ -2313,6 +2329,13 @@ a.resume-tag:hover {
   :root[data-passed="true"] .gate[data-armed="true"] + main .scroll::after {
     animation: unroll-roller 1.7s var(--ease-roll) 0.15s both;
   }
+
+  /* after a reload past the gate the scroll is already open: it does not roll up and unroll again */
+  :root[data-restored] .gate[data-armed="true"] + main .scroll-paper,
+  :root[data-restored] .gate[data-armed="true"] + main .scroll::after {
+    animation-duration: 0s;
+    animation-delay: 0s;
+  }
 }
 
 @keyframes unroll-paper {
@@ -2328,13 +2351,6 @@ a.resume-tag:hover {
   from {
     bottom: calc(100% - 52px);
     background-position: 0 0;
-  }
-
-  /* after a reload past the gate the scroll is already open: it does not roll up and unroll again */
-  :root[data-restored] .gate[data-armed="true"] + main .scroll-paper,
-  :root[data-restored] .gate[data-armed="true"] + main .scroll::after {
-    animation-duration: 0s;
-    animation-delay: 0s;
   }
   to {
     bottom: 0;
@@ -3192,6 +3208,11 @@ span.resume-close {
   filter: drop-shadow(0 0 2px rgb(255 80 60 / 0.9)) drop-shadow(0 0 8px rgb(210 40 20 / 0.5));
 }
 
+/* by day a paper-white edge: lost on the white page, it outlines the ink over the dark close */
+:root[data-theme="light"] .hell {
+  filter: drop-shadow(0 0 1px var(--washi-hi)) drop-shadow(0 0 1px var(--washi-hi)) drop-shadow(0 0 5px rgb(251 251 248 / 0.45));
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .hell {
     transition: fill 0.6s var(--ease-out), filter 0.6s var(--ease-out);
@@ -3208,11 +3229,6 @@ span.resume-close {
 
   .hell-3 .wing {
     animation-duration: 0.31s;
-/* by day a paper-white edge: lost on the white page, it outlines the ink over the dark close */
-:root[data-theme="light"] .hell {
-  filter: drop-shadow(0 0 1px var(--washi-hi)) drop-shadow(0 0 1px var(--washi-hi)) drop-shadow(0 0 5px rgb(251 251 248 / 0.45));
-}
-
     animation-delay: -0.1s;
   }
 

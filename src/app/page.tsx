@@ -134,9 +134,9 @@ export default function Home() {
               )}
             </div>
           </section>
-
-          <Contributions />
         </div>
+
+        <Contributions />
       </main>
 
       <footer id="close" className="close">
