@@ -436,6 +436,51 @@ ol {
   fill: rgb(233 227 255 / 0.075);
 }
 
+/* by night the page's screentone is a faint reishi blue down each edge, its dots shrinking to nothing
+   before the content (the same tone as by day, see --tone-cold-*) */
+:root:not([data-theme="light"]) .night {
+  background:
+    var(--tone-cold-l) left top / 420px auto repeat-y,
+    var(--tone-cold-r) right top / 420px auto repeat-y;
+}
+
+/* a phone has no margin for it */
+@media (max-width: 760px) {
+  :root:not([data-theme="light"]) .night {
+    background: none;
+  }
+}
+
+/* the blood war by night: cold reishi light in the upper corners, a dim blood haze rising from the
+   lower ones, both kept to the margins so the content column stays plain black */
+:root:not([data-theme="light"]) .night::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(60% 45% at 0% 0%, rgb(120 160 255 / 0.07), transparent 70%),
+    radial-gradient(60% 45% at 100% 0%, rgb(120 160 255 / 0.07), transparent 70%),
+    radial-gradient(70% 40% at 0% 100%, rgb(150 14 20 / 0.16), transparent 70%),
+    radial-gradient(70% 40% at 100% 100%, rgb(150 14 20 / 0.16), transparent 70%);
+  mask-image: linear-gradient(90deg, #000, transparent 32%, transparent 68%, #000);
+}
+
+/* a fine film grain over the whole sky, the inked, cinematic texture of the arc */
+:root:not([data-theme="light"]) .night::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--grain-paper);
+  opacity: 0.35;
+  mix-blend-mode: screen;
+}
+
+/* half the motes are Quincy reishi: cold blue, gathered upwards */
+:root:not([data-theme="light"]) .mote:nth-of-type(even) {
+  background: #b9d0ff;
+  box-shadow: 0 0 8px 1px rgb(120 160 255 / 0.55);
+}
+
 .mote {
   position: absolute;
   bottom: -12px;
