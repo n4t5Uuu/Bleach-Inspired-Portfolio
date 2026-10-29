@@ -41,7 +41,8 @@ export function Companion() {
       const b = SWARM[i];
       if (perch) {
         const [x, y] = b.perch(perch.getBoundingClientRect());
-        return [x, y];
+        // a link at the very top of the screen (the bar's) leaves no room above it: rest on the edge
+        return [x, Math.max(y, 2)];
       }
       return [px + ANCHOR.x + b.dx, py + ANCHOR.y + b.dy];
     };
