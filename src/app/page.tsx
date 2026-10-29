@@ -80,7 +80,7 @@ export default function Home() {
 
         <section id="work" className="dangai" aria-labelledby="work-title">
           <h2 id="work-title" className="dangai-title">
-            Projects
+            <span className="card">Projects</span>
           </h2>
           <Shelf projects={site.projects} placeholder={site.projectsPlaceholder} />
         </section>
@@ -90,7 +90,9 @@ export default function Home() {
           <CordFliers />
 
           <section id="path" className="path" aria-labelledby="path-title">
-            <h2 id="path-title">Experience</h2>
+            <h2 id="path-title">
+              <span className="card">Experience</span>
+            </h2>
             <ol className="path-cord">
               {site.experience.map((r) => (
                 <li key={r.id}>
@@ -109,7 +111,9 @@ export default function Home() {
           </section>
 
           <section id="stack" className="stack" aria-labelledby="stack-title">
-            <h2 id="stack-title">Technologies</h2>
+            <h2 id="stack-title">
+              <span className="card">Technologies</span>
+            </h2>
             <div className="stack-groups">
               {site.technologies.map((g) => (
                 <div key={g.label} className="stack-group">
