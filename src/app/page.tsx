@@ -10,6 +10,7 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 import { Night } from "@/components/Night";
 import { Timecode } from "@/components/Timecode";
 import { HellButterflies } from "@/components/HellButterflies";
+import { Contributions } from "@/components/Contributions";
 
 export default function Home() {
   return (
@@ -133,6 +134,8 @@ export default function Home() {
               )}
             </div>
           </section>
+
+          <Contributions />
         </div>
       </main>
 

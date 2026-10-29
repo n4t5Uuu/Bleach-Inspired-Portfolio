@@ -78,6 +78,8 @@ export const site = {
   ],
   // The PDF lives in /public; set to null to show "Coming soon" instead.
   resumeHref: "/Olmedo_Resume.pdf" as string | null,
+  // GitHub username for the contributions graph (also needs GITHUB_TOKEN set, see Contributions.tsx).
+  github: "n4t5Uuu",
   // Set once a contact method is decided, e.g. "mailto:you@example.com".
   contactHref: null as string | null,
   about: {

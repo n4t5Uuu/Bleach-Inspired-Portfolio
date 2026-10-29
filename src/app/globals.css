@@ -2140,6 +2140,89 @@ a.resume-tag:hover {
   padding-left: calc(var(--dates) + var(--knot-col));
 }
 
+/* contributions: a year of days beside the cord, one column a week, inked by how much was committed */
+.commits-body {
+  grid-column: -2;
+  display: grid;
+  gap: 20px;
+  justify-items: start;
+}
+
+.commits-total {
+  color: var(--mist);
+}
+
+.commits-total strong {
+  margin-right: 0.25em;
+  font-family: var(--font-display-stack);
+  font-weight: 400;
+  font-size: clamp(1.5rem, 2.6vw, 2.25rem);
+  color: var(--cord);
+}
+
+/* on a narrow screen the oldest weeks fall off the left edge; the latest stay */
+.commits-grid {
+  display: flex;
+  justify-content: flex-end;
+  gap: 3px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.commits-week {
+  flex: 1 0 9px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+/* the first week starts partway through, so its days sit at the bottom, on their weekdays */
+.commits-week:first-child {
+  justify-content: flex-end;
+}
+
+.commits-week span {
+  aspect-ratio: 1;
+  background: color-mix(in srgb, var(--mist) 14%, transparent);
+}
+
+.commits-week [data-level="1"] {
+  background: color-mix(in srgb, var(--cord) 35%, transparent);
+}
+
+.commits-week [data-level="2"] {
+  background: color-mix(in srgb, var(--cord) 60%, transparent);
+}
+
+.commits-week [data-level="3"] {
+  background: color-mix(in srgb, var(--cord) 82%, transparent);
+}
+
+.commits-week [data-level="4"] {
+  background: var(--cord);
+}
+
+.commits-link {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--mist-hi);
+  text-decoration: underline 1px;
+  text-underline-offset: 5px;
+  text-decoration-color: color-mix(in srgb, currentColor 40%, transparent);
+}
+
+.commits-link:is(:hover, :focus-visible) {
+  color: var(--cord);
+  text-decoration-color: currentColor;
+  text-decoration-thickness: 2px;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .commits-link {
+    transition: color 0.2s var(--ease-out), text-decoration-color 0.2s var(--ease-out);
+  }
+}
+
 /* ---------- about: an unrolled scroll ---------- */
 
 .about {
