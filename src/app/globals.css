@@ -630,18 +630,29 @@ ol {
   inset: 0;
   display: grid;
   place-items: center;
-  background:
-    radial-gradient(
-      ellipse 30% 62% at 50% 52%,
-      rgb(251 251 248 / calc(0.95 * var(--flood, 0))),
-      rgb(233 227 255 / calc(0.4 * var(--flood, 0))) 40%,
-      transparent 78%
-    ),
-    var(--void);
+  background: var(--void);
+}
+
+/* the light flooding in behind the doors: drawn once at full strength and faded by opacity, so
+   the opening does not repaint a full-screen gradient on every frame */
+.gate-dangai::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse 30% 62% at 50% 52%,
+    rgb(251 251 248 / 0.95),
+    rgb(233 227 255 / 0.4) 40%,
+    transparent 78%
+  );
+  opacity: var(--flood, 0);
+  will-change: opacity;
 }
 
 /* the first volume, left standing in the dark the light has not reached */
 .gate-dangai-n {
+  position: relative;
+  will-change: transform, opacity;
   font-family: var(--font-display-stack);
   font-size: clamp(9rem, 26vw, 24rem);
   line-height: 0.8;
@@ -728,19 +739,29 @@ ol {
 /* the shadow each door casts on the light behind it comes on once as the doors start to part (a
    short fade), rather than tracking the doors: tracking it repainted both doors on every frame */
 .gate-door-l {
-  transform: translateX(calc(var(--door, 0) * -104%));
   box-shadow:
-    inset 0 0 70px rgb(60 45 30 / 0.14),
-    18px 0 40px -18px rgb(0 0 0 / calc(0.7 * var(--door, 0)));
+    inset 0 0 70px var(--door-age),
+    18px 0 40px -18px rgb(0 0 0 / 0);
+}
+
+.gate[data-parting="true"] .gate-door-l {
+  box-shadow:
+    inset 0 0 70px var(--door-age),
+    18px 0 40px -18px rgb(0 0 0 / 0.7);
 }
 
 .gate-door-r {
   justify-content: center;
   align-items: flex-end;
-  transform: translateX(calc(var(--door, 0) * 104%));
   box-shadow:
-    inset 0 0 70px rgb(60 45 30 / 0.14),
-    -18px 0 40px -18px rgb(0 0 0 / calc(0.7 * var(--door, 0)));
+    inset 0 0 70px var(--door-age),
+    -18px 0 40px -18px rgb(0 0 0 / 0);
+}
+
+.gate[data-parting="true"] .gate-door-r {
+  box-shadow:
+    inset 0 0 70px var(--door-age),
+    -18px 0 40px -18px rgb(0 0 0 / 0.7);
 }
 
 /* the verse reads left to right, one line under another, stepping in like a poem */
@@ -923,8 +944,8 @@ a.resume-tag:hover {
   width: 6px;
   background: var(--seam);
   box-shadow: 0 0 70px 22px rgb(233 227 255 / 0.55);
-  transform: translateX(-50%) scaleX(calc(1 + var(--flood, 0) * 3));
-  opacity: calc(1 - var(--door, 0) * 0.85);
+  transform: translateX(-50%);
+  will-change: transform, opacity;
 }
 
 .gate-cord {
@@ -936,11 +957,11 @@ a.resume-tag:hover {
   flex-direction: column;
   align-items: center;
   /* pulled: the cord rides up out of the frame as the doors part */
-  transform: translate(-50%, calc(var(--door, 0) * -70%));
+  transform: translateX(-50%);
   padding-inline: 18px;
   color: var(--washi);
   text-decoration: none;
-  opacity: calc(1 - var(--pull, 0));
+  will-change: transform, opacity;
 }
 
 .gate-cord-line {
@@ -1010,7 +1031,8 @@ a.resume-tag:hover {
   inset: 0;
   z-index: 6;
   background: var(--ground);
-  opacity: var(--black, 0);
+  opacity: 0;
+  will-change: opacity;
   pointer-events: none;
 }
 
@@ -1019,8 +1041,8 @@ a.resume-tag:hover {
   position: absolute;
   z-index: 3;
   width: clamp(30px, 3vw, 48px);
-  fill: var(--lacquer);
-  transform: translate(calc(var(--flood, 0) * -60px), calc(var(--flood, 0) * -40vh));
+  fill: var(--drift);
+  will-change: transform;
 }
 
 /* they rest on the right door, clear of the verse, the seal and the tag */
@@ -1061,6 +1083,12 @@ a.resume-tag:hover {
 
 /* the wing loop stops once the gate is behind the visitor */
 :root[data-passed="true"] .drift .wing {
+  animation-play-state: paused;
+}
+
+/* and the cord's butterflies, far below, hold still until it is: their wings are SVG, which
+   animates on the main thread, and they were costing the opening a restyle on every frame */
+:root[data-passed="false"] :is(.fly, .fly svg, .fly .wing) {
   animation-play-state: paused;
 }
 

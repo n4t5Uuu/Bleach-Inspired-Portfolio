@@ -16,32 +16,64 @@ export function GateMotion() {
     const gate = document.getElementById("gate");
     if (!gate) return;
     const root = document.documentElement;
+    const main = gate.nextElementSibling as HTMLElement | null;
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)");
     let frame = 0;
+
+    // Each moving piece gets its own transform and opacity. A custom property on the gate would
+    // be inherited, so every element inside it would be restyled on every frame of the opening.
+    const style = (selector: string) => gate.querySelector<HTMLElement>(selector)!.style;
+    const doorL = style(".gate-door-l");
+    const doorR = style(".gate-door-r");
+    const seam = style(".gate-seam");
+    const cord = style(".gate-cord");
+    const stage = style(".gate-dangai"); // its glow is a pseudo-element, so it reads --flood
+    const black = style(".gate-black");
+    const drifts = [...gate.querySelectorAll<HTMLElement>(".drift")].map((el) => el.style);
+    const moving = [doorL, doorR, seam, cord, black, ...drifts];
+
+    // a flag on an element is only written when it changes, so an unchanged frame invalidates nothing
+    const flag = (el: HTMLElement, key: string, on: boolean) => {
+      if (el.dataset[key] !== String(on)) el.dataset[key] = String(on);
+    };
+
+    // the gate's look at progress p through the passage: writes only, no layout reads
+    const apply = (p: number) => {
+      // Doors part slowly over most of the passage, then a short black hold (p .7 to .8) before the
+      // head; the work section gets --head to fade its head in with the black beat.
+      const pull = span(p, 0, 0.12);
+      const door = weighted(span(p, 0.03, 0.55));
+      const flood = span(p, 0.1, 0.58);
+      const head = span(p, 0.8, 0.9);
+      doorL.transform = `translateX(${(-104 * door).toFixed(3)}%)`;
+      doorR.transform = `translateX(${(104 * door).toFixed(3)}%)`;
+      seam.transform = `translateX(-50%) scaleX(${(1 + flood * 3).toFixed(4)})`;
+      seam.opacity = (1 - door * 0.85).toFixed(4);
+      cord.transform = `translate(-50%, ${(-70 * door).toFixed(3)}%)`;
+      cord.opacity = (1 - pull).toFixed(4);
+      stage.setProperty("--flood", flood.toFixed(4));
+      black.opacity = span(p, 0.55, 0.7).toFixed(4);
+      for (const d of drifts) d.transform = `translate(${(-60 * flood).toFixed(2)}px, ${(-40 * flood).toFixed(3)}vh)`;
+      main?.style.setProperty("--head", head.toFixed(4));
+      flag(gate, "parting", door > 0);
+      flag(root, "beat", head > 0.5);
+      flag(root, "passed", p > 0.98);
+    };
 
     const update = () => {
       frame = 0;
       const rect = gate.getBoundingClientRect();
       if (gate.dataset.armed !== "true") {
-        root.dataset.passed = String(rect.bottom < 1);
+        flag(root, "passed", rect.bottom < 1);
         return;
       }
       const travel = gate.offsetHeight - window.innerHeight;
-      const p = travel > 0 ? clamp(-rect.top / travel) : 0;
-      // Set on the root so the work section can fade its head in with the black beat.
-      // Doors part slowly over most of the passage, then a short black hold (p .7 to .8) before the head.
-      const head = span(p, 0.8, 0.9);
-      root.style.setProperty("--pull", span(p, 0, 0.12).toFixed(4));
-      root.style.setProperty("--door", weighted(span(p, 0.03, 0.55)).toFixed(4));
-      root.style.setProperty("--flood", span(p, 0.1, 0.58).toFixed(4));
-      root.style.setProperty("--black", span(p, 0.55, 0.7).toFixed(4));
-      root.style.setProperty("--head", head.toFixed(4));
-      root.dataset.beat = String(head > 0.5);
-      root.dataset.passed = String(p > 0.98);
+      apply(travel > 0 ? clamp(-rect.top / travel) : 0);
     };
 
+    // while the opening plays, its own frames draw the gate (see open)
     const schedule = () => {
-      if (!frame) frame = requestAnimationFrame(update);
+      if (!frame && !opening) frame = requestAnimationFrame(update);
     };
 
     // The page is locked at the closed gate. The cord, a scroll attempt, or an in-page
@@ -66,7 +98,11 @@ export function GateMotion() {
       const start = performance.now();
       const step = (t: number) => {
         const k = ms > 0 ? Math.min(1, (t - start) / ms) : 1;
-        window.scrollTo({ top: from + (to - from) * k, behavior: "instant" });
+        const top = from + (to - from) * k;
+        // style first, then scroll: the one layout the scroll needs then covers both, and the doors
+        // move in the same frame as the page instead of one behind it
+        apply(to > 0 ? top / to : 1);
+        window.scrollTo({ top, behavior: "instant" });
         if (k < 1) {
           opening = requestAnimationFrame(step);
         } else {
@@ -126,9 +162,13 @@ export function GateMotion() {
     const arm = () => {
       gate.dataset.armed = String(!reduced.matches);
       if (reduced.matches) {
-        for (const v of ["--pull", "--door", "--flood", "--black", "--head"]) {
-          root.style.removeProperty(v);
+        for (const s of moving) {
+          s.removeProperty("transform");
+          s.removeProperty("opacity");
         }
+        stage.removeProperty("--flood");
+        main?.style.removeProperty("--head");
+        delete gate.dataset.parting;
         delete root.dataset.beat;
       }
       locked = !reduced.matches && window.scrollY < travel();
