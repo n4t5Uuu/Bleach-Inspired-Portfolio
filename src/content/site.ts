@@ -59,8 +59,8 @@ export const site = {
     { label: "Backend and data", items: ["Runtime one", "Database two", "Service three"] },
     { label: "Tooling", items: ["Tool one", "Tool two", "Platform three", "Tool four"] },
   ],
-  // Set to "/resume.pdf" once the file is in /public.
-  resumeHref: null as string | null,
+  // The PDF lives in /public; set to null to show "Coming soon" instead.
+  resumeHref: "/Olmedo_Resume.pdf" as string | null,
   // Set once a contact method is decided, e.g. "mailto:you@example.com".
   contactHref: null as string | null,
   about: {
