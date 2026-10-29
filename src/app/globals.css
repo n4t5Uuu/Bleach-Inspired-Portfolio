@@ -587,22 +587,59 @@ ol {
 
 :root[data-theme="light"] .scroll-paper {
   box-shadow:
-    inset 2px 0 0 var(--lacquer),
-    inset -2px 0 0 var(--lacquer);
+    inset 2px 0 0 var(--navy),
+    inset -2px 0 0 var(--navy);
 }
 
-/* a halftone screen in the side margins, clear behind the content */
+/* the cover's stripes down each edge of the screen: a red bar, then a navy one */
+:root[data-theme="light"] .night::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, var(--signal) 0 6px, transparent 6px 9px, var(--navy) 9px 12px, transparent 12px) left top / 12px 100% no-repeat,
+    linear-gradient(270deg, var(--signal) 0 6px, transparent 6px 9px, var(--navy) 9px 12px, transparent 12px) right top / 12px 100% no-repeat;
+}
+
+/* on a phone the cord runs close to the edge, and a red bar beside it reads as a double line */
+@media (max-width: 760px) {
+  :root[data-theme="light"] .night::after {
+    display: none;
+  }
+}
+
+/* The printed page by day, in three layers, none of which moves:
+   the paper itself, a faint navy-grey fibre over the whole ground; */
+:root[data-theme="light"] .night {
+  background:
+    var(--grain-page),
+    /* a second, red screen, set square and a little off register against the cobalt one, as in a
+       two-colour print; the ground covers it everywhere but the top-left and bottom-right corners */
+    linear-gradient(135deg, transparent, var(--ground) 30% 70%, transparent),
+    radial-gradient(circle, rgb(228 22 30 / 0.3) 1.1px, transparent 1.6px) 3px 2px / 11px 11px;
+}
+
+/* and a cobalt screentone down each edge, set at 45 degrees, whose dots shrink to nothing before the
+   content: it fades by dot size, the way a printed tone does (see --tone-*) */
 :root[data-theme="light"] .night::before {
   content: "";
   position: absolute;
   inset: 0;
-  background-image: radial-gradient(circle, rgb(11 11 12 / 0.2) 0.9px, transparent 1.25px);
-  background-size: 7px 7px;
-  mask-image: linear-gradient(90deg, #000, transparent 24%, transparent 76%, #000);
+  background:
+    var(--tone-l) left top / 420px auto repeat-y,
+    var(--tone-r) right top / 420px auto repeat-y;
 }
 
-:root[data-theme="light"] .sky-moon {
-  filter: none;
+/* a phone has no margin to spare: the tone keeps to a thin fringe, the red screen is left off, and
+   neither sits behind the text */
+@media (max-width: 760px) {
+  :root[data-theme="light"] .night {
+    background: var(--grain-page);
+  }
+
+  :root[data-theme="light"] .night::before {
+    mask-image: linear-gradient(90deg, #000, transparent 8%, transparent 92%, #000);
+  }
 }
 
 :root[data-theme="light"] .sky-moon .moon-disc {
