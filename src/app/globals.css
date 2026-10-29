@@ -2961,3 +2961,74 @@ span.resume-close {
     pointer-events: none;
   }
 }
+
+/* Filling the margins of the white page, quietly. Each section carries its number from the menu as a
+   huge outlined numeral, cut off by the screen's edge, and manga focus lines converge on it from the
+   margins. Both sit behind the content and are left off where there is no margin for them. */
+@media (min-width: 1101px) {
+  :root[data-theme="light"] .dangai {
+    position: relative;
+    isolation: isolate;
+    overflow-x: clip;
+  }
+
+  :root[data-theme="light"] .dangai::after,
+  :root[data-theme="light"] .path::after {
+    position: absolute;
+    z-index: -1;
+    font-family: var(--font-display-stack);
+    font-size: clamp(11rem, 18vw, 22rem);
+    line-height: 0.8;
+    color: transparent;
+    -webkit-text-stroke: 2px rgb(10 34 96 / 0.16);
+    pointer-events: none;
+  }
+
+  :root[data-theme="light"] .dangai::after {
+    content: "02";
+    top: clamp(40px, 8vh, 96px);
+    right: -0.1em;
+  }
+
+  :root[data-theme="light"] .path {
+    position: relative;
+  }
+
+  :root[data-theme="light"] .path::after {
+    content: "03";
+    top: clamp(220px, 30vh, 300px);
+    right: calc(-1 * var(--pad) - 0.1em);
+  }
+
+  /* fine cobalt rays converging on the section from both margins, never across the content column */
+  :root[data-theme="light"] .dangai::before,
+  :root[data-theme="light"] .path::before,
+  :root[data-theme="light"] .stack::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    height: 760px;
+    background: repeating-conic-gradient(from 0deg at 50% 200px, rgb(28 79 180 / 0.1) 0deg 0.6deg, transparent 0.6deg 3deg);
+    mask-image:
+      radial-gradient(circle at 50% 200px, transparent 0 480px, #000 640px, transparent 1050px),
+      linear-gradient(90deg, #000 calc(50% - 660px), transparent calc(50% - 580px), transparent calc(50% + 580px), #000 calc(50% + 660px));
+    mask-composite: intersect;
+    pointer-events: none;
+  }
+
+  :root[data-theme="light"] .dangai::before {
+    left: 0;
+    right: 0;
+  }
+
+  :root[data-theme="light"] .path::before,
+  :root[data-theme="light"] .stack::before {
+    left: calc(-1 * var(--pad));
+    right: calc(-1 * var(--pad));
+  }
+
+  :root[data-theme="light"] .stack {
+    position: relative;
+  }
+}
