@@ -56,6 +56,7 @@ export default function Home() {
                 </figure>
                 <div>
                   <p className="about-lead">{site.about.lead}</p>
+                  <p className="about-body">{site.about.body}</p>
                   <dl className="about-facts">
                     {site.about.facts.map((f) => (
                       <div key={f.label}>
@@ -64,6 +65,10 @@ export default function Home() {
                       </div>
                     ))}
                   </dl>
+                  <p className="about-open">
+                    <span>Open to</span>
+                    {site.about.openTo}
+                  </p>
                   {site.aboutPlaceholder && (
                     <p className="placeholder-note">Placeholder biography</p>
                   )}
