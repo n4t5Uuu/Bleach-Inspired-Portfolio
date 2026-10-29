@@ -2939,3 +2939,25 @@ span.resume-close {
   pointer-events: none;
   background: repeating-linear-gradient(transparent 0 2px, rgb(10 34 96 / 0.035) 2px 3px);
 }
+
+/* the broadcast's running time, in the bottom-right corner */
+.timecode {
+  display: none;
+}
+
+@media (min-width: 761px) {
+  :root[data-theme="light"] .timecode {
+    position: fixed;
+    right: 62px;
+    bottom: 20px;
+    z-index: 45;
+    display: flex;
+    gap: 12px;
+    color: rgb(10 34 96 / 0.55);
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    font-variant-numeric: tabular-nums;
+    pointer-events: none;
+  }
+}

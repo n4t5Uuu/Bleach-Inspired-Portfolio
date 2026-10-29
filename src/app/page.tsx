@@ -8,6 +8,7 @@ import { Companion } from "@/components/Companion";
 import { Tassel } from "@/components/Tassel";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import { Night } from "@/components/Night";
+import { Timecode } from "@/components/Timecode";
 
 export default function Home() {
   return (
@@ -27,6 +28,7 @@ export default function Home() {
       </div>
 
       <Night />
+      <Timecode />
       <Companion />
 
       <Gate />
