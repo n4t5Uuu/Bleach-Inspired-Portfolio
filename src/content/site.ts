@@ -80,6 +80,7 @@ export const site = {
   resumeHref: "/Olmedo_Resume.pdf" as string | null,
   // GitHub username for the contributions graph (also needs GITHUB_TOKEN set, see Contributions.tsx).
   github: "n4t5Uuu",
+  contributionsIntro: "Commits, pull requests and reviews from the past year, pulled from GitHub and updated daily.",
   // Set once a contact method is decided, e.g. "mailto:you@example.com".
   contactHref: null as string | null,
   about: {

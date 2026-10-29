@@ -13,11 +13,8 @@ const QUERY = `query ($login: String!) {
   }
 }`;
 
-// The last year of GitHub contributions, cached for a day. Needs GITHUB_TOKEN (a read-only token);
-// without it, or when GitHub fails, there is nothing to show.
-async function getCalendar(login: string) {
-  "use cache";
-  cacheLife("days");
+// Needs GITHUB_TOKEN (a read-only token); without it, or when GitHub fails, there is no calendar.
+async function fetchCalendar(login: string) {
   const token = process.env.GITHUB_TOKEN;
   if (!token) return null;
   try {
@@ -38,7 +35,18 @@ async function getCalendar(login: string) {
   }
 }
 
-// A year of days on the cord: one column a week, shaded by how much was committed that day.
+// The last year of GitHub contributions, cached for a day. A miss is only remembered for a minute,
+// so a token added or fixed later, or a GitHub hiccup, does not hide the section for a day.
+async function getCalendar(login: string) {
+  "use cache";
+  const cal = await fetchCalendar(login);
+  if (cal) cacheLife("days");
+  else cacheLife("minutes");
+  return cal;
+}
+
+// A year of days after the thread, in the middle of the page: one column a week, shaded by how much was
+// committed that day.
 // The section is left out when there is no calendar.
 export async function Contributions() {
   const cal = await getCalendar(site.github);
@@ -46,8 +54,11 @@ export async function Contributions() {
   const total = cal.total.toLocaleString("en");
 
   return (
-    <section id="commits" className="stack commits" aria-labelledby="commits-title">
-      <h2 id="commits-title">Contributions</h2>
+    <section id="commits" className="commits" aria-labelledby="commits-title">
+      <h2 id="commits-title" className="dangai-title">
+        Contributions
+      </h2>
+      <p className="commits-intro">{site.contributionsIntro}</p>
       <div className="commits-body">
         <p className="commits-total">
           <strong>{total}</strong> contributions on GitHub in the last year
