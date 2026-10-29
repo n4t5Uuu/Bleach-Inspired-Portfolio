@@ -29,8 +29,13 @@ export function GateMotion() {
     const cord = style(".gate-cord");
     const stage = style(".gate-dangai"); // its glow is a pseudo-element, so it reads --flood
     const black = style(".gate-black");
-    const drifts = [...gate.querySelectorAll<HTMLElement>(".drift")].map((el) => el.style);
-    const moving = [doorL, doorR, seam, cord, black, ...drifts];
+    // the gate's butterflies: each leaves along its own path (data-fly, "dx,dy" in vw and vh),
+    // turned towards where it is going
+    const flights = [...gate.querySelectorAll<SVGElement>(".drift")].map((el) => {
+      const [dx, dy] = (el.dataset.fly ?? "0,-80").split(",").map(Number);
+      return { style: el.style, dx, dy, turn: (Math.atan2(dx, -dy) * 180) / Math.PI };
+    });
+    const moving = [doorL, doorR, seam, cord, black, ...flights.map((f) => f.style)];
 
     // a flag on an element is only written when it changes, so an unchanged frame invalidates nothing
     const flag = (el: HTMLElement, key: string, on: boolean) => {
@@ -53,7 +58,12 @@ export function GateMotion() {
       cord.opacity = (1 - pull).toFixed(4);
       stage.setProperty("--flood", flood.toFixed(4));
       black.opacity = span(p, 0.55, 0.7).toFixed(4);
-      for (const d of drifts) d.transform = `translate(${(-60 * flood).toFixed(2)}px, ${(-40 * flood).toFixed(3)}vh)`;
+      // they gather speed as the doors part, and are gone by the time the light is full
+      const away = flood ** 1.6;
+      const turn = Math.min(1, flood * 4);
+      for (const f of flights) {
+        f.style.transform = `translate(${(f.dx * away).toFixed(2)}vw, ${(f.dy * away).toFixed(2)}vh) rotate(${(f.turn * turn).toFixed(1)}deg)`;
+      }
       main?.style.setProperty("--head", head.toFixed(4));
       flag(gate, "parting", door > 0);
       flag(root, "beat", head > 0.5);
