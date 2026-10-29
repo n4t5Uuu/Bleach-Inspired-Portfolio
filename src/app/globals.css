@@ -17,6 +17,16 @@
   /* the page ground: the void at night, a printed page by day */
   --ground: #050506;
   --spine: #756f66;
+  /* the gate's panels are a scene: moonlit indigo paper by night, sunlit paper by day. The black frame never changes. */
+  --door-paper: #1b2140;
+  --door-glow: rgb(146 158 255 / 0.5);
+  --door-glow-y: 52%;
+  --door-edge: rgb(2 4 20 / 0.62);
+  --door-age: rgb(0 0 24 / 0.5);
+  --bar-filter: brightness(0.32) saturate(0.55);
+  --handle: linear-gradient(90deg, #5a524b, #38332e);
+  --handle-ring: rgb(255 255 255 / 0.08);
+  --drift: var(--washi);
 
   --font-display-stack: var(--font-display), "Yu Gothic", sans-serif;
   --font-verse-stack: var(--font-verse), "Yu Mincho", serif;
@@ -648,12 +658,13 @@ ol {
   position: relative;
   overflow: hidden;
   --bar: clamp(5px, 0.55vw, 9px);
-  background-color: var(--washi);
+  background-color: var(--door-paper);
   background-image:
     var(--grain-paper),
-    radial-gradient(ellipse at 50% 42%, transparent 52%, rgb(70 55 40 / 0.16) 100%);
+    radial-gradient(ellipse 95% 80% at var(--seam-x, 100%) var(--door-glow-y), var(--door-glow), transparent 72%),
+    radial-gradient(ellipse at 50% 42%, transparent 52%, var(--door-edge) 100%);
   border: clamp(10px, 1.2vw, 18px) solid var(--lacquer);
-  box-shadow: inset 0 0 70px rgb(60 45 30 / 0.14);
+  box-shadow: inset 0 0 70px var(--door-age);
   will-change: transform;
 }
 
@@ -664,6 +675,7 @@ ol {
   inset: 0;
   background-color: #2b2521;
   background-image: var(--grain-wood);
+  filter: var(--bar-filter);
   mask-image:
     linear-gradient(90deg, #000 var(--bar), transparent var(--bar)),
     linear-gradient(#000 var(--bar), transparent var(--bar));
@@ -690,9 +702,9 @@ ol {
   width: clamp(8px, 0.9vw, 14px);
   height: clamp(72px, 14vh, 130px);
   translate: 0 -50%;
-  background: linear-gradient(90deg, #0b0b0c, #26211e);
+  background: var(--handle);
   border-radius: 3px;
-  box-shadow: 0 0 0 4px rgb(11 11 12 / 0.35);
+  box-shadow: 0 0 0 4px var(--handle-ring);
 }
 
 .gate-door-l::after {
@@ -703,6 +715,18 @@ ol {
   left: clamp(10px, 1.4vw, 22px);
 }
 
+.gate-door-l,
+.close-door-l {
+  --seam-x: 100%;
+}
+
+.gate-door-r,
+.close-door-r {
+  --seam-x: 0%;
+}
+
+/* the shadow each door casts on the light behind it comes on once as the doors start to part (a
+   short fade), rather than tracking the doors: tracking it repainted both doors on every frame */
 .gate-door-l {
   transform: translateX(calc(var(--door, 0) * -104%));
   box-shadow:
@@ -1012,7 +1036,7 @@ a.resume-tag:hover {
 }
 
 .drift .body {
-  fill: var(--lacquer);
+  fill: var(--drift);
 }
 
 @media (prefers-reduced-motion: no-preference) {
