@@ -395,6 +395,15 @@ ol {
   fill: currentColor;
 }
 
+.theme-toggle .moon-maria {
+  fill: rgb(11 11 12 / 0.3);
+}
+
+/* in the sky the markings are barely there, the moon is already faint */
+.sky-moon .moon-maria {
+  fill: rgb(0 0 0 / 0.35);
+}
+
 .moon-shade {
   transform: translate(-24px, -12px);
   transition: transform 0.9s var(--ease-out);
