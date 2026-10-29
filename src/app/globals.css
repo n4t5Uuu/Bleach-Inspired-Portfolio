@@ -2922,38 +2922,11 @@ span.resume-close {
 
 /* ---------- light: a 2004 broadcast ---------- */
 
-/* each section title is a title card, as an episode's would be: the heading set in white on a cobalt
-   panel with a red bar under it, a little off register as broadcast colour was */
-:root[data-theme="light"] .card {
-  display: inline-block;
-  padding: 0.16em 0.4em 0.26em;
-  background:
-    linear-gradient(var(--signal), var(--signal)) left bottom / 100% 0.12em no-repeat,
-    var(--cobalt);
-  color: var(--washi-hi);
+/* the section titles stay navy, a little off register as broadcast colour was */
+:root[data-theme="light"] :is(.dangai-title, .path > h2, .stack > h2) {
   text-shadow:
-    -0.04em 0 rgb(228 22 30 / 0.55),
-    0.04em 0 rgb(147 181 255 / 0.7);
-}
-
-/* the card wipes on as its section arrives, and holds */
-@supports (animation-timeline: view()) {
-  @media (prefers-reduced-motion: no-preference) {
-    :root[data-theme="light"] .card {
-      animation: card-on linear both;
-      animation-timeline: view();
-      animation-range: entry 60% cover 30%;
-    }
-  }
-}
-
-@keyframes card-on {
-  from {
-    clip-path: inset(0 100% 0 0);
-  }
-  to {
-    clip-path: inset(0);
-  }
+    -0.03em 0 rgb(228 22 30 / 0.5),
+    0.03em 0 rgb(28 79 180 / 0.45);
 }
 
 /* the picture: faint scan lines over everything (the page's grain already lies under it) and the
