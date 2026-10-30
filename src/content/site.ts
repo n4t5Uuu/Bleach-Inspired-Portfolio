@@ -53,7 +53,7 @@ export const site = {
     ["Silence too", "has an edge", "hold it well"],
     ["Every promise", "is a weight", "I carry home"],
   ],
-  versePlaceholder: true,
+  versePlaceholder: false,
   aboutPlaceholder: false,
   technologiesPlaceholder: false,
   // One line under the heading, then the tools you actually use, grouped.
