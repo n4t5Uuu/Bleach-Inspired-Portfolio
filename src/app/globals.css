@@ -2681,8 +2681,57 @@ span.resume-close {
   font-size: 1.125rem;
 }
 
+/* the address sits plain under the paper buttons; it is struck vermilion once it is reached */
+.close-email {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  margin-top: 20px;
+  color: var(--mist);
+  font-size: 1.0625rem;
+  overflow-wrap: anywhere;
+}
+
+.close-email:hover,
+.close-email:focus-visible {
+  color: var(--cord-lit);
+  text-decoration: underline;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.25em;
+}
+
+/* the profiles are three equal lacquer-edged slips, ghosted until struck */
+.close-links {
+  margin-block: 8px clamp(80px, 14vh, 140px);
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.close-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 128px;
+  min-height: 44px;
+  padding: 0 20px;
+  border: 2px solid var(--ghost);
+  color: var(--washi);
+  font-weight: 700;
+}
+
+.close-links a:hover,
+.close-links a:focus-visible {
+  border-color: var(--cord-lit);
+  color: var(--cord-lit);
+}
+
 .close-credit {
-  margin-top: clamp(80px, 14vh, 140px);
+  /* auto pushes the credit to the foot when the close is taller than its content */
+  margin-top: auto;
   padding-top: 24px;
   border-top: 1px solid var(--lacquer-2);
   font-size: 0.875rem;

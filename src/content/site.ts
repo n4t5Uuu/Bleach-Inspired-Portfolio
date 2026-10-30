@@ -81,8 +81,15 @@ export const site = {
   // GitHub username for the contributions graph (also needs GITHUB_TOKEN set, see Contributions.tsx).
   github: "n4t5Uuu",
   contributionsIntro: "Commits, pull requests and reviews from the past year, pulled from GitHub and updated daily.",
-  // Set once a contact method is decided, e.g. "mailto:you@example.com".
-  contactHref: null as string | null,
+  // Set to null to show a pending note instead of the "Get in touch" button.
+  contactHref: "mailto:olmedoalden4@gmail.com" as string | null,
+  email: "olmedoalden4@gmail.com",
+  // Shown under the closing buttons; each opens in a new tab.
+  socials: [
+    { label: "LinkedIn", href: "https://www.linkedin.com/in/alden-olmedo-b85375295/" },
+    { label: "Instagram", href: "https://www.instagram.com/xlmxdx_" },
+    { label: "Facebook", href: "https://www.facebook.com/aldenxlmxdx/" },
+  ],
   about: {
     // Set to an image path in /public once there is a portrait; null shows a marked placeholder frame.
     portrait: "/portrait.webp" as string | null,
