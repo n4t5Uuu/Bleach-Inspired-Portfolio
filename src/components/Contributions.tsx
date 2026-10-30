@@ -76,7 +76,7 @@ export async function Contributions() {
             </div>
           ))}
         </div>
-        <a className="commits-link" href={`https://github.com/${site.github}`}>
+        <a className="commits-link" href={`https://github.com/${site.github}`} target="_blank" rel="noopener noreferrer">
           github.com/{site.github}
         </a>
       </div>
