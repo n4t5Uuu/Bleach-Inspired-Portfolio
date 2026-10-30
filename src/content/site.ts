@@ -131,8 +131,8 @@ export const site = {
       title: "Hybrid AI-Generated Text Detector",
       verse: "Who wrote it, a person or a model?",
       summary:
-        "My undergraduate thesis: a detector that tells human writing from AI output. I built it end to end, from a ~300k-text corpus and cleaning pipeline to a late-fusion classifier that joins spaCy stylometric features with ELECTRA embeddings in XGBoost, reaching 90.6% accuracy and 0.970 ROC-AUC. I also traced near-perfect early scores to data leakage and fixed it, then shipped a FastAPI and Next.js app that scores text passage by passage.",
-      role: "Lead engineer, 4-person thesis team",
+        "Our undergraduate thesis, done as a team of four: a detector that tells human writing from AI output. My groupmates co-designed the framework and helped clean the large datasets; I was the lead engineer and implemented the system end to end, from a ~300k-text corpus and cleaning pipeline to a late-fusion classifier that joins spaCy stylometric features with ELECTRA embeddings in XGBoost, reaching 90.6% accuracy and 0.970 ROC-AUC. I also traced near-perfect early scores to data leakage and fixed it, then shipped a FastAPI and Next.js app that scores text passage by passage.",
+      role: "Lead engineer, with my 3 thesis groupmates",
       stack: ["Python", "PyTorch", "Hugging Face Transformers", "spaCy", "XGBoost", "scikit-learn", "FastAPI", "Next.js", "TypeScript", "Docker"],
       year: "2026",
       images: [
