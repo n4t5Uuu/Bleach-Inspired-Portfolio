@@ -2544,6 +2544,10 @@ a.resume-tag:hover {
 .close {
   position: relative;
   overflow: hidden;
+  /* at the end of the page the close fills the screen, so no earlier section shows beneath it */
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
   padding: 0 var(--gutter) 48px;
   background: var(--lacquer);
   border-top: 8px solid var(--lacquer-2);
@@ -2601,6 +2605,8 @@ a.resume-tag:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex: 1;
+  width: 100%;
   max-width: 760px;
   margin-inline: auto;
   text-align: center;
