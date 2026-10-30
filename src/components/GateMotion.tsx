@@ -28,6 +28,11 @@ export function GateMotion() {
     const seam = style(".gate-seam");
     const cord = style(".gate-cord");
     const stage = style(".gate-dangai"); // its glow is a pseudo-element, so it reads --flood
+    // the numeral in the light names where the opening leads: the tab's own number, else 01 (About)
+    const numeral = gate.querySelector<HTMLElement>(".gate-dangai-n");
+    const aim = (n = "01") => {
+      if (numeral && numeral.textContent !== n) numeral.textContent = n;
+    };
     const black = style(".gate-black");
     // the gate's butterflies: each leaves along its own path (data-fly, "dx,dy" in vw and vh),
     // turned towards where it is going
@@ -151,6 +156,7 @@ export function GateMotion() {
       const link = (e.target as Element).closest<HTMLAnchorElement>('a[href^="#"]');
       if (!locked || !link) return;
       pending = link.getAttribute("href");
+      aim(link.dataset.n);
       block(e);
     };
 
@@ -163,6 +169,7 @@ export function GateMotion() {
         if (window.scrollY <= 0 && gate.dataset.armed === "true") {
           locked = true;
           root.dataset.gate = "closed";
+          aim(); // the next opening, by cord or scroll, leads to About again
           delete root.dataset.restored; // the next opening unrolls the about scroll as usual
         }
         return;
