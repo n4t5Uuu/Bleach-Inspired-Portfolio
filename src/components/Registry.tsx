@@ -20,18 +20,14 @@ export function Registry() {
   );
 }
 
-type ResumeProps = { variant: "tag" | "close" | "menu" };
+type ResumeProps = { variant: "tag" | "close" };
 
 export function ResumeLink({ variant }: ResumeProps) {
   const label = variant === "close" ? "Download resume" : "Resume";
-  // the resume follows the last destination in the numbering
-  const num = String(destinations.length + 1).padStart(2, "0");
-  const n = variant === "menu" ? <span className="menu-n">{num}</span> : null;
 
   if (!site.resumeHref) {
     return (
       <span className={`resume resume-${variant}`}>
-        {n}
         {label}
         <small>Coming soon</small>
       </span>
@@ -40,7 +36,6 @@ export function ResumeLink({ variant }: ResumeProps) {
 
   return (
     <a className={`resume resume-${variant}`} href={site.resumeHref} download>
-      {n}
       {label}
       <small>PDF</small>
     </a>

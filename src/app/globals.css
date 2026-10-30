@@ -1554,8 +1554,7 @@ a.resume-tag:hover {
   border-bottom: 1px solid var(--lacquer-2);
 }
 
-.menu-list a,
-.menu-list .resume {
+.menu-list a {
   display: flex;
   align-items: baseline;
   gap: 16px;
@@ -1576,17 +1575,6 @@ a.resume-tag:hover {
   min-width: 2ch;
   color: var(--cord-lit);
   font-size: 0.875rem;
-}
-
-.menu-list .resume small {
-  font-family: var(--font-ui-stack);
-  font-size: 0.75rem;
-  letter-spacing: 0.14em;
-  color: var(--ghost);
-}
-
-.menu-list span.resume {
-  color: var(--ghost);
 }
 
 @media (prefers-reduced-motion: no-preference) {

@@ -2,7 +2,6 @@
 
 import { useEffect, useRef } from "react";
 import { destinations, site } from "@/content/site";
-import { ResumeLink } from "./Registry";
 
 // Phones: the registry folds into a "Menu" button that opens a full-screen contents sheet.
 // A native modal dialog traps focus, closes on Esc and hands focus back to the button.
@@ -29,7 +28,7 @@ export function MobileMenu() {
       <dialog ref={sheet} className="menu-sheet" aria-label="Menu">
         <div className="menu-head">
           <span className="menu-name">{site.name}</span>
-          <button type="button" className="menu-close" onClick={() => sheet.current?.close()}>
+          <button type="button" className="menu-close" onClick={close}>
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="M5 5l14 14M19 5L5 19" />
             </svg>
@@ -47,9 +46,6 @@ export function MobileMenu() {
                 </a>
               </li>
             ))}
-            <li>
-              <ResumeLink variant="menu" />
-            </li>
           </ol>
         </nav>
       </dialog>
