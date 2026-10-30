@@ -135,6 +135,9 @@ export const site = {
       role: "Lead engineer, 4-person thesis team",
       stack: ["Python", "PyTorch", "Hugging Face Transformers", "spaCy", "XGBoost", "scikit-learn", "FastAPI", "Next.js", "TypeScript", "Docker"],
       year: "2026",
+      images: [
+        { src: "/projects/hybrid-detector.webp", height: 574, alt: "The detector web app, \"Penned or Prompted?\": an academic text pasted on the left, and on the right a 2% AI-generation probability, a \"Likely Human-Written\" verdict, a score bar with the 0.55 threshold, and a per-passage breakdown." },
+      ],
       liveUrl: null,
       sourceUrl: null,
       caseStudyUrl: null,
