@@ -69,7 +69,7 @@ export const site = {
     },
     {
       label: "DevOps and cloud",
-      items: ["AWS", "AWS Lambda", "S3", "Google Cloud", "Vercel", "Docker"],
+      items: ["AWS", "Google Cloud", "Vercel", "Docker", "GitHub Actions"],
     },
     {
       label: "AI and machine learning",
