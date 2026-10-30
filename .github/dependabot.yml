@@ -1,0 +1,11 @@
+# Weekly dependency updates (pnpm is covered by the npm ecosystem); security fixes open as soon as they are published.
+version: 2
+updates:
+  - package-ecosystem: "npm"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+    open-pull-requests-limit: 5
+    groups:
+      minor-and-patch:
+        update-types: ["minor", "patch"]
