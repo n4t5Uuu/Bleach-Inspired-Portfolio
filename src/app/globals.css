@@ -1823,11 +1823,10 @@ a.resume-tag:hover {
 /* the volume's poem, set on its own cover */
 .book-verse {
   grid-row: 1;
-  max-width: 16ch;
   font-family: var(--font-verse-stack);
   font-weight: 500;
-  font-size: clamp(0.9375rem, 1.35vw, 1.25rem);
-  line-height: 1.4;
+  font-size: clamp(1.375rem, 2.3vw, 2rem);
+  line-height: 1.25;
   text-wrap: balance;
 }
 
