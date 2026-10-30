@@ -138,8 +138,8 @@ export const site = {
       images: [
         { src: "/projects/hybrid-detector.webp", height: 574, alt: "The detector web app, \"Penned or Prompted?\": an academic text pasted on the left, and on the right a 2% AI-generation probability, a \"Likely Human-Written\" verdict, a score bar with the 0.55 threshold, and a per-passage breakdown." },
       ],
-      liveUrl: "https://penned-or-prompted-ten.vercel.app",
-      sourceUrl: null,
+      liveUrl: null,
+      sourceUrl: "https://github.com/n4t5Uuu/Hybrid-AI-Text-Detectors",
       caseStudyUrl: null,
     },
     {
