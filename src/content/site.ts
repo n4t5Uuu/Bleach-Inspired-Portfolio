@@ -114,12 +114,12 @@ export const site = {
       title: "AWS Builders – UST Recruitment Website",
       verse: "The door into AWS Builders – UST",
       summary:
-        "The recruitment site for our AWS Builders organization at UST. I built the application flow and a personal dashboard that shows each applicant's result and issues a digital membership ID once they have paid, plus the payment verification dashboard for the finance team and Gmail API notifications to applicants' UST emails. It has processed 490 applicants this cycle.",
+        "The recruitment site for our AWS Builders organization at UST. I built the application flow and a personal dashboard that shows each applicant's result and issues a digital membership ID once they have paid, plus the payment verification dashboard for the finance team and Gmail API notifications to applicants' UST emails.",
       role: "Full-Stack Developer, one of 3 core developers on a 13-contributor team",
       stack: ["Next.js", "React", "TypeScript", "Hono", "PostgreSQL", "Drizzle ORM", "AWS Lambda", "S3", "Gmail API"],
       year: "2026",
       images: [
-        { src: "/projects/aws-ust-dashboard.webp", height: 575, alt: "The platform's HR dashboard overview: a worklist with seven payments waiting for verification, the season schedule, and applicant counts from 469 applied down to 243 members." },
+        { src: "/projects/aws-ust-dashboard.webp", height: 575, alt: "The platform's HR dashboard overview: a worklist of payments waiting for verification, the season schedule, and the applicant stages from applied to member, with the numbers blurred." },
         { src: "/projects/aws-ust-home.webp", alt: "The AWS Builders – UST home page: a cloud mascot under the heading \"What's in the Clouds?\" on a purple cloud background." },
       ],
       liveUrl: "https://www.aws-ust.org",
