@@ -156,6 +156,10 @@ export default function Home() {
             <ResumeLink variant="close" />
           </div>
           <a className="close-email" href={`mailto:${site.email}`}>
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <rect x="3" y="5" width="18" height="14" />
+              <path d="m3 6 9 7 9-7" />
+            </svg>
             {site.email}
           </a>
           <ul className="close-links">
