@@ -3001,9 +3001,6 @@ span.resume-close {
 .close-email:hover,
 .close-email:focus-visible {
   color: var(--cord-lit);
-  text-decoration: underline;
-  text-decoration-thickness: 2px;
-  text-underline-offset: 0.25em;
 }
 
 /* the profiles are three equal lacquer-edged slips, ghosted until struck */
@@ -3840,9 +3837,23 @@ span.resume-close {
   background-size: calc(100% - 20px) 2px;
 }
 
+/* the address: its underline draws in under the words, from the envelope outward */
+.close-email {
+  background: linear-gradient(currentColor, currentColor) right bottom 8px / 0 2px no-repeat;
+}
+
+.close-email:is(:hover, :focus-visible) {
+  background-size: calc(100% - 1.25em - 10px) 2px;
+}
+
+/* the menu mark: the short bar reaches full length */
+.menu-toggle:is(:hover, :focus-visible)::before {
+  background-size: 100% 2px, 100% 2px;
+}
+
 /* the closing buttons: red rises from their red foot until it fills them, and the ink turns to paper */
 a.resume-close,
-a.close-contact {
+:is(a, button).close-contact {
   background-image:
     linear-gradient(var(--cord-deep), var(--cord-deep)),
     var(--grain-paper);
@@ -3910,6 +3921,40 @@ a.resume-close:is(:hover, :focus-visible) small {
   .theme-system {
     transition: color 0.2s var(--ease-out);
   }
+
+  .close-email {
+    transition: background-size 0.18s ease-in, color 0.2s var(--ease-out);
+  }
+
+  .close-email:is(:hover, :focus-visible) {
+    transition: background-size 0.3s var(--ease-out), color 0.2s var(--ease-out);
+  }
+
+  .menu-toggle,
+  .menu-close,
+  .commits-link {
+    transition: color 0.2s var(--ease-out), translate 0.2s var(--ease-out), text-decoration-color 0.2s var(--ease-out);
+  }
+
+  .menu-toggle::before {
+    transition: background-size 0.25s var(--ease-out);
+  }
+
+  .menu-close svg {
+    transition: rotate 0.35s var(--ease-out);
+  }
+
+  .menu-list a {
+    transition: color 0.2s var(--ease-out), translate 0.25s var(--ease-out);
+  }
+
+  .close-links a {
+    transition:
+      color 0.2s var(--ease-out),
+      border-color 0.2s var(--ease-out),
+      translate 0.2s var(--ease-out),
+      box-shadow 0.2s var(--ease-out);
+  }
 }
 
 /* movement, for a real pointer with motion allowed (the keyboard gets it too) */
@@ -3929,6 +3974,22 @@ a.resume-close:is(:hover, :focus-visible) small {
     transform: rotate(14deg);
     filter: drop-shadow(0 0 6px rgb(255 106 77 / 0.55));
   }
+
+  .commits-link:focus-visible {
+    translate: 4px 0;
+  }
+
+  .menu-list a:focus-visible {
+    translate: 8px 0;
+  }
+
+  .menu-close:focus-visible svg {
+    rotate: 90deg;
+  }
+
+  .close-links a:focus-visible {
+    translate: 0 -2px;
+  }
 }
 
 @media (hover: hover) and (prefers-reduced-motion: no-preference) {
@@ -3947,9 +4008,35 @@ a.resume-close:is(:hover, :focus-visible) small {
     filter: drop-shadow(0 0 6px rgb(255 106 77 / 0.55));
   }
 
+  /* the GitHub link strikes forward like the project links */
+  .commits-link:hover {
+    translate: 4px 0;
+  }
+
+  /* menu destinations step forward; the close mark turns a quarter */
+  .menu-list a:hover {
+    translate: 8px 0;
+  }
+
+  .menu-close:hover svg {
+    rotate: 90deg;
+  }
+
+  /* the profile slips lift like the paper buttons above them */
+  .close-links a:hover {
+    translate: 0 -2px;
+    box-shadow: 0 14px 20px -12px rgb(0 0 0 / 0.85);
+  }
+
+  .close-links a:active {
+    translate: 0 1px;
+    box-shadow: none;
+    transition-duration: 0.08s;
+  }
+
   /* a press sinks the button back under the finger */
   a.resume-close:active,
-  a.close-contact:active {
+  :is(a, button).close-contact:active {
     translate: 0 1px;
     box-shadow: 0 8px 14px -10px rgb(0 0 0 / 0.8);
     transition-duration: 0.08s;
