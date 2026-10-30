@@ -654,6 +654,24 @@ ol {
     0 10px 16px -10px rgb(10 34 96 / 0.45);
 }
 
+/* by day the plank is pale, sunlit wood with a navy foot, not a dark slab across the page */
+:root[data-theme="light"] .book::after {
+  background-color: #a08670;
+  background-image:
+    linear-gradient(
+      rgb(10 34 96 / 0.45),
+      rgb(200 178 152 / 0.6) 7px,
+      rgb(255 248 236 / 0.75) 7px,
+      rgb(255 248 236 / 0.75) 8px,
+      transparent 8px
+    ),
+    linear-gradient(rgb(120 96 74 / 0.1), rgb(90 68 50 / 0.4)),
+    var(--grain-wood);
+  box-shadow:
+    inset 0 -2px 0 var(--navy),
+    0 18px 26px -14px rgb(10 34 96 / 0.4);
+}
+
 /* on a white page an unchosen book recedes by fading, not by darkening */
 :root[data-theme="light"] .shelf[data-ready="true"] .book[data-active="false"] .book-cover {
   filter: opacity(0.5);
@@ -1473,7 +1491,8 @@ a.resume-tag:hover {
   isolation: isolate;
   display: flex;
   flex-wrap: wrap;
-  align-items: flex-end;
+  /* covers share one ratio, so top-aligned books keep their planks level whatever their labels run to */
+  align-items: flex-start;
   gap: clamp(20px, 3vh, 36px) clamp(14px, 2vw, 28px);
 }
 
@@ -1496,17 +1515,29 @@ a.resume-tag:hover {
   cursor: pointer;
 }
 
-/* the plank is an in-flow item between the cover and its labels, so the book stands on it */
+/* the plank is an in-flow item between the cover and its labels, so the book stands on it.
+   Seen from a little above: a top face shaded where the books stand, a lit front edge,
+   then the front face with its grain held down so it reads as one board, not noise */
 .book::after {
   content: "";
   order: 1;
-  height: 14px;
+  flex: none;
+  height: 22px;
   margin-inline: calc(-0.5 * clamp(14px, 2vw, 28px));
-  background-color: #2a221c;
-  background-image: var(--grain-wood);
+  background-color: #2b2521;
+  background-image:
+    linear-gradient(
+      rgb(12 10 8 / 0.9),
+      rgb(98 82 68 / 0.7) 7px,
+      rgb(214 190 160 / 0.4) 7px,
+      rgb(214 190 160 / 0.4) 8px,
+      transparent 8px
+    ),
+    linear-gradient(rgb(29 25 22 / 0.35), rgb(29 25 22 / 0.8)),
+    var(--grain-wood);
   box-shadow:
-    inset 0 1px 0 rgb(255 255 255 / 0.14),
-    0 10px 18px -8px rgb(0 0 0 / 0.9);
+    inset 0 -2px 0 rgb(0 0 0 / 0.45),
+    0 20px 28px -12px rgb(0 0 0 / 0.9);
 }
 
 .book-title,
@@ -1556,6 +1587,21 @@ a.resume-tag:hover {
   background:
     linear-gradient(90deg, rgb(255 255 255 / 0.18), transparent 40%, rgb(0 0 0 / 0.2)),
     var(--spine);
+  /* the hinge where the cover board folds off the spine: a crease, then a lit ridge */
+  box-shadow:
+    1px 0 0 rgb(0 0 0 / 0.28),
+    5px 0 0 rgb(255 255 255 / 0.3);
+}
+
+/* the board has thickness: a shaded fore-edge on the right, light falling from above */
+.book-cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, transparent calc(100% - 6px), rgb(0 0 0 / 0.08) calc(100% - 6px), rgb(0 0 0 / 0.24)),
+    linear-gradient(rgb(255 255 255 / 0.12), transparent 28%, transparent 70%, rgb(0 0 0 / 0.1));
 }
 
 .book-n {
@@ -1598,11 +1644,7 @@ a.resume-tag:hover {
   font-size: 0.9375rem;
 }
 
-/* one world held at a time: the chosen book is pulled forward, the rest sink back */
-.shelf[data-ready="true"] .book[data-active="true"] .book-cover {
-  translate: 0 -18px;
-}
-
+/* one world held at a time: the chosen book stays lit on the plank, the rest sink back */
 .shelf[data-ready="true"] .book[data-active="false"] .book-cover {
   filter: brightness(0.55);
 }
