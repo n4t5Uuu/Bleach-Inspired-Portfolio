@@ -155,6 +155,18 @@ export default function Home() {
             )}
             <ResumeLink variant="close" />
           </div>
+          <a className="close-email" href={`mailto:${site.email}`}>
+            {site.email}
+          </a>
+          <ul className="close-links">
+            {site.socials.map((s) => (
+              <li key={s.href}>
+                <a href={s.href} target="_blank" rel="noopener noreferrer">
+                  {s.label}
+                </a>
+              </li>
+            ))}
+          </ul>
           <p className="close-credit">
             Inspired by <cite>Bleach</cite> by Tite Kubo. Everything drawn here is original; this
             site is not affiliated with the series.
