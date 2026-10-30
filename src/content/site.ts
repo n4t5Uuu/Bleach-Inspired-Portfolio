@@ -204,8 +204,12 @@ export const site = {
   ] satisfies Role[],
 };
 
+// "short" is the tab in the gate header and the bar, where room is tight; the Menu sheet uses "label".
 export const destinations = [
-  { n: "01", label: "About", href: "#about" },
-  { n: "02", label: "Projects", href: "#work" },
-  { n: "03", label: "Experience", href: "#path" },
+  { n: "01", label: "About", short: "About", href: "#about" },
+  { n: "02", label: "Projects", short: "Projects", href: "#work" },
+  { n: "03", label: "Experience", short: "Experience", href: "#path" },
+  { n: "04", label: "Technologies", short: "Stack", href: "#stack" },
+  { n: "05", label: "Contributions", short: "GitHub", href: "#commits" },
+  { n: "06", label: "Contact", short: "Contact", href: "#close" },
 ] as const;

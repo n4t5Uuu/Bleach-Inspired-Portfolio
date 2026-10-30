@@ -8,32 +8,29 @@ export function Registry() {
       <ol>
         {destinations.map((d) => (
           <li key={d.href}>
-            <a href={d.href}>
+            <a href={d.href} data-n={d.n}>
               <Butterfly className="registry-guide" />
               <span className="registry-n">{d.n}</span>
-              {d.label}
+              {d.short}
             </a>
           </li>
         ))}
-        <li>
-          <ResumeLink variant="registry" />
-        </li>
       </ol>
     </nav>
   );
 }
 
-type ResumeProps = { variant: "registry" | "tag" | "close" };
+type ResumeProps = { variant: "tag" | "close" | "menu" };
 
 export function ResumeLink({ variant }: ResumeProps) {
   const label = variant === "close" ? "Download resume" : "Resume";
-  const n = variant === "registry" ? <span className="registry-n">04</span> : null;
-  const guide = variant === "registry" ? <Butterfly className="registry-guide" /> : null;
+  // the resume follows the last destination in the numbering
+  const num = String(destinations.length + 1).padStart(2, "0");
+  const n = variant === "menu" ? <span className="menu-n">{num}</span> : null;
 
   if (!site.resumeHref) {
     return (
       <span className={`resume resume-${variant}`}>
-        {guide}
         {n}
         {label}
         <small>Coming soon</small>
@@ -43,7 +40,6 @@ export function ResumeLink({ variant }: ResumeProps) {
 
   return (
     <a className={`resume resume-${variant}`} href={site.resumeHref} download>
-      {guide}
       {n}
       {label}
       <small>PDF</small>

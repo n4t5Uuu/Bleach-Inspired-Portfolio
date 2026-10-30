@@ -192,8 +192,7 @@ ol {
   gap: 4px clamp(18px, 2.4vw, 40px);
 }
 
-.registry a,
-.registry .resume {
+.registry a {
   position: relative;
   display: inline-flex;
   align-items: center;
@@ -213,9 +212,7 @@ ol {
 }
 
 .registry a:hover,
-.registry a:focus-visible,
-.registry a.resume:hover,
-.registry a.resume:focus-visible {
+.registry a:focus-visible {
   color: var(--cord-lit);
 }
 
@@ -231,16 +228,6 @@ ol {
 .registry a:hover .registry-guide,
 .registry a:focus-visible .registry-guide {
   opacity: 1;
-}
-
-.registry .resume small {
-  font-size: 0.6875rem;
-  letter-spacing: 0.12em;
-  color: var(--ghost);
-}
-
-.registry span.resume {
-  cursor: default;
 }
 
 /* ---------- the companion: a butterfly that follows the pointer ---------- */
@@ -854,6 +841,23 @@ ol {
   box-shadow: 0 18px 30px -12px rgb(0 0 0 / 0.65);
 }
 
+/* the name on the lintel, with the theme choice beside it, as in the bar past the gate */
+.lintel-start {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  min-width: 0;
+}
+
+.lintel-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-family: var(--font-display-stack);
+  font-size: 1.125rem;
+  color: var(--washi);
+}
+
 .gate-frame {
   position: relative;
   display: grid;
@@ -1438,12 +1442,190 @@ a.resume-tag:hover {
 
 /* past the gate the bar takes over: the gate's own copies leave the tab order */
 :root[data-passed="true"] .gate-cord,
-:root[data-passed="true"] .gate-lintel .registry {
+:root[data-passed="true"] .gate-lintel .registry,
+:root[data-passed="true"] .gate-lintel .menu-toggle {
   visibility: hidden;
 }
 
-.bar .registry .resume small {
+/* ---------- the menu sheet (phones) ---------- */
+
+.menu-toggle {
   display: none;
+  align-items: center;
+  gap: 10px;
+  min-height: 44px;
+  padding: 0 4px;
+  background: none;
+  border: 0;
+  color: var(--washi);
+  font: inherit;
+  font-size: 0.8125rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+/* two drawn bars, the second shorter, ahead of the word */
+.menu-toggle::before {
+  content: "";
+  width: 18px;
+  height: 8px;
+  background:
+    linear-gradient(currentColor, currentColor) top left / 100% 2px no-repeat,
+    linear-gradient(currentColor, currentColor) bottom left / 66% 2px no-repeat;
+}
+
+.menu-toggle:is(:hover, :focus-visible) {
+  color: var(--cord-lit);
+}
+
+/* the contents page: lacquer over the whole screen, the four destinations set large */
+.menu-sheet {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 0 var(--gutter) 32px;
+  background: var(--lacquer);
+  border: 0;
+  border-top: 8px solid var(--lacquer-2);
+  color: var(--washi);
+}
+
+.menu-sheet[open] {
+  display: flex;
+  flex-direction: column;
+}
+
+.menu-sheet::backdrop {
+  background: rgb(0 0 0 / 0.6);
+}
+
+:root:has(.menu-sheet[open]) {
+  overflow: hidden;
+}
+
+.menu-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 64px;
+  border-bottom: 1px solid var(--lacquer-2);
+}
+
+.menu-name {
+  font-family: var(--font-display-stack);
+  font-size: 1.125rem;
+}
+
+.menu-close {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  margin-right: -10px;
+  background: none;
+  border: 0;
+  color: var(--washi);
+  cursor: pointer;
+}
+
+.menu-close svg {
+  width: 22px;
+  height: 22px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+.menu-close:is(:hover, :focus-visible) {
+  color: var(--cord-lit);
+}
+
+.menu-list {
+  margin-top: 8px;
+}
+
+.menu-list li {
+  border-bottom: 1px solid var(--lacquer-2);
+}
+
+.menu-list a,
+.menu-list .resume {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  min-height: 64px;
+  padding-block: 16px;
+  color: var(--washi);
+  font-family: var(--font-display-stack);
+  font-size: clamp(1.75rem, 8vw, 2.5rem);
+  line-height: 1.1;
+  text-decoration: none;
+}
+
+.menu-list a:is(:hover, :focus-visible) {
+  color: var(--cord-lit);
+}
+
+.menu-n {
+  min-width: 2ch;
+  color: var(--cord-lit);
+  font-size: 0.875rem;
+}
+
+.menu-list .resume small {
+  font-family: var(--font-ui-stack);
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  color: var(--ghost);
+}
+
+.menu-list span.resume {
+  color: var(--ghost);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .menu-sheet[open] {
+    animation: menu-in 0.35s var(--ease-out);
+  }
+}
+
+@keyframes menu-in {
+  from {
+    opacity: 0;
+    translate: 0 -12px;
+  }
+}
+
+/* six tabs share the bar with the name and the theme switch, so it sets them slightly tighter */
+.bar .registry ol {
+  flex-wrap: nowrap;
+  gap: 0 clamp(10px, 1.5vw, 24px);
+}
+
+.bar .registry a {
+  font-size: clamp(0.6875rem, 0.95vw, 0.9375rem);
+  letter-spacing: 0.1em;
+  white-space: nowrap;
+}
+
+/* the same on the gate's lintel wherever it is not the rail (see the 1680px rule) */
+@media (min-width: 1681px) {
+  .gate-lintel .registry ol {
+    flex-wrap: nowrap;
+    gap: 0 clamp(10px, 1.5vw, 24px);
+  }
+
+  .gate-lintel .registry a {
+    font-size: clamp(0.6875rem, 0.95vw, 0.9375rem);
+    letter-spacing: 0.1em;
+    white-space: nowrap;
+  }
 }
 
 /* ---------- the Dangai: a shelf of volumes ---------- */
@@ -2923,19 +3105,30 @@ span.resume-close {
   }
 }
 
-/* tablets and phones: the registry becomes a rail of equal slats under the name, instead of loose links wrapping into a corner */
+/* the fixed bar loses the theme words first, then the link numerals, so the name, the switch and
+   six links still share one row */
 @media (max-width: 1100px) {
   .bar .theme-name,
-  .bar .theme-system {
+  .bar .theme-label {
     display: none;
   }
 
-  .bar .theme-toggle {
+  .bar :is(.theme-toggle, .theme-system) {
     width: 44px;
     justify-content: center;
     padding: 0;
   }
+}
 
+@media (max-width: 1000px) {
+  .bar .registry-n {
+    display: none;
+  }
+}
+
+/* narrower than the name, the switch and six links side by side: the gate's registry becomes a rail of
+   equal slats under the name, instead of loose links wrapping into a corner */
+@media (max-width: 1680px) {
   .gate-lintel .registry {
     flex: 1 1 100%;
     border-block: 1px solid var(--lacquer-2);
@@ -2943,7 +3136,7 @@ span.resume-close {
 
   .gate-lintel .registry ol {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     gap: 0;
   }
 
@@ -2951,8 +3144,7 @@ span.resume-close {
     border-left: 1px solid var(--lacquer-2);
   }
 
-  .gate-lintel .registry a,
-  .gate-lintel .registry .resume {
+  .gate-lintel .registry a {
     width: 100%;
     flex-wrap: wrap;
     justify-content: center;
@@ -2964,9 +3156,19 @@ span.resume-close {
 }
 
 @media (max-width: 760px) {
+  /* the moon on the left, the menu on the right; the registry folds into the sheet */
   .gate-lintel {
-    flex-direction: column;
-    align-items: stretch;
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  .gate-lintel .registry,
+  .bar .registry {
+    display: none;
+  }
+
+  .menu-toggle {
+    display: inline-flex;
   }
 
   .sky-moon {
@@ -2975,25 +3177,17 @@ span.resume-close {
     width: 72vw;
   }
 
-  .gate-lintel .theme {
-    align-self: flex-start;
-    margin-left: -9px;
+  /* only the two theme marks and the menu; the doors below already carry the seal */
+  .lintel-name,
+  .gate-lintel .theme-name,
+  .gate-lintel .theme-label {
+    display: none;
   }
 
-  .gate-lintel .registry {
-    flex: none;
-  }
-
-  .gate-lintel .registry ol {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .gate-lintel .registry li:nth-child(odd) {
-    border-left: 0;
-  }
-
-  .gate-lintel .registry li:nth-child(n + 3) {
-    border-top: 1px solid var(--lacquer-2);
+  .gate-lintel :is(.theme-toggle, .theme-system) {
+    width: 44px;
+    justify-content: center;
+    padding: 0;
   }
 
   /* clear of the pull and the cord label on the seam side */
@@ -3188,23 +3382,8 @@ span.resume-close {
   }
 }
 
-/* narrowest phones: the bar fits the moon and all four links */
+/* narrowest phones */
 @media (max-width: 420px) {
-  .bar {
-    gap: 4px;
-    padding-inline: 8px 12px;
-  }
-
-  .bar .registry ol {
-    gap: 0 10px;
-  }
-
-  .bar .registry a,
-  .bar .registry .resume {
-    font-size: 0.6875rem;
-    letter-spacing: 0.02em;
-  }
-
   /* section titles fit beside the cord on the narrowest screens */
   .dangai-title,
   .path h2,
@@ -3226,16 +3405,14 @@ span.resume-close {
   .gate-lintel .theme {
     flex: none;
     align-self: auto;
-    margin-left: -9px;
   }
 
   .gate-lintel .theme-name,
-  .gate-lintel .theme-system,
-  .gate-lintel .registry .resume small {
+  .gate-lintel .theme-label {
     display: none;
   }
 
-  .gate-lintel .theme-toggle {
+  .gate-lintel :is(.theme-toggle, .theme-system) {
     width: 44px;
     justify-content: center;
     padding: 0;
@@ -3248,7 +3425,7 @@ span.resume-close {
   }
 
   .gate-lintel .registry ol {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(6, 1fr);
   }
 
   .gate-lintel .registry li:nth-child(n) {
