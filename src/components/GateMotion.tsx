@@ -154,7 +154,8 @@ export function GateMotion() {
       block(e);
     };
 
-    // scrollbar drags and focus jumps can still move the page: treat them as intent
+    // scrollbar drags and focus jumps can still move the page. A drag must not start the timed opening:
+    // its scrolling would fight the hand on the thumb. The gate unlocks and the doors follow the scroll.
     const onScroll = () => {
       if (opening) return;
       // back at the closed gate (the home link, or scrolling up): lock it again
@@ -167,7 +168,10 @@ export function GateMotion() {
         return;
       }
       if (window.scrollY >= travel()) unlock();
-      else open();
+      else if (window.scrollY > 0) {
+        locked = false;
+        root.dataset.gate = "open";
+      }
     };
 
     const arm = () => {
