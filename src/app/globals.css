@@ -3451,7 +3451,9 @@ span.resume-close {
   }
 
   .portrait {
-    max-width: 200px;
+    /* centred in the single column; auto margins stop the 3:4 box stretching, so it needs a width */
+    width: min(100%, 200px);
+    margin-inline: auto;
   }
 
   .close-door {
