@@ -9,8 +9,13 @@ export type Project = {
   role: string;
   stack: string[];
   year: string;
+  placeholder?: boolean;
+  // Screenshots in /public, 1200px wide; height is the file's own, 678 unless given.
+  images?: { src: string; alt: string; height?: number }[];
   liveUrl: string | null;
   sourceUrl: string | null;
+  // Any further links, shown after Source (e.g. an admin site).
+  extraLinks?: { label: string; href: string }[];
   // Set once the project has its own case-study page.
   caseStudyUrl: string | null;
 };
@@ -49,7 +54,6 @@ export const site = {
     ["Every promise", "is a weight", "I carry home"],
   ],
   versePlaceholder: true,
-  projectsPlaceholder: true,
   aboutPlaceholder: false,
   technologiesPlaceholder: false,
   // One line under the heading, then the tools you actually use, grouped.
@@ -106,42 +110,51 @@ export const site = {
   },
   projects: [
     {
-      slug: "project-one",
-      title: "Project title",
-      verse: "One line that says why this work mattered",
+      slug: "aws-builders-ust-recruitment",
+      title: "AWS Builders – UST Recruitment Website",
+      verse: "The door into AWS Builders – UST",
       summary:
-        "Two or three sentences: the problem, what you built, and the result. Keep it concrete, the kind of detail a hiring manager can ask you about.",
-      role: "Your role",
-      stack: ["Stack", "Tools", "Platform"],
-      year: "Year",
+        "The recruitment site for our AWS Builders organization at UST. I built the application flow and a personal dashboard that shows each applicant's result and issues a digital membership ID once they have paid, plus the payment verification dashboard for the finance team and Gmail API notifications to applicants' UST emails. It has processed 490 applicants this cycle.",
+      role: "Full-Stack Developer, one of 3 core developers on a 13-contributor team",
+      stack: ["Next.js", "React", "TypeScript", "Hono", "PostgreSQL", "Drizzle ORM", "AWS Lambda", "S3", "Gmail API"],
+      year: "2026",
+      images: [
+        { src: "/projects/aws-ust-dashboard.webp", height: 575, alt: "The platform's HR dashboard overview: a worklist with seven payments waiting for verification, the season schedule, and applicant counts from 469 applied down to 243 members." },
+        { src: "/projects/aws-ust-home.webp", alt: "The AWS Builders – UST home page: a cloud mascot under the heading \"What's in the Clouds?\" on a purple cloud background." },
+      ],
+      liveUrl: "https://www.aws-ust.org",
+      sourceUrl: "https://github.com/ust-aws/aws-recruitment-2026",
+      caseStudyUrl: null,
+    },
+    {
+      slug: "hybrid-ai-text-detector",
+      title: "Hybrid AI-Generated Text Detector",
+      verse: "Who wrote it, a person or a model?",
+      summary:
+        "My undergraduate thesis: a detector that tells human writing from AI output. I built it end to end, from a ~300k-text corpus and cleaning pipeline to a late-fusion classifier that joins spaCy stylometric features with ELECTRA embeddings in XGBoost, reaching 90.6% accuracy and 0.970 ROC-AUC. I also traced near-perfect early scores to data leakage and fixed it, then shipped a FastAPI and Next.js app that scores text passage by passage.",
+      role: "Lead engineer, 4-person thesis team",
+      stack: ["Python", "PyTorch", "Hugging Face Transformers", "spaCy", "XGBoost", "scikit-learn", "FastAPI", "Next.js", "TypeScript", "Docker"],
+      year: "2026",
       liveUrl: null,
       sourceUrl: null,
       caseStudyUrl: null,
     },
     {
-      slug: "project-two",
-      title: "Project title",
-      verse: "One line that says why this work mattered",
+      slug: "dollys-closet",
+      title: "Dolly's Closet Inventory System",
+      verse: "Every thrift find, accounted for",
       summary:
-        "Two or three sentences: the problem, what you built, and the result. Keep it concrete, the kind of detail a hiring manager can ask you about.",
-      role: "Your role",
-      stack: ["Stack", "Tools"],
-      year: "Year",
-      liveUrl: null,
-      sourceUrl: null,
-      caseStudyUrl: null,
-    },
-    {
-      slug: "project-three",
-      title: "Project title",
-      verse: "One line that says why this work mattered",
-      summary:
-        "Two or three sentences: the problem, what you built, and the result. Keep it concrete, the kind of detail a hiring manager can ask you about.",
-      role: "Your role",
-      stack: ["Stack", "Tools", "Platform"],
-      year: "Year",
-      liveUrl: null,
-      sourceUrl: null,
+        "An inventory system for a thrift (ukay-ukay) business, replacing handwritten tracking with a web dashboard that has been in production use for nearly a year and manages 65 products. I led 8 developers in a Turborepo monorepo and reviewed every pull request, and built the OTP sign-in, notification emails and the controls to publish, hide or archive catalog items.",
+      role: "Lead and full-stack developer, 8-person team",
+      stack: ["Next.js", "React", "TypeScript", "Supabase", "Vercel", "Turborepo"],
+      year: "2026",
+      images: [
+        { src: "/projects/dollys-closet-store.webp", height: 576, alt: "The Dolly's Closet storefront: a New Arrivals row of bags and clothing with prices and condition tags, above the searchable collection." },
+        { src: "/projects/dollys-closet-admin.webp", height: 571, alt: "The Dolly's Closet admin site sign-in page: a centered log-in card with email and password fields on a soft pink background." },
+      ],
+      liveUrl: "https://www.dollysclosetph.com",
+      sourceUrl: "https://github.com/n4t5Uuu/DollysCloset",
+      extraLinks: [{ label: "Admin site", href: "https://admin.dollysclosetph.com" }],
       caseStudyUrl: null,
     },
   ] satisfies Project[],

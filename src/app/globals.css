@@ -1731,6 +1731,64 @@ a.resume-tag:hover {
   margin-top: 8px;
 }
 
+/* a project's screenshots are paper slips pasted down the right of its panel, tilted like the verse slips. */
+.panel[data-shots] {
+  grid-template-areas:
+    "title"
+    "stack"
+    "summary"
+    "meta"
+    "links"
+    "shots";
+}
+
+.panel-shots {
+  grid-area: shots;
+  display: grid;
+  gap: clamp(20px, 3vw, 32px);
+  margin-top: 28px;
+}
+
+.shot {
+  width: 100%;
+  height: auto;
+  padding: 8px;
+  background-color: var(--washi);
+  background-image: var(--grain-paper);
+  box-shadow: 0 22px 36px -22px rgb(0 0 0 / 0.9);
+  rotate: -0.8deg;
+}
+
+.shot:nth-child(even) {
+  rotate: 0.8deg;
+  margin-left: clamp(0px, 4vw, 40px);
+}
+
+:root[data-theme="light"] .shot {
+  box-shadow:
+    0 0 0 1.5px var(--navy),
+    0 18px 28px -20px rgb(10 34 96 / 0.5);
+}
+
+@media (min-width: 1000px) {
+  .panel[data-shots] {
+    max-width: none;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 520px);
+    grid-template-areas:
+      "title shots"
+      "stack shots"
+      "summary shots"
+      "meta shots"
+      "links shots";
+    align-content: start;
+    column-gap: clamp(40px, 6vw, 88px);
+  }
+
+  .panel-shots {
+    margin-top: 12px;
+  }
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .panel:not([hidden]) {
     animation: panel-in 0.5s var(--ease-out);
