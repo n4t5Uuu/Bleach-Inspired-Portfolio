@@ -3094,7 +3094,8 @@ span.resume-close {
   }
 }
 
-@media (max-height: 560px), (max-width: 760px) and (max-height: 700px) {
+/* only a short landscape screen hides the cord label; a phone held upright keeps it at any height */
+@media (max-height: 560px) and (orientation: landscape) {
   .gate-cord-label {
     position: absolute;
     width: 1px;
