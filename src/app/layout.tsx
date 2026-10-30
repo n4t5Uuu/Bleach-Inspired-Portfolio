@@ -29,9 +29,14 @@ const themeScript = `try{var d=document.documentElement.dataset,t=localStorage.g
 // stops once the gate script has taken over (it sets data-gate).
 const restoreScript = `(function(){var d=document.documentElement.dataset,n=0;function c(){var g=document.getElementById("gate");if(d.gate||n++>600)return;if(g&&scrollY>0&&scrollY>=g.offsetHeight-innerHeight&&!matchMedia("(prefers-reduced-motion: reduce)").matches){d.passed="true";d.beat="true";d.gate="open";d.restored="";return}requestAnimationFrame(c)}requestAnimationFrame(c)})()`;
 
+const title = `${site.name} — Portfolio`;
+const description = `Portfolio of ${site.name}, a 4th year Computer Science student at the University of Santo Tomas specializing in Data Science. Projects, experience, and resume.`;
+
 export const metadata: Metadata = {
-  title: `${site.name}, ${site.role}`,
-  description: `Projects, experience, and resume of ${site.name}, ${site.role.toLowerCase()}.`,
+  title,
+  description,
+  openGraph: { title, description, type: "website", siteName: title },
+  twitter: { card: "summary", title, description },
 };
 
 export const viewport: Viewport = {
