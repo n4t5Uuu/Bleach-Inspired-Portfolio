@@ -100,11 +100,16 @@ export function Shelf({ projects }: Props) {
             )}
             {p.liveUrl ? (
               <a className="strike" href={p.liveUrl} target="_blank" rel="noopener noreferrer">
-                Live site<span className="sr-only"> for {p.title}</span>
+                Live Site<span className="sr-only"> for {p.title}</span>
               </a>
             ) : (
               p.placeholder && <span className="pending">Live link, add later</span>
             )}
+            {p.extraLinks?.map((l) => (
+              <a key={l.href} className="strike" href={l.href} target="_blank" rel="noopener noreferrer">
+                {l.label}<span className="sr-only"> for {p.title}</span>
+              </a>
+            ))}
             {p.sourceUrl ? (
               <a className="strike" href={p.sourceUrl} target="_blank" rel="noopener noreferrer">
                 Source<span className="sr-only"> for {p.title}</span>
@@ -112,11 +117,6 @@ export function Shelf({ projects }: Props) {
             ) : (
               p.placeholder && <span className="pending">Source link, add later</span>
             )}
-            {p.extraLinks?.map((l) => (
-              <a key={l.href} className="strike" href={l.href} target="_blank" rel="noopener noreferrer">
-                {l.label}<span className="sr-only"> for {p.title}</span>
-              </a>
-            ))}
           </p>
           {p.images && (
             <div className="panel-shots">

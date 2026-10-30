@@ -157,7 +157,7 @@ export const site = {
       ],
       liveUrl: "https://www.dollysclosetph.com",
       sourceUrl: "https://github.com/n4t5Uuu/DollysCloset",
-      extraLinks: [{ label: "Admin site", href: "https://admin.dollysclosetph.com" }],
+      extraLinks: [{ label: "Admin Site", href: "https://admin.dollysclosetph.com" }],
       caseStudyUrl: null,
     },
   ] satisfies Project[],
