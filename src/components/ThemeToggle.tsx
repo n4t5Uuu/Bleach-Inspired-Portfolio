@@ -14,6 +14,10 @@ const root = () => document.documentElement.dataset;
 const read = () => `${root().themeSource === "system" ? "system" : "user"}:${root().theme === "light" ? "light" : "dark"}`;
 
 const apply = (theme: Theme, source: Source) => {
+  // The tab underlines rest in a different state in each theme, so without this they would animate from one
+  // rest state to the other and every tab would flash. The flag stops their transitions for the change only.
+  root().themeSwitching = "";
+  requestAnimationFrame(() => requestAnimationFrame(() => delete root().themeSwitching));
   root().theme = theme;
   root().themeSource = source;
   try {
@@ -96,7 +100,7 @@ const subscribe = (onChange: () => void) => {
   };
 };
 
-// The crescent is dark mode, the full moon is light mode; the shade slides across between them.
+// System first, marked with a screen; then the moon: the crescent is dark mode, the full moon is light mode.
 export function ThemeToggle({ id }: { id: string }) {
   const [source, theme] = useSyncExternalStore(subscribe, read, () => "user:dark").split(":") as [Source, Theme];
   const name = theme === "light" ? "Light" : "Dark";
@@ -106,20 +110,24 @@ export function ThemeToggle({ id }: { id: string }) {
     <div className="theme" role="group" aria-label="Theme">
       <button
         type="button"
+        className="theme-system"
+        aria-pressed={source === "system"}
+        onClick={() => apply(systemLight().matches ? "light" : "dark", "system")}
+      >
+        <svg className="theme-system-icon" viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3" y="4" width="18" height="12" />
+          <path d="M9 20h6M12 16v4" />
+        </svg>
+        <span className="theme-label">System</span>
+      </button>
+      <button
+        type="button"
         className="theme-toggle"
         onClick={() => slash(next)}
         aria-label={`${name} mode. Switch to ${next} mode`}
       >
         <Moon id={id} />
         <span className="theme-name">{name}</span>
-      </button>
-      <button
-        type="button"
-        className="theme-system"
-        aria-pressed={source === "system"}
-        onClick={() => apply(systemLight().matches ? "light" : "dark", "system")}
-      >
-        System
       </button>
     </div>
   );

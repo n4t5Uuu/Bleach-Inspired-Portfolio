@@ -353,16 +353,24 @@ ol {
 }
 
 .theme-toggle {
-  padding-left: 9px;
   color: var(--washi);
 }
 
-/* a hairline between the moon and the system choice */
-.theme-system {
+.theme-system-icon {
+  flex: none;
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.75;
+}
+
+/* a hairline between the system choice and the moon */
+.theme-toggle {
   position: relative;
 }
 
-.theme-system::before {
+.theme-toggle::before {
   content: "";
   position: absolute;
   left: 0;
@@ -3615,6 +3623,11 @@ span.resume-close {
 /* Each answers in the page's own language (a cut, a strike, a seam, a rising red), the same for the
    pointer and the keyboard. Colour changes always show; movement waits for a real pointer and for
    motion being allowed. Exits are quicker than entrances. */
+
+/* a theme change is not a hover: the underlines snap to the rest state of the new theme, with no transition */
+:root[data-theme-switching] .registry a::after {
+  transition: none !important;
+}
 
 /* the menu by night: a red stroke cuts in under the link, left to right (by day it lights its fire) */
 :root:not([data-theme="light"]) .registry a::after {
