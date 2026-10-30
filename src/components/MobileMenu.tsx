@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, type MouseEvent } from "react";
+import { useEffect, useRef } from "react";
 import { destinations, site } from "@/content/site";
 import { ResumeLink } from "./Registry";
 
@@ -21,17 +21,12 @@ export function MobileMenu() {
     return () => wide.removeEventListener("change", onChange);
   }, []);
 
-  // following a link closes the sheet; the gate still sees the click and handles the jump
-  const onClick = (e: MouseEvent) => {
-    if ((e.target as Element).closest("a")) sheet.current?.close();
-  };
-
   return (
     <>
       <button type="button" className="menu-toggle" aria-haspopup="dialog" onClick={() => sheet.current?.showModal()}>
         Menu
       </button>
-      <dialog ref={sheet} className="menu-sheet" aria-label="Menu" onClick={onClick}>
+      <dialog ref={sheet} className="menu-sheet" aria-label="Menu">
         <div className="menu-head">
           <span className="menu-name">{site.name}</span>
           <button type="button" className="menu-close" onClick={() => sheet.current?.close()}>
@@ -45,7 +40,8 @@ export function MobileMenu() {
           <ol className="menu-list">
             {destinations.map((d) => (
               <li key={d.href}>
-                <a href={d.href} data-n={d.n}>
+                {/* following a link closes the sheet; the gate still sees the click and handles the jump */}
+                <a href={d.href} data-n={d.n} onClick={close}>
                   <span className="menu-n">{d.n}</span>
                   {d.label}
                 </a>
