@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useId, useRef, useState, useSyncExternalStore, type KeyboardEvent } from "react";
+import { useId, useRef, useState, useSyncExternalStore, type KeyboardEvent, type UIEvent } from "react";
 import type { Project } from "@/content/site";
 
 type Props = { projects: Project[] };
@@ -13,6 +13,8 @@ const pad = (i: number) => String(i + 1).padStart(2, "0");
 // Without JavaScript every panel stays open, stacked under the shelf.
 export function Shelf({ projects }: Props) {
   const [active, setActive] = useState(0);
+  // which book the swipe row has reached; drives the hint under it on phones
+  const [seen, setSeen] = useState(0);
   const ready = useSyncExternalStore(subscribe, () => true, () => false);
   const uid = useId();
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
@@ -31,11 +33,17 @@ export function Shelf({ projects }: Props) {
     tabs.current[next]?.focus();
   };
 
+  const onScroll = (e: UIEvent<HTMLDivElement>) => {
+    const el = e.currentTarget;
+    const room = el.scrollWidth - el.clientWidth;
+    setSeen(room > 0 ? Math.round((el.scrollLeft / room) * (projects.length - 1)) : 0);
+  };
+
   if (!projects.length) return null;
 
   return (
     <div className="shelf-wrap">
-      <div className="shelf" role="tablist" aria-label="Projects" data-ready={ready}>
+      <div className="shelf" role="tablist" aria-label="Projects" data-ready={ready} onScroll={onScroll}>
         {projects.map((p, i) => (
           <button
             key={p.slug}
@@ -68,6 +76,23 @@ export function Shelf({ projects }: Props) {
           </button>
         ))}
       </div>
+
+      {/* phones only: the shelf is a swipe row, so say so and show how far along it is */}
+      {projects.length > 1 && (
+        <p className="shelf-hint" aria-hidden="true" data-end={seen === projects.length - 1}>
+          <span className="shelf-hint-text">
+            Swipe
+            <svg viewBox="0 0 24 12">
+              <path d="M0 6h22M16 1l6 5-6 5" />
+            </svg>
+          </span>
+          <span className="shelf-hint-ticks">
+            {projects.map((p, i) => (
+              <span key={p.slug} className="shelf-hint-tick" data-on={i === seen} />
+            ))}
+          </span>
+        </p>
+      )}
 
       {projects.map((p, i) => (
         <article
