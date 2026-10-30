@@ -1677,6 +1677,23 @@ a.resume-tag:hover {
   margin-top: clamp(32px, 6vh, 64px);
 }
 
+/* the swipe cue belongs to the phone layout (see the 760px rules) */
+.shelf-hint {
+  display: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .shelf-hint-text svg {
+    animation: nudge 1.1s ease-in-out infinite alternate;
+  }
+}
+
+@keyframes nudge {
+  to {
+    translate: 5px 0;
+  }
+}
+
 .shelf {
   isolation: isolate;
   display: flex;
@@ -3262,25 +3279,9 @@ span.resume-close {
     display: none;
   }
 
-  /* one row of full-height targets; the gate above already carries the name */
+  /* the moon and the menu, full-height targets; the gate above already carries the name */
   .bar {
     padding-block: 0;
-  }
-
-  .bar .registry ol {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 0 16px;
-  }
-
-  .bar .registry a,
-  .bar .registry .resume {
-    font-size: 0.75rem;
-    letter-spacing: 0.06em;
-  }
-
-  .bar .registry-n {
-    display: none;
   }
 
   /* the shelf becomes a row you swipe along */
@@ -3290,6 +3291,86 @@ span.resume-close {
     padding-bottom: 20px;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
+  }
+
+  /* and says so: a "Swipe" cue with an arrow, and a tick per volume, the one in view long and vermilion */
+  .shelf-hint {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 4px;
+    color: var(--ghost);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .shelf-hint-text {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .shelf-hint-text svg {
+    width: 22px;
+    height: 11px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.75;
+  }
+
+  .shelf-hint[data-end="true"] .shelf-hint-text {
+    visibility: hidden;
+  }
+
+  .shelf-hint-ticks {
+    display: flex;
+    gap: 6px;
+  }
+
+  /* the vermilion is a fill laid over the grey tick, so it can be drawn in from the left */
+  .shelf-hint-tick {
+    position: relative;
+    width: 14px;
+    height: 3px;
+    background: var(--ghost);
+  }
+
+  .shelf-hint-tick::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: var(--cord-lit);
+    transform-origin: left;
+    scale: 0 1;
+  }
+
+  .shelf-hint-tick[data-on="true"] {
+    width: 30px;
+  }
+
+  .shelf-hint-tick[data-on="true"]::after {
+    scale: 1 1;
+  }
+
+  /* the tick you reach lengthens and strikes in; the one you leave shortens, a little quicker */
+  @media (prefers-reduced-motion: no-preference) {
+    .shelf-hint-tick {
+      transition: width 0.18s ease-in;
+    }
+
+    .shelf-hint-tick::after {
+      transition: scale 0.15s ease-in;
+    }
+
+    .shelf-hint-tick[data-on="true"] {
+      transition: width 0.4s var(--ease-out);
+    }
+
+    .shelf-hint-tick[data-on="true"]::after {
+      transition: scale 0.4s var(--ease-out) 0.05s;
+    }
   }
 
   .book {
