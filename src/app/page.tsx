@@ -2,6 +2,7 @@ import Image from "next/image";
 import { site } from "@/content/site";
 import { Gate } from "@/components/Gate";
 import { Registry, ResumeLink } from "@/components/Registry";
+import { MobileMenu } from "@/components/MobileMenu";
 import { Shelf } from "@/components/Shelf";
 import { CordFliers } from "@/components/CordFliers";
 import { Companion } from "@/components/Companion";
@@ -27,6 +28,7 @@ export default function Home() {
           <ThemeToggle id="moon-bar" />
         </div>
         <Registry />
+        <MobileMenu />
       </div>
 
       <Night />

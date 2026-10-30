@@ -2,6 +2,7 @@ import { site } from "@/content/site";
 import { Butterfly } from "./Butterfly";
 import { Registry, ResumeLink } from "./Registry";
 import { GateMotion } from "./GateMotion";
+import { MobileMenu } from "./MobileMenu";
 import { GateVerse } from "./GateVerse";
 import { Seal } from "./Seal";
 import { Tassel } from "./Tassel";
@@ -12,8 +13,12 @@ export function Gate() {
     <header id="gate" className="gate">
       <div className="gate-stage">
         <div className="gate-lintel">
-          <ThemeToggle id="moon-gate" />
+          <div className="lintel-start">
+            <span className="lintel-name">{site.name}</span>
+            <ThemeToggle id="moon-gate" />
+          </div>
           <Registry />
+          <MobileMenu />
         </div>
 
         <div className="gate-frame">
