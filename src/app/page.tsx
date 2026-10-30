@@ -87,7 +87,7 @@ export default function Home() {
           <h2 id="work-title" className="dangai-title">
             Projects
           </h2>
-          <Shelf projects={site.projects} placeholder={site.projectsPlaceholder} />
+          <Shelf projects={site.projects} />
         </section>
 
         <div className="thread">
