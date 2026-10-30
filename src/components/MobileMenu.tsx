@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, type MouseEvent } from "react";
+import { useEffect, useRef, type MouseEvent } from "react";
 import { destinations, site } from "@/content/site";
 import { ResumeLink } from "./Registry";
 
@@ -8,6 +8,18 @@ import { ResumeLink } from "./Registry";
 // A native modal dialog traps focus, closes on Esc and hands focus back to the button.
 export function MobileMenu() {
   const sheet = useRef<HTMLDialogElement>(null);
+  const close = () => sheet.current?.close();
+
+  // the sheet belongs to the phone layout: widening the window past it closes the sheet,
+  // or the full-screen modal would stay over the desktop page
+  useEffect(() => {
+    const wide = matchMedia("(min-width: 761px)");
+    const onChange = () => {
+      if (wide.matches) close();
+    };
+    wide.addEventListener("change", onChange);
+    return () => wide.removeEventListener("change", onChange);
+  }, []);
 
   // following a link closes the sheet; the gate still sees the click and handles the jump
   const onClick = (e: MouseEvent) => {
