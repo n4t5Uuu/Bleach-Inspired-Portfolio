@@ -1505,7 +1505,8 @@ a.resume-tag:hover {
   background: rgb(0 0 0 / 0.6);
 }
 
-:root:has(.menu-sheet[open]) {
+/* released as soon as the exit animation starts, so a tapped link can scroll the page */
+:root:has(.menu-sheet[open]:not([data-closing])) {
   overflow: hidden;
 }
 
@@ -1581,12 +1582,50 @@ a.resume-tag:hover {
   .menu-sheet[open] {
     animation: menu-in 0.35s var(--ease-out);
   }
+
+  .menu-sheet[data-closing] {
+    animation: menu-out 0.22s ease-in forwards;
+  }
+
+  /* the contents are set down one after another as the sheet arrives */
+  .menu-sheet[open]:not([data-closing]) .menu-list li {
+    animation: menu-item-in 0.45s var(--ease-out) backwards;
+    animation-delay: calc(90ms + var(--i) * 45ms);
+  }
+
+  .menu-sheet[open]::backdrop {
+    animation: menu-fade 0.35s var(--ease-out);
+  }
+
+  .menu-sheet[data-closing]::backdrop {
+    animation: menu-fade 0.22s ease-in reverse forwards;
+  }
 }
 
 @keyframes menu-in {
   from {
     opacity: 0;
     translate: 0 -12px;
+  }
+}
+
+@keyframes menu-out {
+  to {
+    opacity: 0;
+    translate: 0 -12px;
+  }
+}
+
+@keyframes menu-item-in {
+  from {
+    opacity: 0;
+    translate: 0 14px;
+  }
+}
+
+@keyframes menu-fade {
+  from {
+    opacity: 0;
   }
 }
 
