@@ -922,6 +922,23 @@ ol {
   transform: scale(calc(0.92 + var(--flood, 0) * 0.08));
 }
 
+/* on a phone the glow, a fraction of the width, is narrower than the numeral, so its outer edges
+   vanish into the dark: widen the light and set the numeral to fit inside it */
+@media (max-width: 760px) {
+  .gate-dangai::before {
+    background: radial-gradient(
+      ellipse 64% 54% at 50% 52%,
+      rgb(251 251 248 / 0.95),
+      rgb(233 227 255 / 0.5) 46%,
+      transparent 82%
+    );
+  }
+
+  .gate-dangai-n {
+    font-size: clamp(6rem, 32vw, 9rem);
+  }
+}
+
 /* Paper and kumiko, shared by the gate doors and the closing doors. The fibres and
    the wood grain are tiny tiling SVG noise (see --grain-* in :root). The bars are a
    masked layer so the grain shows in the wood and the paper stays paper. */
