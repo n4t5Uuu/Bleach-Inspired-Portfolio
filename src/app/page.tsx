@@ -13,9 +13,29 @@ import { Timecode } from "@/components/Timecode";
 import { HellButterflies } from "@/components/HellButterflies";
 import { Contributions } from "@/components/Contributions";
 
+// schema.org data for search engines: who the site is about, and the profiles that are also them
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": `${site.url}/#person`,
+      name: site.name,
+      url: site.url,
+      image: site.about.portrait ? `${site.url}${site.about.portrait}` : undefined,
+      jobTitle: site.role,
+      description: site.tagline,
+      email: `mailto:${site.email}`,
+      sameAs: [`https://github.com/${site.github}`, ...site.socials.map((s) => s.href)],
+    },
+    { "@type": "WebSite", "@id": `${site.url}/#website`, url: site.url, name: `${site.name} — Portfolio`, about: { "@id": `${site.url}/#person` } },
+  ],
+};
+
 export default function Home() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema).replace(/</g, "\\u003c") }} />
       <a className="skip" href="#about">
         Skip to the content
       </a>
