@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Dela_Gothic_One, Shippori_Mincho_B1, Zen_Kaku_Gothic_New } from "next/font/google";
+import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { site } from "@/content/site";
 import "./globals.css";
@@ -65,6 +66,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       </head>
       <body>
         {children}
+        <Analytics />
         <SpeedInsights />
       </body>
     </html>
