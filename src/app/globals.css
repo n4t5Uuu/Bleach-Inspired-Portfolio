@@ -3732,6 +3732,10 @@ span.resume-close {
     animation-duration: 0.39s;
     animation-delay: -0.2s;
   }
+
+  .hell:not([data-flying]) {
+    animation-play-state: paused;
+  }
 }
 
 /* ---------- the slash: switching theme by hand (see ThemeToggle) ---------- */

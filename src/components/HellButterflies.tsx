@@ -57,7 +57,11 @@ export function HellButterflies() {
             frames.push({ translate: `${x.toFixed(1)}px ${y.toFixed(1)}px`, rotate: `${turn.toFixed(1)}deg` });
           }
           if (k) lag += rand([220, 560]);
-          return el.animate(frames, { duration: duration * (k ? rand([0.94, 1.06]) : 1), delay: lag, easing: "linear" });
+          // wings beat only in flight: parked off-screen between crossings, they would cost every frame
+          el.dataset.flying = "";
+          const flight = el.animate(frames, { duration: duration * (k ? rand([0.94, 1.06]) : 1), delay: lag, easing: "linear" });
+          flight.onfinish = flight.oncancel = () => delete el.dataset.flying;
+          return flight;
         });
       }
       timer = window.setTimeout(fly, rand(GAP));
