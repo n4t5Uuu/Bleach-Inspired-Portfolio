@@ -35,14 +35,18 @@ const themeScript = `try{var d=document.documentElement.dataset,t=localStorage.g
 // stops once the gate script has taken over (it sets data-gate).
 const restoreScript = `(function(){var d=document.documentElement.dataset,n=0;function c(){var g=document.getElementById("gate");if(d.gate||n++>600)return;if(g&&scrollY>0&&scrollY>=g.offsetHeight-innerHeight&&!matchMedia("(prefers-reduced-motion: reduce)").matches){d.passed="true";d.beat="true";d.gate="open";d.restored="";return}requestAnimationFrame(c)}requestAnimationFrame(c)})()`;
 
-const title = `${site.name} — Portfolio`;
+const title = `${site.name} — ${site.role} Portfolio`;
 const description = `Portfolio of ${site.name}, a 4th year Computer Science student at the University of Santo Tomas specializing in Data Science. Projects, experience, and resume.`;
 
 export const metadata: Metadata = {
+  metadataBase: new URL(site.url),
   title,
   description,
-  openGraph: { title, description, type: "website", siteName: title },
-  twitter: { card: "summary", title, description },
+  alternates: { canonical: "/" },
+  openGraph: { title, description, url: "/", type: "website", siteName: `${site.name} — Portfolio`, locale: "en_US" },
+  twitter: { card: "summary_large_image", title, description },
+  // the token from Google Search Console's "HTML tag" method, set on the host (see README)
+  verification: { google: process.env.GOOGLE_SITE_VERIFICATION },
 };
 
 export const viewport: Viewport = {

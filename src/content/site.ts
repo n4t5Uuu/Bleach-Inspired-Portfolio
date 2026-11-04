@@ -30,6 +30,8 @@ export type Role = {
 
 export const site = {
   name: "Alden Olmedo",
+  // The live address: canonical tags, the sitemap, robots.txt and share images are built from it.
+  url: "https://natsu-portfolio-fawn.vercel.app",
   // Two letters for the seal on the gate.
   initials: "AO",
   role: "Software Developer",
