@@ -53,7 +53,8 @@ export function HellButterflies() {
             const dx = 3 * u * u * (p1[0] - x0) + 6 * u * t * (p2[0] - p1[0]) + 3 * t * t * (x3 - p2[0]);
             const dy = 3 * u * u * (p1[1] - y0) + 6 * u * t * (p2[1] - p1[1]) + 3 * t * t * (y3 - p2[1]);
             const turn = (Math.atan2(dx, -dy) * 180) / Math.PI;
-            frames.push({ transform: `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px) rotate(${turn.toFixed(1)}deg)` });
+            // translate and rotate, not transform, so the wingbeat's scale folds it in its own frame
+            frames.push({ translate: `${x.toFixed(1)}px ${y.toFixed(1)}px`, rotate: `${turn.toFixed(1)}deg` });
           }
           if (k) lag += rand([220, 560]);
           return el.animate(frames, { duration: duration * (k ? rand([0.94, 1.06]) : 1), delay: lag, easing: "linear" });

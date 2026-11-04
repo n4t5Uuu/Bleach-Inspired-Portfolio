@@ -36,7 +36,7 @@ export function GateMotion() {
     const black = style(".gate-black");
     // the gate's butterflies: each leaves along its own path (data-fly, "dx,dy" in vw and vh),
     // turned towards where it is going
-    const flights = [...gate.querySelectorAll<SVGElement>(".drift")].map((el) => {
+    const flights = [...gate.querySelectorAll<HTMLElement>(".drift")].map((el) => {
       const [dx, dy] = (el.dataset.fly ?? "0,-80").split(",").map(Number);
       return { style: el.style, dx, dy, turn: (Math.atan2(dx, -dy) * 180) / Math.PI };
     });
@@ -67,7 +67,10 @@ export function GateMotion() {
       const away = flood ** 1.6;
       const turn = Math.min(1, flood * 4);
       for (const f of flights) {
-        f.style.transform = `translate(${(f.dx * away).toFixed(2)}vw, ${(f.dy * away).toFixed(2)}vh) rotate(${(f.turn * turn).toFixed(1)}deg)`;
+        // translate and rotate, not transform: those apply before the wingbeat's scale, so a beat folds
+        // the butterfly in its own frame instead of squeezing its whole flight path
+        f.style.translate = `${(f.dx * away).toFixed(2)}vw ${(f.dy * away).toFixed(2)}vh`;
+        f.style.rotate = `${(f.turn * turn).toFixed(1)}deg`;
       }
       main?.style.setProperty("--head", head.toFixed(4));
       flag(gate, "parting", door > 0);
@@ -186,6 +189,8 @@ export function GateMotion() {
       if (reduced.matches) {
         for (const s of moving) {
           s.removeProperty("transform");
+          s.removeProperty("translate");
+          s.removeProperty("rotate");
           s.removeProperty("opacity");
         }
         stage.removeProperty("--flood");
