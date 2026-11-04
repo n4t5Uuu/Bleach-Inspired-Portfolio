@@ -255,7 +255,7 @@ ol {
   opacity: 1;
 }
 
-.companion[data-shown="false"] .wing {
+.companion[data-shown="false"] svg {
   animation-play-state: paused;
 }
 
@@ -268,12 +268,12 @@ ol {
   width: 16px;
 }
 
-.companion-2 .wing {
+.companion-2 svg {
   animation-duration: 0.29s;
   animation-delay: -0.1s;
 }
 
-.companion-3 .wing {
+.companion-3 svg {
   animation-duration: 0.4s;
   animation-delay: -0.22s;
 }
@@ -283,19 +283,7 @@ ol {
   width: 100%;
   fill: var(--washi);
   transition: fill 0.2s var(--ease-out);
-}
-
-.companion .wing {
-  transform-box: fill-box;
   animation: flap 0.34s ease-in-out infinite;
-}
-
-.companion .wing-l {
-  transform-origin: right center;
-}
-
-.companion .wing-r {
-  transform-origin: left center;
 }
 
 /* perched on a destination: struck vermilion, wings slow to rest */
@@ -307,7 +295,7 @@ ol {
   fill: var(--cord-lit);
 }
 
-.companion[data-state="perched"] .wing {
+.companion[data-state="perched"] svg {
   animation-duration: 1.6s;
 }
 
@@ -1320,7 +1308,12 @@ a.resume-tag:hover {
   z-index: 3;
   width: clamp(30px, 3vw, 48px);
   fill: var(--drift);
-  will-change: transform;
+  will-change: translate, rotate, scale;
+}
+
+.drift svg {
+  display: block;
+  width: 100%;
 }
 
 /* they rest spread over both doors, clear of the verse, the seal, the tag and the pulls */
@@ -1363,50 +1356,43 @@ a.resume-tag:hover {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .drift .wing {
-    transform-box: fill-box;
+  .drift {
     animation: flap 1.6s ease-in-out infinite;
   }
 
-  .drift .wing-l {
-    transform-origin: right center;
-  }
-
-  .drift .wing-r {
-    transform-origin: left center;
-  }
-
-  .drift-b .wing,
-  .drift-e .wing {
+  .drift-b,
+  .drift-e {
     animation-duration: 1.25s;
     animation-delay: -0.4s;
   }
 
-  .drift-c .wing,
-  .drift-f .wing {
+  .drift-c,
+  .drift-f {
     animation-duration: 1.9s;
     animation-delay: -0.9s;
   }
 }
 
 /* the wing loop stops once the gate is behind the visitor */
-:root[data-passed="true"] .drift .wing {
+:root[data-passed="true"] .drift {
   animation-play-state: paused;
 }
 
-/* and the cord's butterflies, far below, hold still until it is: their wings are SVG, which
-   animates on the main thread, and they were costing the opening a restyle on every frame */
-:root[data-passed="false"] :is(.fly, .fly svg, .fly .wing) {
+/* and the cord's butterflies, far below, hold still until it is */
+:root[data-passed="false"] :is(.fly, .fly svg) {
   animation-play-state: paused;
 }
 
+/* A wingbeat folds the whole drawing towards its body: the `scale` of the <svg>, which the GPU
+   animates, rather than a transform on each wing's SVG group, which restyles and repaints the page
+   on the main thread every frame (it kept the closed gate busy and slowed every tap). */
 @keyframes flap {
   0%,
   100% {
-    transform: scaleX(1);
+    scale: 1 1;
   }
   50% {
-    transform: scaleX(0.35);
+    scale: 0.35 1;
   }
 }
 
@@ -2152,17 +2138,8 @@ a.resume-tag:hover {
       width: 100%;
     }
 
-    .fly .wing {
-      transform-box: fill-box;
+    .fly-lead svg {
       animation: flap 0.46s ease-in-out infinite;
-    }
-
-    .fly .wing-l {
-      transform-origin: right center;
-    }
-
-    .fly .wing-r {
-      transform-origin: left center;
     }
 
     .fly-lead {
@@ -2183,13 +2160,11 @@ a.resume-tag:hover {
         depth var(--p) ease-in-out calc(var(--k) * -0.31s - var(--p) / 2) infinite alternate;
     }
 
-    .fly:not(.fly-lead) svg {
-      animation: orbit var(--p) ease-in-out calc(var(--k) * -0.31s - var(--p) / 2) infinite alternate;
-    }
-
     /* the circling ones beat faster and deeper than the lead, each out of step with the next */
-    .fly:not(.fly-lead) .wing {
-      animation: beat var(--w) ease-in-out calc(var(--k) * -0.07s) infinite;
+    .fly:not(.fly-lead) svg {
+      animation:
+        orbit var(--p) ease-in-out calc(var(--k) * -0.31s - var(--p) / 2) infinite alternate,
+        beat var(--w) ease-in-out calc(var(--k) * -0.07s) infinite;
     }
   }
 }
@@ -2225,10 +2200,10 @@ a.resume-tag:hover {
 @keyframes beat {
   0%,
   100% {
-    transform: scaleX(1);
+    scale: 1 1;
   }
   50% {
-    transform: scaleX(0.12);
+    scale: 0.12 1;
   }
 }
 
@@ -3704,7 +3679,7 @@ span.resume-close {
   left: 0;
   width: 30px;
   margin: -15px 0 0 -15px;
-  transform: translate(-200px, -200px);
+  translate: -200px -200px;
   fill: var(--lacquer);
   view-transition-class: live;
 }
@@ -3740,31 +3715,22 @@ span.resume-close {
     transition: fill 0.6s var(--ease-out), filter 0.6s var(--ease-out);
   }
 
-  .hell .wing {
-    transform-box: fill-box;
+  .hell {
     animation: flap 0.42s ease-in-out infinite;
   }
 
-  .hell-2 .wing {
+  .hell-2 {
     animation-duration: 0.36s;
   }
 
-  .hell-3 .wing {
+  .hell-3 {
     animation-duration: 0.31s;
     animation-delay: -0.1s;
   }
 
-  .hell-4 .wing {
+  .hell-4 {
     animation-duration: 0.39s;
     animation-delay: -0.2s;
-  }
-
-  .hell .wing-l {
-    transform-origin: right center;
-  }
-
-  .hell .wing-r {
-    transform-origin: left center;
   }
 }
 

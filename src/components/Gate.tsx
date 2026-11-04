@@ -52,13 +52,26 @@ export function Gate() {
             <span className="gate-cord-label">Open the gate</span>
           </a>
 
-          {/* spread over both doors; when the gate opens each flies off its own way */}
-          <Butterfly className="drift drift-a" fly="25,-85" />
-          <Butterfly className="drift drift-b" fly="65,-45" />
-          <Butterfly className="drift drift-c" fly="-65,-55" />
-          <Butterfly className="drift drift-d" fly="-40,-105" />
-          <Butterfly className="drift drift-e" fly="15,-100" />
-          <Butterfly className="drift drift-f" fly="-30,-80" />
+          {/* spread over both doors; when the gate opens each flies off its own way (data-fly, "dx,dy" in
+              vw and vh, read by GateMotion). An HTML box round each, so its wingbeat runs on the GPU. */}
+          <span className="drift drift-a" data-fly="25,-85">
+            <Butterfly />
+          </span>
+          <span className="drift drift-b" data-fly="65,-45">
+            <Butterfly />
+          </span>
+          <span className="drift drift-c" data-fly="-65,-55">
+            <Butterfly />
+          </span>
+          <span className="drift drift-d" data-fly="-40,-105">
+            <Butterfly />
+          </span>
+          <span className="drift drift-e" data-fly="15,-100">
+            <Butterfly />
+          </span>
+          <span className="drift drift-f" data-fly="-30,-80">
+            <Butterfly />
+          </span>
         </div>
 
         <div className="gate-black" aria-hidden="true" />
