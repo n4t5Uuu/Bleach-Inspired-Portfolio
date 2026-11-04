@@ -76,6 +76,12 @@ GITHUB_TOKEN=your_github_token
 
 Use a fine-grained token with read-only access to public repositories and no other permissions. Without a token, or if GitHub is unreachable, the section is simply left out.
 
+To verify the site in Google Search Console, add a URL-prefix property for the live address, choose the **HTML tag** method, and set the `content` value from that tag on the host:
+
+```env
+GOOGLE_SITE_VERIFICATION=the_content_value_from_google
+```
+
 ### Run the development server
 
 ```bash
@@ -114,7 +120,7 @@ There is no test runner. Check changes with `pnpm lint`, `pnpm build` and a look
 
 ## Editing the Content
 
-Everything on the site lives in [`src/content/site.ts`](src/content/site.ts): name, tagline, gate verses, tabs, projects, experience, technologies, about and contact links.
+Everything on the site lives in [`src/content/site.ts`](src/content/site.ts): name, tagline, gate verses, tabs, projects, experience, technologies, about and contact links. Its `url` is the live address; the canonical tag, sitemap, robots.txt and share image are built from it, so change it if the site moves to a new domain.
 
 - **Projects:** add an entry with a title, summary, role, stack, year, links and an optional list of screenshots.
 - **Images:** put them in `public/` (project screenshots in `public/projects/`) as webp.
