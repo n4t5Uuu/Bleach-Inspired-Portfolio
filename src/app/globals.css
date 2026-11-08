@@ -1990,14 +1990,37 @@ a.resume-tag:hover {
   margin-top: 28px;
 }
 
+/* a screenshot pinned up as a paper print; it opens full size in the viewer */
 .shot {
+  display: block;
   width: 100%;
-  height: auto;
+  border: 0;
+  cursor: zoom-in;
   padding: 8px;
   background-color: var(--washi);
   background-image: var(--grain-paper);
   box-shadow: 0 22px 36px -22px rgb(0 0 0 / 0.9);
   rotate: -0.8deg;
+}
+
+.shot img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* reached for, the print lifts off the page */
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .shot {
+    transition:
+      translate 0.3s var(--ease-out),
+      box-shadow 0.3s var(--ease-out);
+  }
+
+  .shot:is(:hover, :focus-visible) {
+    translate: 0 -6px;
+    box-shadow: 0 30px 44px -22px rgb(0 0 0 / 0.95);
+  }
 }
 
 .shot:nth-child(even) {
@@ -2040,6 +2063,57 @@ a.resume-tag:hover {
   from {
     opacity: 0;
     translate: 0 12px;
+  }
+}
+
+/* the screenshot viewer: one print, as large as the window allows, over a dimmed page */
+.viewer {
+  /* the reset zeroes margins; auto margins centre a modal dialog */
+  margin: auto;
+  max-width: 96vw;
+  max-height: 94vh;
+  padding: 0;
+  border: 0;
+  background: none;
+  overflow: visible;
+}
+
+.viewer::backdrop {
+  background: rgb(5 5 6 / 0.86);
+}
+
+.viewer-close {
+  display: block;
+  padding: 10px;
+  border: 0;
+  background-color: var(--washi);
+  background-image: var(--grain-paper);
+  box-shadow: 0 30px 60px -20px rgb(0 0 0 / 0.9);
+  cursor: zoom-out;
+}
+
+.viewer-close img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: calc(96vw - 20px);
+  max-height: calc(94vh - 20px);
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .viewer[open] {
+    animation: viewer-in 0.3s var(--ease-out);
+  }
+
+  .viewer[open]::backdrop {
+    animation: menu-fade 0.3s var(--ease-out);
+  }
+}
+
+@keyframes viewer-in {
+  from {
+    opacity: 0;
+    scale: 0.96;
   }
 }
 
