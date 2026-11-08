@@ -2,9 +2,11 @@
 
 import Image from "next/image";
 import { useId, useRef, useState, useSyncExternalStore, type KeyboardEvent, type UIEvent } from "react";
+import { flushSync } from "react-dom";
 import type { Project } from "@/content/site";
 
 type Props = { projects: Project[] };
+type Shot = NonNullable<Project["images"]>[number];
 
 const subscribe = () => () => {};
 const pad = (i: number) => String(i + 1).padStart(2, "0");
@@ -18,6 +20,13 @@ export function Shelf({ projects }: Props) {
   const ready = useSyncExternalStore(subscribe, () => true, () => false);
   const uid = useId();
   const tabs = useRef<(HTMLButtonElement | null)[]>([]);
+  // a screenshot opened full size, over the page; a click on it, Esc or (where supported) the backdrop closes it
+  const viewer = useRef<HTMLDialogElement>(null);
+  const [shot, setShot] = useState<Shot | null>(null);
+  const view = (img: Shot) => {
+    flushSync(() => setShot(img));
+    viewer.current?.showModal();
+  };
 
   const onKey = (e: KeyboardEvent, i: number) => {
     const last = projects.length - 1;
@@ -146,12 +155,26 @@ export function Shelf({ projects }: Props) {
           {p.images && (
             <div className="panel-shots">
               {p.images.map((img) => (
-                <Image key={img.src} className="shot" src={img.src} alt={img.alt} width={1200} height={img.height ?? 678} sizes="(min-width: 1000px) 520px, 90vw" />
+                <button key={img.src} type="button" className="shot" onClick={() => view(img)}>
+                  <Image src={img.src} alt={img.alt} width={1200} height={img.height ?? 678} sizes="(min-width: 1000px) 45vw, 90vw" />
+                  <span className="sr-only">View full size</span>
+                </button>
               ))}
             </div>
           )}
         </article>
       ))}
+
+      <dialog ref={viewer} className="viewer" aria-label="Screenshot" {...{ closedby: "any" }}>
+        {shot && (
+          <form method="dialog">
+            <button type="submit" className="viewer-close">
+              <Image src={shot.src} alt={shot.alt} width={1200} height={shot.height ?? 678} sizes="94vw" />
+              <span className="sr-only">Close</span>
+            </button>
+          </form>
+        )}
+      </dialog>
     </div>
   );
 }
