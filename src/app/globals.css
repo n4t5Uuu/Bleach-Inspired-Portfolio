@@ -1729,7 +1729,8 @@ a.resume-tag:hover {
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .shelf-hint-text svg {
+  .shelf-hint-arrow {
+    display: flex;
     animation: nudge 1.1s ease-in-out infinite alternate;
   }
 }
