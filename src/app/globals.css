@@ -2904,6 +2904,42 @@ a.resume-tag:hover {
   background: var(--paper-well);
 }
 
+/* on a wide scroll the facts stand in their own column beside the lead, so the paper is used across */
+@media (min-width: 1280px) {
+  .about-grid {
+    grid-template-columns: minmax(0, 3fr) minmax(0, 8fr);
+  }
+
+  .about-text {
+    display: grid;
+    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+    column-gap: clamp(40px, 4vw, 80px);
+    align-items: start;
+  }
+
+  .about-text > * {
+    grid-column: 1;
+  }
+
+  /* its column already sets the measure */
+  .about-text > .about-lead {
+    max-width: none;
+  }
+
+  .about-text > :is(.about-facts, .about-open) {
+    grid-column: 2;
+  }
+
+  .about-text > .about-facts {
+    grid-row: 1;
+    margin-top: 0;
+  }
+
+  .about-text > .about-open {
+    grid-row: 2;
+  }
+}
+
 .about-lead {
   max-width: 28ch;
   font-family: var(--font-verse-stack);
