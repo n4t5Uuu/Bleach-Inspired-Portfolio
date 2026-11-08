@@ -13,6 +13,7 @@ import { Timecode } from "@/components/Timecode";
 import { HellButterflies } from "@/components/HellButterflies";
 import { Contributions } from "@/components/Contributions";
 import { TechLogo } from "@/components/TechLogo";
+import { StackSway } from "@/components/StackSway";
 
 // schema.org data for search engines: who the site is about, and the profiles that are also them
 const schema = {
@@ -163,6 +164,7 @@ export default function Home() {
                 <p className="placeholder-note">Placeholder technologies</p>
               )}
             </div>
+            <StackSway />
           </section>
         </div>
 
