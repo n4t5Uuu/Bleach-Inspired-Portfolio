@@ -83,7 +83,7 @@ export default function Home() {
                     </div>
                   )}
                 </figure>
-                <div>
+                <div className="about-text">
                   <p className="about-lead">{site.about.lead}</p>
                   <p className="about-body">{site.about.body}</p>
                   <dl className="about-facts">
