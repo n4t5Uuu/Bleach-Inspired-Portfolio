@@ -91,9 +91,12 @@ export function Shelf({ projects }: Props) {
         <p className="shelf-hint" aria-hidden="true" data-end={seen === projects.length - 1}>
           <span className="shelf-hint-text">
             Swipe
-            <svg viewBox="0 0 24 12">
-              <path d="M0 6h22M16 1l6 5-6 5" />
-            </svg>
+            {/* the nudge moves this wrapper: Chrome cannot run an animation on an svg off the main thread */}
+            <span className="shelf-hint-arrow">
+              <svg viewBox="0 0 24 12">
+                <path d="M0 6h22M16 1l6 5-6 5" />
+              </svg>
+            </span>
           </span>
           <span className="shelf-hint-ticks">
             {projects.map((p, i) => (
