@@ -2429,7 +2429,8 @@ a.resume-tag:hover {
 
 .path-summary {
   margin-top: 10px;
-  max-width: var(--measure);
+  max-width: 95ch;
+  font-size: 1.125rem;
   color: var(--mist);
 }
 
