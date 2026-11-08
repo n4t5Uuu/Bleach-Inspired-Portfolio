@@ -1,33 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { Dela_Gothic_One, Shippori_Mincho_B1, Zen_Kaku_Gothic_New } from "next/font/google";
 import { Analytics } from "@vercel/analytics/next";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { site } from "@/content/site";
+import "./fonts/fonts.css";
 import "./globals.css";
-
-// These are Japanese fonts cut into hundreds of unicode-range slices. Preloading makes the browser
-// fetch dozens of slices the Latin-only page never uses (megabytes before first paint); without it,
-// the browser fetches only the slices for characters actually on screen.
-const display = Dela_Gothic_One({
-  variable: "--font-display",
-  weight: "400",
-  subsets: ["latin"],
-  preload: false,
-});
-
-const verse = Shippori_Mincho_B1({
-  variable: "--font-verse",
-  weight: ["500", "800"],
-  subsets: ["latin"],
-  preload: false,
-});
-
-const ui = Zen_Kaku_Gothic_New({
-  variable: "--font-ui",
-  weight: ["400", "500", "700"],
-  subsets: ["latin"],
-  preload: false,
-});
 
 const themeScript = `try{var d=document.documentElement.dataset,t=localStorage.getItem("theme");d.themeSource=t==="light"||t==="dark"?"user":"system";if(d.themeSource==="system")t=matchMedia("(prefers-color-scheme: light)").matches?"light":"dark";d.theme=t}catch(e){document.documentElement.dataset.theme="dark"}`;
 
@@ -58,7 +34,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     // the theme script sets data-theme before hydration, so React must not compare it
-    <html lang="en" className={`${display.variable} ${verse.variable} ${ui.variable}`} suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning>
       <head>
         {/* pick the theme before first paint: the saved choice, else follow the system setting */}
         <script dangerouslySetInnerHTML={{ __html: themeScript }} />
