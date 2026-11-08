@@ -1063,12 +1063,6 @@ ol {
   display: flex;
   flex-direction: column;
   width: 100%;
-  transition: opacity 0.9s var(--ease-out);
-}
-
-/* hidden until the browser picks this visit's verse, then inked in */
-.gate-verse[data-ready="false"] {
-  opacity: 0;
 }
 
 /* each line is a slip of paper (a tanzaku) pasted over the lattice, so the bars never cut the text */
@@ -1103,19 +1097,15 @@ ol {
 
 /* each line is brushed in from the left, one after another */
 @media (prefers-reduced-motion: no-preference) {
-  .gate-verse {
-    transition: none;
-  }
-
-  .gate-verse[data-ready="true"] span {
+  .gate-verse span {
     animation: ink-across 0.8s var(--ease-out) both;
   }
 
-  .gate-verse[data-ready="true"] span:nth-child(2) {
+  .gate-verse span:nth-child(2) {
     animation-delay: 0.4s;
   }
 
-  .gate-verse[data-ready="true"] span:nth-child(3) {
+  .gate-verse span:nth-child(3) {
     animation-delay: 0.8s;
   }
 }
