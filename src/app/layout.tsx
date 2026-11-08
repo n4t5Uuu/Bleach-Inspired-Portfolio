@@ -10,8 +10,9 @@ const themeScript = `try{var d=document.documentElement.dataset,t=localStorage.g
 // A reload that the browser scrolls back past the gate is shown as passed from its first paint, before
 // the gate script loads; otherwise the closed doors and the rolled-up about scroll flash for a moment.
 // The browser restores the scroll without a timely scroll event, so it checks before each paint, and
-// stops once the gate script has taken over (it sets data-gate).
-const restoreScript = `(function(){var d=document.documentElement.dataset,n=0;function c(){var g=document.getElementById("gate");if(d.gate||n++>600)return;if(g&&scrollY>0&&scrollY>=g.offsetHeight-innerHeight&&!matchMedia("(prefers-reduced-motion: reduce)").matches){d.passed="true";d.beat="true";d.gate="open";d.restored="";return}requestAnimationFrame(c)}requestAnimationFrame(c)})()`;
+// stops once the gate script has taken over (it sets data-gate). Each check forces a layout, so it runs
+// only on a reload or back/forward visit, the only loads a browser restores the scroll on.
+const restoreScript = `(function(){var d=document.documentElement.dataset,n=0,v=performance.getEntriesByType("navigation")[0];if(!v||(v.type!=="reload"&&v.type!=="back_forward"))return;function c(){var g=document.getElementById("gate");if(d.gate||n++>600)return;if(g&&scrollY>0&&scrollY>=g.offsetHeight-innerHeight&&!matchMedia("(prefers-reduced-motion: reduce)").matches){d.passed="true";d.beat="true";d.gate="open";d.restored="";return}requestAnimationFrame(c)}requestAnimationFrame(c)})()`;
 
 const title = `${site.name} — ${site.role} Portfolio`;
 const description = `Portfolio of ${site.name}, a 4th year Computer Science student at the University of Santo Tomas specializing in Data Science. Projects, experience, and resume.`;
