@@ -1,31 +1,25 @@
-"use client";
-
-import { useSyncExternalStore } from "react";
-
 type Props = { verses: string[][]; part: "all" | "sr" };
 
-// One pick per page load, shared by every part of the gate.
-let picked: number | undefined;
-const subscribe = () => () => {};
-
-// The page is static, so the verse is chosen in the browser: the server renders
-// it unpicked (hidden until hydration), then each visit settles on a random one.
+// The page is static, so each visit's verse is picked in the browser, by a script in the head before the
+// first paint (verseScript in layout.tsx sets data-verse on <html>). Every verse is rendered and the CSS
+// from verseRules shows only the picked one, so the verse is on screen without waiting for JavaScript.
 export function GateVerse({ verses, part }: Props) {
-  const i = useSyncExternalStore(
-    subscribe,
-    () => (picked ??= Math.floor(Math.random() * verses.length)),
-    () => -1,
-  );
-  const ready = i >= 0;
-  const lines = verses[ready ? i : 0];
-
-  if (part === "sr") return <p className="sr-only">{lines.join(", ")}</p>;
-
-  return (
-    <p className="gate-verse" aria-hidden="true" data-ready={ready}>
-      {lines.map((line) => (
-        <span key={line}>{line}</span>
-      ))}
-    </p>
+  return verses.map((lines, i) =>
+    part === "sr" ? (
+      <p key={i} className="sr-only" data-v={i}>
+        {lines.join(", ")}
+      </p>
+    ) : (
+      <p key={i} className="gate-verse" aria-hidden="true" data-v={i}>
+        {lines.map((line) => (
+          <span key={line}>{line}</span>
+        ))}
+      </p>
+    ),
   );
 }
+
+// hides every verse but the picked one; with no pick (no JavaScript), the first one shows
+export const verseRules = (count: number) =>
+  [...Array(count).keys()].map((i) => `:root[data-verse="${i}"] [data-v]:not([data-v="${i}"])`).join(",") +
+  `,:root:not([data-verse]) [data-v]:not([data-v="0"]){display:none}`;

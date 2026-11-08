@@ -3,7 +3,7 @@ import { Butterfly } from "./Butterfly";
 import { Registry, ResumeLink } from "./Registry";
 import { GateMotion } from "./GateMotion";
 import { MobileMenu } from "./MobileMenu";
-import { GateVerse } from "./GateVerse";
+import { GateVerse, verseRules } from "./GateVerse";
 import { Seal } from "./Seal";
 import { Tassel } from "./Tassel";
 import { ThemeToggle } from "./ThemeToggle";
@@ -27,10 +27,7 @@ export function Gate() {
           </div>
 
           <GateVerse verses={site.verses} part="sr" />
-          {/* without JavaScript nothing picks a verse, so show the first one */}
-          <noscript>
-            <style>{`.gate-verse[data-ready="false"] { opacity: 1; }`}</style>
-          </noscript>
+          <style>{verseRules(site.verses.length)}</style>
 
           <div className="gate-door gate-door-l">
             <GateVerse verses={site.verses} part="all" />
