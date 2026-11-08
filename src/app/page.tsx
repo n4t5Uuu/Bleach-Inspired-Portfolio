@@ -12,6 +12,7 @@ import { Night } from "@/components/Night";
 import { Timecode } from "@/components/Timecode";
 import { HellButterflies } from "@/components/HellButterflies";
 import { Contributions } from "@/components/Contributions";
+import { TechLogo } from "@/components/TechLogo";
 
 // schema.org data for search engines: who the site is about, and the profiles that are also them
 const schema = {
@@ -145,7 +146,14 @@ export default function Home() {
                   <ul>
                     {g.items.map((item) => (
                       <li key={item}>
-                        <span className="strip">{item}</span>
+                        <span className="hang">
+                          <span className="gust">
+                            <span className="strip">
+                              <TechLogo name={item} />
+                              {item}
+                            </span>
+                          </span>
+                        </span>
                       </li>
                     ))}
                   </ul>
