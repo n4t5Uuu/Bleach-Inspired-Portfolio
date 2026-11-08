@@ -63,11 +63,11 @@ export const site = {
   technologies: [
     {
       label: "Frontend",
-      items: ["JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS", "SCSS", "HTML", "CSS"],
+      items: ["JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS", "TanStack Query", "SCSS", "HTML", "CSS"],
     },
     {
       label: "Backend",
-      items: ["Python", "Java", "SQL", "Hono", "FastAPI", "PostgreSQL", "MySQL", "Supabase", "Pocketbase", "Drizzle ORM"],
+      items: ["Python", "Java", "SQL", "Hono", "FastAPI", "PostgreSQL", "MySQL", "Redis", "Supabase", "Pocketbase", "Drizzle ORM"],
     },
     {
       label: "DevOps and cloud",
@@ -79,7 +79,7 @@ export const site = {
     },
     {
       label: "Developer tools",
-      items: ["Git", "Claude Code", "Figma", "DBeaver", "Excel", "Google Workspace"],
+      items: ["Git", "Claude Code", "Cursor", "Codex", "Figma", "DBeaver", "Google Workspace"],
     },
   ],
   // The PDF lives in /public; set to null to show "Coming soon" instead.
