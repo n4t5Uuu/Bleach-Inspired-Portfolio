@@ -111,6 +111,7 @@ export function ThemeToggle({ id }: { id: string }) {
       <button
         type="button"
         className="theme-system"
+        aria-label="System theme"
         aria-pressed={source === "system"}
         onClick={() => apply(systemLight().matches ? "light" : "dark", "system")}
       >
