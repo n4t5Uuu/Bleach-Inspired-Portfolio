@@ -75,7 +75,7 @@ export default function Home() {
               <div className="about-grid">
                 <figure className="portrait">
                   {site.about.portrait ? (
-                    <Image src={site.about.portrait} alt={`Portrait of ${site.name}`} fill sizes="320px" />
+                    <Image src={site.about.portrait} alt={`Portrait of ${site.name}`} fill sizes="(min-width: 761px) 30vw, 200px" loading="eager" />
                   ) : (
                     <div className="portrait-empty">
                       <span>Portrait</span>
