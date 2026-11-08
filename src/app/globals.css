@@ -601,7 +601,12 @@ ol {
 }
 
 :root[data-theme="light"] .stack-group::before {
-  background: linear-gradient(90deg, var(--cord), var(--cobalt) 10%, var(--cobalt));
+  background: linear-gradient(90deg, var(--cord), var(--cobalt));
+  opacity: 0.4;
+}
+
+:root[data-theme="light"] .stack-group li::after {
+  background: var(--cobalt);
   opacity: 0.4;
 }
 
@@ -2353,15 +2358,15 @@ a.resume-tag:hover {
   align-items: start;
 }
 
-/* the rail leaves the cord and runs along the top of the group */
+/* the rail leaves the cord and meets the first row's rail */
 .stack-group::before {
   content: "";
   position: absolute;
   top: 18px;
   left: calc(var(--dates) + var(--knot-col) / 2);
-  right: 0;
+  width: calc(var(--knot-col) / 2);
   height: 2px;
-  background: linear-gradient(90deg, var(--cord), var(--ghost) 10%, var(--ghost));
+  background: linear-gradient(90deg, var(--cord), var(--ghost));
   opacity: 0.6;
 }
 
@@ -2392,21 +2397,58 @@ a.resume-tag:hover {
 }
 
 .stack-group ul {
+  --col-gap: clamp(14px, 2vw, 28px);
   grid-column: 3;
   display: flex;
   flex-wrap: wrap;
-  gap: 0 clamp(14px, 2vw, 28px);
+  gap: 20px var(--col-gap);
   padding-top: 18px;
 }
 
 .stack-group li {
   position: relative;
-  padding-top: var(--drop, 28px);
+}
+
+/* every row hangs from its own rail: each strip draws its stretch of it, half a gap either side */
+.stack-group li::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: calc(var(--col-gap) / -2);
+  right: calc(var(--col-gap) / -2);
+  height: 2px;
+  background: var(--ghost);
+  opacity: 0.6;
+}
+
+/* the peg on the rail the string is tied to; it stays put while the strip swings */
+.stack-group li::before {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: -2px;
+  left: calc(50% - 3px);
+  width: 6px;
+  height: 6px;
+  background: var(--mist);
+  rotate: 45deg;
+}
+
+/* two layers turn about the same peg: .hang settles as it scrolls in and swings when tapped
+   (StackSway), .gust moves in the wind; their turns add up */
+.hang,
+.gust {
+  position: relative;
+  display: block;
   transform-origin: top center;
 }
 
+.gust {
+  padding-top: var(--drop, 28px);
+}
+
 /* the string the strip hangs by */
-.stack-group li::before {
+.gust::before {
   content: "";
   position: absolute;
   top: 0;
@@ -2433,7 +2475,9 @@ a.resume-tag:hover {
 }
 
 .strip {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 0.45em;
   padding: 10px 16px;
   background-color: var(--washi);
   background-image: var(--grain-paper);
@@ -2444,11 +2488,33 @@ a.resume-tag:hover {
   line-height: 1.2;
   rotate: var(--tilt, 0deg);
   box-shadow: 0 10px 16px -8px rgb(0 0 0 / 0.7);
+  transition: box-shadow 0.3s var(--ease-out);
+}
+
+/* the tool's mark, in the strip's ink */
+.strip-logo {
+  flex: none;
+  width: 0.9em;
+  height: 0.9em;
+  fill: currentColor;
+  transition: color 0.25s var(--ease-out);
+}
+
+/* reached for, the strip swings (StackSway), its shadow lengthens and its mark is inked red; only
+   with a real pointer, as a tap would leave a phone's strip stuck in its hover state */
+@media (hover: hover) {
+  .hang:hover .strip {
+    box-shadow: 0 16px 22px -10px rgb(0 0 0 / 0.75);
+  }
+
+  .hang:hover .strip-logo {
+    color: var(--cord-deep);
+  }
 }
 
 @supports (animation-timeline: view()) {
   @media (prefers-reduced-motion: no-preference) {
-    .stack-group li {
+    .hang {
       animation: swing linear both;
       animation-timeline: view();
       animation-range: entry 5% entry 95%;
@@ -3455,7 +3521,7 @@ span.resume-close {
 
   .stack-group ul {
     grid-column: 2;
-    gap: 0 12px;
+    --col-gap: 12px;
   }
 
   .stack-group::before {
