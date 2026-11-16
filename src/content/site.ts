@@ -162,6 +162,23 @@ export const site = {
       extraLinks: [{ label: "Admin Site", href: "https://admin.dollysclosetph.com" }],
       caseStudyUrl: null,
     },
+    {
+      slug: "aura-astronaut-health",
+      title: "A²U.R.A. Astronaut Health Monitor",
+      verse: "The suit glows where the danger is",
+      summary:
+        "Our NASA Space Apps 2026 entry, for the challenge to build health monitoring software for astronauts. A rotatable 3D astronaut glows with an aura over the affected body part when a vital or cabin reading crosses a threshold drawn from NASA standards: red when critical, yellow for caution, and blue, green or gray for cold, radiation or air quality, with simultaneous alerts ranked by urgency and next steps for the crew. I set up the pnpm workspace and Docker flow, wrote the hazard thresholds and scoring logic with unit tests and a NASA DONKI space-weather cache, built the first aura dashboard in three.js around NASA's Z2 spacesuit, and added the conditions bar, adjustable vitals and next steps for every condition.",
+      role: "Full-stack developer, NASA Space Apps 2026 team",
+      stack: ["Next.js", "React", "TypeScript", "Three.js", "React Three Fiber", "Zustand", "Tailwind CSS", "Vitest", "Gemini API", "NASA DONKI API", "Docker"],
+      year: "2026",
+      images: [
+        { src: "/projects/aura-radiation.webp", height: 575, alt: "The A²U.R.A. dashboard during a simulated gamma radiation alert: a 3D astronaut outlined in a green radiation aura, a caution banner above it, and a Next steps panel on the left, beside heart rate, core temperature and reaction time cards." },
+        { src: "/projects/aura-nominal.webp", height: 575, alt: "The A²U.R.A. dashboard with all readings nominal: the 3D astronaut in a white spacesuit with no aura, vitals cards on the right and a bar of simulated conditions along the bottom." },
+      ],
+      liveUrl: "https://decker2-a-u-r-a.vercel.app",
+      sourceUrl: "https://github.com/n4t5Uuu/Decker2-A.U.R.A",
+      caseStudyUrl: null,
+    },
   ] satisfies Project[],
   experience: [
     {
