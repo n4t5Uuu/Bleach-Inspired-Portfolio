@@ -690,20 +690,6 @@ ol {
   filter: opacity(0.8);
 }
 
-:root[data-theme="light"] .scroll-paper {
-  --paper: var(--washi);
-  --paper-ink: var(--lacquer);
-  --paper-soft: #55554f;
-  --paper-accent: var(--cord-deep);
-  --paper-line: var(--cobalt);
-  --paper-rule: rgb(10 34 96 / 0.18);
-  --paper-well: rgb(60 45 30 / 0.06);
-  --paper-edge: rgb(60 45 30 / 0.07);
-  box-shadow:
-    inset 2px 0 0 var(--navy),
-    inset -2px 0 0 var(--navy);
-}
-
 /* the cover's stripes down each edge of the screen: a red bar, then a navy one */
 :root[data-theme="light"] .night::after {
   content: "";
@@ -2732,152 +2718,38 @@ a.resume-tag:hover {
   }
 }
 
-/* ---------- about: an unrolled scroll ---------- */
+/* ---------- about: what the gate opens onto ---------- */
 
+/* the portrait and the reading, on the page's own ground: no paper, the night or the day shows round
+   them. Its inks follow the theme through main's tokens. */
 .about {
+  --about-rule: rgb(233 227 255 / 0.16);
+  --about-light: var(--seam);
   scroll-margin-top: 72px;
-  padding: 0 var(--gutter) clamp(96px, 16vh, 180px);
+  padding: clamp(104px, 16vh, 150px) var(--gutter) clamp(96px, 16vh, 180px);
 }
 
-.scroll {
+:root[data-theme="light"] .about {
+  --about-rule: rgb(10 34 96 / 0.18);
+  --about-light: var(--cobalt);
+}
+
+.about-stage {
   position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(40px, 6vw, 104px);
+  align-items: start;
   max-width: max(68.75rem, var(--wide));
   margin-inline: auto;
-  /* room for the bottom roller, which hangs at the foot of the paper */
-  padding-bottom: 26px;
 }
 
-/* the two rollers the paper hangs between */
-.scroll::before,
-.scroll::after {
-  content: "";
-  display: block;
-  height: 26px;
-  margin-inline: -14px;
-  border-radius: 13px;
-  background-color: #1d1916;
-  background-image: var(--grain-wood);
-  box-shadow: 0 8px 18px -6px rgb(0 0 0 / 0.8);
-}
-
-.scroll::after {
-  position: absolute;
-  z-index: 1;
-  left: 0;
-  right: 0;
-  bottom: 0;
-}
-
-/* by night the scroll is the gate's moonlit indigo paper, so it belongs to the dark page instead of
-   standing out as a bright slab; by day it is cream (see the light block). Its inks are local tokens. */
-.scroll-paper {
-  --paper: var(--door-paper);
-  --paper-ink: var(--washi);
-  --paper-soft: #a9adc8;
-  --paper-accent: var(--cord-lit);
-  --paper-line: #6f95ff;
-  --paper-rule: rgb(233 227 255 / 0.18);
-  --paper-frame: var(--lacquer);
-  --paper-well: rgb(0 0 20 / 0.3);
-  --paper-edge: rgb(2 4 20 / 0.35);
-  padding: clamp(36px, 6vw, 80px);
-  background-color: var(--paper);
-  background-image:
-    var(--grain-paper),
-    linear-gradient(90deg, var(--paper-edge), transparent 7%, transparent 93%, var(--paper-edge));
-  color: var(--paper-ink);
-}
-
-/* The scroll unrolls once the gate is passed: it waits rolled up, both rollers together, then the
-   bottom roller drops and the paper is revealed behind it, the grain turning as it rolls. The paper
-   keeps its full height throughout, so nothing below moves. Without JS or with reduced motion the
-   gate is never armed and the scroll simply hangs open. */
-@media (prefers-reduced-motion: no-preference) {
-  .gate[data-armed="true"] + main .scroll-paper {
-    clip-path: inset(0 0 100% 0);
-  }
-
-  .gate[data-armed="true"] + main .scroll::after {
-    bottom: calc(100% - 52px);
-  }
-
-  :root[data-passed="true"] .gate[data-armed="true"] + main .scroll-paper {
-    animation: unroll-paper 1.7s var(--ease-roll) 0.15s both;
-  }
-
-  :root[data-passed="true"] .gate[data-armed="true"] + main .scroll::after {
-    animation: unroll-roller 1.7s var(--ease-roll) 0.15s both;
-  }
-
-  /* after a reload past the gate the scroll is already open: it does not roll up and unroll again */
-  :root[data-restored] .gate[data-armed="true"] + main .scroll-paper,
-  :root[data-restored] .gate[data-armed="true"] + main .scroll::after {
-    animation-duration: 0s;
-    animation-delay: 0s;
-  }
-}
-
-@keyframes unroll-paper {
-  from {
-    clip-path: inset(0 0 100% 0);
-  }
-  to {
-    clip-path: inset(0);
-  }
-}
-
-@keyframes unroll-roller {
-  from {
-    bottom: calc(100% - 52px);
-    background-position: 0 0;
-  }
-  to {
-    bottom: 0;
-    background-position: 0 -480px;
-  }
-}
-
-.about-id h1 {
-  font-family: var(--font-display-stack);
-  font-size: clamp(2rem, calc(5.2 * var(--fluid)), 4.75rem);
-  line-height: 0.98;
-  overflow-wrap: anywhere;
-}
-
-.about-role {
-  margin-top: 12px;
-  color: var(--paper-soft);
-  font-size: clamp(0.8125rem, calc(0.95 * var(--fluid)), 0.9375rem);
-  font-weight: 700;
-  letter-spacing: 0.32em;
-  text-transform: uppercase;
-}
-
-.about-tagline {
-  max-width: 52ch;
-  margin-top: 8px;
-  font-size: clamp(1.0625rem, calc(1.3 * var(--fluid)), 1.25rem);
-  line-height: 1.45;
-}
-
-
-.about-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 3fr) minmax(0, 7fr);
-  gap: clamp(28px, 5vw, 72px);
-  align-items: start;
-  margin-top: clamp(28px, 5vh, 48px);
-}
-
-/* a manga panel: a heavy frame with a thin blue rule set just outside it */
 .portrait {
   position: relative;
   margin: 0;
   aspect-ratio: 3 / 4;
   overflow: hidden;
-  border: 4px solid var(--paper-frame);
-  outline: 1px solid var(--paper-line);
-  outline-offset: 5px;
+  background: var(--void);
 }
 
 .portrait img {
@@ -2893,123 +2765,233 @@ a.resume-tag:hover {
   text-align: center;
   font-family: var(--font-display-stack);
   font-size: 1.25rem;
-  background: var(--paper-well);
 }
 
-/* on a wide scroll the facts stand in their own column beside the lead, so the paper is used across */
-@media (min-width: 1280px) {
-  .about-grid {
-    grid-template-columns: minmax(0, 3fr) minmax(0, 8fr);
-  }
+.about-id h1 {
+  font-family: var(--font-display-stack);
+  font-size: clamp(2.5rem, calc(5.4 * var(--fluid)), 5rem);
+  line-height: 0.95;
+  overflow-wrap: anywhere;
+}
 
-  .about-text {
-    display: grid;
-    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
-    column-gap: clamp(40px, 4vw, 80px);
-    align-items: start;
-  }
-
-  .about-text > * {
-    grid-column: 1;
-  }
-
-  /* its column already sets the measure */
-  .about-text > .about-lead {
-    max-width: none;
-  }
-
-  .about-text > :is(.about-facts, .about-open) {
-    grid-column: 2;
-  }
-
-  .about-text > .about-facts {
-    grid-row: 1;
-    margin-top: 0;
-  }
-
-  .about-text > .about-open {
-    grid-row: 2;
-  }
+.about-role {
+  margin-top: 14px;
+  color: var(--mist);
+  font-size: clamp(0.8125rem, calc(0.95 * var(--fluid)), 0.9375rem);
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
 }
 
 .about-lead {
-  max-width: 28ch;
+  max-width: 30ch;
+  margin-top: clamp(28px, 4.5vh, 44px);
   font-family: var(--font-verse-stack);
   font-weight: 500;
-  font-size: clamp(1.5rem, calc(2.8 * var(--fluid)), 2.4rem);
-  line-height: 1.4;
+  font-size: clamp(1.375rem, calc(2.4 * var(--fluid)), 2.125rem);
+  line-height: 1.42;
+  text-wrap: pretty;
 }
 
 .about-body {
   max-width: 52ch;
-  margin-top: 20px;
-  color: var(--paper-soft);
-  font-size: clamp(1.0625rem, calc(1.2 * var(--fluid)), 1.1875rem);
+  margin-top: 18px;
+  color: var(--mist);
+  font-size: clamp(1.0625rem, calc(1.15 * var(--fluid)), 1.1875rem);
   line-height: 1.6;
 }
 
-/* the facts are a quiet ruled list; the one stamp below them is the section's only accent */
 .about-facts {
-  max-width: 35rem;
-  margin-top: clamp(28px, 5vh, 44px);
-  border-top: 1px solid var(--paper-rule);
-}
-
-.about-facts > div {
   display: grid;
-  grid-template-columns: 9.5rem minmax(0, 1fr);
-  gap: 16px;
-  align-items: baseline;
-  padding-block: 12px;
-  border-bottom: 1px solid var(--paper-rule);
+  grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
+  gap: 18px clamp(18px, 2.4vw, 32px);
+  margin-top: clamp(28px, 4.5vh, 44px);
+  padding-top: 20px;
+  border-top: 1px solid var(--about-rule);
 }
 
-.about-facts dt {
+.about-facts dt,
+.about-open span {
+  color: var(--mist);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: var(--paper-soft);
 }
 
 .about-facts dd {
-  font-size: 1.0625rem;
+  margin-top: 6px;
+  font-size: 1rem;
   font-weight: 600;
+  line-height: 1.4;
 }
 
-/* what you are open to, stamped like a seal impression */
+/* what you are open to: the one line lit by the gate's light */
 .about-open {
-  display: inline-block;
-  max-width: 100%;
   margin-top: clamp(24px, 4vh, 36px);
-  padding: 12px 18px 14px;
-  border: 2px solid var(--paper-accent);
-  box-shadow: inset 0 0 0 3px var(--paper), inset 0 0 0 4px var(--paper-accent);
-  rotate: -1.5deg;
   font-size: 1.125rem;
   font-weight: 700;
+  line-height: 1.4;
 }
 
 .about-open span {
   display: block;
-  margin-bottom: 4px;
-  font-size: 0.75rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--paper-accent);
+  margin-bottom: 6px;
+}
+
+.about-open b {
+  font-weight: inherit;
+  text-decoration: underline 2px var(--about-light);
+  text-underline-offset: 7px;
+  text-decoration-skip-ink: none;
+}
+
+.about-tagline {
+  max-width: 52ch;
+  margin-top: 24px;
+  color: var(--mist);
+  font-size: 0.9375rem;
+  line-height: 1.55;
 }
 
 .about .placeholder-note {
   margin-top: 24px;
-  color: var(--paper-soft);
+  color: var(--mist);
+}
+
+@media (max-width: 900px) {
+  .about-stage {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .portrait {
+    width: min(100%, 360px);
+  }
 }
 
 /* a narrow phone stacks each fact's label over its value */
 @media (max-width: 420px) {
-  .about-facts > div {
-    grid-template-columns: 1fr;
-    gap: 2px;
+  .about-facts {
+    grid-template-columns: minmax(0, 1fr);
   }
+}
+
+/* While the gate opens, About is held on the screen where it will come to rest (GateMotion writes the
+   passage's progress as --p, the doors' as --door and the scroll it covers as --travel), so it is
+   what the doors open onto rather than a section arriving after them. Unarmed, it simply reads. */
+.gate[data-armed="true"] + main {
+  margin-top: -100svh;
+}
+
+.gate[data-armed="true"] + main > .about {
+  min-height: 100svh;
+  padding-top: clamp(104px, 16vh, 150px);
+  translate: 0 calc((var(--p, 1) - 1) * var(--travel, 0px));
+}
+
+.gate[data-armed="true"] + main > .about > * {
+  opacity: 1;
+}
+
+/* a part's own progress through the passage, between --a and --b */
+.gate[data-armed="true"] + main > .about .about-k {
+  --k: clamp(0, (var(--p, 1) - var(--a)) / (var(--b) - var(--a)), 1);
+}
+
+/* The butterflies bring you in. The gate's butterflies leave through the light as it opens; once the
+   beat has fallen, three come back down out of it and settle on About: one on the portrait's corner,
+   one by the name, one by what you are open to. Each part is inked in from where its butterfly lands,
+   and they stay, resting, as part of the section. */
+.about-stage {
+  --g: clamp(40px, 6vw, 104px);
+  gap: var(--g);
+}
+
+.about-id,
+.about-open {
+  position: relative;
+}
+
+.about-fly {
+  position: absolute;
+  z-index: 1;
+  width: clamp(30px, 3vw, 46px);
+  fill: var(--drift);
+  pointer-events: none;
+}
+
+.about-fly svg {
+  display: block;
+  width: 100%;
+}
+
+/* on the portrait's top right corner, a little over it */
+.about-fly-1 {
+  top: -14px;
+  left: calc((100% - var(--g)) * 0.4 - 22px);
+}
+
+/* by the name, above its end */
+.about-fly-2 {
+  top: -30px;
+  right: 6%;
+  width: clamp(26px, 2.6vw, 40px);
+}
+
+/* in front of what you are open to */
+.about-fly-3 {
+  top: -6px;
+  left: -50px;
+  width: clamp(24px, 2.4vw, 34px);
+}
+
+@media (max-width: 900px) {
+  .about-fly-1 {
+    left: calc(min(100%, 360px) - 22px);
+  }
+
+  .about-fly-3 {
+    top: -30px;
+    left: auto;
+    right: 8%;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .about-fly {
+    animation: flap 2.4s ease-in-out infinite;
+  }
+
+  .about-fly-2 {
+    animation-duration: 1.9s;
+    animation-delay: -0.7s;
+  }
+
+  .about-fly-3 {
+    animation-duration: 2.8s;
+    animation-delay: -1.3s;
+  }
+}
+
+/* each flies its own path down from above, slowing as it lands and turning upright to rest */
+.gate[data-armed="true"] + main > .about .about-fly {
+  --e: calc(1 - (1 - var(--k)) * (1 - var(--k)));
+  translate:
+    calc((1 - var(--e)) * var(--dx) + sin(var(--k) * 180deg) * var(--sway))
+    calc((1 - var(--e)) * var(--dy));
+  rotate: calc((1 - var(--e)) * var(--turn));
+  opacity: min(1, var(--k) * 5);
+}
+
+/* A landed part is inked in outward from its butterfly. The parts a butterfly rests on reveal what is
+   in them, not themselves, so the butterfly is seen all the way down. */
+.gate[data-armed="true"] + main > .about :is(.portrait.about-k, .about-id.about-k > :not(.about-fly)) {
+  mask-image: radial-gradient(circle at 100% 0, #000 calc(var(--k) * 150% - 18%), transparent calc(var(--k) * 150%));
+}
+
+.gate[data-armed="true"] + main > .about :is(.about-text > .about-k:not(.about-id, .about-open), .about-open.about-k > :not(.about-fly)) {
+  opacity: var(--k);
+  translate: 0 calc((1 - var(--k)) * 14px);
 }
 
 /* ---------- the close: the gate seen from the far side ---------- */
@@ -3654,16 +3636,6 @@ span.resume-close {
 
   .stack .placeholder-note {
     padding-left: var(--knot-col);
-  }
-
-  .about-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .portrait {
-    /* centred in the single column; auto margins stop the 3:4 box stretching, so it needs a width */
-    width: min(100%, 200px);
-    margin-inline: auto;
   }
 
   .close-door {

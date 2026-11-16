@@ -34,6 +34,8 @@ export function GateMotion() {
       if (numeral && numeral.textContent !== n) numeral.textContent = n;
     };
     const black = style(".gate-black");
+    // About is held where it will rest while the gate opens onto it, and staged by the same progress
+    const about = document.getElementById("about")?.style;
     // the gate's butterflies: each leaves along its own path (data-fly, "dx,dy" in vw and vh),
     // turned towards where it is going
     const flights = [...gate.querySelectorAll<HTMLElement>(".drift")].map((el) => {
@@ -73,6 +75,8 @@ export function GateMotion() {
         f.style.rotate = `${(f.turn * turn).toFixed(1)}deg`;
       }
       main?.style.setProperty("--head", head.toFixed(4));
+      about?.setProperty("--p", p.toFixed(4));
+      about?.setProperty("--door", door.toFixed(4));
       flag(gate, "parting", door > 0);
       flag(root, "beat", head > 0.5);
       flag(root, "passed", p > 0.98);
@@ -86,6 +90,7 @@ export function GateMotion() {
         return;
       }
       const travel = gate.offsetHeight - window.innerHeight;
+      about?.setProperty("--travel", `${travel}px`);
       apply(travel > 0 ? clamp(-rect.top / travel) : 0);
     };
 
@@ -173,7 +178,7 @@ export function GateMotion() {
           locked = true;
           root.dataset.gate = "closed";
           aim(); // the next opening, by cord or scroll, leads to About again
-          delete root.dataset.restored; // the next opening unrolls the about scroll as usual
+          delete root.dataset.restored; // the next opening plays as usual
         }
         return;
       }
@@ -195,6 +200,7 @@ export function GateMotion() {
         }
         stage.removeProperty("--flood");
         main?.style.removeProperty("--head");
+        for (const k of ["--p", "--door", "--travel"]) about?.removeProperty(k);
         delete gate.dataset.parting;
         delete root.dataset.beat;
       }
