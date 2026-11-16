@@ -1,69 +1,9 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-25T00:08:03.383Z",
+  "generatedAt": "2026-11-16T19:43:44.000Z",
   "title": "Design System: Senkaimon Verse",
   "extensions": {
     "colorMeta": {
-      "cord": {
-        "role": "primary",
-        "displayName": "Cord Vermilion",
-        "canonical": "#d2381e",
-        "tonalRamp": [
-          "oklch(15% 0.06 35)",
-          "oklch(26% 0.10 35)",
-          "oklch(38% 0.15 35)",
-          "oklch(50% 0.18 35)",
-          "oklch(58% 0.19 35)",
-          "oklch(70% 0.15 35)",
-          "oklch(83% 0.08 35)",
-          "oklch(95% 0.02 35)"
-        ]
-      },
-      "cord-lit": {
-        "role": "primary",
-        "displayName": "Lit Vermilion",
-        "canonical": "#ff6a4d",
-        "tonalRamp": [
-          "oklch(15% 0.06 33)",
-          "oklch(26% 0.10 33)",
-          "oklch(38% 0.15 33)",
-          "oklch(50% 0.19 33)",
-          "oklch(68% 0.19 33)",
-          "oklch(76% 0.14 33)",
-          "oklch(86% 0.08 33)",
-          "oklch(95% 0.02 33)"
-        ]
-      },
-      "cord-deep": {
-        "role": "primary",
-        "displayName": "Deep Vermilion",
-        "canonical": "#b8301a",
-        "tonalRamp": [
-          "oklch(15% 0.06 35)",
-          "oklch(25% 0.10 35)",
-          "oklch(36% 0.14 35)",
-          "oklch(52% 0.17 35)",
-          "oklch(62% 0.17 35)",
-          "oklch(72% 0.13 35)",
-          "oklch(84% 0.07 35)",
-          "oklch(95% 0.02 35)"
-        ]
-      },
-      "seam": {
-        "role": "secondary",
-        "displayName": "Seam Light",
-        "canonical": "#e9e3ff",
-        "tonalRamp": [
-          "oklch(15% 0.03 295)",
-          "oklch(27% 0.04 295)",
-          "oklch(39% 0.05 295)",
-          "oklch(51% 0.05 295)",
-          "oklch(63% 0.05 295)",
-          "oklch(75% 0.04 295)",
-          "oklch(85% 0.04 295)",
-          "oklch(93% 0.035 295)"
-        ]
-      },
       "lacquer": {
         "role": "neutral",
         "displayName": "Black Lacquer",
@@ -139,6 +79,81 @@
           "oklch(98.5% 0.004 110)"
         ]
       },
+      "cord": {
+        "role": "primary",
+        "displayName": "Cord Vermilion",
+        "canonical": "#d2381e",
+        "tonalRamp": [
+          "oklch(15% 0.06 35)",
+          "oklch(26% 0.10 35)",
+          "oklch(38% 0.15 35)",
+          "oklch(50% 0.18 35)",
+          "oklch(58% 0.19 35)",
+          "oklch(70% 0.15 35)",
+          "oklch(83% 0.08 35)",
+          "oklch(95% 0.02 35)"
+        ]
+      },
+      "cord-lit": {
+        "role": "primary",
+        "displayName": "Lit Vermilion",
+        "canonical": "#ff6a4d",
+        "tonalRamp": [
+          "oklch(15% 0.06 33)",
+          "oklch(26% 0.10 33)",
+          "oklch(38% 0.15 33)",
+          "oklch(50% 0.19 33)",
+          "oklch(68% 0.19 33)",
+          "oklch(76% 0.14 33)",
+          "oklch(86% 0.08 33)",
+          "oklch(95% 0.02 33)"
+        ]
+      },
+      "cord-deep": {
+        "role": "primary",
+        "displayName": "Deep Vermilion",
+        "canonical": "#b8301a",
+        "tonalRamp": [
+          "oklch(15% 0.06 35)",
+          "oklch(25% 0.10 35)",
+          "oklch(36% 0.14 35)",
+          "oklch(52% 0.17 35)",
+          "oklch(62% 0.17 35)",
+          "oklch(72% 0.13 35)",
+          "oklch(84% 0.07 35)",
+          "oklch(95% 0.02 35)"
+        ]
+      },
+      "tassel-knot": {
+        "role": "primary",
+        "displayName": "Tassel Knot",
+        "canonical": "#9e2814",
+        "tonalRamp": [
+          "oklch(15% 0.1 35)",
+          "oklch(27% 0.1 35)",
+          "oklch(39% 0.1 35)",
+          "oklch(51% 0.1 35)",
+          "oklch(63% 0.1 35)",
+          "oklch(75% 0.1 35)",
+          "oklch(86% 0.1 35)",
+          "oklch(95% 0.1 35)"
+        ]
+      },
+      "seam": {
+        "role": "secondary",
+        "displayName": "Seam Light",
+        "canonical": "#e9e3ff",
+        "tonalRamp": [
+          "oklch(15% 0.03 295)",
+          "oklch(27% 0.04 295)",
+          "oklch(39% 0.05 295)",
+          "oklch(51% 0.05 295)",
+          "oklch(63% 0.05 295)",
+          "oklch(75% 0.04 295)",
+          "oklch(85% 0.04 295)",
+          "oklch(93% 0.035 295)"
+        ]
+      },
       "ghost": {
         "role": "neutral",
         "displayName": "Ghost",
@@ -199,21 +214,6 @@
           "oklch(95% 0.005 110)"
         ]
       },
-      "tassel-knot": {
-        "role": "primary",
-        "displayName": "Tassel Knot",
-        "canonical": "#9e2814",
-        "tonalRamp": [
-          "oklch(15% 0.1 35)",
-          "oklch(27% 0.1 35)",
-          "oklch(39% 0.1 35)",
-          "oklch(51% 0.1 35)",
-          "oklch(63% 0.1 35)",
-          "oklch(75% 0.1 35)",
-          "oklch(86% 0.1 35)",
-          "oklch(95% 0.1 35)"
-        ]
-      },
       "wood": {
         "role": "neutral",
         "displayName": "Wood",
@@ -259,83 +259,34 @@
           "oklch(95% 0.01 60)"
         ]
       },
-      "paper-shade": {
-        "role": "neutral",
-        "displayName": "Paper Shade",
-        "canonical": "rgb(60 45 30 / 0.14)",
+      "navy": {
+        "role": "secondary",
+        "displayName": "Broadcast Navy",
+        "canonical": "#0a2260",
         "tonalRamp": [
-          "oklch(15% 0.02 70)",
-          "oklch(27% 0.02 70)",
-          "oklch(39% 0.02 70)",
-          "oklch(51% 0.02 70)",
-          "oklch(63% 0.02 70)",
-          "oklch(75% 0.02 70)",
-          "oklch(86% 0.02 70)",
-          "oklch(95% 0.02 70)"
-        ]
-      },
-      "paper-shade-edge": {
-        "role": "neutral",
-        "displayName": "Paper Shade Edge",
-        "canonical": "rgb(70 55 40 / 0.16)",
-        "tonalRamp": [
-          "oklch(15% 0.02 70)",
-          "oklch(27% 0.02 70)",
-          "oklch(39% 0.02 70)",
-          "oklch(51% 0.02 70)",
-          "oklch(63% 0.02 70)",
-          "oklch(75% 0.02 70)",
-          "oklch(86% 0.02 70)",
-          "oklch(95% 0.02 70)"
-        ]
-      },
-      "paper-shade-side": {
-        "role": "neutral",
-        "displayName": "Paper Shade Side",
-        "canonical": "rgb(60 45 30 / 0.07)",
-        "tonalRamp": [
-          "oklch(15% 0.02 70)",
-          "oklch(27% 0.02 70)",
-          "oklch(39% 0.02 70)",
-          "oklch(51% 0.02 70)",
-          "oklch(63% 0.02 70)",
-          "oklch(75% 0.02 70)",
-          "oklch(86% 0.02 70)",
-          "oklch(95% 0.02 70)"
-        ]
-      },
-      "paper-shade-wash": {
-        "role": "neutral",
-        "displayName": "Paper Shade Wash",
-        "canonical": "rgb(60 45 30 / 0.06)",
-        "tonalRamp": [
-          "oklch(15% 0.02 70)",
-          "oklch(27% 0.02 70)",
-          "oklch(39% 0.02 70)",
-          "oklch(51% 0.02 70)",
-          "oklch(63% 0.02 70)",
-          "oklch(75% 0.02 70)",
-          "oklch(86% 0.02 70)",
-          "oklch(95% 0.02 70)"
+          "oklch(15% 0.09 265)",
+          "oklch(23% 0.11 265)",
+          "oklch(35% 0.13 265)",
+          "oklch(47% 0.13 265)",
+          "oklch(59% 0.11 265)",
+          "oklch(71% 0.08 265)",
+          "oklch(84% 0.04 265)",
+          "oklch(95% 0.015 265)"
         ]
       }
     },
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "Section titles: Projects, Experience, Technologies, About."
+        "purpose": "Section titles; role titles and periods use the display face too."
       },
-      "display-close": {
-        "displayName": "Display Close",
-        "purpose": "The closing line."
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "The open project's title in the detail panel."
       },
-      "name": {
-        "displayName": "Name",
-        "purpose": "The developer name on the lintel; smaller than the verse."
-      },
-      "numeral-passage": {
-        "displayName": "Passage Numeral",
-        "purpose": "The 01 left standing in the dark behind the doors."
+      "title": {
+        "displayName": "Title",
+        "purpose": "Resume tag; book titles slightly smaller."
       },
       "numeral-book": {
         "displayName": "Book Numeral",
@@ -343,59 +294,15 @@
       },
       "verse": {
         "displayName": "Verse",
-        "purpose": "Gate verse on paper slips, horizontal, sized from both axes."
-      },
-      "verse-narrow": {
-        "displayName": "Verse Narrow",
-        "purpose": "Verse at 760px and below."
-      },
-      "headline": {
-        "displayName": "Headline",
-        "purpose": "Open project title in the detail panel."
-      },
-      "title-role": {
-        "displayName": "Role Title",
-        "purpose": "Experience role titles."
-      },
-      "title": {
-        "displayName": "Title",
-        "purpose": "Resume tag."
-      },
-      "title-book": {
-        "displayName": "Book Title",
-        "purpose": "Title under each cover."
-      },
-      "period": {
-        "displayName": "Period",
-        "purpose": "Dates left of the cord, tabular figures."
-      },
-      "lead": {
-        "displayName": "Lead",
-        "purpose": "About lead, Mincho, max 28ch."
-      },
-      "organisation": {
-        "displayName": "Organisation",
-        "purpose": "Employer under a role, Mincho."
+        "purpose": "The gate verse on paper slips, sized from both axes; steps down at 760px."
       },
       "poem": {
         "displayName": "Poem",
-        "purpose": "Verse on a book cover, Mincho, max 16ch."
-      },
-      "strip": {
-        "displayName": "Strip",
-        "purpose": "Technology name on its paper strip, Mincho."
-      },
-      "tagline": {
-        "displayName": "Tagline",
-        "purpose": "Plain line under the name."
+        "purpose": "The title on a book cover, using the cover's full width."
       },
       "body": {
         "displayName": "Body",
-        "purpose": "Summaries and prose, 62ch measure."
-      },
-      "body-small": {
-        "displayName": "Body Small",
-        "purpose": "Stack lines and pending stand-ins."
+        "purpose": "Summaries and prose at 62ch; Experience role descriptions 1.125rem to 95ch."
       },
       "action": {
         "displayName": "Action",
@@ -405,21 +312,9 @@
         "displayName": "Nav",
         "purpose": "Registry destinations, uppercase, display-face numerals."
       },
-      "role-line": {
-        "displayName": "Role Line",
-        "purpose": "Wide-tracked line beneath the name."
-      },
       "label": {
         "displayName": "Label",
-        "purpose": "Field labels, status, placeholder notes. Never an eyebrow above a heading."
-      },
-      "label-small": {
-        "displayName": "Label Small",
-        "purpose": "Registry resume status."
-      },
-      "seal-initials": {
-        "displayName": "Seal Initials",
-        "purpose": "Initials in the hanko seal, SVG units."
+        "purpose": "Fields, status and group plates. Never an eyebrow above a heading."
       }
     },
     "shadows": [
@@ -446,7 +341,7 @@
       {
         "name": "hanging-tag",
         "value": "0 10px 18px -8px rgb(0 0 0 / 0.35)",
-        "purpose": "The resume tag; technology strips use 0 10px 16px -8px rgb(0 0 0 / 0.7)."
+        "purpose": "The resume tag."
       },
       {
         "name": "seam-glow",
@@ -464,11 +359,6 @@
         "purpose": "Wood plank under each book."
       },
       {
-        "name": "roller",
-        "value": "0 8px 18px -6px rgb(0 0 0 / 0.8)",
-        "purpose": "Scroll rollers."
-      },
-      {
         "name": "close-button",
         "value": "0 14px 24px -12px rgb(0 0 0 / 0.8)",
         "purpose": "Paper buttons on the close."
@@ -477,6 +367,21 @@
         "name": "seal-ink",
         "value": "drop-shadow(0 6px 10px rgb(60 20 10 / 0.25))",
         "purpose": "The hanko seal (filter)."
+      },
+      {
+        "name": "strip",
+        "value": "0 10px 16px -8px rgb(0 0 0 / 0.7)",
+        "purpose": "Technology strips; lengthens to 0 16px 22px -10px rgb(0 0 0 / 0.75) when a mouse catches the strip."
+      },
+      {
+        "name": "screenshot-print",
+        "value": "0 22px 36px -22px rgb(0 0 0 / 0.9)",
+        "purpose": "Screenshot prints in the project panel; lifted 0 30px 44px -22px rgb(0 0 0 / 0.95)."
+      },
+      {
+        "name": "viewer",
+        "value": "0 30px 60px -20px rgb(0 0 0 / 0.9)",
+        "purpose": "The full-size print in the screenshot viewer."
       }
     ],
     "motion": [
@@ -501,25 +406,72 @@
         "purpose": "Gate passage phases, including the held black beat."
       },
       {
-        "name": "scroll-driven",
-        "value": "animation-timeline: view() on the thread cord, knots, strips (swing), About scroll (unroll) and close doors (shut)",
-        "purpose": "Section arrivals; all gated on prefers-reduced-motion: no-preference."
-      },
-      {
-        "name": "flap",
-        "value": "scaleX 1 to 0.35; companion 0.34s, perched 1.6s; gate butterflies 1.6s and 1.25s",
-        "purpose": "Butterfly wings; reduced-motion disables the gate loop."
-      },
-      {
         "name": "snap",
         "value": "no transition",
         "purpose": "Ghost-to-struck colour changes on nav and links."
+      },
+      {
+        "name": "ease-roll",
+        "value": "cubic-bezier(0.45, 0, 0.2, 1)",
+        "purpose": "A weight let go: slow to start, settling softly."
+      },
+      {
+        "name": "ease-slash",
+        "value": "cubic-bezier(0.2, 0.7, 0.3, 1)",
+        "purpose": "The theme cut: full speed from the first frame, easing off as it finishes."
+      },
+      {
+        "name": "scroll-driven",
+        "value": "animation-timeline: view() on the thread cord, knots, strips (settle) and close doors (shut)",
+        "purpose": "Section arrivals; all gated on prefers-reduced-motion: no-preference."
+      },
+      {
+        "name": "wind",
+        "value": "24s seamless loop sampled every 100ms from a damped pendulum (1.3s period) under a breeze with gusts; the front crosses at about 400px/s",
+        "purpose": "Technology strips, built only once they come within a screen of view; a mouse holds a strip still, a tap swings it. Off under reduced motion."
+      },
+      {
+        "name": "flap",
+        "value": "scale on the whole <svg>: 1 1 to 0.35 1 (companion, gate drifts); 1 1 to 0.12 1 (cord fliers)",
+        "purpose": "Butterfly wingbeats on the compositor; the gate's butterflies rest their wings between flights."
+      },
+      {
+        "name": "menu-sheet",
+        "value": "in 0.35s ease-out (fade, 12px drop), items 0.45s from 90ms, 45ms apart; out 0.22s ease-in",
+        "purpose": "Phone menu sheet entrance and exit."
+      },
+      {
+        "name": "viewer-in",
+        "value": "0.3s ease-out, scale 0.96 to 1 with a fade; backdrop fades in",
+        "purpose": "Screenshot viewer opening."
+      },
+      {
+        "name": "ink-across",
+        "value": "clip-path inset(0 100% 0 0) to inset(0), 0.8s ease-out, lines 0.4s apart",
+        "purpose": "Gate verse lines brushed in from the left."
+      },
+      {
+        "name": "about-passage",
+        "value": "--p, --door and --travel written by GateMotion on #about; each part's stretch is --a to --b (.about-k)",
+        "purpose": "About held in place and staged by the gate's own progress: the butterflies' flight in, the portrait and name inked from where they land, the reading rising after."
       }
     ],
     "breakpoints": [
       {
         "name": "narrow",
         "value": "760px"
+      },
+      {
+        "name": "panel-split",
+        "value": "1000px"
+      },
+      {
+        "name": "rail-tabs",
+        "value": "1680px"
+      },
+      {
+        "name": "fluid-steps",
+        "value": "--fluid 0.225rem under 480px; 0.3 at 480, 0.375 at 600, 0.475 at 761, 0.5625 at 900, 0.64 at 1024, 0.7375 at 1180, 0.85 at 1366, 0.96 at 1536, 1.08 at 1728, 1.2rem at 1920"
       }
     ],
     "textures": [
@@ -531,7 +483,7 @@
       {
         "name": "grain-wood",
         "value": "--grain-wood: tiling SVG feTurbulence (baseFrequency 0.012 0.55, 400x240)",
-        "purpose": "Wood grain on lattice bars, planks, rollers, door pulls."
+        "purpose": "Wood grain on lattice bars, planks, door pulls."
       }
     ]
   },
@@ -540,9 +492,9 @@
       "name": "Primary Button (Resume)",
       "kind": "button",
       "refersTo": "button-primary",
-      "description": "The paper resume download at the close, with a Deep Vermilion bottom rule.",
+      "description": "The paper resume download at the close: grained washi with a Deep Vermilion bottom rule; red rises from the foot on hover.",
       "html": "<div style=\"background:#1c1c1e;padding:24px\"><a class=\"ds-btn-primary\" href=\"#\">Download resume <small>PDF</small></a></div>",
-      "css": ".ds-btn-primary { display: inline-flex; align-items: baseline; gap: 14px; padding: 18px 28px; background: var(--washi, #f3f3ef); border-bottom: 4px solid var(--cord-deep, #b8301a); color: var(--lacquer, #0b0b0c); font-family: var(--font-ui-stack, 'Zen Kaku Gothic New', system-ui, sans-serif); font-size: 1.25rem; font-weight: 700; text-decoration: none; border-radius: 0; box-shadow: 0 14px 24px -12px rgb(0 0 0 / 0.8); } .ds-btn-primary small { font-size: 0.8125rem; letter-spacing: 0.16em; } .ds-btn-primary:hover { color: var(--cord-deep, #b8301a); } .ds-btn-primary:focus-visible { outline: 2px solid var(--cord-lit, #ff6a4d); outline-offset: 4px; border-radius: 2px; }"
+      "css": ".ds-btn-primary { display: inline-flex; align-items: baseline; gap: 14px; padding: 18px 28px; background-color: var(--washi, #f3f3ef); background-image: linear-gradient(var(--cord-deep, #b8301a), var(--cord-deep, #b8301a)); background-size: 100% 0; background-position: bottom; background-repeat: no-repeat; border-bottom: 4px solid var(--cord-deep, #b8301a); color: var(--lacquer, #0b0b0c); font-family: var(--font-ui-stack, 'Zen Kaku Gothic New', system-ui, sans-serif); font-size: 1.25rem; font-weight: 700; text-decoration: none; border-radius: 0; box-shadow: 0 14px 24px -12px rgb(0 0 0 / 0.8); transition: background-size 0.2s ease-in, color 0.2s ease-in, translate 0.2s cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn-primary small { font-size: 0.8125rem; letter-spacing: 0.16em; } .ds-btn-primary:hover, .ds-btn-primary:focus-visible { background-size: 100% 100%; color: var(--washi-hi, #fbfbf8); transition: background-size 0.35s cubic-bezier(0.16, 1, 0.3, 1), color 0.25s cubic-bezier(0.16, 1, 0.3, 1) 0.08s; } .ds-btn-primary:active { translate: 0 2px; } .ds-btn-primary:focus-visible { outline: 2px solid var(--cord-lit, #ff6a4d); outline-offset: 4px; }"
     },
     {
       "name": "Unavailable Button",
@@ -588,9 +540,9 @@
       "name": "Technology Strips",
       "kind": "custom",
       "refersTo": "tech-strip",
-      "description": "Paper strips hung on strings from a rail that leaves the cord at a knot.",
-      "html": "<div class=\"ds-rail\"><ul><li style=\"--drop:26px;--tilt:-1.2deg\"><span class=\"ds-strip\">Language</span></li><li style=\"--drop:48px;--tilt:0.9deg\"><span class=\"ds-strip\">Framework</span></li><li style=\"--drop:36px;--tilt:-0.5deg\"><span class=\"ds-strip\">Tool</span></li></ul></div>",
-      "css": ".ds-rail { position: relative; padding: 18px 24px 24px; background: var(--void, #050506); } .ds-rail::before { content: ''; position: absolute; top: 18px; left: 24px; right: 0; height: 2px; background: var(--ghost, #8e8e8b); opacity: 0.6; } .ds-rail ul { display: flex; flex-wrap: wrap; gap: 0 24px; margin: 0; padding: 18px 0 0; list-style: none; } .ds-rail li { position: relative; padding-top: var(--drop, 28px); } .ds-rail li::before { content: ''; position: absolute; top: 0; left: 50%; width: 1px; height: var(--drop, 28px); background: var(--mist, #bdbdb7); opacity: 0.6; } .ds-strip { display: block; padding: 10px 16px; background: var(--washi, #f3f3ef); color: var(--lacquer, #0b0b0c); font-family: var(--font-verse-stack, 'Shippori Mincho B1', serif); font-weight: 800; font-size: 1.25rem; line-height: 1.2; rotate: var(--tilt, 0deg); box-shadow: 0 10px 16px -8px rgb(0 0 0 / 0.7); }"
+      "description": "Paper strips carrying the tool's logo, hung on strings from a 2px rail per row with a peg per strip; they move in the wind, a mouse holds one still, a tap swings it.",
+      "html": "<div class=\"ds-rail\"><ul><li style=\"--drop:26px;--tilt:-1.2deg\"><span class=\"ds-gust\"><span class=\"ds-strip\"><svg class=\"ds-logo\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M3 3h18v18H3z\"/></svg>Language</span></span></li><li style=\"--drop:48px;--tilt:0.9deg\"><span class=\"ds-gust\"><span class=\"ds-strip\"><svg class=\"ds-logo\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"10\"/></svg>Framework</span></span></li><li style=\"--drop:36px;--tilt:-0.5deg\"><span class=\"ds-gust\"><span class=\"ds-strip\"><svg class=\"ds-logo\" viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 2l10 20H2z\"/></svg>Tool</span></span></li></ul></div>",
+      "css": ".ds-rail { padding: 18px 24px 24px; background: var(--void, #050506); } .ds-rail ul { --col-gap: 24px; display: flex; flex-wrap: wrap; gap: 20px var(--col-gap); margin: 0; padding: 18px 0 0; list-style: none; } .ds-rail li { position: relative; } .ds-rail li::after { content: ''; position: absolute; top: 0; left: calc(var(--col-gap) / -2); right: calc(var(--col-gap) / -2); height: 2px; background: var(--ghost, #8e8e8b); opacity: 0.6; } .ds-rail li::before { content: ''; position: absolute; z-index: 1; top: -2px; left: calc(50% - 3px); width: 6px; height: 6px; background: var(--mist, #bdbdb7); rotate: 45deg; } .ds-gust { position: relative; display: block; padding-top: var(--drop, 28px); transform-origin: top center; } .ds-gust::before { content: ''; position: absolute; top: 0; left: 50%; width: 1px; height: var(--drop, 28px); background: var(--mist, #bdbdb7); opacity: 0.6; } .ds-strip { display: flex; align-items: center; gap: 0.45em; padding: 10px 16px; background: var(--washi, #f3f3ef); color: var(--lacquer, #0b0b0c); font-family: var(--font-verse-stack, 'Shippori Mincho B1', serif); font-weight: 800; font-size: 1.25rem; line-height: 1.2; rotate: var(--tilt, 0deg); box-shadow: 0 10px 16px -8px rgb(0 0 0 / 0.7); transition: box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1); } .ds-logo { flex: none; width: 0.9em; height: 0.9em; fill: currentColor; transition: color 0.25s cubic-bezier(0.16, 1, 0.3, 1); } .ds-gust:hover .ds-strip { box-shadow: 0 16px 22px -10px rgb(0 0 0 / 0.75); } .ds-gust:hover .ds-logo { color: var(--cord-deep, #b8301a); }"
     },
     {
       "name": "Cord Thread (Experience)",
@@ -607,163 +559,96 @@
       "css": ".ds-seal { width: 140px; rotate: -7deg; filter: drop-shadow(0 6px 10px rgb(60 20 10 / 0.25)); } .ds-disc { fill: var(--cord-deep, #b8301a); } .ds-ring { fill: none; stroke: var(--washi-hi, #fbfbf8); stroke-width: 3; opacity: 0.9; } .ds-text { font-family: var(--font-display-stack, 'Dela Gothic One', sans-serif); font-size: 46px; fill: var(--washi-hi, #fbfbf8); }"
     },
     {
-      "name": "About Scroll",
+      "name": "About",
       "kind": "custom",
-      "refersTo": "about-scroll",
-      "description": "Washi scroll between two wood rollers, with stamped facts.",
-      "html": "<div style=\"background:#050506;padding:24px\"><div class=\"ds-scroll\"><div class=\"ds-paper\"><p class=\"ds-lead\">A line that says who this is</p><dl class=\"ds-facts\"><div><dt>Based</dt><dd>Placeholder</dd></div><div><dt>Focus</dt><dd>Placeholder</dd></div></dl></div></div></div>",
-      "css": ".ds-scroll::before, .ds-scroll::after { content: ''; display: block; height: 26px; margin-inline: -14px; border-radius: 13px; background: #1d1916; box-shadow: 0 8px 18px -6px rgb(0 0 0 / 0.8); } .ds-paper { padding: 32px; background: var(--washi, #f3f3ef); color: var(--lacquer, #0b0b0c); } .ds-lead { max-width: 28ch; margin: 0; font-family: var(--font-verse-stack, 'Shippori Mincho B1', serif); font-weight: 500; font-size: 1.75rem; line-height: 1.4; } .ds-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr)); gap: 18px; margin: 28px 0 0; } .ds-facts > div { padding: 14px 16px; border: 2px solid var(--cord-deep, #b8301a); rotate: -1deg; } .ds-facts > div:nth-child(even) { rotate: 1.2deg; } .ds-facts dt { font-family: var(--font-ui-stack, 'Zen Kaku Gothic New', sans-serif); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cord-deep, #b8301a); } .ds-facts dd { margin: 4px 0 0; font-size: 1.125rem; font-weight: 700; }"
+      "refersTo": "about",
+      "description": "What the gate opens onto: an unframed portrait and the reading on the page's ground, with a butterfly resting on the portrait's corner.",
+      "html": "<div class=\"ds-about\"><figure class=\"ds-photo\"><svg class=\"ds-fly\" viewBox=\"0 0 48 36\" aria-hidden=\"true\"><path d=\"M23 17C17 4 5-1 2 4c-3 6 6 13 21 13Z\"/><path d=\"M23 19C13 19 5 25 7 31c2 5 11 1 16-12Z\"/><path d=\"M25 17C31 4 43-1 46 4c3 6-6 13-21 13Z\"/><path d=\"M25 19c10 0 18 6 16 12-2 5-11 1-16-12Z\"/></svg></figure><div><p class=\"ds-name\">Your Name</p><p class=\"ds-role\">Software Developer</p><p class=\"ds-lead\">A line that says who this is.</p><p class=\"ds-open\"><span>Open to</span><b>Placeholder roles</b></p></div></div>",
+      "css": ".ds-about { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 40px; align-items: start; padding: 32px; background: var(--ground, #050506); color: var(--washi, #f3f3ef); } .ds-photo { position: relative; margin: 0; aspect-ratio: 3 / 4; background: #2b2b2b; } .ds-fly { position: absolute; top: -14px; right: -22px; width: 36px; fill: var(--washi, #f3f3ef); } .ds-name { margin: 0; font-family: var(--font-display-stack, 'Dela Gothic One', sans-serif); font-size: 2.5rem; line-height: 0.95; } .ds-role { margin: 12px 0 0; color: var(--mist, #bdbdb7); font-size: 0.8125rem; font-weight: 700; letter-spacing: 0.32em; text-transform: uppercase; } .ds-lead { margin: 24px 0 0; max-width: 30ch; font-family: var(--font-verse-stack, 'Shippori Mincho B1', serif); font-size: 1.5rem; line-height: 1.42; } .ds-open { margin: 24px 0 0; font-weight: 700; } .ds-open span { display: block; margin-bottom: 6px; color: var(--mist, #bdbdb7); font-size: 0.75rem; letter-spacing: 0.16em; text-transform: uppercase; } .ds-open b { text-decoration: underline 2px var(--seam, #e9e3ff); text-underline-offset: 7px; }"
     },
     {
-      "name": "Book Cover",
+      "name": "Screenshot Print",
       "kind": "card",
-      "refersTo": "book-cover",
-      "description": "3:4 washi cover with lacquer spine, poem, and book numeral; stands on a wood plank, dims when not chosen.",
-      "html": "<div style=\"background:#050506;padding:32px 32px 48px\"><div class=\"ds-book\"><span class=\"ds-cover\"><span class=\"ds-verse\">One line that says why this work mattered</span><span class=\"ds-n\">01</span><span class=\"ds-note\">Placeholder cover</span></span><span class=\"ds-title\">Project title</span></div></div>",
-      "css": ".ds-book { position: relative; width: 240px; } .ds-book::after { content: ''; position: absolute; z-index: 0; bottom: -16px; left: -14px; right: -14px; height: 16px; background: #1d1916; box-shadow: 0 20px 28px -12px rgb(0 0 0 / 0.9); } .ds-cover { position: relative; z-index: 1; display: grid; grid-template-rows: 1fr auto; aspect-ratio: 3 / 4; padding: 38px 18px 18px 40px; overflow: hidden; background: var(--washi, #f3f3ef); color: var(--lacquer, #0b0b0c); box-shadow: 0 30px 60px -30px rgb(233 227 255 / 0.2); } .ds-cover::before { content: ''; position: absolute; inset: 0 auto 0 0; width: 18px; background: var(--lacquer, #0b0b0c); } .ds-n { grid-row: 2; align-self: end; font-family: var(--font-display-stack, 'Dela Gothic One', sans-serif); font-size: 4.5rem; line-height: 0.8; letter-spacing: -0.02em; } .ds-verse { grid-row: 1; max-width: 16ch; font-family: var(--font-verse-stack, 'Shippori Mincho B1', serif); font-weight: 500; font-size: 1.0625rem; line-height: 1.4; } .ds-note { position: absolute; left: 40px; top: 8px; font-family: var(--font-ui-stack, 'Zen Kaku Gothic New', sans-serif); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft, #5c5c58); } .ds-title { display: block; position: relative; z-index: 1; margin-top: 16px; font-family: var(--font-display-stack, 'Dela Gothic One', sans-serif); font-size: 1.1875rem; line-height: 1.15; color: var(--cord-lit, #ff6a4d); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.25em; }"
+      "description": "A project screenshot pinned up as a grained paper print; lifts when reached for and opens full size in the viewer.",
+      "html": "<div style=\"background:#050506;padding:32px\"><button type=\"button\" class=\"ds-shot\"><span class=\"ds-shot-img\"></span><span class=\"ds-sr\">View full size</span></button></div>",
+      "css": ".ds-shot { position: relative; display: block; width: 320px; padding: 8px; border: 0; background: var(--washi, #f3f3ef); box-shadow: 0 22px 36px -22px rgb(0 0 0 / 0.9); rotate: -0.8deg; cursor: zoom-in; transition: translate 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1); } .ds-shot-img { display: block; aspect-ratio: 1200 / 678; background: linear-gradient(135deg, #1c1c1e, #5c5c58); } .ds-sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); } .ds-shot:hover, .ds-shot:focus-visible { translate: 0 -6px; box-shadow: 0 30px 44px -22px rgb(0 0 0 / 0.95); } .ds-shot:focus-visible { outline: 2px solid var(--cord-lit, #ff6a4d); outline-offset: 4px; border-radius: 2px; }"
     },
     {
-      "name": "Technology Strips",
-      "kind": "custom",
-      "refersTo": "tech-strip",
-      "description": "Paper strips hung on strings from a rail that leaves the cord at a knot.",
-      "html": "<div class=\"ds-rail\"><ul><li style=\"--drop:26px;--tilt:-1.2deg\"><span class=\"ds-strip\">Language</span></li><li style=\"--drop:48px;--tilt:0.9deg\"><span class=\"ds-strip\">Framework</span></li><li style=\"--drop:36px;--tilt:-0.5deg\"><span class=\"ds-strip\">Tool</span></li></ul></div>",
-      "css": ".ds-rail { position: relative; padding: 18px 24px 24px; background: var(--void, #050506); } .ds-rail::before { content: ''; position: absolute; top: 18px; left: 24px; right: 0; height: 2px; background: var(--ghost, #8e8e8b); opacity: 0.6; } .ds-rail ul { display: flex; flex-wrap: wrap; gap: 0 24px; margin: 0; padding: 18px 0 0; list-style: none; } .ds-rail li { position: relative; padding-top: var(--drop, 28px); } .ds-rail li::before { content: ''; position: absolute; top: 0; left: 50%; width: 1px; height: var(--drop, 28px); background: var(--mist, #bdbdb7); opacity: 0.6; } .ds-strip { display: block; padding: 10px 16px; background: var(--washi, #f3f3ef); color: var(--lacquer, #0b0b0c); font-family: var(--font-verse-stack, 'Shippori Mincho B1', serif); font-weight: 800; font-size: 1.25rem; line-height: 1.2; rotate: var(--tilt, 0deg); box-shadow: 0 10px 16px -8px rgb(0 0 0 / 0.7); }"
-    },
-    {
-      "name": "Cord Thread (Experience)",
-      "kind": "custom",
-      "description": "Date right-aligned left of the cord, rotated-square knot on the cord, role and organisation to the right.",
-      "html": "<ol class=\"ds-path\"><li><p class=\"ds-period\">Start – End</p><span class=\"ds-knot\"></span><h3>Role title<span>Company</span></h3></li><li><p class=\"ds-period\">Start – End</p><span class=\"ds-knot\"></span><h3>Role title<span>Company</span></h3></li></ol>",
-      "css": ".ds-path { position: relative; margin: 0; padding: 24px; list-style: none; background: var(--void, #050506); color: var(--washi, #f3f3ef); } .ds-path::before { content: ''; position: absolute; top: 0; bottom: 0; left: calc(24px + 7rem + 1.625rem - 2px); width: 4px; background: var(--cord, #d2381e); } .ds-path li { position: relative; display: grid; grid-template-columns: 7rem 3.25rem minmax(0, 1fr); padding-bottom: 48px; } .ds-period { grid-column: 1; margin: 0; padding-right: 12px; text-align: right; font-family: var(--font-display-stack, 'Dela Gothic One', sans-serif); font-size: 1.125rem; line-height: 1.3; color: var(--mist, #bdbdb7); font-variant-numeric: tabular-nums; } .ds-knot { grid-column: 2; justify-self: center; width: 14px; height: 14px; margin-top: 0.4em; background: var(--cord, #d2381e); transform: rotate(45deg); outline: 4px solid var(--void, #050506); } .ds-path h3 { grid-column: 3; margin: 0; font-family: var(--font-display-stack, 'Dela Gothic One', sans-serif); font-weight: 400; font-size: 1.75rem; line-height: 1.1; } .ds-path h3 span { display: block; margin-top: 6px; font-family: var(--font-verse-stack, 'Shippori Mincho B1', serif); font-weight: 500; font-size: 1.125rem; color: var(--mist-hi, #cfcfca); }"
-    },
-    {
-      "name": "Hanko Seal",
-      "kind": "custom",
-      "description": "Original vermilion seal with the owner initials; decorative, stamped on paper.",
-      "html": "<div style=\"background:#f3f3ef;padding:24px\"><svg class=\"ds-seal\" viewBox=\"0 0 120 120\" aria-hidden=\"true\"><circle class=\"ds-disc\" cx=\"60\" cy=\"60\" r=\"56\"/><circle class=\"ds-ring\" cx=\"60\" cy=\"60\" r=\"47\"/><text class=\"ds-text\" x=\"60\" y=\"77\" text-anchor=\"middle\">AB</text></svg></div>",
-      "css": ".ds-seal { width: 140px; rotate: -7deg; filter: drop-shadow(0 6px 10px rgb(60 20 10 / 0.25)); } .ds-disc { fill: var(--cord-deep, #b8301a); } .ds-ring { fill: none; stroke: var(--washi-hi, #fbfbf8); stroke-width: 3; opacity: 0.9; } .ds-text { font-family: var(--font-display-stack, 'Dela Gothic One', sans-serif); font-size: 46px; fill: var(--washi-hi, #fbfbf8); }"
-    },
-    {
-      "name": "About Scroll",
-      "kind": "custom",
-      "refersTo": "about-scroll",
-      "description": "Washi scroll between two wood rollers, with stamped facts.",
-      "html": "<div style=\"background:#050506;padding:24px\"><div class=\"ds-scroll\"><div class=\"ds-paper\"><p class=\"ds-lead\">A line that says who this is</p><dl class=\"ds-facts\"><div><dt>Based</dt><dd>Placeholder</dd></div><div><dt>Focus</dt><dd>Placeholder</dd></div></dl></div></div></div>",
-      "css": ".ds-scroll::before, .ds-scroll::after { content: ''; display: block; height: 26px; margin-inline: -14px; border-radius: 13px; background: #1d1916; box-shadow: 0 8px 18px -6px rgb(0 0 0 / 0.8); } .ds-paper { padding: 32px; background: var(--washi, #f3f3ef); color: var(--lacquer, #0b0b0c); } .ds-lead { max-width: 28ch; margin: 0; font-family: var(--font-verse-stack, 'Shippori Mincho B1', serif); font-weight: 500; font-size: 1.75rem; line-height: 1.4; } .ds-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr)); gap: 18px; margin: 28px 0 0; } .ds-facts > div { padding: 14px 16px; border: 2px solid var(--cord-deep, #b8301a); rotate: -1deg; } .ds-facts > div:nth-child(even) { rotate: 1.2deg; } .ds-facts dt { font-family: var(--font-ui-stack, 'Zen Kaku Gothic New', sans-serif); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cord-deep, #b8301a); } .ds-facts dd { margin: 4px 0 0; font-size: 1.125rem; font-weight: 700; }"
-    },
-    {
-      "name": "Book Cover",
-      "kind": "card",
-      "refersTo": "book-cover",
-      "description": "3:4 washi cover with lacquer spine, poem, and book numeral; stands on a wood plank, dims when not chosen.",
-      "html": "<div style=\"background:#050506;padding:32px 32px 48px\"><div class=\"ds-book\"><span class=\"ds-cover\"><span class=\"ds-verse\">One line that says why this work mattered</span><span class=\"ds-n\">01</span><span class=\"ds-note\">Placeholder cover</span></span><span class=\"ds-title\">Project title</span></div></div>",
-      "css": ".ds-book { position: relative; width: 240px; } .ds-book::after { content: ''; position: absolute; z-index: 0; bottom: -16px; left: -14px; right: -14px; height: 16px; background: #1d1916; box-shadow: 0 20px 28px -12px rgb(0 0 0 / 0.9); } .ds-cover { position: relative; z-index: 1; display: grid; grid-template-rows: 1fr auto; aspect-ratio: 3 / 4; padding: 38px 18px 18px 40px; overflow: hidden; background: var(--washi, #f3f3ef); color: var(--lacquer, #0b0b0c); box-shadow: 0 30px 60px -30px rgb(233 227 255 / 0.2); } .ds-cover::before { content: ''; position: absolute; inset: 0 auto 0 0; width: 18px; background: var(--lacquer, #0b0b0c); } .ds-n { grid-row: 2; align-self: end; font-family: var(--font-display-stack, 'Dela Gothic One', sans-serif); font-size: 4.5rem; line-height: 0.8; letter-spacing: -0.02em; } .ds-verse { grid-row: 1; max-width: 16ch; font-family: var(--font-verse-stack, 'Shippori Mincho B1', serif); font-weight: 500; font-size: 1.0625rem; line-height: 1.4; } .ds-note { position: absolute; left: 40px; top: 8px; font-family: var(--font-ui-stack, 'Zen Kaku Gothic New', sans-serif); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft, #5c5c58); } .ds-title { display: block; position: relative; z-index: 1; margin-top: 16px; font-family: var(--font-display-stack, 'Dela Gothic One', sans-serif); font-size: 1.1875rem; line-height: 1.15; color: var(--cord-lit, #ff6a4d); text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 0.25em; }"
-    },
-    {
-      "name": "Technology Strips",
-      "kind": "custom",
-      "refersTo": "tech-strip",
-      "description": "Paper strips hung on strings from a rail that leaves the cord at a knot.",
-      "html": "<div class=\"ds-rail\"><ul><li style=\"--drop:26px;--tilt:-1.2deg\"><span class=\"ds-strip\">Language</span></li><li style=\"--drop:48px;--tilt:0.9deg\"><span class=\"ds-strip\">Framework</span></li><li style=\"--drop:36px;--tilt:-0.5deg\"><span class=\"ds-strip\">Tool</span></li></ul></div>",
-      "css": ".ds-rail { position: relative; padding: 18px 24px 24px; background: var(--void, #050506); } .ds-rail::before { content: ''; position: absolute; top: 18px; left: 24px; right: 0; height: 2px; background: var(--ghost, #8e8e8b); opacity: 0.6; } .ds-rail ul { display: flex; flex-wrap: wrap; gap: 0 24px; margin: 0; padding: 18px 0 0; list-style: none; } .ds-rail li { position: relative; padding-top: var(--drop, 28px); } .ds-rail li::before { content: ''; position: absolute; top: 0; left: 50%; width: 1px; height: var(--drop, 28px); background: var(--mist, #bdbdb7); opacity: 0.6; } .ds-strip { display: block; padding: 10px 16px; background: var(--washi, #f3f3ef); color: var(--lacquer, #0b0b0c); font-family: var(--font-verse-stack, 'Shippori Mincho B1', serif); font-weight: 800; font-size: 1.25rem; line-height: 1.2; rotate: var(--tilt, 0deg); box-shadow: 0 10px 16px -8px rgb(0 0 0 / 0.7); }"
-    },
-    {
-      "name": "Cord Thread (Experience)",
-      "kind": "custom",
-      "description": "Date right-aligned left of the cord, rotated-square knot on the cord, role and organisation to the right.",
-      "html": "<ol class=\"ds-path\"><li><p class=\"ds-period\">Start – End</p><span class=\"ds-knot\"></span><h3>Role title<span>Company</span></h3></li><li><p class=\"ds-period\">Start – End</p><span class=\"ds-knot\"></span><h3>Role title<span>Company</span></h3></li></ol>",
-      "css": ".ds-path { position: relative; margin: 0; padding: 24px; list-style: none; background: var(--void, #050506); color: var(--washi, #f3f3ef); } .ds-path::before { content: ''; position: absolute; top: 0; bottom: 0; left: calc(24px + 7rem + 1.625rem - 2px); width: 4px; background: var(--cord, #d2381e); } .ds-path li { position: relative; display: grid; grid-template-columns: 7rem 3.25rem minmax(0, 1fr); padding-bottom: 48px; } .ds-period { grid-column: 1; margin: 0; padding-right: 12px; text-align: right; font-family: var(--font-display-stack, 'Dela Gothic One', sans-serif); font-size: 1.125rem; line-height: 1.3; color: var(--mist, #bdbdb7); font-variant-numeric: tabular-nums; } .ds-knot { grid-column: 2; justify-self: center; width: 14px; height: 14px; margin-top: 0.4em; background: var(--cord, #d2381e); transform: rotate(45deg); outline: 4px solid var(--void, #050506); } .ds-path h3 { grid-column: 3; margin: 0; font-family: var(--font-display-stack, 'Dela Gothic One', sans-serif); font-weight: 400; font-size: 1.75rem; line-height: 1.1; } .ds-path h3 span { display: block; margin-top: 6px; font-family: var(--font-verse-stack, 'Shippori Mincho B1', serif); font-weight: 500; font-size: 1.125rem; color: var(--mist-hi, #cfcfca); }"
-    },
-    {
-      "name": "Hanko Seal",
-      "kind": "custom",
-      "description": "Original vermilion seal with the owner initials; decorative, stamped on paper.",
-      "html": "<div style=\"background:#f3f3ef;padding:24px\"><svg class=\"ds-seal\" viewBox=\"0 0 120 120\" aria-hidden=\"true\"><circle class=\"ds-disc\" cx=\"60\" cy=\"60\" r=\"56\"/><circle class=\"ds-ring\" cx=\"60\" cy=\"60\" r=\"47\"/><text class=\"ds-text\" x=\"60\" y=\"77\" text-anchor=\"middle\">AB</text></svg></div>",
-      "css": ".ds-seal { width: 140px; rotate: -7deg; filter: drop-shadow(0 6px 10px rgb(60 20 10 / 0.25)); } .ds-disc { fill: var(--cord-deep, #b8301a); } .ds-ring { fill: none; stroke: var(--washi-hi, #fbfbf8); stroke-width: 3; opacity: 0.9; } .ds-text { font-family: var(--font-display-stack, 'Dela Gothic One', sans-serif); font-size: 46px; fill: var(--washi-hi, #fbfbf8); }"
-    },
-    {
-      "name": "About Scroll",
-      "kind": "custom",
-      "refersTo": "about-scroll",
-      "description": "Washi scroll between two wood rollers, with stamped facts.",
-      "html": "<div style=\"background:#050506;padding:24px\"><div class=\"ds-scroll\"><div class=\"ds-paper\"><p class=\"ds-lead\">A line that says who this is</p><dl class=\"ds-facts\"><div><dt>Based</dt><dd>Placeholder</dd></div><div><dt>Focus</dt><dd>Placeholder</dd></div></dl></div></div></div>",
-      "css": ".ds-scroll::before, .ds-scroll::after { content: ''; display: block; height: 26px; margin-inline: -14px; border-radius: 13px; background: #1d1916; box-shadow: 0 8px 18px -6px rgb(0 0 0 / 0.8); } .ds-paper { padding: 32px; background: var(--washi, #f3f3ef); color: var(--lacquer, #0b0b0c); } .ds-lead { max-width: 28ch; margin: 0; font-family: var(--font-verse-stack, 'Shippori Mincho B1', serif); font-weight: 500; font-size: 1.75rem; line-height: 1.4; } .ds-facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(8rem, 1fr)); gap: 18px; margin: 28px 0 0; } .ds-facts > div { padding: 14px 16px; border: 2px solid var(--cord-deep, #b8301a); rotate: -1deg; } .ds-facts > div:nth-child(even) { rotate: 1.2deg; } .ds-facts dt { font-family: var(--font-ui-stack, 'Zen Kaku Gothic New', sans-serif); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--cord-deep, #b8301a); } .ds-facts dd { margin: 4px 0 0; font-size: 1.125rem; font-weight: 700; }"
+      "name": "Menu Sheet",
+      "kind": "nav",
+      "description": "Phone menu: a full-screen lacquer sheet with the destinations set large and vermilion numerals, set down one after another.",
+      "html": "<div class=\"ds-sheet\"><div class=\"ds-sheet-head\"><span>Name</span><button type=\"button\" class=\"ds-sheet-close\" aria-label=\"Close menu\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M5 5l14 14M19 5L5 19\"/></svg></button></div><ol><li><a href=\"#\"><span class=\"ds-n\">01</span>About</a></li><li><a href=\"#\"><span class=\"ds-n\">02</span>Projects</a></li><li><a href=\"#\"><span class=\"ds-n\">03</span>Experience</a></li></ol></div>",
+      "css": ".ds-sheet { padding: 16px 24px 32px; background: var(--lacquer, #0b0b0c); color: var(--washi, #f3f3ef); } .ds-sheet-head { display: flex; justify-content: space-between; align-items: center; font-family: var(--font-display-stack, 'Dela Gothic One', sans-serif); } .ds-sheet-close { width: 44px; height: 44px; border: 0; background: none; color: var(--washi, #f3f3ef); cursor: pointer; transition: rotate 0.3s cubic-bezier(0.16, 1, 0.3, 1); } .ds-sheet-close svg { width: 24px; fill: none; stroke: currentColor; stroke-width: 2; } .ds-sheet-close:hover, .ds-sheet-close:focus-visible { color: var(--cord-lit, #ff6a4d); rotate: 90deg; } .ds-sheet ol { margin: 8px 0 0; padding: 0; list-style: none; } .ds-sheet li { border-bottom: 1px solid var(--lacquer-2, #1c1c1e); animation: ds-item-in 0.45s cubic-bezier(0.16, 1, 0.3, 1) 90ms backwards; } .ds-sheet li:nth-child(2) { animation-delay: 135ms; } .ds-sheet li:nth-child(3) { animation-delay: 180ms; } .ds-sheet a { display: flex; align-items: baseline; gap: 16px; min-height: 44px; padding: 14px 0; color: var(--washi, #f3f3ef); font-family: var(--font-display-stack, 'Dela Gothic One', sans-serif); font-size: 2.25rem; text-decoration: none; transition: translate 0.3s cubic-bezier(0.16, 1, 0.3, 1); } .ds-sheet .ds-n { color: var(--cord-lit, #ff6a4d); font-size: 1rem; } .ds-sheet a:hover, .ds-sheet a:focus-visible { translate: 8px 0; } .ds-sheet a:focus-visible { outline: 2px solid var(--cord-lit, #ff6a4d); outline-offset: 4px; } @keyframes ds-item-in { from { opacity: 0; translate: 0 14px; } }"
     }
   ],
   "narrative": {
-    "northStar": "The Senkaimon Verse",
-    "overview": "**Creative North Star: \"The Senkaimon Verse\"**\n\nThe site is a passage through a gate and then a room of paper and wood behind it. Black lacquer frames every region, cool washi paper carries the words, dark grained wood holds what is shelved or rolled, and the space beyond the gate is a velvet black lit only by taking darkness away. One vermilion cord runs through the whole system: it is the control at the gate, it becomes the line that experience and technologies hang from, and its colour marks every action a visitor can take. Everything else is held in ghosted greys until it is struck.\n\nDensity is low and deliberate. Type is large, sections are tall, and the content holds one thing at a time: on the gate the doors and their verse; on the shelf one pulled-forward book; on the scroll one unrolled sheet. The gate is locked shut until the visitor pulls the cord, pushes down, or follows a menu link, and then a timed opening plays. Motion is heavy and decisive, like weighted wood; ghost-to-struck states snap with no transition. Bleach is evoked through original material (gate, paper, lacquer, cord, hanko seal, ink butterflies), never through borrowed artwork.\n\nAll copy and project data in the shipped build is placeholder by design and is marked as such in the interface; nothing here describes real projects, employers, or biography.",
+    "northStar": "Senkaimon Verse",
+    "overview": "A passage through a gate into a room of paper and wood. Black lacquer frames every region, cool washi paper carries the words, dark grained wood holds what is shelved or rolled, and beyond the gate is a velvet black lit only by taking darkness away. One vermilion cord runs through the system: the control at the gate, the line Experience and Technologies hang from, and the colour of everything a visitor can act on. Everything else is ghosted grey until struck.\n\nDensity is low and deliberate: large type, tall sections, one thing at a time (the gate and its verse, one pulled-forward book, one portrait). The gate is locked until the visitor pulls the cord, pushes down, drags the scrollbar or follows a tab; then a timed opening plays. Motion is heavy and decisive, like weighted wood. Bleach is evoked through original material (gate, paper, lacquer, cord, hanko seal, ink butterflies), never borrowed artwork.",
     "keyCharacteristics": [
-      "Four materials: lacquer frames, washi paper, grained wood, void depth.",
-      "One accent, vermilion, for the cord, controls, and the red ink of the seal and stamps.",
-      "Three type voices: heavy display gothic, Mincho for anything written or spoken on paper, quiet gothic for UI and prose.",
-      "Square surfaces and structural borders; the only rounding is on turned wood (door pulls, scroll rollers) and the focus ring.",
-      "Tactile texture from two tiling SVG grains (paper fibre, wood grain), never from image files or photography.",
-      "Light and focus conveyed by removing darkness, not by adding colour."
+      "four materials (lacquer, washi, grained wood, void)",
+      "one accent, vermilion",
+      "three type voices (display gothic, Mincho for what is written or spoken on paper, quiet gothic for UI and prose)",
+      "square surfaces (rounding only on turned wood and the focus ring)",
+      "texture from two tiling SVG grains, never images",
+      "light and focus conveyed by removing darkness"
     ],
     "rules": [
       {
         "name": "The One Cord Rule",
-        "body": "Vermilion marks the cord and what hangs from it, what can be acted on (controls, links, focus), and the owner's red ink (the hanko seal and the stamped facts). It never decorates headings, fills sections, or tints imagery.",
+        "body": "Vermilion marks the cord and what hangs from it, what can be acted on, and the owner's red ink (seal, stamps). It never decorates headings, fills sections or tints imagery.",
         "section": "colors"
       },
       {
         "name": "The Removal of Darkness Rule",
-        "body": "Focus and arrival are shown by lifting a shade (unchosen books sit dimmed to 55% brightness and rise to full when chosen; the passage floods with seam light), not by adding colour or brightness to the focused thing.",
+        "body": "Focus and arrival lift a shade (unchosen books dimmed to 55%, the passage flooding with seam light), not add colour or brightness.",
         "section": "colors"
       },
       {
         "name": "The Cool Paper Rule",
-        "body": "Paper is washi (cool, slightly green-grey). The paper-shade browns only age its edges; never warm the paper itself toward cream or parchment.",
+        "body": "Paper is cool washi; browns only age its edges.",
         "section": "colors"
       },
       {
         "name": "The Spoken Line Rule",
-        "body": "Mincho is for lines written or voiced on paper (verse slips, cover poems, the About lead, organisation names, technology strips). It never sets UI, labels or buttons.",
+        "body": "Mincho is for lines written or voiced on paper. It never sets UI, labels or buttons.",
         "section": "typography"
       },
       {
         "name": "The Numbered Registry Rule",
-        "body": "Destinations and volumes carry two-digit display numerals (01, 02...). Numbers are part of the name, set in the display face.",
+        "body": "Destinations and volumes carry two-digit display numerals; the number is part of the name.",
         "section": "typography"
       },
       {
         "name": "The Label Is Data Rule",
-        "body": "Uppercase tracked labels name a field, a status, a group or a destination. They never sit above a heading as an eyebrow.",
+        "body": "Uppercase tracked labels name a field, status, group or destination. Never an eyebrow above a heading.",
         "section": "typography"
       },
       {
         "name": "The Planes Not Cards Rule",
-        "body": "Elevation comes from one material sitting in front of another (lacquer over paper, paper over void, books on planks). Do not add generic card shadows to lift content off a background.",
+        "body": "Elevation is one material in front of another. No generic card shadows.",
         "section": "elevation"
       },
       {
         "name": "The Two Grains Rule",
-        "body": "Paper surfaces take the paper-fibre grain and wooden parts take the wood grain, nothing else is textured. Grain is a tiling SVG token, never an image file, and never laid over text-bearing vermilion or the void.",
+        "body": "Paper takes the paper grain, wood the wood grain, nothing else is textured; never over text-bearing vermilion or void.",
         "section": "elevation"
       }
     ],
     "dos": [
-      "Do frame every region in lacquer, put words meant to be read slowly on washi paper, and shelve or roll things on grained wood.",
-      "Do keep vermilion to the cord, controls, links, focus, and the owner's red ink (seal, stamps); use Lit Vermilion on black and Deep Vermilion on paper.",
-      "Do show state by snapping ghost to struck, with no colour transition on hover.",
-      "Do show focus or arrival by lifting darkness (dimmed books, seam flood) rather than adding colour, and add a non-colour cue (underline) wherever colour marks the chosen item.",
-      "Do number destinations and volumes with two-digit display numerals.",
-      "Do apply the paper grain to paper and the wood grain to wood, through the `--grain-paper` and `--grain-wood` tokens.",
-      "Do use a fluid clamp() from the documented ramp for any new type size, and add a ramp step here when a genuinely new one is needed.",
-      "Do honour reduced motion: the gate stays whole, the page is unlocked, and nothing parts, swings, draws, or unrolls.",
-      "Do keep every interactive target at least 44px tall and every placeholder visibly labelled."
+      "**Do** frame every region in lacquer, put words meant to be read slowly on washi, and shelve or roll things on grained wood.",
+      "**Do** keep vermilion to the cord, controls, links, focus and the owner's red ink; Lit Vermilion on black, Deep Vermilion on paper.",
+      "**Do** give every link and button a hover animation, never a colour change alone, from the page's vocabulary: a red stroke cuts in or a seam opens under it; it strikes forward; it lifts and red rises from its foot; or its mark turns. Keyboard focus gets the same answer. Movement runs only with a real pointer and motion allowed; colour still changes under reduced motion. Entrances ease out over 0.25-0.35s, exits are quicker, a press sinks the control.",
+      "**Do** show focus or arrival by lifting darkness rather than adding colour, with a non-colour cue (underline) wherever colour marks the chosen item.",
+      "**Do** number destinations and volumes with two-digit display numerals; apply the grain tokens to the right material; write any new type size as a clamp() on `calc(N * var(--fluid))`, never raw vw, so it follows browser zoom.",
+      "**Do** honour reduced motion: the gate stays whole, the page is unlocked, and nothing parts, swings, draws, unrolls or moves in the wind.",
+      "**Do** keep every interactive target at least 44px tall, and never let a theme change animate hover states."
     ],
     "donts": [
-      "Don't warm the paper toward cream or parchment.",
-      "Don't introduce a second accent colour or use vermilion on headings or section backgrounds.",
-      "Don't round surfaces or controls; corners stay square apart from the 2px focus ring, door pulls, and scroll rollers.",
-      "Don't set UI, buttons or labels in Mincho.",
-      "Don't place uppercase tracked labels above headings as eyebrows.",
-      "Don't use official Bleach artwork, logos, characters or quoted text; gate, cord, seal and butterflies are original drawings.",
-      "Don't use image files or photography for texture; grain is the SVG tokens.",
-      "Don't use bouncy or elastic easing for state changes; motion is weighted and decisive."
+      "**Don't** warm the paper toward cream, add a second accent, or use vermilion on headings or section backgrounds.",
+      "**Don't** round surfaces or controls beyond the focus ring, door pulls.",
+      "**Don't** set UI, buttons or labels in Mincho, or place tracked labels above headings.",
+      "**Don't** use official Bleach artwork, logos, characters or quoted text; everything drawn is original.",
+      "**Don't** use images or photography for texture, or bouncy and elastic easing for state changes."
     ]
   }
 }
