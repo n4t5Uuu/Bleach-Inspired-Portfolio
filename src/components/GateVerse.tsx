@@ -6,11 +6,11 @@ type Props = { verses: string[][]; part: "all" | "sr" };
 export function GateVerse({ verses, part }: Props) {
   return verses.map((lines, i) =>
     part === "sr" ? (
-      <p key={i} className="sr-only" data-v={i}>
+      <p key={lines.join("/")} className="sr-only" data-v={i}>
         {lines.join(", ")}
       </p>
     ) : (
-      <p key={i} className="gate-verse" aria-hidden="true" data-v={i}>
+      <p key={lines.join("/")} className="gate-verse" aria-hidden="true" data-v={i}>
         {lines.map((line) => (
           <span key={line}>{line}</span>
         ))}
