@@ -1727,19 +1727,25 @@ a.resume-tag:hover {
   }
 }
 
+/* one row you scroll along; the next book peeks in at the edge, so the row reads as going on */
 .shelf {
   isolation: isolate;
   display: flex;
-  flex-wrap: wrap;
   /* covers share one ratio, so top-aligned books keep their planks level whatever their labels run to */
   align-items: flex-start;
-  gap: clamp(20px, 3vh, 36px) clamp(14px, 2vw, 28px);
+  gap: clamp(14px, 2vw, 28px);
+  overflow-x: auto;
+  padding-bottom: 20px;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: thin;
+  scrollbar-color: var(--ghost) transparent;
 }
 
 /* each book stands on its own length of plank; side by side they read as one shelf */
 .book {
   position: relative;
-  flex: 1 1 calc(33.333% - 28px);
+  flex: 0 0 calc(30% - 14px);
+  scroll-snap-align: start;
   min-width: 150px;
   /* on short viewports (high zoom, landscape) a whole book and its title still fit on screen */
   max-width: min(26rem, max(12.5rem, calc((100svh - 300px) * 0.75)));
@@ -3475,12 +3481,8 @@ span.resume-close {
     padding-block: 0;
   }
 
-  /* the shelf becomes a row you swipe along */
+  /* a finger swipes the row, so the scrollbar gives way to the cue below */
   .shelf {
-    flex-wrap: nowrap;
-    overflow-x: auto;
-    padding-bottom: 20px;
-    scroll-snap-type: x mandatory;
     scrollbar-width: none;
   }
 
