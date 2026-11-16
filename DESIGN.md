@@ -31,7 +31,7 @@ typography:
   action: { fontFamily: "Zen Kaku Gothic New, Yu Gothic UI, system-ui, sans-serif", fontSize: "1.25rem", fontWeight: 700 }
   nav: { fontFamily: "Zen Kaku Gothic New, Yu Gothic UI, system-ui, sans-serif", fontSize: "clamp(0.6875rem, calc(0.95 * var(--fluid)), 0.9375rem)", fontWeight: 700, letterSpacing: "0.1em" }
   label: { fontFamily: "Zen Kaku Gothic New, Yu Gothic UI, system-ui, sans-serif", fontSize: "0.75rem", fontWeight: 700, letterSpacing: "0.16em" }
-rounded: { none: "0px", focus: "2px", pull: "3px" }
+rounded: { none: "0px", focus: "2px", pull: "3px", portrait: "14px" }
 spacing: { gutter: "clamp(16px, 4.4vw, 72px)", measure: "62ch", wide: "76vw", container: "max(77.5rem, 84vw)", thread: "max(68.75rem, 76vw)" }
 components:
   button-primary: { backgroundColor: "{colors.washi}", textColor: "{colors.lacquer}", typography: "{typography.action}", rounded: "{rounded.none}", padding: "18px 28px" }
@@ -90,11 +90,11 @@ Full-bleed bands, side padding of the gutter; work content capped at max(77.5rem
 
 **Opening:** scroll-locked while closed. The cord, a downward wheel, touch or key push, or a tab plays the opening (3.2s, scrolling the passage itself) and then unlocks; dragging the scrollbar unlocks it directly and the doors follow. The numeral in the light is the destination's own number (01 for the cord). Scrolling back to the top locks it again. With reduced motion or no JavaScript the gate stays whole and the page reads straight down.
 
-**Sections:** Projects is one sideways row of 3:4 books at every width, scroll-snapped, each 30% of the row (150px to 26rem) so the next peeks in at the edge, with a thin Ghost scrollbar; then one detail panel, with screenshots text on the left and tilted paper prints on the right (1 : 0.85) at 1000px and up. Experience and Technologies share a three-column grid (dates, the cord, content). About is a 0.8 : 1.2 grid (portrait, text) on the page's own ground, with no paper; below 900px it stacks with the portrait up to 360px wide. The close fills the screen between two door panels.
+**Sections:** Projects is one sideways row of 3:4 books at every width, scroll-snapped, each 30% of the row (150px to 26rem) so the next peeks in at the edge, with a thin Ghost scrollbar; then one detail panel, with screenshots text on the left and tilted paper prints on the right (1 : 0.85) at 1000px and up. Experience and Technologies share a three-column grid (dates, the cord, content). About is a 0.8 : 1.2 grid (portrait, text) on the page's own ground, with no paper; below 900px it becomes one centred column up to 36rem, the portrait and the name side by side in equal halves and the reading across both at one measure; on phones (560px and below) the portrait keeps a fixed 240px width, centred with the name and role under it, and the reading stays left-aligned. The close fills the screen between two door panels.
 
 **Tabs:** six numbered destinations (About, Projects, Experience, Stack, GitHub, Contact). Short names in the header and bar, full names in the Menu sheet. The resume is not a tab: it is the tag on the gate door and the closing button.
 
-**Breakpoints:** to 1680px the header's tabs become a full-width rail of equal slats under the name; the fixed bar drops its numerals below 1000px. At 760px and below the tabs fold into a **Menu** button (header and bar) opening a full-screen lacquer sheet with the destinations set large (a native dialog); the shelf hides its scrollbar for a "Swipe" cue and one tick per book; the thread moves to the left edge; the portrait centres at 200px. Every interactive target keeps a 44px minimum.
+**Breakpoints:** the header and the bar keep the name, theme switch and tabs on one row on laptops (theme words drop below 1100px, numerals below 1000px). On tablets (to 1024px upright, or a touch-first screen to 1366px either way) and at 760px and below the tabs fold into a **Menu** button (header and bar) opening a full-screen lacquer sheet with the destinations set large (a native dialog); the shelf hides its scrollbar for a "Swipe" cue and one tick per book; the thread moves to the left edge. The bar keeps the name as the way back to the gate at every width (1rem on phones; below 360px the Menu button shows its bars alone). Every interactive target keeps a 44px minimum.
 
 ## Elevation & Depth
 
@@ -105,7 +105,7 @@ Depth is material, not floating: doors slide behind posts, books stand on planks
 
 ## Shapes
 
-Square by default. Softening only on the 2px focus ring and 3px door pulls. Borders are structural lacquer (8px beams, 10-18px door frames, 3px tag border, 2px stamp borders, 4px button rules, 1px hairlines). The kumiko lattice is a coarse 3 by 4 grid of wood bars masked over paper. Slips and strips are rectangles rotated up to about 1.2 degrees (screenshot slips about 0.8). Timeline knots are rotated 14px squares; rail pegs rotated 6px squares. The hanko seal is the one circle, roughened and tilted -7 degrees. Covers are 3:4.
+Square by default. Softening only on the 2px focus ring, 3px door pulls and the 14px corners of the About portrait (the one photograph). Borders are structural lacquer (8px beams, 10-18px door frames, 3px tag border, 2px stamp borders, 4px button rules, 1px hairlines). The kumiko lattice is a coarse 3 by 4 grid of wood bars masked over paper. Slips and strips are rectangles rotated up to about 1.2 degrees (screenshot slips about 0.8). Timeline knots are rotated 14px squares; rail pegs rotated 6px squares. The hanko seal is the one circle, roughened and tilted -7 degrees. Covers are 3:4.
 
 ## Components
 
@@ -138,7 +138,7 @@ Square by default. Softening only on the 2px focus ring and 3px door pulls. Bord
 
 ### Don't:
 - **Don't** warm the paper toward cream, add a second accent, or use vermilion on headings or section backgrounds.
-- **Don't** round surfaces or controls beyond the focus ring and door pulls.
+- **Don't** round surfaces or controls beyond the focus ring, door pulls and the portrait.
 - **Don't** set UI, buttons or labels in Mincho, or place tracked labels above headings.
 - **Don't** use official Bleach artwork, logos, characters or quoted text; everything drawn is original.
 - **Don't** use images or photography for texture, or bouncy and elastic easing for state changes.

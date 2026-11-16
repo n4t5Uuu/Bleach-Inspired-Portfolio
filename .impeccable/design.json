@@ -466,8 +466,8 @@
         "value": "1000px"
       },
       {
-        "name": "rail-tabs",
-        "value": "1680px"
+        "name": "menu-tablet",
+        "value": "1024px portrait, 1366px coarse pointer"
       },
       {
         "name": "fluid-steps",
