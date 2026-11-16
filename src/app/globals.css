@@ -2734,6 +2734,8 @@ a.resume-tag:hover {
   --about-light: var(--seam);
   scroll-margin-top: 72px;
   padding: clamp(104px, 16vh, 150px) var(--gutter) clamp(96px, 16vh, 180px);
+  /* a butterfly waiting off the side to fly in must not widen the page */
+  overflow-x: clip;
 }
 
 :root[data-theme="light"] .about {
@@ -2891,6 +2893,8 @@ a.resume-tag:hover {
 }
 
 .gate[data-armed="true"] + main > .about {
+  /* a link to About lands where the passage ends; any margin would stop it back inside the passage */
+  scroll-margin-top: 0;
   min-height: 100svh;
   padding-top: clamp(104px, 16vh, 150px);
   translate: 0 calc((var(--p, 1) - 1) * var(--travel, 0px));

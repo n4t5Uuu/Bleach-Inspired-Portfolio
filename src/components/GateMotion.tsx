@@ -113,27 +113,39 @@ export function GateMotion() {
       pending = null;
     };
 
-    const open = () => {
-      if (!locked || opening) return;
+    const relock = () => {
+      locked = true;
+      root.dataset.gate = "closed";
+      aim(); // the next opening, by cord or scroll, leads to About again
+      delete root.dataset.restored; // the next opening plays as usual
+    };
+
+    // plays the passage from where the page is to scroll position `to`, at the opening's pace
+    const play = (to: number, done: () => void) => {
       const from = window.scrollY;
-      const to = travel();
-      const ms = OPEN_MS * Math.max(0, 1 - from / to);
+      const end = travel();
+      const ms = end > 0 ? (OPEN_MS * Math.abs(to - from)) / end : 0;
       const start = performance.now();
       const step = (t: number) => {
         const k = ms > 0 ? Math.min(1, (t - start) / ms) : 1;
         const top = from + (to - from) * k;
         // style first, then scroll: the one layout the scroll needs then covers both, and the doors
         // move in the same frame as the page instead of one behind it
-        apply(to > 0 ? top / to : 1);
+        apply(end > 0 ? top / end : 1);
         window.scrollTo({ top, behavior: "instant" });
         if (k < 1) {
           opening = requestAnimationFrame(step);
         } else {
           opening = 0;
-          unlock();
+          done();
         }
       };
       opening = requestAnimationFrame(step);
+    };
+
+    const open = () => {
+      if (!locked || opening) return;
+      play(travel(), unlock);
     };
 
     const block = (e: Event) => {
@@ -170,16 +182,16 @@ export function GateMotion() {
 
     // scrollbar drags and focus jumps can still move the page. A drag must not start the timed opening:
     // its scrolling would fight the hand on the thumb. The gate unlocks and the doors follow the scroll.
+    let lastY = window.scrollY;
+    let down = true; // which way the page last moved
     const onScroll = () => {
+      const y = window.scrollY;
+      if (y !== lastY) down = y > lastY;
+      lastY = y;
       if (opening) return;
       // back at the closed gate (the home link, or scrolling up): lock it again
       if (!locked) {
-        if (window.scrollY <= 0 && gate.dataset.armed === "true") {
-          locked = true;
-          root.dataset.gate = "closed";
-          aim(); // the next opening, by cord or scroll, leads to About again
-          delete root.dataset.restored; // the next opening plays as usual
-        }
+        if (y <= 0 && gate.dataset.armed === "true") relock();
         return;
       }
       if (window.scrollY >= travel()) unlock();
@@ -187,6 +199,17 @@ export function GateMotion() {
         locked = false;
         root.dataset.gate = "open";
       }
+    };
+
+    // a native scroll never comes to rest inside the passage, half open with no bar: it plays on the way
+    // it was heading, to About or back to the shut gate
+    const onScrollEnd = () => {
+      const y = window.scrollY;
+      // a pixel of slack: zoomed pages can land a fraction short of the passage's end
+      if (opening || gate.dataset.armed !== "true" || y <= 0 || y >= travel() - 1) return;
+      locked = true;
+      if (down) open();
+      else play(0, relock);
     };
 
     const arm = () => {
@@ -212,6 +235,7 @@ export function GateMotion() {
     arm();
     window.addEventListener("scroll", schedule, { passive: true });
     window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("scrollend", onScrollEnd);
     window.addEventListener("resize", schedule);
     window.addEventListener("wheel", onWheel, { passive: false });
     window.addEventListener("touchstart", onTouchStart, { passive: true });
@@ -224,6 +248,7 @@ export function GateMotion() {
       cancelAnimationFrame(opening);
       window.removeEventListener("scroll", schedule);
       window.removeEventListener("scroll", onScroll);
+      window.removeEventListener("scrollend", onScrollEnd);
       window.removeEventListener("resize", schedule);
       window.removeEventListener("wheel", onWheel);
       window.removeEventListener("touchstart", onTouchStart);
