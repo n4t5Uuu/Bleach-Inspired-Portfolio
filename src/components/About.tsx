@@ -20,7 +20,7 @@ export function About() {
         </span>
         <figure className="portrait about-k" style={k(0.72, 0.86)}>
           {site.about.portrait ? (
-            <Image src={site.about.portrait} alt={`Portrait of ${site.name}`} fill sizes="(min-width: 901px) 34vw, 360px" loading="eager" />
+            <Image src={site.about.portrait} alt={`Portrait of ${site.name}`} fill sizes="(min-width: 901px) 34vw, 260px" loading="eager" />
           ) : (
             <div className="portrait-empty">
               <span>Portrait</span>

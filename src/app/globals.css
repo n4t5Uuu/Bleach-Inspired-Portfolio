@@ -2780,6 +2780,8 @@ a.resume-tag:hover {
   margin: 0;
   aspect-ratio: 3 / 4;
   overflow: hidden;
+  /* the one photograph gets soft corners; every drawn surface stays square */
+  border-radius: 14px;
   background: var(--void);
 }
 
@@ -2890,16 +2892,6 @@ a.resume-tag:hover {
   color: var(--mist);
 }
 
-@media (max-width: 900px) {
-  .about-stage {
-    grid-template-columns: minmax(0, 1fr);
-  }
-
-  .portrait {
-    width: min(100%, 360px);
-  }
-}
-
 /* a narrow phone stacks each fact's label over its value */
 @media (max-width: 420px) {
   .about-facts {
@@ -2978,15 +2970,93 @@ a.resume-tag:hover {
   width: clamp(24px, 2.4vw, 34px);
 }
 
+/* Tablets and phones: one centred column. The portrait stands beside the name and role, as on a book's
+   title page, and the reading runs under both at one measure, so every part shares the same two edges. */
 @media (max-width: 900px) {
+  .about-stage {
+    --g: clamp(16px, 4vw, 28px);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    row-gap: 0;
+    max-width: 36rem;
+  }
+
+  /* its parts join the stage's grid: the name beside the portrait, the rest across both columns */
+  .about-text {
+    display: contents;
+  }
+
+  .portrait {
+    grid-area: 1 / 1;
+  }
+
+  /* as wide as the name, so its butterfly rests over the name's end */
+  .about-id {
+    grid-area: 1 / 2;
+    align-self: end;
+    justify-self: start;
+  }
+
+  .about-text > :not(.about-id) {
+    grid-column: 1 / -1;
+  }
+
+  .about-id h1 {
+    font-size: clamp(2rem, calc(5.8 * var(--fluid)), 3rem);
+  }
+
+  .about-lead,
+  .about-body,
+  .about-tagline {
+    max-width: none;
+  }
+
+  /* as wide as its line, so its butterfly rests over the line's end, not out at the column's edge */
+  .about-open {
+    width: fit-content;
+  }
+
   .about-fly-1 {
-    left: calc(min(100%, 360px) - 22px);
+    left: calc((100% - var(--g)) * 0.5 - 22px);
   }
 
   .about-fly-3 {
     top: -30px;
     left: auto;
-    right: 8%;
+    right: 4%;
+  }
+}
+
+/* Phones: half the column would shrink the portrait with the screen, so it keeps one size (as wide as half
+   the column is at 560px) and the name moves under it, across the column. */
+@media (max-width: 560px) {
+  .about-stage {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  /* the portrait, the name and the role stand centred, like a title page; the reading stays left */
+  .portrait {
+    justify-self: center;
+    width: min(100%, 240px);
+  }
+
+  .about-id {
+    grid-area: auto;
+    justify-self: center;
+    margin-top: clamp(24px, 4vh, 32px);
+    text-align: center;
+  }
+
+  .about-id h1 {
+    font-size: clamp(2.25rem, calc(8 * var(--fluid)), 2.75rem);
+  }
+
+  /* the tracking leaves a space after the last letter; the same space before the first re-centres it */
+  .about-role {
+    text-indent: 0.32em;
+  }
+
+  .about-fly-1 {
+    left: calc(50% + min(50%, 120px) - 22px);
   }
 }
 
