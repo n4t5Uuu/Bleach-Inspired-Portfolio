@@ -1,23 +1,18 @@
 # Frontend rules
 
-- **No long Tailwind strings inline in JSX.** Anything past a few utilities
-  goes in a descriptive `const` above the component (e.g. `const
-  navLinkClasses = "..."`) or into a cva variant. JSX should read as
-  structure, not styling — see `src/components/navbar.tsx` and
-  `src/components/ui/button.tsx` for the pattern.
-- **Keep components small** — aim for well under 150 lines each. Reach for
-  an existing primitive in `src/components/ui/` or `@base-ui/react` before
-  writing a new one.
-- This repo is shadcn v4 on **Base UI** (`components.json` → `"base-nova"`),
-  not Radix — never add `@radix-ui/*`. Add primitives with `npx shadcn@latest
-  add <component>` and extend the generated source directly for one-off
-  variants instead of wrapping it.
-- `cn` (clsx + tailwind-merge) lives at `@/lib/utils` — reuse it for
-  conditional classes.
-- Read [`../DESIGN.md`](../DESIGN.md) before styling or adding a component —
-  colors, type scale, spacing/radius, and page section list all live there.
-- Use the `glass` utility (`src/app/globals.css`) for translucent surfaces —
-  don't hand-roll `backdrop-filter`.
+- **Semantic class names, styled in `src/app/globals.css`.** Components use names like
+  `about-stage` or `book-cover`, never Tailwind utility strings in JSX; Tailwind is only the
+  CSS pipeline here. JSX should read as structure, not styling. Put a new component's styles
+  in `globals.css` beside its section, on the tokens defined at the top of that file.
+- **Keep components small**, well under 150 lines. Split along the page's own seams: one
+  component per section (`About`, `Experience`, `Technologies`, `Close`), a repeated item into
+  its own file (`ProjectPanel`). Exceptions: `GateMotion.tsx` and `Companion.tsx`, each a single
+  effect around one animation loop that would only be spread thinner by splitting.
+- **No component library.** There is no shadcn, Radix or Base UI here and no `cn` helper. Add
+  one only when a primitive is genuinely needed (see the root `CLAUDE.md`), restyled to the
+  tokens in `DESIGN.md`.
+- Read [`../DESIGN.md`](../DESIGN.md) before styling or adding a component: colors, type,
+  spacing, motion and the section list live there. All copy lives in `src/content/site.ts`.
 
 <!-- BEGIN:nextjs-agent-rules -->
 
