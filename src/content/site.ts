@@ -98,7 +98,7 @@ export const site = {
   ],
   about: {
     // Set to an image path in /public once there is a portrait; null shows a marked placeholder frame.
-    portrait: "/portrait.webp" as string | null,
+    portrait: "/alden-olmedo.webp" as string | null,
     // Large type: keep it to about 25 words. The body sits under it in smaller text.
     lead: "I build apps that solve real problems for people, and projects that are simply fun to make. Right now I'm going deeper into AI and data engineering.",
     body: "I enjoy coding, building and studying for their own sake, and I put in the hours to keep sharpening my skills.",
