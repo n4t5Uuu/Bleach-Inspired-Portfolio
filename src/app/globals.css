@@ -1486,6 +1486,28 @@ a.resume-tag:hover {
   color: var(--cord-lit);
 }
 
+/* the narrowest phones: the bar's menu shows its bars alone (the word stays for screen readers) and the
+   name steps down once more, so the whole name fits as the way back to the gate */
+@media (max-width: 359px) {
+  .bar .menu-toggle {
+    min-width: 44px;
+    justify-content: center;
+  }
+
+  .bar .menu-word {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+  .bar .bar-name {
+    font-size: 0.9375rem;
+  }
+}
+
 /* the contents page: lacquer over the whole screen, the four destinations set large */
 .menu-sheet {
   position: fixed;
@@ -1647,8 +1669,8 @@ a.resume-tag:hover {
   white-space: nowrap;
 }
 
-/* the same on the gate's lintel wherever it is not the rail (see the 1680px rule) */
-@media (min-width: 1681px) {
+/* the same on the gate's lintel on laptops and tablets held sideways (upright tablets get the menu) */
+@media (min-width: 1024px), (min-width: 761px) and (orientation: landscape) {
   .gate-lintel .registry ol {
     flex-wrap: nowrap;
     gap: 0 clamp(10px, 1.5vw, 24px);
@@ -3324,12 +3346,11 @@ span.resume-close {
 /* the fixed bar loses the theme words first, then the link numerals, so the name, the switch and
    six links still share one row */
 @media (max-width: 1100px) {
-  .bar .theme-name,
-  .bar .theme-label {
+  :is(.bar, .gate-lintel) :is(.theme-name, .theme-label) {
     display: none;
   }
 
-  .bar :is(.theme-toggle, .theme-system) {
+  :is(.bar, .gate-lintel) :is(.theme-toggle, .theme-system) {
     width: 44px;
     justify-content: center;
     padding: 0;
@@ -3337,37 +3358,28 @@ span.resume-close {
 }
 
 @media (max-width: 1000px) {
-  .bar .registry-n {
+  :is(.bar, .gate-lintel) .registry-n {
     display: none;
   }
 }
 
-/* narrower than the name, the switch and six links side by side: the gate's registry becomes a rail of
-   equal slats under the name, instead of loose links wrapping into a corner */
-@media (max-width: 1680px) {
-  .gate-lintel .registry {
-    flex: 1 1 100%;
-    border-block: 1px solid var(--lacquer-2);
+/* tablets, upright or sideways: the name and the switch stay, the six links fold into the menu sheet as on
+   phones (the 760px rules below cover phones). A sideways tablet is as wide as a laptop, so it is told
+   apart by its touch-first input; laptops, touchscreen ones included, report a fine pointer. */
+@media (min-width: 761px) and (max-width: 1024px) and (orientation: portrait),
+  (min-width: 761px) and (max-width: 1366px) and (pointer: coarse) {
+  .gate-lintel {
+    flex-wrap: nowrap;
+    align-items: center;
   }
 
-  .gate-lintel .registry ol {
-    display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    gap: 0;
+  .gate-lintel .registry,
+  .bar .registry {
+    display: none;
   }
 
-  .gate-lintel .registry li + li {
-    border-left: 1px solid var(--lacquer-2);
-  }
-
-  .gate-lintel .registry a {
-    width: 100%;
-    flex-wrap: wrap;
-    justify-content: center;
-    column-gap: 0.5em;
-    row-gap: 0;
-    padding: 4px 8px;
-    text-align: center;
+  .menu-toggle {
+    display: inline-flex;
   }
 }
 
@@ -3477,11 +3489,12 @@ span.resume-close {
     white-space: nowrap;
   }
 
+  /* the name stays the way back to the gate, a size down so it fits beside the theme marks and the menu */
   .bar-name {
-    display: none;
+    font-size: 1rem;
   }
 
-  /* the moon and the menu, full-height targets; the gate above already carries the name */
+  /* full-height targets */
   .bar {
     padding-block: 0;
   }

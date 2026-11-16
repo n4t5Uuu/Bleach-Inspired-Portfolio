@@ -21,23 +21,25 @@ export function MobileMenu() {
     el.dataset.closing = "";
   };
 
-  // the sheet belongs to the phone layout: widening the window past it closes the sheet,
-  // or the full-screen modal would stay over the desktop page
+  // the sheet belongs to phones and upright tablets (the menu-toggle rules in globals.css): leaving that
+  // layout closes the sheet, or the full-screen modal would stay over the wide page
   useEffect(() => {
     const el = sheet.current;
     if (!el) return;
-    const wide = matchMedia("(min-width: 761px)");
+    const narrow = matchMedia(
+      "(max-width: 760px), (max-width: 1024px) and (orientation: portrait), (max-width: 1366px) and (pointer: coarse)",
+    );
     const onChange = () => {
-      if (wide.matches) el.close();
+      if (!narrow.matches) el.close();
     };
     // the exit animation ends on the sheet itself (not its list items): now really close it
     const onEnd = (e: AnimationEvent) => {
       if (e.target === el && el.dataset.closing !== undefined) el.close();
     };
-    wide.addEventListener("change", onChange);
+    narrow.addEventListener("change", onChange);
     el.addEventListener("animationend", onEnd);
     return () => {
-      wide.removeEventListener("change", onChange);
+      narrow.removeEventListener("change", onChange);
       el.removeEventListener("animationend", onEnd);
     };
   }, []);
@@ -45,7 +47,7 @@ export function MobileMenu() {
   return (
     <>
       <button type="button" className="menu-toggle" aria-haspopup="dialog" onClick={open}>
-        Menu
+        <span className="menu-word">Menu</span>
       </button>
       {/* Esc plays the exit animation too, instead of closing the sheet at once */}
       <dialog
