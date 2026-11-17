@@ -2918,6 +2918,12 @@ a.resume-tag:hover {
   opacity: 1;
 }
 
+/* until the passage is past halfway nothing of About shows, whatever its parts' progress reads (GateMotion
+   sets data-near; iOS Safari has kept faint, stale parts visible through the shut doors on scrolling back) */
+.gate[data-armed="true"] + main > .about:not([data-near="true"]) {
+  visibility: hidden;
+}
+
 /* a part's own progress through the passage, between --a and --b */
 .gate[data-armed="true"] + main > .about .about-k {
   --k: clamp(0, (var(--p, 1) - var(--a)) / (var(--b) - var(--a)), 1);

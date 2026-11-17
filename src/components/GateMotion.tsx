@@ -35,7 +35,8 @@ export function GateMotion() {
     };
     const black = style(".gate-black");
     // About is held where it will rest while the gate opens onto it, and staged by the same progress
-    const about = document.getElementById("about")?.style;
+    const aboutEl = document.getElementById("about");
+    const about = aboutEl?.style;
     // the gate's butterflies: each leaves along its own path (data-fly, "dx,dy" in vw and vh),
     // turned towards where it is going
     const flights = [...gate.querySelectorAll<HTMLElement>(".drift")].map((el) => {
@@ -77,6 +78,9 @@ export function GateMotion() {
       main?.style.setProperty("--head", head.toFixed(4));
       about?.setProperty("--p", p.toFixed(4));
       about?.setProperty("--door", door.toFixed(4));
+      // About shows only past halfway (its first part starts at .56). A flag, not --p: iOS Safari can leave
+      // a part styled from a stale --p when scrolling back, leaking faint text through the shut doors
+      if (aboutEl) flag(aboutEl, "near", p > 0.5);
       flag(gate, "parting", door > 0);
       flag(root, "beat", head > 0.5);
       flag(root, "passed", p > 0.98);
@@ -224,6 +228,7 @@ export function GateMotion() {
         stage.removeProperty("--flood");
         main?.style.removeProperty("--head");
         for (const k of ["--p", "--door", "--travel"]) about?.removeProperty(k);
+        if (aboutEl) delete aboutEl.dataset.near;
         delete gate.dataset.parting;
         delete root.dataset.beat;
       }
