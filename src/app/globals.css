@@ -3090,6 +3090,8 @@ a.resume-tag:hover {
    in them, not themselves, so the butterfly is seen all the way down. */
 .gate[data-armed="true"] + main > .about :is(.portrait.about-k, .about-id.about-k > :not(.about-fly)) {
   mask-image: radial-gradient(circle at 100% 0, #000 calc(var(--k) * 150% - 18%), transparent calc(var(--k) * 150%));
+  /* hidden outright until its ink starts: iOS Safari has shown the name through the closed gate unmasked */
+  opacity: min(1, calc(var(--k) * 20));
 }
 
 .gate[data-armed="true"] + main > .about :is(.about-text > .about-k:not(.about-id, .about-open), .about-open.about-k > :not(.about-fly)) {
