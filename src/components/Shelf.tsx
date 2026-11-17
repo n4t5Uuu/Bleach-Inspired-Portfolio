@@ -28,6 +28,21 @@ export function Shelf({ projects }: Props) {
     viewer.current?.showModal();
   };
 
+  // choosing a book scrolls the row (when it is longer than the screen) to where that book snaps:
+  // its start on wider screens, its centre on phones
+  const choose = (i: number) => {
+    setActive(i);
+    const book = tabs.current[i];
+    const shelf = book?.parentElement;
+    if (!book || !shelf) return;
+    const b = book.getBoundingClientRect();
+    const s = shelf.getBoundingClientRect();
+    const centre = getComputedStyle(book).scrollSnapAlign.includes("center");
+    const left = shelf.scrollLeft + (centre ? b.left + b.width / 2 - (s.left + s.width / 2) : b.left - s.left);
+    const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+    shelf.scrollTo({ left, behavior: reduce ? "instant" : "smooth" });
+  };
+
   const onKey = (e: KeyboardEvent, i: number) => {
     const last = projects.length - 1;
     const next =
@@ -38,8 +53,8 @@ export function Shelf({ projects }: Props) {
       : -1;
     if (next < 0) return;
     e.preventDefault();
-    setActive(next);
-    tabs.current[next]?.focus();
+    choose(next);
+    tabs.current[next]?.focus({ preventScroll: true });
   };
 
   const onScroll = (e: UIEvent<HTMLDivElement>) => {
@@ -67,7 +82,7 @@ export function Shelf({ projects }: Props) {
             tabIndex={ready && i !== active ? -1 : 0}
             className="book"
             data-active={i === active}
-            onClick={() => setActive(i)}
+            onClick={() => choose(i)}
             onKeyDown={(e) => onKey(e, i)}
           >
             <span className="book-cover">
