@@ -1,10 +1,12 @@
 import {
   siClaude,
   siCss,
+  siClerk,
   siCursor,
   siDbeaver,
   siDocker,
   siDrizzle,
+  siEslint,
   siFastapi,
   siFigma,
   siGit,
@@ -17,10 +19,12 @@ import {
   siJavascript,
   siJupyter,
   siMysql,
+  siNeon,
   siNextdotjs,
   siOpenjdk,
   siPocketbase,
   siPostgresql,
+  siPrettier,
   siPython,
   siPytorch,
   siReact,
@@ -34,6 +38,7 @@ import {
   siTensorflow,
   siTypescript,
   siVercel,
+  siWebpack,
 } from "simple-icons";
 
 // Each tool's mark, keyed by its name in site.ts: the brand's own from simple-icons (filled, 24x24).
@@ -73,6 +78,11 @@ const brands: Record<string, string> = {
   Figma: siFigma.path,
   DBeaver: siDbeaver.path,
   "Google Workspace": siGoogle.path,
+  Neon: siNeon.path,
+  Clerk: siClerk.path,
+  ESLint: siEslint.path,
+  Prettier: siPrettier.path,
+  Webpack: siWebpack.path,
 };
 
 // Tools with no published mark (SQL has none; AWS and OpenAI's Codex were withdrawn from simple-icons at
